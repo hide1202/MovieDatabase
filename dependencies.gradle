@@ -13,9 +13,13 @@ ext.versions = [
                 espresso_core   : '3.2.0'
         ],
         test     : [
-                junit: '4.12'
+                junit        : '4.12',
+                mockwebserver: '3.14.9'
         ],
         libraries: [
+                retrofit      : '2.9.0',
+                coroutine_core: '1.3.7',
+                arrow         : '0.10.4'
         ]
 ]
 
@@ -29,10 +33,21 @@ ext.deps = [
                 constraintlayout: "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintlayout}"
         ],
         test        : [
-                junit: "junit:junit:${versions.test.junit}"
+                junit        : "junit:junit:${versions.test.junit}",
+                mockwebserver: "com.squareup.okhttp3:mockwebserver:${versions.test.mockwebserver}"
         ],
         android_test: [
                 junit        : "androidx.test.ext:junit:${versions.androidx.ext_junit}",
                 espresso_core: "androidx.test.espresso:espresso-core:${versions.androidx.espresso_core}"
+        ],
+        libraries   : [
+                retrofit       : "com.squareup.retrofit2:retrofit:${versions.libraries.retrofit}",
+                retrofit_moshi : "com.squareup.retrofit2:converter-moshi:${versions.libraries.retrofit}",
+                coroutine_core : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.libraries.coroutine_core}",
+
+                arrow_core     : "io.arrow-kt:arrow-core:${versions.libraries.arrow}",
+                arrow_syntax   : "io.arrow-kt:arrow-syntax:${versions.libraries.arrow}",
+                arrow_fx       : "io.arrow-kt:arrow-fx:${versions.libraries.arrow}",
+                arrow_meta_kapt: "io.arrow-kt:arrow-meta:${versions.libraries.arrow}",
         ]
 ]
