@@ -1,11 +1,13 @@
 package io.viewpoint.moviedatabase.api.adapter
 
 import arrow.core.Either
+import arrow.fx.IO
 import io.viewpoint.moviedatabase.api.ApiTest
 import junit.framework.Assert.*
 import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
 
@@ -14,9 +16,9 @@ class ArrowCallAdapterTest : ApiTest() {
         Retrofit.Builder()
             .baseUrl(mockServer.url("/"))
             .addCallAdapterFactory(ArrowCallAdapterFactory())
+            .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }
-
 
     data class TestResponse(
         val name: String,
@@ -25,7 +27,7 @@ class ArrowCallAdapterTest : ApiTest() {
 
     interface TestApi {
         @GET("/")
-        suspend fun test(): Either<Throwable, TestResponse>
+        fun test(): IO<TestResponse>
     }
 
     @Test
@@ -41,6 +43,8 @@ class ArrowCallAdapterTest : ApiTest() {
     ) {
         val api = retrofit.create<TestApi>()
         val response = api.test()
+            .attempt()
+            .suspended()
         assertTrue(response.isRight())
         when (response) {
             is Either.Left -> fail()

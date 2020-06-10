@@ -13,7 +13,8 @@ class MovieDatabaseApi(private val url: String = BASE_URL) {
         Retrofit.Builder()
             .baseUrl(url)
             .addCallAdapterFactory(ArrowCallAdapterFactory())
-            .addConverterFactory(MoshiConverterFactory.create()).build()
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
     }
 
     companion object {
