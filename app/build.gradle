@@ -23,6 +23,8 @@ android {
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
         }
         release {
+            buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
+
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
             proguardFiles fileTree(dir: 'proguard', include: ['*.pro']).asList().toArray()
