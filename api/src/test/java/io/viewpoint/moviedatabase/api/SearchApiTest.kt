@@ -9,7 +9,11 @@ import retrofit2.HttpException
 
 class SearchApiTest : ApiTest() {
     private val api by lazy {
-        MovieDatabaseApi(mockServer.url("/").toString())
+        MovieDatabaseApi.Builder()
+            .apply {
+                url = mockServer.url("/").toString()
+                apiKey = "test"
+            }.build()
     }
 
     @Test

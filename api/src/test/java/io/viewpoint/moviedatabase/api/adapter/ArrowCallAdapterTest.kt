@@ -2,6 +2,8 @@ package io.viewpoint.moviedatabase.api.adapter
 
 import arrow.core.Either
 import arrow.fx.IO
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.viewpoint.moviedatabase.api.ApiTest
 import junit.framework.Assert.*
 import okhttp3.mockwebserver.MockResponse
@@ -16,7 +18,13 @@ class ArrowCallAdapterTest : ApiTest() {
         Retrofit.Builder()
             .baseUrl(mockServer.url("/"))
             .addCallAdapterFactory(ArrowCallAdapterFactory())
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(
+                MoshiConverterFactory.create(
+                    Moshi.Builder()
+                        .add(KotlinJsonAdapterFactory())
+                        .build()
+                )
+            )
             .build()
     }
 

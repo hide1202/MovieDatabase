@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface SearchApi {
-    @GET("/search/movie")
+    @GET("search/movie")
     fun searchMovie(@Query("query") query: String): IO<MovieSearchResponse>
 }
