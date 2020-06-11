@@ -1,7 +1,15 @@
-def externalFile = rootProject.file("external.properties")
-def externalProperties = new Properties()
-externalProperties.load(new FileInputStream(externalFile))
+String apiKey
+try {
+    def externalFile = rootProject.file("external.properties")
+    def externalProperties = new Properties()
+    externalProperties.load(new FileInputStream(externalFile))
+
+    apiKey = externalProperties.get("movie.database.api.key")
+} catch (Throwable t) {
+    apiKey = "DEFAULT_API_KEY"
+}
+
 
 ext.external = [
-        apiKey: "${externalProperties.get("movie.database.api.key")}"
+        apiKey: "${apiKey}"
 ]
