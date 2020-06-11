@@ -6,13 +6,15 @@ apply from: '../dependencies.gradle'
 
 dependencies {
     implementation deps.kotlin.stdlib
+    implementation deps.libraries.moshi
+    implementation deps.libraries.okhttp_logging
     implementation deps.libraries.retrofit
     implementation deps.libraries.retrofit_moshi
     implementation deps.libraries.coroutine_core
 
-    implementation deps.libraries.arrow_core
-    implementation deps.libraries.arrow_syntax
-    implementation deps.libraries.arrow_fx
+    api deps.libraries.arrow_core
+    api deps.libraries.arrow_syntax
+    api deps.libraries.arrow_fx
     kapt deps.libraries.arrow_meta_kapt
 
     testImplementation deps.test.junit

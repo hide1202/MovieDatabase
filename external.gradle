@@ -1,0 +1,7 @@
+def externalFile = rootProject.file("external.properties")
+def externalProperties = new Properties()
+externalProperties.load(new FileInputStream(externalFile))
+
+ext.external = [
+        apiKey: "${externalProperties.get("movie.database.api.key")}"
+]

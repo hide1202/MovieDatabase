@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply from: '../dependencies.gradle'
+apply from: '../external.gradle'
 
 android {
     compileSdkVersion versions.android.compileSdk
@@ -18,9 +19,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFiles fileTree(dir: 'proguard', include: ['*.pro']).asList().toArray()
         }
     }
 
@@ -43,6 +48,9 @@ dependencies {
     implementation deps.androidx.core
     implementation deps.androidx.appcompat
     implementation deps.androidx.constraintlayout
+    implementation deps.androidx.lifecycle_viewmodel
+    implementation deps.androidx.lifecycle_livedata
+    implementation deps.androidx.lifecycle_runtime
 
     // test
     testImplementation deps.test.junit
