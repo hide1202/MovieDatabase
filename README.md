@@ -2,7 +2,7 @@
 - Application for the practice of android development using Movie Database API
 
 ## How to run
-- Create a file with `external.properties` name.
+- Create a file in the root of project with `external.properties` name.
 - And write following property with your api key.
 
 ```
