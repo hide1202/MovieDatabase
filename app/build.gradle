@@ -53,6 +53,10 @@ dependencies {
     implementation deps.androidx.lifecycle_viewmodel
     implementation deps.androidx.lifecycle_livedata
     implementation deps.androidx.lifecycle_runtime
+    implementation deps.androidx.startup
+
+    // timber
+    implementation deps.libraries.timber
 
     // test
     testImplementation deps.test.junit
