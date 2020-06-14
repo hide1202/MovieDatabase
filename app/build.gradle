@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 apply from: '../dependencies.gradle'
 apply from: '../external.gradle'
@@ -31,6 +32,10 @@ android {
         }
     }
 
+    dataBinding {
+        enabled true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -49,6 +54,7 @@ dependencies {
     // androidx
     implementation deps.androidx.core
     implementation deps.androidx.appcompat
+    implementation deps.androidx.material
     implementation deps.androidx.constraintlayout
     implementation deps.androidx.lifecycle_viewmodel
     implementation deps.androidx.lifecycle_livedata
