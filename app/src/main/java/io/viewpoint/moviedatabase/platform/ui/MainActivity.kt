@@ -1,10 +1,12 @@
-package io.viewpoint.moviedatabase
+package io.viewpoint.moviedatabase.platform.ui
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import arrow.core.Either
+import io.viewpoint.moviedatabase.BuildConfig
+import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.api.SearchApi
 import kotlinx.coroutines.launch
