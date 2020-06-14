@@ -9,6 +9,7 @@ ext.versions = [
                 core            : '1.3.0',
                 appcompat       : '1.1.0',
                 lifecycle       : '2.2.0',
+                material        : '1.1.0',
                 constraintlayout: '1.1.3',
                 startup         : '1.0.0-alpha01',
                 ext_junit       : '1.1.1',
@@ -35,6 +36,7 @@ ext.deps = [
         androidx    : [
                 core               : "androidx.core:core-ktx:${versions.androidx.core}",
                 appcompat          : "androidx.appcompat:appcompat:${versions.androidx.appcompat}",
+                material           : "com.google.android.material:material:${versions.androidx.material}",
                 constraintlayout   : "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintlayout}",
 
                 lifecycle_viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx.lifecycle}",

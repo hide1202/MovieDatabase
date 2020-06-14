@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".platform.ui.MovieSearchActivity"></activity>
         <activity android:name=".platform.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +31,6 @@
                 android:name="io.viewpoint.moviedatabase.platform.startup.TimberInitializer"
                 android:value="androidx.startup" />
         </provider>
-
     </application>
 
 </manifest>
