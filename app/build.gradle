@@ -53,6 +53,8 @@ dependencies {
 
     // androidx
     implementation deps.androidx.core
+    implementation deps.androidx.activity
+    implementation deps.androidx.fragment
     implementation deps.androidx.appcompat
     implementation deps.androidx.material
     implementation deps.androidx.constraintlayout

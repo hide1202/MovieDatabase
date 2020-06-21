@@ -7,6 +7,8 @@ ext.versions = [
         ],
         androidx : [
                 core            : '1.3.0',
+                activity        : '1.1.0',
+                fragment        : '1.2.5',
                 appcompat       : '1.1.0',
                 lifecycle       : '2.2.0',
                 material        : '1.1.0',
@@ -35,6 +37,8 @@ ext.deps = [
         ],
         androidx    : [
                 core               : "androidx.core:core-ktx:${versions.androidx.core}",
+                activity           : "androidx.activity:activity-ktx:${versions.androidx.activity}",
+                fragment           : "androidx.fragment:fragment-ktx:${versions.androidx.fragment}",
                 appcompat          : "androidx.appcompat:appcompat:${versions.androidx.appcompat}",
                 material           : "com.google.android.material:material:${versions.androidx.material}",
                 constraintlayout   : "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintlayout}",
