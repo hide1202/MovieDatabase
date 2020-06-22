@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'dagger.hilt.android.plugin'
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -46,6 +48,10 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes true // for hilt
+}
+
 dependencies {
     implementation project(':api')
 
@@ -62,6 +68,13 @@ dependencies {
     implementation deps.androidx.lifecycle_livedata
     implementation deps.androidx.lifecycle_runtime
     implementation deps.androidx.startup
+
+    // dagger/hilt
+    implementation deps.libraries.hilt
+    kapt deps.libraries.hilt_kapt
+    // hilt with androidx
+    implementation deps.androidx.hilt_lifecycle
+    kapt deps.androidx.hilt_kapt
 
     // timber
     implementation deps.libraries.timber

@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import arrow.core.getOrHandle
+import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivityMovieSearchBinding
 import io.viewpoint.moviedatabase.platform.externsion.hideSoftInput
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MovieSearchActivity : AppCompatActivity() {
     private val binding: ActivityMovieSearchBinding by lazy {
         DataBindingUtil.setContentView<ActivityMovieSearchBinding>(
