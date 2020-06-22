@@ -7,25 +7,12 @@ import io.viewpoint.moviedatabase.BuildConfig
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.databinding.ActivityMainBinding
+import io.viewpoint.moviedatabase.platform.ui.search.MovieSearchActivity
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy {
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-    }
-
-    private val api: MovieDatabaseApi by lazy {
-        MovieDatabaseApi
-            .Builder()
-            .apply {
-                apiKey = BuildConfig.API_KEY
-                if (BuildConfig.DEBUG) {
-                    debugLog = {
-                        Timber.d(it)
-                    }
-                }
-            }
-            .build()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,0 +1,51 @@
+package io.viewpoint.moviedatabase.platform.ui.search
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import io.viewpoint.moviedatabase.R
+import io.viewpoint.moviedatabase.databinding.ItemSearchResultBinding
+import io.viewpoint.moviedatabase.platform.ui.search.model.SearchResultModel
+
+private val diffCallback =
+    object : DiffUtil.ItemCallback<SearchResultModel>() {
+        override fun areItemsTheSame(
+            oldItem: SearchResultModel,
+            newItem: SearchResultModel
+        ): Boolean = oldItem.id == newItem.id
+
+        override fun areContentsTheSame(
+            oldItem: SearchResultModel,
+            newItem: SearchResultModel
+        ): Boolean = oldItem == newItem
+    }
+
+class SearchResultAdapter :
+    ListAdapter<SearchResultModel, SearchResultAdapter.SearchResultHolder>(diffCallback) {
+
+    fun updateResults(results: List<SearchResultModel>) {
+        submitList(results)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultHolder =
+        DataBindingUtil.inflate<ItemSearchResultBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.item_search_result,
+            parent,
+            false
+        ).let {
+            SearchResultHolder(it)
+        }
+
+    override fun onBindViewHolder(holder: SearchResultHolder, position: Int) =
+        with(holder.binding) {
+            model = getItem(position)
+            executePendingBindings()
+        }
+
+    class SearchResultHolder(val binding: ItemSearchResultBinding) :
+        RecyclerView.ViewHolder(binding.root)
+}
