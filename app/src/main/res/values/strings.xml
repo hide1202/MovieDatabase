@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieDatabase</string>
+    <string name="app_name">TMDB</string>
 
     <string name="search_button">Search</string>
 </resources>
