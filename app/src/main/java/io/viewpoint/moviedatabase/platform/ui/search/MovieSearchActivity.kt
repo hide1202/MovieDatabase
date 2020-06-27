@@ -3,15 +3,21 @@ package io.viewpoint.moviedatabase.platform.ui.search
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
-import arrow.core.getOrHandle
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivityMovieSearchBinding
 import io.viewpoint.moviedatabase.platform.externsion.hideSoftInput
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -25,26 +31,61 @@ class MovieSearchActivity : AppCompatActivity() {
 
     private val viewModel: MovieSearchViewModel by viewModels()
 
+    private val searchResultAdapter = SearchResultAdapter()
+
+    private var searchJob: Job? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.lifecycleOwner = this
-        binding.vm = viewModel
+        with(binding) {
+            lifecycleOwner = this@MovieSearchActivity
+            vm = viewModel
+            adapter = searchResultAdapter.withLoadStateHeaderAndFooter(
+                header = SearchResultLoadStateAdapter(),
+                footer = SearchResultLoadStateAdapter()
+            )
 
-        val adapter = SearchResultAdapter()
-        binding.searchResultList.adapter = adapter
+            searchButton.setOnClickListener {
+                val keyword = binding.searchInput.text
+                    ?.toString()
+                    ?: return@setOnClickListener
+                search(keyword)
+            }
 
-        binding.searchButton.setOnClickListener {
-            val keyword = binding.searchInput.text?.toString() ?: return@setOnClickListener
+            searchInput.setOnEditorActionListener { v, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    search(keyword = v.text)
+                    true
+                } else {
+                    false
+                }
+            }
+        }
 
-            this@MovieSearchActivity.hideSoftInput(binding.searchInput)
-            lifecycleScope.launch {
-                val resultEither = viewModel.searchMovies(keyword)
+        lifecycleScope.launch {
+            searchResultAdapter.loadStateFlow
+                .collect {
+                    viewModel.isLoading.value = it.refresh is LoadState.Loading
+                }
 
-                val searchResults = resultEither
-                    .getOrHandle {
-                        emptyList()
+            @OptIn(ExperimentalPagingApi::class)
+            searchResultAdapter.dataRefreshFlow
+                .collect {
+                    binding.searchResultList.scrollToPosition(0)
+                }
+        }
+    }
+
+    private fun search(keyword: CharSequence) {
+        this@MovieSearchActivity.hideSoftInput(binding.searchInput)
+
+        lifecycleScope.launch {
+            searchJob?.cancelAndJoin()
+            searchJob = launch {
+                viewModel.searchMovies(keyword.toString())
+                    .collectLatest {
+                        searchResultAdapter.submitData(it)
                     }
-                adapter.updateResults(searchResults)
             }
         }
     }
