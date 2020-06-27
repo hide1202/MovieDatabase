@@ -8,6 +8,10 @@
         <variable
             name="vm"
             type="io.viewpoint.moviedatabase.platform.ui.search.MovieSearchViewModel" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +27,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:imeOptions="actionGo"
+            android:inputType="text"
+            android:maxLines="1"
             app:layout_constraintEnd_toStartOf="@id/search_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,11 +51,13 @@
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:orientation="vertical"
+            app:adapter="@{adapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_input"
+            app:verticalDividerDecoration="@{true}"
             tools:listitem="@layout/item_search_result" />
 
         <androidx.core.widget.ContentLoadingProgressBar

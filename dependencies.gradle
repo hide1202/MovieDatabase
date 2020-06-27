@@ -16,7 +16,8 @@ ext.versions = [
                 startup         : '1.0.0-alpha01',
                 ext_junit       : '1.1.1',
                 espresso_core   : '3.2.0',
-                hilt            : '1.0.0-alpha01'
+                hilt            : '1.0.0-alpha01',
+                paging          : '3.0.0-alpha01'
         ],
         test     : [
                 junit: '4.12'
@@ -53,6 +54,8 @@ ext.deps = [
 
                 hilt_lifecycle     : "androidx.hilt:hilt-lifecycle-viewmodel:${versions.androidx.hilt}",
                 hilt_kapt          : "androidx.hilt:hilt-compiler:${versions.androidx.hilt}",
+
+                paging             : "androidx.paging:paging-runtime:${versions.androidx.paging}"
         ],
         test        : [
                 junit        : "junit:junit:${versions.test.junit}",

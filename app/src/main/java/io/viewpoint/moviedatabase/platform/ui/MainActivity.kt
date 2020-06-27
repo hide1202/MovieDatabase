@@ -4,12 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
-import io.viewpoint.moviedatabase.BuildConfig
 import io.viewpoint.moviedatabase.R
-import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.databinding.ActivityMainBinding
 import io.viewpoint.moviedatabase.platform.ui.search.MovieSearchActivity
-import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

@@ -45,6 +45,7 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     }
 }
 
@@ -68,6 +69,7 @@ dependencies {
     implementation deps.androidx.lifecycle_livedata
     implementation deps.androidx.lifecycle_runtime
     implementation deps.androidx.startup
+    implementation deps.androidx.paging
 
     // dagger/hilt
     implementation deps.libraries.hilt

@@ -3,8 +3,9 @@ package io.viewpoint.moviedatabase.platform.ui.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.paging.PagingData
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ItemSearchResultBinding
@@ -24,11 +25,7 @@ private val diffCallback =
     }
 
 class SearchResultAdapter :
-    ListAdapter<SearchResultModel, SearchResultAdapter.SearchResultHolder>(diffCallback) {
-
-    fun updateResults(results: List<SearchResultModel>) {
-        submitList(results)
-    }
+    PagingDataAdapter<SearchResultModel, SearchResultAdapter.SearchResultHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultHolder =
         DataBindingUtil.inflate<ItemSearchResultBinding>(
