@@ -2,12 +2,16 @@ package io.viewpoint.moviedatabase.platform.ui.search.paging
 
 import androidx.paging.PagingSource
 import io.viewpoint.moviedatabase.api.SearchApi
+import io.viewpoint.moviedatabase.platform.ui.search.SearchResultMapper
 import io.viewpoint.moviedatabase.platform.ui.search.model.SearchResultModel
+import io.viewpoint.moviedatabase.repository.ConfigurationRepository
 
 class MovieSearchPagingSource(
     private val keyword: String,
-    private val searchApi: SearchApi
+    private val searchApi: SearchApi,
+    private val configurationRepository: ConfigurationRepository
 ) : PagingSource<Int, SearchResultModel>() {
+    private val mapper: SearchResultMapper = SearchResultMapper(configurationRepository)
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SearchResultModel> {
         val position = params.key ?: INITIAL_PAGE
@@ -17,11 +21,7 @@ class MovieSearchPagingSource(
                 .suspended()
                 .results
                 .map {
-                    SearchResultModel(
-                        id = it.id,
-                        title = it.title,
-                        overview = it.overview
-                    )
+                    mapper.map(it)
                 }
 
             LoadResult.Page(
