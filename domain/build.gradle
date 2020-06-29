@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'kotlin-kapt'
+}
+
+apply from: '../dependencies.gradle'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.coroutines
+
+    implementation project(':model')
+
+    api deps.libraries.arrow_core
+    api deps.libraries.arrow_syntax
+    api deps.libraries.arrow_fx
+    kapt deps.libraries.arrow_meta_kapt
+
+    // test
+    testImplementation deps.kotlin.coroutines
+    testImplementation deps.test.junit
+    testImplementation deps.libraries.moshi
+}

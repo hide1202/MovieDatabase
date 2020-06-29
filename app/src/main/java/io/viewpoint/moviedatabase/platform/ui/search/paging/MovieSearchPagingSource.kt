@@ -2,9 +2,9 @@ package io.viewpoint.moviedatabase.platform.ui.search.paging
 
 import androidx.paging.PagingSource
 import io.viewpoint.moviedatabase.api.SearchApi
-import io.viewpoint.moviedatabase.platform.ui.search.SearchResultMapper
-import io.viewpoint.moviedatabase.platform.ui.search.model.SearchResultModel
-import io.viewpoint.moviedatabase.repository.ConfigurationRepository
+import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
+import io.viewpoint.moviedatabase.domain.search.SearchResultMapper
+import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 
 class MovieSearchPagingSource(
     private val keyword: String,

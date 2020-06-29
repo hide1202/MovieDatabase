@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.platform.ui.search.model
+package io.viewpoint.moviedatabase.model.ui
 
 data class SearchResultModel(
     val id: Int,

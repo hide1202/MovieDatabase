@@ -6,6 +6,9 @@ apply from: '../dependencies.gradle'
 
 dependencies {
     implementation deps.kotlin.stdlib
+
+    implementation project(':model')
+
     implementation deps.libraries.moshi
     implementation deps.libraries.okhttp_logging
     implementation deps.libraries.retrofit

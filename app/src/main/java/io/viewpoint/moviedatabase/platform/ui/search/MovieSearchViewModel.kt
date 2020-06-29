@@ -4,7 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagingData
-import io.viewpoint.moviedatabase.platform.ui.search.model.SearchResultModel
+import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.platform.ui.search.paging.MovieSearchPager
 import kotlinx.coroutines.flow.Flow
 
