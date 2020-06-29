@@ -5,10 +5,12 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import io.viewpoint.moviedatabase.api.SearchApi
 import io.viewpoint.moviedatabase.platform.ui.search.model.SearchResultModel
+import io.viewpoint.moviedatabase.repository.ConfigurationRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieSearchPager @Inject constructor(
+    private val configurationRepository: ConfigurationRepository,
     private val searchApi: SearchApi
 ) {
     fun pagingWithKeyword(keyword: String): Flow<PagingData<SearchResultModel>> =
@@ -16,7 +18,8 @@ class MovieSearchPager @Inject constructor(
             pagingSourceFactory = {
                 MovieSearchPagingSource(
                     keyword = keyword,
-                    searchApi = searchApi
+                    searchApi = searchApi,
+                    configurationRepository = configurationRepository
                 )
             }).flow
 }

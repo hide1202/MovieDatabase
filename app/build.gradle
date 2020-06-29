@@ -83,6 +83,7 @@ dependencies {
 
     // test
     testImplementation deps.test.junit
+    testImplementation deps.libraries.moshi
 
     // android test
     androidTestImplementation deps.android_test.junit
