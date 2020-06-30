@@ -3,13 +3,12 @@ package io.viewpoint.moviedatabase.platform.ui.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ItemSearchResultBinding
-import io.viewpoint.moviedatabase.platform.ui.search.model.SearchResultModel
+import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 
 private val diffCallback =
     object : DiffUtil.ItemCallback<SearchResultModel>() {

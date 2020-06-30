@@ -1,7 +1,7 @@
 package io.viewpoint.moviedatabase.api
 
 import arrow.fx.IO
-import io.viewpoint.moviedatabase.api.model.MovieSearchResponse
+import io.viewpoint.moviedatabase.model.api.MovieSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

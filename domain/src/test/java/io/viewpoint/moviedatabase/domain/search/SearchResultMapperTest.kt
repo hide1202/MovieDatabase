@@ -1,11 +1,11 @@
-package io.viewpoint.moviedatabase.platform.ui.search
+package io.viewpoint.moviedatabase.domain.search
 
 import arrow.core.Option
 import arrow.core.some
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import io.viewpoint.moviedatabase.api.model.MovieSearchResponse
-import io.viewpoint.moviedatabase.repository.ConfigurationRepository
+import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
+import io.viewpoint.moviedatabase.model.api.MovieSearchResponse
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.fail
 import kotlinx.coroutines.runBlocking

@@ -54,7 +54,9 @@ kapt {
 }
 
 dependencies {
+    implementation project(':model')
     implementation project(':api')
+    implementation project(':domain')
 
     implementation deps.kotlin.stdlib
 
