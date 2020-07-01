@@ -83,6 +83,10 @@ dependencies {
     // timber
     implementation deps.libraries.timber
 
+    // glide
+    implementation deps.libraries.glide
+    kapt deps.libraries.glide_kapt
+
     // test
     testImplementation deps.test.junit
     testImplementation deps.libraries.moshi

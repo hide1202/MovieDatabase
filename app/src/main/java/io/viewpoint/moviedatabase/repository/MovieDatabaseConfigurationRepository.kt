@@ -19,8 +19,8 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
 
     override suspend fun getImageBaseUrl(): Option<String> =
         this.configuration
-            .mapNotNull {
-                it.images?.base_url
+            .mapNotNull { response ->
+                response.baseUrlWithSize
             }
             .let {
                 IO.fx {
@@ -30,7 +30,7 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
                         !effect {
                             getConfigurationAndCache()
                                 .map { response ->
-                                    response.images?.base_url
+                                    response.baseUrlWithSize
                                 }
                                 .orNull()
                                 .toOption()
@@ -39,6 +39,18 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
                 }
             }
             .suspended()
+
+    private val ConfigurationResponse.baseUrlWithSize: String?
+        get() {
+            val baseUrl = images?.secure_base_url
+            val posterSize = images?.poster_sizes?.let { list ->
+                val center = (list.size / 2).coerceAtMost(list.lastIndex)
+                list.getOrNull(center)
+            }
+            return if (baseUrl != null && posterSize != null) {
+                "${baseUrl.trimEnd('/')}/$posterSize"
+            } else null
+        }
 
     private suspend fun getConfigurationAndCache(): Either<Throwable, ConfigurationResponse> =
         configurationApi.getConfiguration()
