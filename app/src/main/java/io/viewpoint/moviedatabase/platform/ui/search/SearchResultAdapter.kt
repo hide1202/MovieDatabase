@@ -32,8 +32,15 @@ class SearchResultAdapter :
             R.layout.item_search_result,
             parent,
             false
-        ).let {
-            SearchResultHolder(it)
+        ).let { binding ->
+            binding.root.setOnClickListener {
+                val context = it.context ?: return@setOnClickListener
+                val result = binding.model ?: return@setOnClickListener
+                context.startActivity(
+                    SearchResultDetailActivity.intent(context, result)
+                )
+            }
+            SearchResultHolder(binding)
         }
 
     override fun onBindViewHolder(holder: SearchResultHolder, position: Int) =

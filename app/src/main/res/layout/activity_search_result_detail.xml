@@ -6,24 +6,40 @@
     <data>
 
         <variable
-            name="model"
+            name="result"
             type="io.viewpoint.moviedatabase.model.ui.SearchResultModel" />
+
+
+        <import type="io.viewpoint.moviedatabase.platform.externsion.Dimensions" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:context=".platform.ui.search.SearchResultDetailActivity">
+
+        <ImageView
+            android:id="@+id/backdrop"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{result.backdropUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/poster"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="16dp"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{model.posterUrl}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:scaleType="fitCenter"
+            app:borderColor="@{@color/white}"
+            app:borderWidth="@{Dimensions.dp(3)}"
+            app:imageUrl="@{result.posterUrl}"
+            app:layout_constraintBottom_toBottomOf="@id/backdrop"
+            app:layout_constraintStart_toStartOf="@id/backdrop"
+            app:layout_constraintTop_toBottomOf="@id/backdrop" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title"
@@ -32,31 +48,26 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{model.title}"
+            android:text="@{result.title}"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/poster"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/poster"
             tools:text="스파이더맨: 홈커밍" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/overview"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:text="@{model.overview}"
+            android:text="@{result.overview}"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintVertical_bias="0"
             tools:text="토니 스타크(로버트 다우니 주니어)의 제안을 받고 시빌 워에 참여한 피터 파커(톰 홀랜드)은 다음 임무가 언제일지 설렘을 안고 하루하루를 보낸다. 토니는 MIT 진학 준비에 전념할 것을 권하지만 친절한" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
