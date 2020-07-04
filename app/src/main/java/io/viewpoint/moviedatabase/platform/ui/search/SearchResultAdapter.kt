@@ -23,8 +23,9 @@ private val diffCallback =
         ): Boolean = oldItem == newItem
     }
 
-class SearchResultAdapter :
-    PagingDataAdapter<SearchResultModel, SearchResultAdapter.SearchResultHolder>(diffCallback) {
+class SearchResultAdapter(
+    private val onClick: (ItemSearchResultBinding, SearchResultModel) -> Unit
+) : PagingDataAdapter<SearchResultModel, SearchResultAdapter.SearchResultHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultHolder =
         DataBindingUtil.inflate<ItemSearchResultBinding>(
@@ -34,11 +35,8 @@ class SearchResultAdapter :
             false
         ).let { binding ->
             binding.root.setOnClickListener {
-                val context = it.context ?: return@setOnClickListener
                 val result = binding.model ?: return@setOnClickListener
-                context.startActivity(
-                    SearchResultDetailActivity.intent(context, result)
-                )
+                onClick(binding, result)
             }
             SearchResultHolder(binding)
         }
