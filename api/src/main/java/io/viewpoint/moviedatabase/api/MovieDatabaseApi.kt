@@ -44,6 +44,11 @@ class MovieDatabaseApi private constructor(
                                     request.url()
                                         .newBuilder()
                                         .addQueryParameter("api_key", apiKey)
+                                        .let { builder ->
+                                            if (language != null) {
+                                                builder.addQueryParameter("language", language)
+                                            } else builder
+                                        }
                                         .build()
                                 )
                                 .build()
@@ -73,5 +78,7 @@ class MovieDatabaseApi private constructor(
 
     companion object {
         const val BASE_URL = "https://api.themoviedb.org/3/"
+
+        var language: String? = null
     }
 }

@@ -3,4 +3,5 @@
 
     <string name="search_button">Search</string>
     <string name="release_date">Release : %s</string>
+    <string name="language_select">Language</string>
 </resources>
