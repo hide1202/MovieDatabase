@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
@@ -32,7 +33,14 @@ class MovieSearchActivity : AppCompatActivity() {
 
     private val viewModel: MovieSearchViewModel by viewModels()
 
-    private val searchResultAdapter = SearchResultAdapter()
+    private val searchResultAdapter = SearchResultAdapter { binding, result ->
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this,
+            binding.poster,
+            binding.poster.transitionName
+        )
+        startActivity(SearchResultDetailActivity.intent(this, result), options.toBundle())
+    }
 
     private var searchJob: Job? = null
 

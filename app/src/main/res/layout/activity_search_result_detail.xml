@@ -35,6 +35,7 @@
             android:layout_height="150dp"
             android:layout_marginStart="16dp"
             android:scaleType="fitCenter"
+            android:transitionName="@string/result_to_detail_transition"
             app:borderColor="@{@color/white}"
             app:borderWidth="@{Dimensions.dp(3)}"
             app:imageUrl="@{result.posterUrl}"
