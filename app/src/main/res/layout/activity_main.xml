@@ -8,36 +8,27 @@
         android:layout_height="match_parent"
         tools:context=".platform.ui.MainActivity">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/language_dropdown"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
+        <io.viewpoint.moviedatabase.platform.widget.IconButton
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/language_select"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/search_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/language_select"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/search_button"
+        <io.viewpoint.moviedatabase.platform.widget.IconButton
+            android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_search"
             android:text="@string/search_button"
-            app:layout_constraintBottom_toBottomOf="@id/language_dropdown"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/language_dropdown"
-            app:layout_constraintTop_toTopOf="@id/language_dropdown" />
+            app:layout_constraintBottom_toBottomOf="@id/setting"
+            app:layout_constraintEnd_toStartOf="@id/setting"
+            app:layout_constraintTop_toTopOf="@id/setting" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
