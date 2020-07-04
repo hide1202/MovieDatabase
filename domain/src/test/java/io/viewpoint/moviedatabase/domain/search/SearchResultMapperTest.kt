@@ -5,6 +5,7 @@ import arrow.core.some
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
+import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
 import io.viewpoint.moviedatabase.model.api.MovieSearchResponse
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.fail
@@ -32,6 +33,9 @@ class SearchResultMapperTest {
         val mapper = SearchResultMapper(object : ConfigurationRepository {
             override suspend fun getImageBaseUrl(): Option<String> =
                 expectedImageBaseUrl.some()
+
+            override suspend fun getSupportedLanguages(): List<ConfigurationLanguage> =
+                emptyList()
         })
 
         assertEquals(

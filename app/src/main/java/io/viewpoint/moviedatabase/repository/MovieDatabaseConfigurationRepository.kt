@@ -5,6 +5,7 @@ import arrow.fx.IO
 import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.api.ConfigurationApi
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
+import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
 import io.viewpoint.moviedatabase.model.api.ConfigurationResponse
 import javax.inject.Inject
 
@@ -13,8 +14,14 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
 ) : ConfigurationRepository {
     private var configuration: Option<ConfigurationResponse> = Option.empty()
 
+    private var languages: Option<List<ConfigurationLanguage>> = Option.empty()
+
     private fun cache(configuration: ConfigurationResponse?) {
         if (configuration != null) this.configuration = configuration.some()
+    }
+
+    private fun cache(languages: List<ConfigurationLanguage>?) {
+        if (languages != null) this.languages = languages.some()
     }
 
     override suspend fun getImageBaseUrl(): Option<String> =
@@ -40,6 +47,22 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
             }
             .suspended()
 
+    override suspend fun getSupportedLanguages(): List<ConfigurationLanguage> =
+        languages
+            .let {
+                IO.fx {
+                    if (it.isDefined()) {
+                        it.getOrElse { emptyList() }
+                    } else {
+                        !effect {
+                            getSupportedLanguagesAndCache()
+                                .getOrElse { emptyList() }
+                        }
+                    }
+                }
+            }
+            .suspended()
+
     private val ConfigurationResponse.baseUrlWithSize: String?
         get() {
             val baseUrl = images?.secure_base_url
@@ -54,6 +77,14 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
 
     private suspend fun getConfigurationAndCache(): Either<Throwable, ConfigurationResponse> =
         configurationApi.getConfiguration()
+            .attempt()
+            .suspended()
+            .apply {
+                cache(this.orNull())
+            }
+
+    private suspend fun getSupportedLanguagesAndCache(): Either<Throwable, List<ConfigurationLanguage>> =
+        configurationApi.getSupportedLanguages()
             .attempt()
             .suspended()
             .apply {
