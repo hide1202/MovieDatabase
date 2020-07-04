@@ -4,4 +4,7 @@
     <string name="search_button">Search</string>
     <string name="release_date">Release : %s</string>
     <string name="language_select">Language</string>
+
+    <string name="setting_header">Setting</string>
+    <string name="setting_language">Language</string>
 </resources>
