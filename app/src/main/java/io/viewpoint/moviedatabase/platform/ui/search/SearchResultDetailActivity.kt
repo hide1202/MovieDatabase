@@ -9,6 +9,7 @@ import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivitySearchResultDetailBinding
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.platform.externsion.getSerializable
+import io.viewpoint.moviedatabase.platform.externsion.intentToActivity
 
 class SearchResultDetailActivity : AppCompatActivity() {
     private val binding: ActivitySearchResultDetailBinding by lazy {
@@ -34,7 +35,7 @@ class SearchResultDetailActivity : AppCompatActivity() {
         fun intent(
             context: Context,
             result: SearchResultModel
-        ): Intent = Intent(context, SearchResultDetailActivity::class.java)
+        ): Intent = intentToActivity<SearchResultDetailActivity>(context)
             .apply {
                 putExtra(EXTRA_RESULT_MODEL, result)
             }
