@@ -1,5 +1,6 @@
 package io.viewpoint.moviedatabase.domain.search
 
+import arrow.core.Option
 import io.viewpoint.moviedatabase.domain.Mapper
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.model.api.MovieSearchResponse
@@ -16,14 +17,26 @@ class SearchResultMapper(
             id = input.id,
             title = input.title,
             overview = input.overview,
-            posterUrl = imageUrl
-                .filter {
-                    input.poster_path != null
-                }
-                .map { baseUrl ->
-                    "${baseUrl.trimEnd('/')}/${input.poster_path?.trimStart('/')}"
-                }
-                .orNull()
+            posterUrl = toUrl(imageUrl) {
+                input.poster_path
+            },
+            backdropUrl = toUrl(imageUrl) {
+                input.backdrop_path
+            },
+            vote = input.vote_average,
+            releaseDate = input.release_date
         )
     }
+
+    private fun toUrl(
+        optBaseUrl: Option<String>,
+        pathSupplier: () -> String?
+    ): String? = optBaseUrl
+        .filter {
+            pathSupplier() != null
+        }
+        .map { baseUrl ->
+            "${baseUrl.trimEnd('/')}/${pathSupplier()?.trimStart('/')}"
+        }
+        .orNull()
 }
