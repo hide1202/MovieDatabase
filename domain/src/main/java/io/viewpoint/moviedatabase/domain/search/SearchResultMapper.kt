@@ -22,7 +22,9 @@ class SearchResultMapper(
             },
             backdropUrl = toUrl(imageUrl) {
                 input.backdrop_path
-            }
+            },
+            vote = input.vote_average,
+            releaseDate = input.release_date
         )
     }
 

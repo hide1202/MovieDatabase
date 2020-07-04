@@ -26,7 +26,8 @@
             app:imageUrl="@{result.backdropUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/dark_gray" />
 
         <ImageView
             android:id="@+id/poster"
@@ -39,7 +40,38 @@
             app:imageUrl="@{result.posterUrl}"
             app:layout_constraintBottom_toBottomOf="@id/backdrop"
             app:layout_constraintStart_toStartOf="@id/backdrop"
-            app:layout_constraintTop_toBottomOf="@id/backdrop" />
+            app:layout_constraintTop_toBottomOf="@id/backdrop"
+            tools:background="@color/gray" />
+
+        <TextView
+            android:id="@+id/release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:padding="8dp"
+            android:text="@{@string/release_date(result.releaseDate)}"
+            app:gone="@{result.releaseDate == null}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backdrop"
+            tools:text="@string/release_date" />
+
+        <TextView
+            android:id="@+id/vote"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_vote"
+            android:drawableTop="@drawable/ic_star"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@{String.valueOf(result.vote)}"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="@id/backdrop"
+            app:layout_constraintEnd_toEndOf="@id/backdrop"
+            tools:ignore="SpUsage"
+            tools:text="10.0" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title"

@@ -7,5 +7,7 @@ data class SearchResultModel(
     val title: String,
     val overview: String,
     val posterUrl: String?,
-    val backdropUrl: String?
+    val backdropUrl: String?,
+    val vote: Double,
+    val releaseDate: String?
 ) : Serializable
