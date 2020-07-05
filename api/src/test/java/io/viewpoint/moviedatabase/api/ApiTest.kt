@@ -13,7 +13,6 @@ abstract class ApiTest {
     @Before
     fun loadWebServer() {
         mockServer.start()
-
         println("start webserver")
     }
 

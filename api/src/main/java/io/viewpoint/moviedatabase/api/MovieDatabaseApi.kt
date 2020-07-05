@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.*
 
 class MovieDatabaseApi private constructor(
     builder: Builder
@@ -44,6 +45,7 @@ class MovieDatabaseApi private constructor(
                                     request.url()
                                         .newBuilder()
                                         .addQueryParameter("api_key", apiKey)
+                                        .addQueryParameter("region", getRegion())
                                         .let { builder ->
                                             if (language != null) {
                                                 builder.addQueryParameter("language", language)
@@ -66,6 +68,8 @@ class MovieDatabaseApi private constructor(
             )
             .build()
     }
+
+    private fun getRegion(): String? = Locale.getDefault().country?.substring(0, 2)
 
     class Builder {
         var url: String = BASE_URL

@@ -42,17 +42,17 @@ class SearchApiTest : ApiTest() {
                 .attempt()
                 .suspended()
 
-            assertTrue(either.isLeft())
+            assertTrue("response must have a error", either.isLeft())
             when (either) {
                 is Either.Left -> {
                     val exception = either.a
                     if (exception is HttpException) {
-                        assertTrue(exception.code() == 401)
+                        assertTrue("code must be 401", exception.code() == 401)
                     } else {
-                        fail()
+                        fail("error must be HttpException")
                     }
                 }
-                is Either.Right -> fail()
+                is Either.Right -> fail("response must have a error")
             }
         }
 }
