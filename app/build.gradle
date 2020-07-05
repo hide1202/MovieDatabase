@@ -64,6 +64,7 @@ dependencies {
     implementation deps.androidx.core
     implementation deps.androidx.activity
     implementation deps.androidx.fragment
+    implementation deps.androidx.recyclerview
     implementation deps.androidx.appcompat
     implementation deps.androidx.material
     implementation deps.androidx.constraintlayout

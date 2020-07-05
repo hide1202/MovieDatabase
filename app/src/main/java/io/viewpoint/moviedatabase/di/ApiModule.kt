@@ -7,6 +7,7 @@ import dagger.hilt.android.components.ApplicationComponent
 import io.viewpoint.moviedatabase.BuildConfig
 import io.viewpoint.moviedatabase.api.ConfigurationApi
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
+import io.viewpoint.moviedatabase.api.MovieApi
 import io.viewpoint.moviedatabase.api.SearchApi
 import timber.log.Timber
 
@@ -28,6 +29,10 @@ class ApiModule {
 
     @Provides
     fun configurationApi(movieDatabaseApi: MovieDatabaseApi): ConfigurationApi =
+        movieDatabaseApi.get()
+
+    @Provides
+    fun movieApi(movieDatabaseApi: MovieDatabaseApi): MovieApi =
         movieDatabaseApi.get()
 
     @Provides
