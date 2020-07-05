@@ -69,7 +69,11 @@ class MovieDatabaseApi private constructor(
             .build()
     }
 
-    private fun getRegion(): String? = Locale.getDefault().country?.substring(0, 2)
+    private fun getRegion(): String? = try {
+        Locale.getDefault().country?.substring(0, 2)
+    } catch (t: Throwable) {
+        null
+    }
 
     class Builder {
         var url: String = BASE_URL
