@@ -6,7 +6,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
-import io.viewpoint.moviedatabase.model.api.MovieSearchResponse
+import io.viewpoint.moviedatabase.model.api.Movie
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.fail
 import kotlinx.coroutines.runBlocking
@@ -21,7 +21,7 @@ class SearchResultMapperTest {
     fun mapTest() = runBlocking {
         // Arrange
         val response =
-            moshi.adapter(MovieSearchResponse.MovieSearchResult::class.java)
+            moshi.adapter(Movie::class.java)
                 .fromJson(RESULT_JSON)
 
         if (response == null) {
