@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
@@ -16,10 +17,7 @@ import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivityMovieSearchBinding
 import io.viewpoint.moviedatabase.platform.externsion.hideSoftInput
 import io.viewpoint.moviedatabase.platform.externsion.intentToActivity
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -42,8 +40,6 @@ class MovieSearchActivity : AppCompatActivity() {
         startActivity(SearchResultDetailActivity.intent(this, result), options.toBundle())
     }
 
-    private var searchJob: Job? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         with(binding) {
@@ -54,16 +50,9 @@ class MovieSearchActivity : AppCompatActivity() {
                 footer = SearchResultLoadStateAdapter()
             )
 
-            searchButton.setOnClickListener {
-                val keyword = binding.searchInput.text
-                    ?.toString()
-                    ?: return@setOnClickListener
-                search(keyword)
-            }
-
             searchInput.setOnEditorActionListener { v, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_GO) {
-                    search(keyword = v.text)
+                    viewModel.searchCommand.action()
                     true
                 } else {
                     false
@@ -71,10 +60,19 @@ class MovieSearchActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.beforeSearchCommand = {
+            this@MovieSearchActivity.hideSoftInput(binding.searchInput)
+        }
+        viewModel.results.observe(this, Observer {
+            lifecycleScope.launch {
+                searchResultAdapter.submitData(it)
+            }
+        })
+
         lifecycleScope.launch {
             searchResultAdapter.loadStateFlow
                 .collect {
-                    viewModel.isLoading.value = it.refresh is LoadState.Loading
+                    viewModel.isLoading.postValue(it.refresh is LoadState.Loading)
                 }
 
             @OptIn(ExperimentalPagingApi::class)
@@ -82,20 +80,6 @@ class MovieSearchActivity : AppCompatActivity() {
                 .collect {
                     binding.searchResultList.scrollToPosition(0)
                 }
-        }
-    }
-
-    private fun search(keyword: CharSequence) {
-        this@MovieSearchActivity.hideSoftInput(binding.searchInput)
-
-        lifecycleScope.launch {
-            searchJob?.cancelAndJoin()
-            searchJob = launch {
-                viewModel.searchMovies(keyword.toString())
-                    .collectLatest {
-                        searchResultAdapter.submitData(it)
-                    }
-            }
         }
     }
 

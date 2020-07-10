@@ -1,5 +1,7 @@
 package io.viewpoint.moviedatabase.util
 
-object PreferencesKeys {
-    const val KEY_SELECTED_LANGUAGE_ISO = "selectedLanguage"
+import io.viewpoint.moviedatabase.domain.preferences.PreferenceKey
+
+enum class PreferencesKeys(override val key: String) : PreferenceKey {
+    SELECTED_LANGUAGE_ISO("selectedLanguage")
 }
