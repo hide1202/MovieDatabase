@@ -2,11 +2,9 @@ package io.viewpoint.moviedatabase.platform.ui.setting
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
@@ -14,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.databinding.ActivitySettingBinding
+import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.platform.externsion.intentToActivity
 import io.viewpoint.moviedatabase.util.PreferencesKeys
@@ -27,7 +26,7 @@ class SettingActivity : AppCompatActivity() {
     }
 
     @Inject
-    internal lateinit var preferences: SharedPreferences
+    internal lateinit var preferences: PreferencesService
 
     @Inject
     internal lateinit var configurationRepository: ConfigurationRepository
@@ -48,7 +47,7 @@ class SettingActivity : AppCompatActivity() {
 
             binding.languageSelect.setAdapter(adapter)
 
-            preferences.getString(PreferencesKeys.KEY_SELECTED_LANGUAGE_ISO, null)
+            preferences.getString(PreferencesKeys.SELECTED_LANGUAGE_ISO)
                 ?.let { savedLanguageIso ->
                     languages.firstOrNull { it.iso_639_1 == savedLanguageIso }
                 }
@@ -67,9 +66,10 @@ class SettingActivity : AppCompatActivity() {
                     MovieDatabaseApi.language = it.iso_639_1
                 }
 
-                preferences.edit {
-                    putString(PreferencesKeys.KEY_SELECTED_LANGUAGE_ISO, MovieDatabaseApi.language)
-                }
+                preferences.putString(
+                    PreferencesKeys.SELECTED_LANGUAGE_ISO,
+                    MovieDatabaseApi.language
+                )
             }
         }
 
