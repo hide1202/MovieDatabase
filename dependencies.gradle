@@ -27,8 +27,7 @@ ext.versions = [
                 junit: '4.12'
         ],
         libraries: [
-                // TODO R8 proguard 문제로 인해 moshi 버전 업데이트 필요
-                moshi         : '1.9.2',
+                moshi         : '1.9.3',
                 okhttp        : '3.14.9',
                 retrofit      : '2.9.0',
                 coroutine_core: '1.3.7',
