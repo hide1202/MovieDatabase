@@ -20,4 +20,7 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class io.viewpoint.moviedatabase.api.model.*
+-keep class io.viewpoint.moviedatabase.model.*.** {
+    *;
+}
+-keep class * extends androidx.startup.Initializer
