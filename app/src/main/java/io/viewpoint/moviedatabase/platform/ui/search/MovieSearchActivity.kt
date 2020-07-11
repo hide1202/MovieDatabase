@@ -17,6 +17,7 @@ import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivityMovieSearchBinding
 import io.viewpoint.moviedatabase.platform.externsion.hideSoftInput
 import io.viewpoint.moviedatabase.platform.externsion.intentToActivity
+import io.viewpoint.moviedatabase.viewmodel.search.MovieSearchViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

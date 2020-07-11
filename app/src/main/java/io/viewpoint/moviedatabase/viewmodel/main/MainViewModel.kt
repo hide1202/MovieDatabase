@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.platform.ui.main
+package io.viewpoint.moviedatabase.viewmodel.main
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

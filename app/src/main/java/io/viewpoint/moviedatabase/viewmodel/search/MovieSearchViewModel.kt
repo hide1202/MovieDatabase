@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.platform.ui.search
+package io.viewpoint.moviedatabase.viewmodel.search
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -7,8 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
-import io.viewpoint.moviedatabase.platform.common.Command
-import io.viewpoint.moviedatabase.platform.ui.search.paging.MovieSearchPager
+import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.collectLatest
