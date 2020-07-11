@@ -90,7 +90,10 @@ dependencies {
 
     // test
     testImplementation deps.test.junit
+    testImplementation deps.test.mockk
+    testImplementation deps.test.android_core
     testImplementation deps.libraries.moshi
+    testImplementation deps.test.coroutine_test
 
     // android test
     androidTestImplementation deps.android_test.junit
