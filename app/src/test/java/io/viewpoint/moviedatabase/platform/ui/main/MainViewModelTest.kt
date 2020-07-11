@@ -6,6 +6,7 @@ import io.viewpoint.moviedatabase.mock.TestMovieApi
 import io.viewpoint.moviedatabase.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.repository.MovieDatabaseMovieRepository
+import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.runBlocking

@@ -1,9 +1,8 @@
-package io.viewpoint.moviedatabase.platform.ui.search.paging
+package io.viewpoint.moviedatabase.viewmodel.search
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import io.viewpoint.moviedatabase.api.SearchApi
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.SearchRepository
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel

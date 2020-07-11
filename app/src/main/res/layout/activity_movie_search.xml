@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="io.viewpoint.moviedatabase.platform.ui.search.MovieSearchViewModel" />
+            type="io.viewpoint.moviedatabase.viewmodel.search.MovieSearchViewModel" />
 
         <variable
             name="adapter"

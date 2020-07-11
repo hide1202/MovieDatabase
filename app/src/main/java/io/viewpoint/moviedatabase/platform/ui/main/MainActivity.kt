@@ -12,6 +12,7 @@ import io.viewpoint.moviedatabase.platform.externsion.dp
 import io.viewpoint.moviedatabase.platform.ui.search.MovieSearchActivity
 import io.viewpoint.moviedatabase.platform.ui.setting.SettingActivity
 import io.viewpoint.moviedatabase.platform.util.SpaceItemDecoration
+import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
