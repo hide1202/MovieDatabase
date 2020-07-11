@@ -24,7 +24,9 @@ ext.versions = [
                 paging          : '3.0.0-alpha02'
         ],
         test     : [
-                junit: '4.12'
+                junit       : '4.12',
+                android_core: '2.1.0',
+                mockk       : '1.10.0'
         ],
         libraries: [
                 moshi         : '1.9.3',
@@ -64,8 +66,11 @@ ext.deps = [
                 paging             : "androidx.paging:paging-runtime:${versions.androidx.paging}"
         ],
         test        : [
-                junit        : "junit:junit:${versions.test.junit}",
-                mockwebserver: "com.squareup.okhttp3:mockwebserver:${versions.libraries.okhttp}"
+                junit         : "junit:junit:${versions.test.junit}",
+                android_core  : "androidx.arch.core:core-testing:${versions.test.android_core}",
+                mockk         : "io.mockk:mockk:${versions.test.mockk}",
+                mockwebserver : "com.squareup.okhttp3:mockwebserver:${versions.libraries.okhttp}",
+                coroutine_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}"
         ],
         android_test: [
                 junit        : "androidx.test.ext:junit:${versions.androidx.ext_junit}",

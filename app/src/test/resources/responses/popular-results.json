@@ -1,0 +1,48 @@
+{
+  "page": 1,
+  "total_results": 57,
+  "total_pages": 3,
+  "results": [
+    {
+      "popularity": 280.415,
+      "vote_count": 1850,
+      "video": false,
+      "poster_path": "/s1cVTQEZYn4nSjZLnFbzLP0j8y2.jpg",
+      "id": 8619,
+      "adult": false,
+      "backdrop_path": "/m11Mej9vbQqcXWgYrgPboCJ9NUh.jpg",
+      "original_language": "en",
+      "original_title": "Master and Commander: The Far Side of the World",
+      "genre_ids": [
+        12,
+        18,
+        10752
+      ],
+      "title": "Master and Commander: The Far Side of the World",
+      "vote_average": 7,
+      "overview": "After an abrupt and violent encounter with a French warship inflicts severe damage upon his ship, a captain of the British Royal Navy begins a chase over two oceans to capture or destroy the enemy, though he must weigh his commitment to duty and ferocious pursuit of glory against the safety of his devoted crew, including the ship's thoughtful surgeon, his best friend.",
+      "release_date": "2003-11-14"
+    },
+    {
+      "popularity": 143.771,
+      "vote_count": 56,
+      "video": false,
+      "poster_path": "/goEW6QqoFxNI2pfbpVqmXj2WXwd.jpg",
+      "id": 531876,
+      "adult": false,
+      "backdrop_path": "/n1RohH2VoK1CdVI2fXvcP19dSlm.jpg",
+      "original_language": "en",
+      "original_title": "The Outpost",
+      "genre_ids": [
+        28,
+        18,
+        36,
+        10752
+      ],
+      "title": "The Outpost",
+      "vote_average": 6.7,
+      "overview": "A small unit of U.S. soldiers, alone at the remote Combat Outpost Keating, located deep in the valley of three mountains in Afghanistan, battles to defend against an overwhelming force of Taliban fighters in a coordinated attack. The Battle of Kamdesh, as it was known, was the bloodiest American engagement of the Afghan War in 2009 and Bravo Troop 3-61 CAV became one of the most decorated units of the 19-year conflict.",
+      "release_date": "2020-06-24"
+    }
+  ]
+}

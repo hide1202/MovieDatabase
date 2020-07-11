@@ -12,6 +12,7 @@ import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.model.ui.PopularResultModel
 import io.viewpoint.moviedatabase.util.PreferencesKeys
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class MainViewModel @ViewModelInject constructor(
@@ -22,8 +23,10 @@ class MainViewModel @ViewModelInject constructor(
     private val mapper = PopularResultMapper(configurationRepository)
     private val _popular = MutableLiveData<List<PopularResultModel>>()
 
+    private val initJob: Job
+
     init {
-        viewModelScope.launch {
+        initJob = viewModelScope.launch {
             preferences.getString(PreferencesKeys.SELECTED_LANGUAGE_ISO)
                 ?.let { savedSelectedLanguageIso ->
                     val languages = configurationRepository.getSupportedLanguages()
@@ -44,4 +47,8 @@ class MainViewModel @ViewModelInject constructor(
 
     val popular: LiveData<List<PopularResultModel>>
         get() = _popular
+
+    suspend fun awaitInit(): MainViewModel = apply {
+        initJob.join()
+    }
 }
