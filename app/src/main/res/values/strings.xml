@@ -9,4 +9,8 @@
 
     <string name="setting_header">Setting</string>
     <string name="setting_language">Language</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_setting">Setting</string>
 </resources>

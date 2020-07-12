@@ -73,6 +73,8 @@ dependencies {
     implementation deps.androidx.lifecycle_runtime
     implementation deps.androidx.startup
     implementation deps.androidx.paging
+    implementation deps.androidx.navigation_fragment
+    implementation deps.androidx.navigation_ui
 
     // dagger/hilt
     implementation deps.libraries.hilt

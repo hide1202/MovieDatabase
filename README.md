@@ -10,3 +10,6 @@
 ```
 movie.database.api.key=YOUR_API_KEY
 ```
+
+## References
+- Vector icons : https://www.flaticon.com/kr/

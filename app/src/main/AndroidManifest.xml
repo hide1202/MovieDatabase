@@ -21,9 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".platform.ui.search.MovieSearchActivity" />
         <activity android:name=".platform.ui.search.SearchResultDetailActivity" />
-        <activity android:name=".platform.ui.setting.SettingActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

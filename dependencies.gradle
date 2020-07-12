@@ -21,7 +21,8 @@ ext.versions = [
                 ext_junit       : '1.1.1',
                 espresso_core   : '3.2.0',
                 hilt            : '1.0.0-alpha01',
-                paging          : '3.0.0-alpha02'
+                paging          : '3.0.0-alpha02',
+                navigation      : '2.3.0'
         ],
         test     : [
                 junit       : '4.12',
@@ -57,6 +58,9 @@ ext.deps = [
                 lifecycle_viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx.lifecycle}",
                 lifecycle_livedata : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.androidx.lifecycle}",
                 lifecycle_runtime  : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.androidx.lifecycle}",
+
+                navigation_fragment: "androidx.navigation:navigation-fragment-ktx:${versions.androidx.navigation}",
+                navigation_ui      : "androidx.navigation:navigation-ui-ktx:${versions.androidx.navigation}",
 
                 startup            : "androidx.startup:startup-runtime:${versions.androidx.startup}",
 

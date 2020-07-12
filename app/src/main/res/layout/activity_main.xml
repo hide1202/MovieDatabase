@@ -8,53 +8,22 @@
         android:layout_height="match_parent"
         tools:context=".platform.ui.main.MainActivity">
 
-        <io.viewpoint.moviedatabase.platform.widget.IconButton
-            android:id="@+id/setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_settings"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
-
-        <io.viewpoint.moviedatabase.platform.widget.IconButton
-            android:id="@+id/search"
-            android:layout_width="wrap_content"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_search"
-            android:text="@string/search_button"
-            app:layout_constraintBottom_toBottomOf="@id/setting"
-            app:layout_constraintEnd_toStartOf="@id/setting"
-            app:layout_constraintTop_toTopOf="@id/setting" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/popular_header"
-            style="@style/TextAppearance.AppCompat.Headline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/popular_header"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/setting" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/popular_list"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/popular_header"
-            tools:itemCount="4"
-            tools:listitem="@layout/item_popular" />
-
+            app:menu="@menu/navigation_menu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

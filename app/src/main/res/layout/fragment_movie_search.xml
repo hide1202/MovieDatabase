@@ -17,8 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/root"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".platform.ui.search.MovieSearchActivity">
+        android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/search_input"

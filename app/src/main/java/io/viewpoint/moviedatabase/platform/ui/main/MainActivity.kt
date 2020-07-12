@@ -1,18 +1,17 @@
 package io.viewpoint.moviedatabase.platform.ui.main
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivityMainBinding
-import io.viewpoint.moviedatabase.platform.externsion.dp
-import io.viewpoint.moviedatabase.platform.ui.search.MovieSearchActivity
-import io.viewpoint.moviedatabase.platform.ui.setting.SettingActivity
-import io.viewpoint.moviedatabase.platform.util.SpaceItemDecoration
-import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
+import io.viewpoint.moviedatabase.platform.ui.home.HomeFragment
+import io.viewpoint.moviedatabase.platform.ui.search.MovieSearchFragment
+import io.viewpoint.moviedatabase.platform.ui.setting.SettingFragment
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -20,30 +19,38 @@ class MainActivity : AppCompatActivity() {
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
     }
 
-    private val viewModel: MainViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initViews()
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.home_menu -> replaceFragment<HomeFragment>(HomeFragment.TAG)
+                R.id.movie_search_menu -> replaceFragment<MovieSearchFragment>(MovieSearchFragment.TAG)
+                R.id.setting_menu -> replaceFragment<SettingFragment>(SettingFragment.TAG)
+                else -> false
+            }
+        }
+        binding.bottomNavigation.selectedItemId = MainTab.HOME.itemId
     }
 
-    private fun initViews() {
-        binding.setting.setOnClickListener {
-            startActivity(SettingActivity.intent(this))
-        }
+    private inline fun <reified T : Fragment> replaceFragment(tag: String): Boolean {
+        val current = supportFragmentManager.findFragmentByTag(tag)
+        val others = MainTab.otherTab(exceptTag = tag)
+            .mapNotNull {
+                supportFragmentManager.findFragmentByTag(it.tag)
+            }
 
-        binding.search.setOnClickListener {
-            startActivity(MovieSearchActivity.intent(this))
-        }
+        supportFragmentManager.commit {
+            if (current == null) {
+                add<T>(R.id.fragment_container, tag)
+            } else {
+                show(current)
+            }
 
-        val adapter = PopularAdapter()
-        binding.popularList.adapter = adapter
-        binding.popularList.addItemDecoration(
-            SpaceItemDecoration(16.dp)
-        )
-        viewModel.popular.observe(this, Observer {
-            adapter.updateResults(it)
-        })
+            others.forEach {
+                hide(it)
+            }
+        }
+        return true
     }
 }
