@@ -35,6 +35,10 @@ class MainActivity : AppCompatActivity() {
 
     private inline fun <reified T : Fragment> replaceFragment(tag: String): Boolean {
         val current = supportFragmentManager.findFragmentByTag(tag)
+        val others = MainTab.otherTab(exceptTag = tag)
+            .mapNotNull {
+                supportFragmentManager.findFragmentByTag(it.tag)
+            }
 
         supportFragmentManager.commit {
             if (current == null) {
@@ -43,13 +47,9 @@ class MainActivity : AppCompatActivity() {
                 show(current)
             }
 
-            MainTab.otherTab(exceptTag = tag)
-                .mapNotNull {
-                    supportFragmentManager.findFragmentByTag(it.tag)
-                }
-                .forEach {
-                    hide(it)
-                }
+            others.forEach {
+                hide(it)
+            }
         }
         return true
     }
