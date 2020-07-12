@@ -96,4 +96,8 @@ class MovieSearchFragment : Fragment() {
                 }
         }
     }
+
+    companion object {
+        const val TAG = "MovieSearchFragment"
+    }
 }

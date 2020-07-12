@@ -84,4 +84,8 @@ class SettingFragment : Fragment() {
             }
         }
     }
+
+    companion object {
+        const val TAG = "SettingFragment"
+    }
 }

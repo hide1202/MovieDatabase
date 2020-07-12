@@ -47,4 +47,8 @@ class HomeFragment : Fragment() {
             adapter.updateResults(it)
         })
     }
+
+    companion object {
+        const val TAG = "HomeFragment"
+    }
 }
