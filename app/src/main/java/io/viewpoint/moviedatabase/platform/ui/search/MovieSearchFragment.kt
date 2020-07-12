@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -27,15 +28,14 @@ class MovieSearchFragment : Fragment() {
     private val viewModel: MovieSearchViewModel by viewModels()
 
     private val searchResultAdapter = SearchResultAdapter { binding, result ->
-//        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-//            this,
-//            binding.poster,
-//            binding.poster.transitionName
-//        )
-//        startActivity(SearchResultDetailActivity.intent(this, result), options.toBundle())
+        activity?.run {
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                binding.poster,
+                binding.poster.transitionName
+            )
 
-        context?.run {
-            startActivity(SearchResultDetailActivity.intent(this, result))
+            startActivity(SearchResultDetailActivity.intent(this, result), options.toBundle())
         }
     }
 
