@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".platform.ui.search.SearchResultDetailActivity" />
-        <activity android:name=".platform.ui.setting.SettingActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

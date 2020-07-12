@@ -1,29 +1,27 @@
 package io.viewpoint.moviedatabase.platform.ui.setting
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
-import io.viewpoint.moviedatabase.databinding.ActivitySettingBinding
+import io.viewpoint.moviedatabase.databinding.FragmentSettingBinding
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
-import io.viewpoint.moviedatabase.platform.externsion.intentToActivity
 import io.viewpoint.moviedatabase.util.PreferencesKeys
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingActivity : AppCompatActivity() {
-    private val binding by lazy {
-        DataBindingUtil.setContentView<ActivitySettingBinding>(this, R.layout.activity_setting)
-    }
+class SettingFragment : Fragment() {
+    private lateinit var binding: FragmentSettingBinding
 
     @Inject
     internal lateinit var preferences: PreferencesService
@@ -31,12 +29,26 @@ class SettingActivity : AppCompatActivity() {
     @Inject
     internal lateinit var configurationRepository: ConfigurationRepository
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_setting,
+            container,
+            false
+        )
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch {
             val languages = configurationRepository.getSupportedLanguages()
-            val adapter = ArrayAdapter(this@SettingActivity,
+            val adapter = ArrayAdapter(requireContext(),
                 R.layout.item_language
                 , languages
                     .asSequence()
@@ -55,7 +67,6 @@ class SettingActivity : AppCompatActivity() {
                     binding.languageSelect.setText(it.name, false)
                 }
         }
-
         binding.languageSelect.addTextChangedListener { editable ->
             editable ?: return@addTextChangedListener
             lifecycleScope.launch {
@@ -72,14 +83,5 @@ class SettingActivity : AppCompatActivity() {
                 )
             }
         }
-
-        binding.close.setOnClickListener {
-            finish()
-        }
-    }
-
-    companion object {
-        fun intent(context: Context): Intent =
-            intentToActivity<SettingActivity>(context)
     }
 }

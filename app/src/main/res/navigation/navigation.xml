@@ -13,4 +13,9 @@
         android:id="@+id/movie_search_fragment"
         android:name="io.viewpoint.moviedatabase.platform.ui.search.MovieSearchFragment"
         android:label="MovieSearchFragment" />
+
+    <fragment
+        android:id="@+id/setting_fragment"
+        android:name="io.viewpoint.moviedatabase.platform.ui.setting.SettingFragment"
+        android:label="SettingFragment" />
 </navigation>
