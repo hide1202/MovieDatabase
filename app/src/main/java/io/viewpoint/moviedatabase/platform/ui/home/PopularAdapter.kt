@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.platform.ui.main
+package io.viewpoint.moviedatabase.platform.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,7 +24,9 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
             parent,
             false
         ).let { binding ->
-            ViewHolder(binding)
+            ViewHolder(
+                binding
+            )
         }
 
     override fun getItemCount(): Int = items.size
