@@ -9,4 +9,6 @@
 
     <string name="setting_header">Setting</string>
     <string name="setting_language">Language</string>
+
+    <string name="menu_home">Home</string>
 </resources>
