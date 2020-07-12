@@ -1,50 +1,63 @@
 package io.viewpoint.moviedatabase.platform.ui.search
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
-import io.viewpoint.moviedatabase.databinding.ActivityMovieSearchBinding
+import io.viewpoint.moviedatabase.databinding.FragmentMovieSearchBinding
 import io.viewpoint.moviedatabase.platform.externsion.hideSoftInput
-import io.viewpoint.moviedatabase.platform.externsion.intentToActivity
 import io.viewpoint.moviedatabase.viewmodel.search.MovieSearchViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MovieSearchActivity : AppCompatActivity() {
-    private val binding: ActivityMovieSearchBinding by lazy {
-        DataBindingUtil.setContentView<ActivityMovieSearchBinding>(
-            this,
-            R.layout.activity_movie_search
-        )
-    }
+class MovieSearchFragment : Fragment() {
+    private lateinit var binding: FragmentMovieSearchBinding
 
     private val viewModel: MovieSearchViewModel by viewModels()
 
     private val searchResultAdapter = SearchResultAdapter { binding, result ->
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-            this,
-            binding.poster,
-            binding.poster.transitionName
-        )
-        startActivity(SearchResultDetailActivity.intent(this, result), options.toBundle())
+//        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//            this,
+//            binding.poster,
+//            binding.poster.transitionName
+//        )
+//        startActivity(SearchResultDetailActivity.intent(this, result), options.toBundle())
+
+        context?.run {
+            startActivity(SearchResultDetailActivity.intent(this, result))
+        }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_movie_search,
+            container,
+            false
+        )
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         with(binding) {
-            lifecycleOwner = this@MovieSearchActivity
+            lifecycleOwner = this@MovieSearchFragment.viewLifecycleOwner
             vm = viewModel
             adapter = searchResultAdapter.withLoadStateHeaderAndFooter(
                 header = SearchResultLoadStateAdapter(),
@@ -62,9 +75,9 @@ class MovieSearchActivity : AppCompatActivity() {
         }
 
         viewModel.beforeSearchCommand = {
-            this@MovieSearchActivity.hideSoftInput(binding.searchInput)
+            context?.hideSoftInput(binding.searchInput)
         }
-        viewModel.results.observe(this, Observer {
+        viewModel.results.observe(viewLifecycleOwner, Observer {
             lifecycleScope.launch {
                 searchResultAdapter.submitData(it)
             }
@@ -82,10 +95,5 @@ class MovieSearchActivity : AppCompatActivity() {
                     binding.searchResultList.scrollToPosition(0)
                 }
         }
-    }
-
-    companion object {
-        fun intent(context: Context): Intent =
-            intentToActivity<MovieSearchActivity>(context)
     }
 }

@@ -18,17 +18,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-        <io.viewpoint.moviedatabase.platform.widget.IconButton
-            android:id="@+id/search"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_search"
-            android:text="@string/search_button"
-            app:layout_constraintBottom_toBottomOf="@id/setting"
-            app:layout_constraintEnd_toStartOf="@id/setting"
-            app:layout_constraintTop_toTopOf="@id/setting" />
-
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/popular_header"
             style="@style/TextAppearance.AppCompat.Headline"

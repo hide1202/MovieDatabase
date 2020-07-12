@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.FragmentHomeBinding
 import io.viewpoint.moviedatabase.platform.externsion.dp
-import io.viewpoint.moviedatabase.platform.ui.search.MovieSearchActivity
 import io.viewpoint.moviedatabase.platform.ui.setting.SettingActivity
 import io.viewpoint.moviedatabase.platform.util.SpaceItemDecoration
 import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
@@ -45,13 +44,7 @@ class HomeFragment : Fragment() {
                 startActivity(SettingActivity.intent(this))
             }
         }
-
-        binding.search.setOnClickListener {
-            context?.run {
-                startActivity(MovieSearchActivity.intent(this))
-            }
-        }
-
+        
         val adapter =
             PopularAdapter()
         binding.popularList.adapter = adapter

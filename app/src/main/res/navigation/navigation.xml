@@ -8,4 +8,9 @@
         android:id="@+id/home_fragment"
         android:name="io.viewpoint.moviedatabase.platform.ui.home.HomeFragment"
         android:label="HomeFragment" />
+
+    <fragment
+        android:id="@+id/movie_search_fragment"
+        android:name="io.viewpoint.moviedatabase.platform.ui.search.MovieSearchFragment"
+        android:label="MovieSearchFragment" />
 </navigation>
