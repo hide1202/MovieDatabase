@@ -9,7 +9,8 @@ import org.junit.Rule
 import org.junit.rules.TestRule
 
 abstract class TestBase {
-    @get:Rule
+    @JvmField
+    @Rule
     val rule: TestRule = InstantTaskExecutorRule()
 
     companion object {
