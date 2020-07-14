@@ -24,9 +24,15 @@ class MainViewModelTest : TestBase() {
         val vm = vm.awaitInit()
         val popularList = vm.popular.value
         val nowPlayingList = vm.nowPlaying.value
+        val upcomingList = vm.upcoming.value
+        val topRatedList = vm.topRated.value
         assertNotNull(popularList)
         assertNotNull(nowPlayingList)
+        assertNotNull(upcomingList)
+        assertNotNull(topRatedList)
         assertEquals(2, requireNotNull(popularList).size)
         assertEquals(2, requireNotNull(nowPlayingList).size)
+        assertEquals(2, requireNotNull(upcomingList).size)
+        assertEquals(2, requireNotNull(topRatedList).size)
     }
 }
