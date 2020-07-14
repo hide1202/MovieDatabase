@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ConcatAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.FragmentHomeBinding
@@ -38,13 +39,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = PopularAdapter()
-        binding.popularList.adapter = adapter
-        binding.popularList.addItemDecoration(
-            SpaceItemDecoration(16.dp)
+        val popularAdapter = PopularAdapter()
+        binding.popularList.adapter = ConcatAdapter(
+            LabelAdapter(getString(R.string.popular_header)),
+            MovieListAdapter(popularAdapter)
         )
         viewModel.popular.observe(viewLifecycleOwner, Observer {
-            adapter.updateResults(it)
+            popularAdapter.updateResults(it)
         })
     }
 
