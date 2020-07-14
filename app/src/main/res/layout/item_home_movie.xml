@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="io.viewpoint.moviedatabase.model.ui.PopularResultModel" />
+            type="io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel" />
     </data>
 
     <LinearLayout

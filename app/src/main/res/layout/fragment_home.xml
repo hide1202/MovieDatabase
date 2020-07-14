@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="4"
-            tools:listitem="@layout/item_popular" />
+            tools:listitem="@layout/item_home_movie_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

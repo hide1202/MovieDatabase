@@ -6,6 +6,7 @@
     <string name="language_select">Language</string>
 
     <string name="popular_header">Popular</string>
+    <string name="now_playing_header">Now playing</string>
 
     <string name="setting_header">Setting</string>
     <string name="setting_language">Language</string>

@@ -5,22 +5,22 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.R
-import io.viewpoint.moviedatabase.databinding.ItemPopularBinding
-import io.viewpoint.moviedatabase.model.ui.PopularResultModel
+import io.viewpoint.moviedatabase.databinding.ItemHomeMovieBinding
+import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
 
-class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
-    private val items: MutableList<PopularResultModel> = mutableListOf()
+class HomeMovieListAdapter : RecyclerView.Adapter<HomeMovieListAdapter.ViewHolder>() {
+    private val items: MutableList<HomeMovieListResultModel> = mutableListOf()
 
-    fun updateResults(results: List<PopularResultModel>) {
+    fun updateResults(results: List<HomeMovieListResultModel>) {
         items.clear()
         items.addAll(results)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        DataBindingUtil.inflate<ItemPopularBinding>(
+        DataBindingUtil.inflate<ItemHomeMovieBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.item_popular,
+            R.layout.item_home_movie,
             parent,
             false
         ).let { binding ->
@@ -38,5 +38,5 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
         }
     }
 
-    class ViewHolder(val binding: ItemPopularBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ItemHomeMovieBinding) : RecyclerView.ViewHolder(binding.root)
 }

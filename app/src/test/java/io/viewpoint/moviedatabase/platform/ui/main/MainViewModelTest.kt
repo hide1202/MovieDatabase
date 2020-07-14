@@ -20,9 +20,13 @@ class MainViewModelTest : TestBase() {
     )
 
     @Test
-    fun popularTest() = runBlocking {
-        val popularList = vm.awaitInit().popular.value
+    fun `load movie lists when initialize view`() = runBlocking {
+        val vm = vm.awaitInit()
+        val popularList = vm.popular.value
+        val nowPlayingList = vm.nowPlaying.value
         assertNotNull(popularList)
+        assertNotNull(nowPlayingList)
         assertEquals(2, requireNotNull(popularList).size)
+        assertEquals(2, requireNotNull(nowPlayingList).size)
     }
 }
