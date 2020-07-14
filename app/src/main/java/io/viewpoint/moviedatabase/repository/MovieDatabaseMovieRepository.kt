@@ -24,4 +24,20 @@ class MovieDatabaseMovieRepository @Inject constructor(
             it.results
         }
         .getOrElse { emptyList() }
+
+    override suspend fun getUpcoming(): List<Movie> = movieApi.getUpcoming()
+        .attempt()
+        .suspended()
+        .map {
+            it.results
+        }
+        .getOrElse { emptyList() }
+
+    override suspend fun getTopRated(): List<Movie> = movieApi.getTopRated()
+        .attempt()
+        .suspended()
+        .map {
+            it.results
+        }
+        .getOrElse { emptyList() }
 }

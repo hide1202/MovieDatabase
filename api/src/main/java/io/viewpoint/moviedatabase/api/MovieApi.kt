@@ -10,4 +10,10 @@ interface MovieApi {
 
     @GET("movie/now_playing")
     fun getNowPlaying(): IO<MovieListResponse>
+
+    @GET("movie/upcoming")
+    fun getUpcoming(): IO<MovieListResponse>
+
+    @GET("movie/top_rated")
+    fun getTopRated(): IO<MovieListResponse>
 }

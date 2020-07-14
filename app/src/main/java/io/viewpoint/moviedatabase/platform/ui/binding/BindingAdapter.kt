@@ -11,8 +11,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import io.viewpoint.moviedatabase.R
-import io.viewpoint.moviedatabase.viewmodel.Command
 import io.viewpoint.moviedatabase.platform.externsion.GlideBorderTransformation
+import io.viewpoint.moviedatabase.viewmodel.Command
 import timber.log.Timber
 
 @BindingAdapter("gone")
