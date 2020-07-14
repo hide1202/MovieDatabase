@@ -39,17 +39,29 @@ class HomeFragment : Fragment() {
 
         val popularAdapter = HomeMovieListAdapter()
         val nowPlayingAdapter = HomeMovieListAdapter()
+        val upcomingAdapter = HomeMovieListAdapter()
+        val topRatedAdapter = HomeMovieListAdapter()
         binding.popularList.adapter = ConcatAdapter(
             LabelAdapter(getString(R.string.popular_header)),
             MovieListAdapter(popularAdapter),
             LabelAdapter(getString(R.string.now_playing_header)),
-            MovieListAdapter(nowPlayingAdapter)
+            MovieListAdapter(nowPlayingAdapter),
+            LabelAdapter(getString(R.string.upcoming_header)),
+            MovieListAdapter(upcomingAdapter),
+            LabelAdapter(getString(R.string.top_rated_header)),
+            MovieListAdapter(topRatedAdapter)
         )
         viewModel.popular.observe(viewLifecycleOwner, Observer {
             popularAdapter.updateResults(it)
         })
         viewModel.nowPlaying.observe(viewLifecycleOwner, Observer {
             nowPlayingAdapter.updateResults(it)
+        })
+        viewModel.upcoming.observe(viewLifecycleOwner, Observer {
+            upcomingAdapter.updateResults(it)
+        })
+        viewModel.topRated.observe(viewLifecycleOwner, Observer {
+            topRatedAdapter.updateResults(it)
         })
     }
 

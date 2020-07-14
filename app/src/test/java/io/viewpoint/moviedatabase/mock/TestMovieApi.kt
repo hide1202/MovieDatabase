@@ -11,7 +11,7 @@ class TestMovieApi : MovieApi {
     override fun getPopular(): IO<MovieListResponse> = IO.fx {
         !effect {
             ResponseReader.jsonFromFileAsync(
-                "/responses/popular-results.json",
+                "/responses/movie-list-results.json",
                 MoshiReader.moshi.adapter(MovieListResponse::class.java)
             )
         }
@@ -20,7 +20,25 @@ class TestMovieApi : MovieApi {
     override fun getNowPlaying(): IO<MovieListResponse> = IO.fx {
         !effect {
             ResponseReader.jsonFromFileAsync(
-                "/responses/now-playing-results.json",
+                "/responses/movie-list-results.json",
+                MoshiReader.moshi.adapter(MovieListResponse::class.java)
+            )
+        }
+    }
+
+    override fun getUpcoming(): IO<MovieListResponse> = IO.fx {
+        !effect {
+            ResponseReader.jsonFromFileAsync(
+                "/responses/movie-list-results.json",
+                MoshiReader.moshi.adapter(MovieListResponse::class.java)
+            )
+        }
+    }
+
+    override fun getTopRated(): IO<MovieListResponse> = IO.fx {
+        !effect {
+            ResponseReader.jsonFromFileAsync(
+                "/responses/movie-list-results.json",
                 MoshiReader.moshi.adapter(MovieListResponse::class.java)
             )
         }

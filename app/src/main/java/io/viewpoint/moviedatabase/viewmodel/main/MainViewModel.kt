@@ -23,6 +23,8 @@ class MainViewModel @ViewModelInject constructor(
     private val mapper = PopularResultMapper(configurationRepository)
     private val _popular = MutableLiveData<List<HomeMovieListResultModel>>()
     private val _nowPlaying = MutableLiveData<List<HomeMovieListResultModel>>()
+    private val _upcoming = MutableLiveData<List<HomeMovieListResultModel>>()
+    private val _topRated = MutableLiveData<List<HomeMovieListResultModel>>()
 
     private val initJob: Job
 
@@ -48,6 +50,16 @@ class MainViewModel @ViewModelInject constructor(
                 .map {
                     mapper.map(it)
                 })
+
+            _upcoming.postValue(movieRepository.getUpcoming()
+                .map {
+                    mapper.map(it)
+                })
+
+            _topRated.postValue(movieRepository.getTopRated()
+                .map {
+                    mapper.map(it)
+                })
         }
     }
 
@@ -56,6 +68,12 @@ class MainViewModel @ViewModelInject constructor(
 
     val nowPlaying: LiveData<List<HomeMovieListResultModel>>
         get() = _nowPlaying
+
+    val upcoming: LiveData<List<HomeMovieListResultModel>>
+        get() = _upcoming
+
+    val topRated: LiveData<List<HomeMovieListResultModel>>
+        get() = _topRated
 
     suspend fun awaitInit(): MainViewModel = apply {
         initJob.join()

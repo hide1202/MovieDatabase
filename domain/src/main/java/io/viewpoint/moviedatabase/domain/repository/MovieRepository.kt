@@ -6,4 +6,8 @@ interface MovieRepository {
     suspend fun getPopular(): List<Movie>
 
     suspend fun getNowPlayings(): List<Movie>
+
+    suspend fun getUpcoming(): List<Movie>
+
+    suspend fun getTopRated(): List<Movie>
 }
