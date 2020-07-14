@@ -4,4 +4,6 @@ import io.viewpoint.moviedatabase.model.api.Movie
 
 interface MovieRepository {
     suspend fun getPopular(): List<Movie>
+
+    suspend fun getNowPlayings(): List<Movie>
 }

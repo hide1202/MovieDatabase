@@ -10,7 +10,7 @@ import io.viewpoint.moviedatabase.domain.popular.PopularResultMapper
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
-import io.viewpoint.moviedatabase.model.ui.PopularResultModel
+import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
 import io.viewpoint.moviedatabase.util.PreferencesKeys
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -21,7 +21,8 @@ class MainViewModel @ViewModelInject constructor(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
     private val mapper = PopularResultMapper(configurationRepository)
-    private val _popular = MutableLiveData<List<PopularResultModel>>()
+    private val _popular = MutableLiveData<List<HomeMovieListResultModel>>()
+    private val _nowPlaying = MutableLiveData<List<HomeMovieListResultModel>>()
 
     private val initJob: Job
 
@@ -42,11 +43,19 @@ class MainViewModel @ViewModelInject constructor(
                 .map {
                     mapper.map(it)
                 })
+
+            _nowPlaying.postValue(movieRepository.getNowPlayings()
+                .map {
+                    mapper.map(it)
+                })
         }
     }
 
-    val popular: LiveData<List<PopularResultModel>>
+    val popular: LiveData<List<HomeMovieListResultModel>>
         get() = _popular
+
+    val nowPlaying: LiveData<List<HomeMovieListResultModel>>
+        get() = _nowPlaying
 
     suspend fun awaitInit(): MainViewModel = apply {
         initJob.join()

@@ -16,4 +16,12 @@ class MovieDatabaseMovieRepository @Inject constructor(
             it.results
         }
         .getOrElse { emptyList() }
+
+    override suspend fun getNowPlayings(): List<Movie> = movieApi.getNowPlaying()
+        .attempt()
+        .suspended()
+        .map {
+            it.results
+        }
+        .getOrElse { emptyList() }
 }

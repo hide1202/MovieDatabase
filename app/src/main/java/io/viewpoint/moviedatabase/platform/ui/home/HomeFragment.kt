@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.ConcatAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.FragmentHomeBinding
-import io.viewpoint.moviedatabase.platform.externsion.dp
-import io.viewpoint.moviedatabase.platform.util.SpaceItemDecoration
 import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
 
 @AndroidEntryPoint
@@ -39,13 +37,19 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val popularAdapter = PopularAdapter()
+        val popularAdapter = HomeMovieListAdapter()
+        val nowPlayingAdapter = HomeMovieListAdapter()
         binding.popularList.adapter = ConcatAdapter(
             LabelAdapter(getString(R.string.popular_header)),
-            MovieListAdapter(popularAdapter)
+            MovieListAdapter(popularAdapter),
+            LabelAdapter(getString(R.string.now_playing_header)),
+            MovieListAdapter(nowPlayingAdapter)
         )
         viewModel.popular.observe(viewLifecycleOwner, Observer {
             popularAdapter.updateResults(it)
+        })
+        viewModel.nowPlaying.observe(viewLifecycleOwner, Observer {
+            nowPlayingAdapter.updateResults(it)
         })
     }
 
