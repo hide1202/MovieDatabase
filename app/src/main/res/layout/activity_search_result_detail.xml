@@ -68,6 +68,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:text="@{String.valueOf(result.vote)}"
+            android:textColor="@color/vote_count_text"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@id/backdrop"
             app:layout_constraintEnd_toEndOf="@id/backdrop"
@@ -82,7 +83,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="@{result.title}"
-            android:textColor="@color/black"
+            android:textColor="@color/search_title_text"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,6 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{result.overview}"
+                android:textColor="@color/search_description_text"
                 android:textSize="14sp"
                 tools:text="토니 스타크(로버트 다우니 주니어)의 제안을 받고 시빌 워에 참여한 피터 파커(톰 홀랜드)은 다음 임무가 언제일지 설렘을 안고 하루하루를 보낸다. 토니는 MIT 진학 준비에 전념할 것을 권하지만 친절한" />
         </ScrollView>
