@@ -117,9 +117,12 @@ task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) 
             '**/BuildConfig.*',
             '**/Manifest*.*'
     ]
+    def excludePlatformCodes = [
+            '**/io/viewpoint/moviedatabase/platform/**'
+    ]
     def javaClasses = fileTree(
             dir: "$buildDir/tmp/kotlin-classes/debug",
-            excludes: fileFilter
+            excludes: fileFilter + excludePlatformCodes
     )
     classDirectories.from(files([javaClasses]))
     additionalSourceDirs.from(files(coverageSourceDirs))
