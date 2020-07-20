@@ -37,6 +37,7 @@ ext.versions = [
                 arrow         : '0.10.4',
                 timber        : '4.7.1',
                 hilt          : '2.28-alpha',
+                dagger        : '2.28.3',
                 glide         : '4.11.0'
         ]
 ]
@@ -95,6 +96,9 @@ ext.deps = [
 
                 hilt           : "com.google.dagger:hilt-android:${versions.libraries.hilt}",
                 hilt_kapt      : "com.google.dagger:hilt-android-compiler:${versions.libraries.hilt}",
+
+                dagger         : "com.google.dagger:dagger:${versions.libraries.dagger}",
+                dagger_kapt    : "com.google.dagger:dagger-compiler:${versions.libraries.dagger}",
 
                 glide          : "com.github.bumptech.glide:glide:${versions.libraries.glide}",
                 glide_kapt     : "com.github.bumptech.glide:compiler:${versions.libraries.glide}"

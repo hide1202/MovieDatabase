@@ -1,8 +1,7 @@
-package io.viewpoint.moviedatabase.repository
+package io.viewpoint.moviedatabase.domain.repository
 
 import arrow.core.getOrHandle
 import io.viewpoint.moviedatabase.api.SearchApi
-import io.viewpoint.moviedatabase.domain.repository.SearchRepository
 import io.viewpoint.moviedatabase.model.api.Movie
 import io.viewpoint.moviedatabase.model.common.PagingResult
 import javax.inject.Inject

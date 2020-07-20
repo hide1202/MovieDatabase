@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.repository
+package io.viewpoint.moviedatabase.domain.repository
 
 import arrow.core.getOrElse
 import io.viewpoint.moviedatabase.api.MovieApi

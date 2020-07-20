@@ -7,9 +7,9 @@ import dagger.hilt.android.components.ApplicationComponent
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.domain.repository.SearchRepository
-import io.viewpoint.moviedatabase.repository.MovieDatabaseConfigurationRepository
-import io.viewpoint.moviedatabase.repository.MovieDatabaseMovieRepository
-import io.viewpoint.moviedatabase.repository.MovieDatabaseSearchRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseSearchRepository
 
 @Module
 @InstallIn(ApplicationComponent::class)
