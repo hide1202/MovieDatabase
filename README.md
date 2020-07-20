@@ -1,6 +1,10 @@
 ![logo](arts/logo.png)
 
 # Movie Database
+![Android CI](https://github.com/hide1202/MovieDatabase/workflows/Android%20CI/badge.svg?branch=develop)
+[![codecov](https://codecov.io/gh/hide1202/MovieDatabase/branch/develop/graph/badge.svg)](https://codecov.io/gh/hide1202/MovieDatabase)
+![Commits](https://img.shields.io/github/commit-activity/w/hide1202/MovieDatabase)
+
 - Application for the practice of android development using Movie Database API
 
 ## How to run
