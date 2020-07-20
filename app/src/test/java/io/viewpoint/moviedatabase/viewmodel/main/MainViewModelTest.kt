@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.platform.ui.main
+package io.viewpoint.moviedatabase.viewmodel.main
 
 import io.viewpoint.moviedatabase.TestBase
 import io.viewpoint.moviedatabase.mock.TestConfigurationApi
