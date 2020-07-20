@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "org.jacoco:org.jacoco.core:0.8.1"
 
         classpath "com.google.dagger:hilt-android-gradle-plugin:${versions.libraries.hilt}"
     }
