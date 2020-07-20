@@ -5,6 +5,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'jacoco'
+
 apply from: '../dependencies.gradle'
 apply from: '../external.gradle'
 
@@ -23,6 +25,7 @@ android {
 
     buildTypes {
         debug {
+            testCoverageEnabled true
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
         }
         release {
@@ -100,4 +103,36 @@ dependencies {
     // android test
     androidTestImplementation deps.android_test.junit
     androidTestImplementation deps.android_test.espresso_core
+}
+
+task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+    def coverageSourceDirs = [
+            "src/main/java"
+    ]
+    def fileFilter = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/*$ViewInjector*.*',
+            '**/*$ViewBinder*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*'
+    ]
+    def javaClasses = fileTree(
+            dir: "$buildDir/tmp/kotlin-classes/debug",
+            excludes: fileFilter
+    )
+    classDirectories.from(files([javaClasses]))
+    additionalSourceDirs.from(files(coverageSourceDirs))
+    sourceDirectories.from(files(coverageSourceDirs))
+    executionData.from(fileTree(dir: "$buildDir", includes: [
+            "jacoco/testDebugUnitTest.exec"
+    ]))
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+jacoco {
+    reportsDir = file("${buildDir}/reports")
 }
