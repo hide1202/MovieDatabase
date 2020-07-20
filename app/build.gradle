@@ -25,7 +25,7 @@ android {
 
     buildTypes {
         debug {
-            testCoverageEnabled true
+            testCoverageEnabled((findProperty("enableJacoco") ?: "false").toBoolean())
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
         }
         release {
