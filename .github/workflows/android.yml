@@ -19,3 +19,5 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: ./gradlew --stacktrace clean build test
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.11
