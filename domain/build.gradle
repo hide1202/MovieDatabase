@@ -16,11 +16,15 @@ dependencies {
     implementation deps.kotlin.coroutines
 
     implementation project(':model')
+    implementation project(':api')
 
     api deps.libraries.arrow_core
     api deps.libraries.arrow_syntax
     api deps.libraries.arrow_fx
     kapt deps.libraries.arrow_meta_kapt
+
+    implementation deps.libraries.dagger
+    kapt deps.libraries.dagger_kapt
 
     // test
     testImplementation deps.kotlin.coroutines

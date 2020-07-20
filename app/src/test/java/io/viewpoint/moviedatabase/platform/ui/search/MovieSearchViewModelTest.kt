@@ -7,8 +7,8 @@ import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestSearchApi
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.search.MovieSearchPager
-import io.viewpoint.moviedatabase.repository.MovieDatabaseConfigurationRepository
-import io.viewpoint.moviedatabase.repository.MovieDatabaseSearchRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseSearchRepository
 import io.viewpoint.moviedatabase.viewmodel.search.MovieSearchViewModel
 import junit.framework.Assert.assertNotNull
 import junit.framework.Assert.assertTrue
@@ -19,8 +19,12 @@ import org.junit.Test
 class MovieSearchViewModelTest : TestBase() {
     private val pager =
         MovieSearchPager(
-            MovieDatabaseConfigurationRepository(TestConfigurationApi()),
-            MovieDatabaseSearchRepository(TestSearchApi())
+            MovieDatabaseConfigurationRepository(
+                TestConfigurationApi()
+            ),
+            MovieDatabaseSearchRepository(
+                TestSearchApi()
+            )
         )
     private val vm =
         MovieSearchViewModel(pager)

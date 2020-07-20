@@ -1,10 +1,9 @@
-package io.viewpoint.moviedatabase.repository
+package io.viewpoint.moviedatabase.domain.repository
 
 import arrow.core.*
 import arrow.fx.IO
 import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.api.ConfigurationApi
-import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
 import io.viewpoint.moviedatabase.model.api.ConfigurationResponse
 import javax.inject.Inject
