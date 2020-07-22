@@ -18,6 +18,8 @@ dependencies {
     implementation project(':model')
     implementation project(':api')
 
+    implementation deps.androidx.room_common
+
     api deps.libraries.arrow_core
     api deps.libraries.arrow_syntax
     api deps.libraries.arrow_fx

@@ -71,6 +71,7 @@ ext.deps = [
 
                 paging             : "androidx.paging:paging-runtime:${versions.androidx.paging}",
 
+                room_common        : "androidx.room:room-common:${versions.androidx.room}",
                 room_runtime       : "androidx.room:room-runtime:${versions.androidx.room}",
                 room_compiler      : "androidx.room:room-compiler:${versions.androidx.room}",
                 room_ktx           : "androidx.room:room-ktx:${versions.androidx.room}"
