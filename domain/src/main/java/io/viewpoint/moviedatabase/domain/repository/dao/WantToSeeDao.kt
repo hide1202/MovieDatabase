@@ -8,6 +8,9 @@ import io.viewpoint.moviedatabase.domain.repository.entity.WantToSeeMovieEntity
 
 @Dao
 interface WantToSeeDao {
+    @Query("SELECT * FROM ${WantToSeeMovieEntity.TABLE_NAME} WHERE id=(:id)")
+    suspend fun getOne(id: Int): WantToSeeMovieEntity
+
     @Query("SELECT * FROM ${WantToSeeMovieEntity.TABLE_NAME}")
     suspend fun getAll(): List<WantToSeeMovieEntity>
 

@@ -10,34 +10,46 @@ import javax.inject.Inject
 class MovieDatabaseWantToSeeRepository @Inject constructor(
     private val dao: WantToSeeDao
 ) : WantToSeeRepository {
+    override fun getWantToSeeMovie(id: Int): IO<WantToSeeMovie> = IO.fx {
+        !effect {
+            dao.getOne(id)
+                .toWantToSeeMovie()
+        }
+    }
+
     override fun getWantToSeeMovies(): IO<List<WantToSeeMovie>> = IO.fx {
         !effect {
             dao.getAll()
-                .map {
-                    WantToSeeMovie(
-                        id = it.id,
-                        title = it.title,
-                        poster_path = it.poster_path
-                    )
+                .map { entity ->
+                    entity.toWantToSeeMovie()
                 }
         }
     }
 
-    override suspend fun addWantToSeeMovie(wantToSeeMovie: WantToSeeMovie) =
-        dao.insert(
-            WantToSeeMovieEntity(
-                id = wantToSeeMovie.id,
-                title = wantToSeeMovie.title,
-                poster_path = wantToSeeMovie.poster_path
-            )
-        )
+    override fun addWantToSeeMovie(wantToSeeMovie: WantToSeeMovie): IO<Unit> = IO.fx {
+        !effect {
+            dao.insert(wantToSeeMovie.toEntity())
+        }
+    }
 
-    override suspend fun removeWantToSeeMovie(wantToSeeMovie: WantToSeeMovie) =
-        dao.delete(
-            WantToSeeMovieEntity(
-                id = wantToSeeMovie.id,
-                title = wantToSeeMovie.title,
-                poster_path = wantToSeeMovie.poster_path
-            )
-        )
+
+    override fun removeWantToSeeMovie(wantToSeeMovie: WantToSeeMovie): IO<Unit> = IO.fx {
+        !effect {
+            dao.delete(wantToSeeMovie.toEntity())
+        }
+    }
 }
+
+fun WantToSeeMovie.toEntity(): WantToSeeMovieEntity =
+    WantToSeeMovieEntity(
+        id = id,
+        title = title,
+        poster_path = poster_path
+    )
+
+fun WantToSeeMovieEntity.toWantToSeeMovie(): WantToSeeMovie =
+    WantToSeeMovie(
+        id = id,
+        title = title,
+        poster_path = poster_path
+    )

@@ -4,9 +4,11 @@ import arrow.fx.IO
 import io.viewpoint.moviedatabase.model.repository.WantToSeeMovie
 
 interface WantToSeeRepository {
+    fun getWantToSeeMovie(id: Int): IO<WantToSeeMovie>
+
     fun getWantToSeeMovies(): IO<List<WantToSeeMovie>>
 
-    suspend fun addWantToSeeMovie(wantToSeeMovie: WantToSeeMovie)
+    fun addWantToSeeMovie(wantToSeeMovie: WantToSeeMovie): IO<Unit>
 
-    suspend fun removeWantToSeeMovie(wantToSeeMovie: WantToSeeMovie)
+    fun removeWantToSeeMovie(wantToSeeMovie: WantToSeeMovie): IO<Unit>
 }
