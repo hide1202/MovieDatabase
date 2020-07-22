@@ -85,10 +85,21 @@
             android:text="@{result.title}"
             android:textColor="@color/search_title_text"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/want_to_see"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/poster"
             tools:text="스파이더맨: 홈커밍" />
+
+        <CheckBox
+            android:id="@+id/want_to_see"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_heart_check"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title" />
 
         <ScrollView
             android:layout_width="0dp"
