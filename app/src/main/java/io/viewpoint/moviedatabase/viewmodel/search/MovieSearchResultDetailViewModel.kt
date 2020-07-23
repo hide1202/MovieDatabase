@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import arrow.core.getOrElse
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
-import io.viewpoint.moviedatabase.model.repository.WantToSeeMovie
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.launch
@@ -27,16 +26,10 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
         val wantToSee = _wantToSee.value ?: return@Command
 
         viewModelScope.launch {
-            val wantToSeeMovie = WantToSeeMovie(
-                id = result.id,
-                title = result.title,
-                posterUrl = result.posterUrl
-            )
-
             val either = if (wantToSee) {
-                wantToSeeRepository.removeWantToSeeMovie(wantToSeeMovie)
+                wantToSeeRepository.removeWantToSeeMovie(result.id)
             } else {
-                wantToSeeRepository.addWantToSeeMovie(wantToSeeMovie)
+                wantToSeeRepository.addWantToSeeMovie(result.id)
             }.attempt()
                 .suspended()
 
@@ -49,10 +42,9 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
     suspend fun loadWithResult(result: SearchResultModel) {
         this.result = result
         viewModelScope.launch {
-            _wantToSee.value = wantToSeeRepository.getWantToSeeMovie(result.id)
+            _wantToSee.value = wantToSeeRepository.hasWantToSeeMovie(result.id)
                 .attempt()
                 .suspended()
-                .map { it.isDefined() }
                 .getOrElse { false }
         }
     }

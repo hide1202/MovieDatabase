@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import io.viewpoint.moviedatabase.api.MovieApi
 import io.viewpoint.moviedatabase.domain.repository.*
 import io.viewpoint.moviedatabase.platform.external.AppDatabase
 
@@ -30,7 +31,10 @@ abstract class RepositoryModule {
     @InstallIn(ApplicationComponent::class)
     class ProvideRepositoryModule {
         @Provides
-        fun wantToSeeRepository(database: AppDatabase): WantToSeeRepository =
-            MovieDatabaseWantToSeeRepository(database.wantToSeeDao())
+        fun wantToSeeRepository(
+            movieApi: MovieApi,
+            database: AppDatabase
+        ): WantToSeeRepository =
+            MovieDatabaseWantToSeeRepository(movieApi, database.wantToSeeDao())
     }
 }

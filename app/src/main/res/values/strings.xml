@@ -5,6 +5,7 @@
     <string name="release_date">Release : %s</string>
     <string name="language_select">Language</string>
 
+    <string name="want_to_see_header">Want To See</string>
     <string name="popular_header">Popular</string>
     <string name="now_playing_header">Now playing</string>
     <string name="upcoming_header">Upcoming</string>

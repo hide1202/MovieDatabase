@@ -7,9 +7,7 @@ import io.viewpoint.moviedatabase.domain.repository.entity.WantToSeeMovieEntity.
 @Entity(tableName = TABLE_NAME)
 data class WantToSeeMovieEntity(
     @PrimaryKey
-    val id: Int,
-    val title: String,
-    val posterUrl: String?
+    val id: Int
 ) {
     companion object {
         const val TABLE_NAME = "WantToSeeMovie"
