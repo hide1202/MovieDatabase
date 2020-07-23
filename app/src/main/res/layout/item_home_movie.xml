@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="circle"
+            type="Boolean" />
+
+        <variable
             name="model"
             type="io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel" />
     </data>
@@ -15,13 +19,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{model.posterUrl}"
-            tools:background="@color/light_grey"
-            tools:ignore="ContentDescription" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                app:gone="@{circle}"
+                app:imageUrl="@{model.posterUrl}"
+                tools:background="@color/light_grey"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                app:circle="@{true}"
+                app:gone="@{!circle}"
+                app:imageUrl="@{model.posterUrl}"
+                tools:background="@color/indian_red"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
 
         <TextView
             android:layout_width="match_parent"

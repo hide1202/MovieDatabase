@@ -46,9 +46,10 @@ fun RecyclerView.setVerticalDividerDecoration(isAdded: Boolean) {
     }
 }
 
-@BindingAdapter("imageUrl", "borderWidth", "borderColor", requireAll = false)
+@BindingAdapter("imageUrl", "circle", "borderWidth", "borderColor", requireAll = false)
 fun ImageView.setImageUrl(
     url: String?,
+    circle: Boolean?,
     borderWidth: Int?,
     borderColor: Int?
 ) {
@@ -63,6 +64,10 @@ fun ImageView.setImageUrl(
                     )
                 )
             } else it
+        }
+        .let {
+            if (circle == true) it.circleCrop()
+            else it
         }
         .fallback(R.drawable.fallback_image)
         .error(R.drawable.fallback_image)

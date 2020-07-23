@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val wantToSeeAdapter = HomeMovieListAdapter()
+        val wantToSeeAdapter = HomeMovieListAdapter(circle = true)
         val popularAdapter = HomeMovieListAdapter()
         val nowPlayingAdapter = HomeMovieListAdapter()
         val upcomingAdapter = HomeMovieListAdapter()
