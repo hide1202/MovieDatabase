@@ -1,10 +1,11 @@
 package io.viewpoint.moviedatabase.domain.repository
 
+import arrow.core.Option
 import arrow.fx.IO
 import io.viewpoint.moviedatabase.model.repository.WantToSeeMovie
 
 interface WantToSeeRepository {
-    fun getWantToSeeMovie(id: Int): IO<WantToSeeMovie>
+    fun getWantToSeeMovie(id: Int): IO<Option<WantToSeeMovie>>
 
     fun getWantToSeeMovies(): IO<List<WantToSeeMovie>>
 

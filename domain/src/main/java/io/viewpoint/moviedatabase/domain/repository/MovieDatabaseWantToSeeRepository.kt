@@ -1,5 +1,7 @@
 package io.viewpoint.moviedatabase.domain.repository
 
+import arrow.core.Option
+import arrow.core.toOption
 import arrow.fx.IO
 import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.domain.repository.dao.WantToSeeDao
@@ -10,10 +12,13 @@ import javax.inject.Inject
 class MovieDatabaseWantToSeeRepository @Inject constructor(
     private val dao: WantToSeeDao
 ) : WantToSeeRepository {
-    override fun getWantToSeeMovie(id: Int): IO<WantToSeeMovie> = IO.fx {
+    override fun getWantToSeeMovie(id: Int): IO<Option<WantToSeeMovie>> = IO.fx {
         !effect {
             dao.getOne(id)
-                .toWantToSeeMovie()
+                .toOption()
+                .map { entity ->
+                    entity.toWantToSeeMovie()
+                }
         }
     }
 
@@ -44,12 +49,12 @@ fun WantToSeeMovie.toEntity(): WantToSeeMovieEntity =
     WantToSeeMovieEntity(
         id = id,
         title = title,
-        poster_path = poster_path
+        posterUrl = posterUrl
     )
 
 fun WantToSeeMovieEntity.toWantToSeeMovie(): WantToSeeMovie =
     WantToSeeMovie(
         id = id,
         title = title,
-        poster_path = poster_path
+        posterUrl = posterUrl
     )

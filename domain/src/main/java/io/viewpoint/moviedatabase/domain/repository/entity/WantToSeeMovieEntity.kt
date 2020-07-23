@@ -9,7 +9,7 @@ data class WantToSeeMovieEntity(
     @PrimaryKey
     val id: Int,
     val title: String,
-    val poster_path: String?
+    val posterUrl: String?
 ) {
     companion object {
         const val TABLE_NAME = "WantToSeeMovie"
