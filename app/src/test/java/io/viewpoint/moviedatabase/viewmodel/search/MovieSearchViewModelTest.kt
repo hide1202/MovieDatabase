@@ -10,8 +10,7 @@ import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestSearchApi
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.util.asyncPagingDataDiffer
-import junit.framework.Assert.assertNotNull
-import junit.framework.Assert.assertTrue
+import junit.framework.Assert.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeoutOrNull
@@ -49,5 +48,19 @@ class MovieSearchViewModelTest : TestBase() {
         }
 
         assertTrue(differ.itemCount > 0)
+    }
+
+    @Test
+    fun searchEmptyKeywordTest() = runBlocking {
+        vm.keyword.value = ""
+        vm.searchCommand.action()
+
+        val pagingData = withTimeoutOrNull(1500) {
+            vm.results
+                .asFlow()
+                .first()
+        }
+
+        assertNull(pagingData)
     }
 }

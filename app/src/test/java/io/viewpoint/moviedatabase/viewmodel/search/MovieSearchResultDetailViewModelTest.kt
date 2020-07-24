@@ -30,6 +30,10 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
 
         val previous = vm.wantToSee.value
         vm.invertWantToSeeCommand()
-        assertNotEquals(previous, vm.wantToSee.value)
+        val firstInvert = vm.wantToSee.value
+        assertNotEquals(previous, firstInvert)
+        vm.invertWantToSeeCommand()
+        val secondInvert = vm.wantToSee.value
+        assertNotEquals(firstInvert, secondInvert)
     }
 }
