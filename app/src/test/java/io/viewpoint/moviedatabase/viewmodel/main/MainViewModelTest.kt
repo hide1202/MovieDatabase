@@ -1,12 +1,13 @@
 package io.viewpoint.moviedatabase.viewmodel.main
 
 import io.viewpoint.moviedatabase.TestBase
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
 import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
 import io.viewpoint.moviedatabase.mock.TestPreferencesService
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
-import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
+import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.runBlocking
@@ -17,6 +18,10 @@ class MainViewModelTest : TestBase() {
         TestPreferencesService(),
         MovieDatabaseConfigurationRepository(
             TestConfigurationApi()
+        ),
+        MovieDatabaseWantToSeeRepository(
+            TestMovieApi(),
+            TestWantToSeeDao()
         ),
         MovieDatabaseMovieRepository(
             TestMovieApi()
