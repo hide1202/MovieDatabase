@@ -2,16 +2,14 @@ package io.viewpoint.moviedatabase.di
 
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieRepository
-import io.viewpoint.moviedatabase.domain.repository.SearchRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseSearchRepository
+import io.viewpoint.moviedatabase.api.MovieApi
+import io.viewpoint.moviedatabase.domain.repository.*
+import io.viewpoint.moviedatabase.platform.external.AppDatabase
 
-@Module
+@Module(includes = [RepositoryModule.ProvideRepositoryModule::class])
 @InstallIn(ApplicationComponent::class)
 abstract class RepositoryModule {
     @Binds
@@ -28,4 +26,15 @@ abstract class RepositoryModule {
     abstract fun searchRepository(
         repository: MovieDatabaseSearchRepository
     ): SearchRepository
+
+    @Module
+    @InstallIn(ApplicationComponent::class)
+    class ProvideRepositoryModule {
+        @Provides
+        fun wantToSeeRepository(
+            movieApi: MovieApi,
+            database: AppDatabase
+        ): WantToSeeRepository =
+            MovieDatabaseWantToSeeRepository(movieApi, database.wantToSeeDao())
+    }
 }

@@ -37,11 +37,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val wantToSeeAdapter = HomeMovieListAdapter(circle = true)
         val popularAdapter = HomeMovieListAdapter()
         val nowPlayingAdapter = HomeMovieListAdapter()
         val upcomingAdapter = HomeMovieListAdapter()
         val topRatedAdapter = HomeMovieListAdapter()
         binding.popularList.adapter = ConcatAdapter(
+            LabelAdapter(getString(R.string.want_to_see_header)),
+            MovieListAdapter(wantToSeeAdapter),
             LabelAdapter(getString(R.string.popular_header)),
             MovieListAdapter(popularAdapter),
             LabelAdapter(getString(R.string.now_playing_header)),
@@ -51,6 +54,9 @@ class HomeFragment : Fragment() {
             LabelAdapter(getString(R.string.top_rated_header)),
             MovieListAdapter(topRatedAdapter)
         )
+        viewModel.wantToSee.observe(viewLifecycleOwner, Observer {
+            wantToSeeAdapter.updateResults(it)
+        })
         viewModel.popular.observe(viewLifecycleOwner, Observer {
             popularAdapter.updateResults(it)
         })

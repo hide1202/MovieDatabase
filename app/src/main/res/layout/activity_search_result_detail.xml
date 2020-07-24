@@ -9,6 +9,9 @@
             name="result"
             type="io.viewpoint.moviedatabase.model.ui.SearchResultModel" />
 
+        <variable
+            name="vm"
+            type="io.viewpoint.moviedatabase.viewmodel.search.MovieSearchResultDetailViewModel" />
 
         <import type="io.viewpoint.moviedatabase.platform.externsion.Dimensions" />
     </data>
@@ -85,10 +88,30 @@
             android:text="@{result.title}"
             android:textColor="@color/search_title_text"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/want_to_see"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/poster"
             tools:text="스파이더맨: 홈커밍" />
+
+        <FrameLayout
+            android:id="@+id/want_to_see"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="16dp"
+            app:command="@{vm.invertWantToSeeCommand}"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title">
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_heart_check"
+                android:button="@null"
+                android:checked="@{vm.wantToSee}"
+                android:clickable="false"
+                android:focusable="false" />
+        </FrameLayout>
 
         <ScrollView
             android:layout_width="0dp"

@@ -9,6 +9,7 @@ apply plugin: 'jacoco'
 
 apply from: '../dependencies.gradle'
 apply from: '../external.gradle'
+apply from: '../app.gradle'
 
 android {
     compileSdkVersion versions.android.compileSdk
@@ -27,9 +28,11 @@ android {
         debug {
             testCoverageEnabled((findProperty("enableJacoco") ?: "false").toBoolean())
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
+            buildConfigField("int", "DATABASE_VERSION", "${app.database_version}")
         }
         release {
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
+            buildConfigField("int", "DATABASE_VERSION", "${app.database_version}")
 
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
@@ -78,6 +81,11 @@ dependencies {
     implementation deps.androidx.paging
     implementation deps.androidx.navigation_fragment
     implementation deps.androidx.navigation_ui
+
+    // androidx.room
+    implementation deps.androidx.room_runtime
+    implementation deps.androidx.room_ktx
+    kapt deps.androidx.room_compiler
 
     // dagger/hilt
     implementation deps.libraries.hilt

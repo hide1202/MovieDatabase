@@ -1,12 +1,13 @@
 package io.viewpoint.moviedatabase.viewmodel.main
 
 import io.viewpoint.moviedatabase.TestBase
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
 import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
 import io.viewpoint.moviedatabase.mock.TestPreferencesService
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
-import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
+import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.runBlocking
@@ -18,6 +19,10 @@ class MainViewModelTest : TestBase() {
         MovieDatabaseConfigurationRepository(
             TestConfigurationApi()
         ),
+        MovieDatabaseWantToSeeRepository(
+            TestMovieApi(),
+            TestWantToSeeDao()
+        ),
         MovieDatabaseMovieRepository(
             TestMovieApi()
         )
@@ -26,10 +31,12 @@ class MainViewModelTest : TestBase() {
     @Test
     fun `load movie lists when initialize view`() = runBlocking {
         val vm = vm.awaitInit()
+        val wantToSeeList = vm.wantToSee.value
         val popularList = vm.popular.value
         val nowPlayingList = vm.nowPlaying.value
         val upcomingList = vm.upcoming.value
         val topRatedList = vm.topRated.value
+        assertNotNull(wantToSeeList)
         assertNotNull(popularList)
         assertNotNull(nowPlayingList)
         assertNotNull(upcomingList)

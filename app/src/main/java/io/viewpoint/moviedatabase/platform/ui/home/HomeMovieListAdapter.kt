@@ -8,7 +8,9 @@ import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ItemHomeMovieBinding
 import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
 
-class HomeMovieListAdapter : RecyclerView.Adapter<HomeMovieListAdapter.ViewHolder>() {
+class HomeMovieListAdapter(
+    private val circle: Boolean = false
+) : RecyclerView.Adapter<HomeMovieListAdapter.ViewHolder>() {
     private val items: MutableList<HomeMovieListResultModel> = mutableListOf()
 
     fun updateResults(results: List<HomeMovieListResultModel>) {
@@ -24,6 +26,7 @@ class HomeMovieListAdapter : RecyclerView.Adapter<HomeMovieListAdapter.ViewHolde
             parent,
             false
         ).let { binding ->
+            binding.circle = circle
             ViewHolder(
                 binding
             )
