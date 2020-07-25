@@ -2,7 +2,10 @@ package io.viewpoint.moviedatabase.viewmodel.search
 
 import androidx.lifecycle.asFlow
 import androidx.paging.AsyncPagingDataDiffer
-import androidx.paging.PagingData
+import arrow.fx.IO
+import arrow.fx.extensions.fx
+import io.mockk.every
+import io.mockk.spyk
 import io.viewpoint.moviedatabase.TestBase
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseSearchRepository
@@ -17,14 +20,13 @@ import kotlinx.coroutines.withTimeoutOrNull
 import org.junit.Test
 
 class MovieSearchViewModelTest : TestBase() {
+    private val searchApi = spyk(TestSearchApi())
     private val pager =
         MovieSearchPager(
             MovieDatabaseConfigurationRepository(
                 TestConfigurationApi()
             ),
-            MovieDatabaseSearchRepository(
-                TestSearchApi()
-            )
+            MovieDatabaseSearchRepository(searchApi)
         )
     private val vm =
         MovieSearchViewModel(pager)
@@ -41,7 +43,6 @@ class MovieSearchViewModelTest : TestBase() {
             .first()
 
         assertNotNull(pagingData)
-        assertTrue(pagingData != PagingData.empty<SearchResultModel>())
 
         withTimeoutOrNull(1500) {
             differ.submitData(pagingData)
@@ -62,5 +63,28 @@ class MovieSearchViewModelTest : TestBase() {
         }
 
         assertNull(pagingData)
+    }
+
+    @Test
+    fun searchErrorTest() = runBlocking {
+        every { searchApi.searchMovie(any(), any()) }
+            .returns(IO.fx {
+                throw IllegalStateException()
+            })
+
+        vm.keyword.value = "test"
+        vm.searchCommand.action()
+
+        val pagingData = vm.results
+            .asFlow()
+            .first()
+
+        assertNotNull(pagingData)
+
+        withTimeoutOrNull(1500) {
+            differ.submitData(pagingData)
+        }
+
+        assertEquals(0, differ.itemCount)
     }
 }
