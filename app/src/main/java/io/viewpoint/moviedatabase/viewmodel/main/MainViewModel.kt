@@ -26,6 +26,7 @@ class MainViewModel @ViewModelInject constructor(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
     private val mapper = PopularResultMapper(configurationRepository)
+    private val _isLoading = MutableLiveData<Boolean>(false)
     private val _wantToSee = MutableLiveData<List<HomeMovieListResultModel>>()
     private val _popular = MutableLiveData<List<HomeMovieListResultModel>>()
     private val _nowPlaying = MutableLiveData<List<HomeMovieListResultModel>>()
@@ -47,37 +48,48 @@ class MainViewModel @ViewModelInject constructor(
                     MovieDatabaseApi.language = it.iso_639_1
                 }
 
-            _wantToSee.postValue(wantToSeeRepository.getWantToSeeMovies()
-                .effectMap { list ->
-                    list.map {
-                        mapper.map(it.toMovie())
-                    }
-                }
-                .attempt()
-                .suspended()
-                .getOrElse { emptyList() })
-
-            _popular.postValue(movieRepository.getPopular()
-                .map {
-                    mapper.map(it)
-                })
-
-            _nowPlaying.postValue(movieRepository.getNowPlayings()
-                .map {
-                    mapper.map(it)
-                })
-
-            _upcoming.postValue(movieRepository.getUpcoming()
-                .map {
-                    mapper.map(it)
-                })
-
-            _topRated.postValue(movieRepository.getTopRated()
-                .map {
-                    mapper.map(it)
-                })
+            loadData()
         }
     }
+
+    suspend fun loadData() {
+        _isLoading.value = true
+
+        _wantToSee.postValue(wantToSeeRepository.getWantToSeeMovies()
+            .effectMap { list ->
+                list.map {
+                    mapper.map(it.toMovie())
+                }
+            }
+            .attempt()
+            .suspended()
+            .getOrElse { emptyList() })
+
+        _popular.postValue(movieRepository.getPopular()
+            .map {
+                mapper.map(it)
+            })
+
+        _nowPlaying.postValue(movieRepository.getNowPlayings()
+            .map {
+                mapper.map(it)
+            })
+
+        _upcoming.postValue(movieRepository.getUpcoming()
+            .map {
+                mapper.map(it)
+            })
+
+        _topRated.postValue(movieRepository.getTopRated()
+            .map {
+                mapper.map(it)
+            })
+
+        _isLoading.value = false
+    }
+
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
 
     val wantToSee: LiveData<List<HomeMovieListResultModel>>
         get() = _wantToSee

@@ -8,11 +8,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.FragmentHomeBinding
 import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -31,19 +33,22 @@ class HomeFragment : Fragment() {
             container,
             false
         )
+        binding.lifecycleOwner = this
+        binding.vm = viewModel
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val wantToSeeLabelAdapter = LabelAdapter(getString(R.string.want_to_see_header))
         val wantToSeeAdapter = HomeMovieListAdapter(circle = true)
         val popularAdapter = HomeMovieListAdapter()
         val nowPlayingAdapter = HomeMovieListAdapter()
         val upcomingAdapter = HomeMovieListAdapter()
         val topRatedAdapter = HomeMovieListAdapter()
-        binding.popularList.adapter = ConcatAdapter(
-            LabelAdapter(getString(R.string.want_to_see_header)),
+        val concatAdapter = ConcatAdapter(
+            wantToSeeLabelAdapter,
             MovieListAdapter(wantToSeeAdapter),
             LabelAdapter(getString(R.string.popular_header)),
             MovieListAdapter(popularAdapter),
@@ -54,7 +59,10 @@ class HomeFragment : Fragment() {
             LabelAdapter(getString(R.string.top_rated_header)),
             MovieListAdapter(topRatedAdapter)
         )
+
+        binding.homeSectionList.adapter = concatAdapter
         viewModel.wantToSee.observe(viewLifecycleOwner, Observer {
+            wantToSeeLabelAdapter.updateIsEmpty(it.isEmpty())
             wantToSeeAdapter.updateResults(it)
         })
         viewModel.popular.observe(viewLifecycleOwner, Observer {
@@ -69,6 +77,12 @@ class HomeFragment : Fragment() {
         viewModel.topRated.observe(viewLifecycleOwner, Observer {
             topRatedAdapter.updateResults(it)
         })
+
+        binding.refreshLayout.setOnRefreshListener {
+            lifecycleScope.launch {
+                viewModel.loadData()
+            }
+        }
     }
 
     companion object {
