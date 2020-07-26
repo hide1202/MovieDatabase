@@ -1,6 +1,6 @@
 package io.viewpoint.moviedatabase.viewmodel.main
 
-import androidx.lifecycle.asFlow
+import androidx.lifecycle.Observer
 import io.viewpoint.moviedatabase.TestBase
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
@@ -12,10 +12,6 @@ import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
@@ -56,21 +52,18 @@ class MainViewModelTest : TestBase() {
     @Test
     fun `loadData will change isLoading property`() = runBlocking {
         val vm = vm.awaitInit()
-        var changeCount = 0
 
-        val collectJob = launch {
-            vm.isLoading.asFlow()
-                .distinctUntilChanged()
-                .take(2)
-                .collect {
-                    changeCount++
-                }
+        val set = mutableSetOf<Boolean>()
+        val observer = Observer<Boolean> {
+            set += it
         }
+        vm.isLoading.observeForever(observer)
 
         vm.loadData()
 
-        delay(2000L)
-        collectJob.cancel()
-        assertEquals(2, changeCount)
+        delay(1500L)
+        assertEquals(2, set.size)
+
+        vm.isLoading.removeObserver(observer)
     }
 }
