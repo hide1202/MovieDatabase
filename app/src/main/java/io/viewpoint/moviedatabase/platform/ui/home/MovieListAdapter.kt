@@ -10,23 +10,25 @@ import io.viewpoint.moviedatabase.platform.externsion.dp
 import io.viewpoint.moviedatabase.platform.util.SpaceItemDecoration
 
 class MovieListAdapter(
-    private val subAdapter: RecyclerView.Adapter<*>
+    private val subAdapter: HomeMovieListAdapter
 ) : RecyclerView.Adapter<MovieListAdapter.MovieListHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListHolder =
         MovieListHolder(
-            DataBindingUtil.inflate(
+            DataBindingUtil.inflate<ItemHomeMovieListBinding>(
                 LayoutInflater.from(parent.context),
                 R.layout.item_home_movie_list,
                 parent,
                 false
-            )
+            ).also { binding ->
+                binding.list.addItemDecoration(SpaceItemDecoration(16.dp))
+            }
         )
 
     override fun getItemCount(): Int = 1
 
     override fun onBindViewHolder(holder: MovieListHolder, position: Int) {
         with(holder.binding) {
-            list.addItemDecoration(SpaceItemDecoration(16.dp))
             adapter = subAdapter
             executePendingBindings()
         }

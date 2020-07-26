@@ -10,6 +10,12 @@ import io.viewpoint.moviedatabase.databinding.ItemLabelBinding
 class LabelAdapter(
     private val labelString: String
 ) : RecyclerView.Adapter<LabelAdapter.LabelHolder>() {
+    private var isEmpty = false
+
+    fun updateIsEmpty(isEmpty: Boolean) {
+        this.isEmpty = isEmpty
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LabelHolder =
         LabelHolder(
@@ -21,7 +27,7 @@ class LabelAdapter(
             )
         )
 
-    override fun getItemCount(): Int = 1
+    override fun getItemCount(): Int = if (isEmpty) 0 else 1
 
     override fun onBindViewHolder(holder: LabelHolder, position: Int) =
         with(holder.binding) {
