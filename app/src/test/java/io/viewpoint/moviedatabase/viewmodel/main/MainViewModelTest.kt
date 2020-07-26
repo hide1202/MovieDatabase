@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withTimeout
 import org.junit.Test
 
 class MainViewModelTest : TestBase() {
@@ -68,7 +69,9 @@ class MainViewModelTest : TestBase() {
 
         vm.loadData()
 
-        collectJob.join()
+        withTimeout(1500L) {
+            collectJob.join()
+        }
         assertEquals(2, changeCount)
     }
 }
