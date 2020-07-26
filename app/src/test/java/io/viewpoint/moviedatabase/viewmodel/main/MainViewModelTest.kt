@@ -11,12 +11,12 @@ import io.viewpoint.moviedatabase.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withTimeout
 import org.junit.Test
 
 class MainViewModelTest : TestBase() {
@@ -69,9 +69,8 @@ class MainViewModelTest : TestBase() {
 
         vm.loadData()
 
-        withTimeout(1500L) {
-            collectJob.join()
-        }
+        delay(2000L)
+        collectJob.cancel()
         assertEquals(2, changeCount)
     }
 }
