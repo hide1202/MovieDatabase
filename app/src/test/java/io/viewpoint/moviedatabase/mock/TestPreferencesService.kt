@@ -7,19 +7,14 @@ class TestPreferencesService :
     PreferencesService {
     private val preferences = mutableMapOf<String, Any>()
 
-    override fun getInt(key: PreferenceKey, default: Int): Int = preferences[key.key] as Int
-
-    override fun getString(key: PreferenceKey): String? = preferences[key.key] as? String
-
-    override fun putInt(key: PreferenceKey, value: Int) {
-        preferences[key.key] = value
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : Any> getValue(key: PreferenceKey<T>, defaultValue: T?): T? {
+        return (preferences[key.key] as? T) ?: defaultValue
     }
 
-    override fun putString(key: PreferenceKey, value: String?) {
-        if (value != null) {
-            preferences[key.key] = value
-        } else {
-            preferences.remove(key.key)
+    override fun <T : Any> putValue(key: PreferenceKey<T>, value: T?) {
+        value?.let {
+            preferences.putIfAbsent(key.key, it)
         }
     }
 
