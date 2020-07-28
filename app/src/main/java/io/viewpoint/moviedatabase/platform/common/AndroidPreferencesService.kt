@@ -15,10 +15,6 @@ class AndroidPreferencesService @Inject constructor(
         Context.MODE_PRIVATE
     )
 
-    companion object {
-        private const val PREFERENCES_NAME = "io.viewpoint.moviedatabase.prefs"
-    }
-
     @Suppress("UNCHECKED_CAST", "IMPLICIT_CAST_TO_ANY")
     override fun <T : Any> getValue(key: PreferenceKey<T>, defaultValue: T?): T? =
         when (key.type) {
@@ -45,5 +41,9 @@ class AndroidPreferencesService @Inject constructor(
                 putInt(key.key, value as Int)
             }
         }
+    }
+
+    companion object {
+        private const val PREFERENCES_NAME = "io.viewpoint.moviedatabase.prefs"
     }
 }
