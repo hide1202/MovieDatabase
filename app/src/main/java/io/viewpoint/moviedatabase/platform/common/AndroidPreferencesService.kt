@@ -20,7 +20,7 @@ class AndroidPreferencesService @Inject constructor(
         when (key.type) {
             String::class -> preferences.getString(key.key, defaultValue as String?)
             Int::class -> preferences.getInt(key.key, defaultValue as? Int ?: 0)
-            else -> null
+            else -> throwUnsupportedType(key)
         } as? T?
 
     override fun <T : Any> putValue(key: PreferenceKey<T>, value: T?) {
@@ -40,8 +40,15 @@ class AndroidPreferencesService @Inject constructor(
             Int::class -> preferences.edit {
                 putInt(key.key, value as Int)
             }
+            else -> throwUnsupportedType(key)
         }
     }
+
+    private fun throwUnsupportedType(key: PreferenceKey<*>): Unit =
+        throw UnsupportedOperationException(
+            "unsupported %s type in preferences"
+                .format(key.type.simpleName)
+        )
 
     companion object {
         private const val PREFERENCES_NAME = "io.viewpoint.moviedatabase.prefs"
