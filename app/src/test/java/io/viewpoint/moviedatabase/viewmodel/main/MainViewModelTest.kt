@@ -2,6 +2,8 @@ package io.viewpoint.moviedatabase.viewmodel.main
 
 import androidx.lifecycle.Observer
 import io.viewpoint.moviedatabase.TestBase
+import io.viewpoint.moviedatabase.api.MovieDatabaseApi
+import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
@@ -9,26 +11,30 @@ import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
 import io.viewpoint.moviedatabase.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
-import junit.framework.Assert.assertEquals
-import junit.framework.Assert.assertNotNull
+import io.viewpoint.moviedatabase.util.PreferencesKeys
+import junit.framework.Assert.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
 class MainViewModelTest : TestBase() {
-    private val vm = MainViewModel(
-        TestPreferencesService(),
-        MovieDatabaseConfigurationRepository(
-            TestConfigurationApi()
-        ),
-        MovieDatabaseWantToSeeRepository(
-            TestMovieApi(),
-            TestWantToSeeDao()
-        ),
-        MovieDatabaseMovieRepository(
-            TestMovieApi()
+    private val vm
+        get() = createVmWith(TestPreferencesService())
+
+    private fun createVmWith(preferencesService: PreferencesService): MainViewModel =
+        MainViewModel(
+            preferencesService,
+            MovieDatabaseConfigurationRepository(
+                TestConfigurationApi()
+            ),
+            MovieDatabaseWantToSeeRepository(
+                TestMovieApi(),
+                TestWantToSeeDao()
+            ),
+            MovieDatabaseMovieRepository(
+                TestMovieApi()
+            )
         )
-    )
 
     @Test
     fun `load movie lists when initialize view`() = runBlocking {
@@ -65,5 +71,28 @@ class MainViewModelTest : TestBase() {
         assertEquals(2, set.size)
 
         vm.isLoading.removeObserver(observer)
+    }
+
+    @Test
+    fun `load saved language when initialize view`() = runBlocking {
+        val preferencesService = TestPreferencesService()
+
+        val firstPreLanguage = MovieDatabaseApi.language
+        createVmWith(preferencesService).awaitInit()
+        assertNull(firstPreLanguage)
+
+        val expectedLanguage = TestConfigurationApi()
+            .getSupportedLanguages()
+            .suspended()[0]
+            .iso_639_1
+        preferencesService.putValue(
+            PreferencesKeys.SELECTED_LANGUAGE_ISO,
+            expectedLanguage
+        )
+
+        val secondPreLanguage = MovieDatabaseApi.language
+        createVmWith(preferencesService).awaitInit()
+        assertTrue(secondPreLanguage != MovieDatabaseApi.language)
+        assertEquals(expectedLanguage, MovieDatabaseApi.language)
     }
 }
