@@ -23,6 +23,10 @@ class AndroidPreferencesService @Inject constructor(
             else -> throwUnsupportedType(key)
         } as? T?
 
+    override fun <T : Any> getValue(key: PreferenceKey<T>, converter: (String) -> T): T? =
+        preferences.getString(key.key, null)
+            ?.let(converter)
+
     override fun <T : Any> putValue(key: PreferenceKey<T>, value: T?) {
         if (value == null) {
             if (preferences.contains(key.key)) {
@@ -41,6 +45,16 @@ class AndroidPreferencesService @Inject constructor(
                 putInt(key.key, value as Int)
             }
             else -> throwUnsupportedType(key)
+        }
+    }
+
+    override fun <T : Any> putValue(key: PreferenceKey<T>, value: T?, converter: (T) -> String) {
+        preferences.edit {
+            if (value == null) {
+                remove(key.key)
+            } else {
+                putString(key.key, converter(value))
+            }
         }
     }
 

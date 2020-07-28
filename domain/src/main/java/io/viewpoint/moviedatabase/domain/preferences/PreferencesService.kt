@@ -5,6 +5,10 @@ interface PreferencesService {
 
     fun <T : Any> putValue(key: PreferenceKey<T>, value: T?)
 
+    fun <T : Any> getValue(key: PreferenceKey<T>, converter: (String) -> T): T?
+
+    fun <T : Any> putValue(key: PreferenceKey<T>, value: T?, converter: (T) -> String)
+
     fun <T : Any> getValues(
         key: PreferenceKey<T>,
         converter: (String) -> T
