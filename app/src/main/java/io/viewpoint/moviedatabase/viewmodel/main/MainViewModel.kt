@@ -37,7 +37,7 @@ class MainViewModel @ViewModelInject constructor(
 
     init {
         initJob = viewModelScope.launch {
-            preferences.getString(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+            preferences.getValue(PreferencesKeys.SELECTED_LANGUAGE_ISO)
                 ?.let { savedSelectedLanguageIso ->
                     val languages = configurationRepository.getSupportedLanguages()
                     languages.firstOrNull {

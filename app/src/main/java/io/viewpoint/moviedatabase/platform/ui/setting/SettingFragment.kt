@@ -59,7 +59,7 @@ class SettingFragment : Fragment() {
 
             binding.languageSelect.setAdapter(adapter)
 
-            preferences.getString(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+            preferences.getValue(PreferencesKeys.SELECTED_LANGUAGE_ISO)
                 ?.let { savedLanguageIso ->
                     languages.firstOrNull { it.iso_639_1 == savedLanguageIso }
                 }
@@ -77,7 +77,7 @@ class SettingFragment : Fragment() {
                     MovieDatabaseApi.language = it.iso_639_1
                 }
 
-                preferences.putString(
+                preferences.putValue(
                     PreferencesKeys.SELECTED_LANGUAGE_ISO,
                     MovieDatabaseApi.language
                 )
