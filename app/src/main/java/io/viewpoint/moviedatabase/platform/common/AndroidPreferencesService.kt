@@ -44,6 +44,25 @@ class AndroidPreferencesService @Inject constructor(
         }
     }
 
+    override fun <T : Any> getValues(
+        key: PreferenceKey<T>,
+        converter: (String) -> T
+    ): List<T> {
+        return preferences.getStringSet(key.key, emptySet())
+            ?.map(converter)
+            ?: emptyList()
+    }
+
+    override fun <T : Any> putValues(
+        key: PreferenceKey<T>,
+        value: List<T>,
+        converter: (T) -> String
+    ) {
+        preferences.edit {
+            putStringSet(key.key, value.map(converter).toSet())
+        }
+    }
+
     private fun throwUnsupportedType(key: PreferenceKey<*>): Unit =
         throw UnsupportedOperationException(
             "unsupported %s type in preferences"
