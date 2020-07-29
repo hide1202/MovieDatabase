@@ -6,7 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
+import io.viewpoint.moviedatabase.domain.preferences.addValue
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
+import io.viewpoint.moviedatabase.util.PreferencesKeys
 import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
@@ -14,6 +17,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class MovieSearchViewModel @ViewModelInject constructor(
+    private val preferences: PreferencesService,
     private val pager: MovieSearchPager
 ) : ViewModel() {
     private var previousSearchJob: Job? = null
@@ -38,8 +42,10 @@ class MovieSearchViewModel @ViewModelInject constructor(
             previousSearchJob?.cancelAndJoin()
             previousSearchJob = launch {
                 pager.pagingWithKeyword(keyword)
-                    .collectLatest {
-                        _results.postValue(it)
+                    .collectLatest { pagingData ->
+                        _results.postValue(pagingData)
+
+                        preferences.addValue(PreferencesKeys.SEARCHED_KEYWORDS, keyword)
                     }
             }
         }
