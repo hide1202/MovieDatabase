@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.preferences.addValue
+import io.viewpoint.moviedatabase.domain.preferences.getValues
+import io.viewpoint.moviedatabase.domain.preferences.removeValue
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.util.PreferencesKeys
 import io.viewpoint.moviedatabase.viewmodel.Command
@@ -22,6 +24,7 @@ class MovieSearchViewModel @ViewModelInject constructor(
 ) : ViewModel() {
     private var previousSearchJob: Job? = null
     private val _results = MutableLiveData<PagingData<SearchResultModel>>()
+    private val _recentKeywords = MutableLiveData<List<String>>()
 
     val isLoading: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -29,7 +32,13 @@ class MovieSearchViewModel @ViewModelInject constructor(
 
     val results: LiveData<PagingData<SearchResultModel>> = _results
 
+    val recentKeywords: LiveData<List<String>> = _recentKeywords
+
     var beforeSearchCommand: () -> Unit = {}
+
+    init {
+        loadRecentKeywords()
+    }
 
     val searchCommand = Command {
         val keyword = keyword.value ?: return@Command
@@ -46,8 +55,17 @@ class MovieSearchViewModel @ViewModelInject constructor(
                         _results.postValue(pagingData)
 
                         preferences.addValue(PreferencesKeys.SEARCHED_KEYWORDS, keyword)
+                        loadRecentKeywords()
                     }
             }
         }
+    }
+
+    fun removeRecentKeyword(keyword: String) {
+        preferences.removeValue(PreferencesKeys.SEARCHED_KEYWORDS, keyword)
+    }
+
+    private fun loadRecentKeywords() {
+        _recentKeywords.value = preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS)
     }
 }

@@ -5,12 +5,20 @@
 
     <data>
 
+        <import
+            alias="ResultPagingData"
+            type="androidx.paging.PagingData" />
+
         <variable
             name="vm"
             type="io.viewpoint.moviedatabase.viewmodel.search.MovieSearchViewModel" />
 
         <variable
-            name="adapter"
+            name="resultAdapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="keywordsAdapter"
             type="androidx.recyclerview.widget.RecyclerView.Adapter" />
     </data>
 
@@ -53,7 +61,24 @@
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:orientation="vertical"
-            app:adapter="@{adapter}"
+            app:adapter="@{resultAdapter}"
+            app:gone="@{vm.results.equals(ResultPagingData.empty())}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_input"
+            app:verticalDividerDecoration="@{true}"
+            tools:listitem="@layout/item_search_result" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recent_keyword_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:adapter="@{keywordsAdapter}"
+            app:gone="@{vm.results != null &amp;&amp; !vm.results.equals(ResultPagingData.empty())}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
