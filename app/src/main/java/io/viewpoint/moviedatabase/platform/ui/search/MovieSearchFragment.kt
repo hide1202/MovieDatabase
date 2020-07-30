@@ -101,6 +101,13 @@ class MovieSearchFragment : Fragment(), RecentSearchKeywordAdapter.Callbacks {
                     binding.searchResultList.scrollToPosition(0)
                 }
         }
+
+        // PagingData 에서 데이터 개수를 직접 가져올 수 없는 문제의 workaround
+        val searchResultDataObserver = SearchResultCountObserver(searchResultAdapter)
+        searchResultAdapter.registerAdapterDataObserver(searchResultDataObserver)
+        searchResultDataObserver.currentItemCount.observe(viewLifecycleOwner, Observer { newCount ->
+            viewModel.resultCount.value = newCount
+        })
     }
 
     companion object {

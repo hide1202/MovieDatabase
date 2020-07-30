@@ -32,6 +32,8 @@ class MovieSearchViewModel @ViewModelInject constructor(
 
     val results: LiveData<PagingData<SearchResultModel>> = _results
 
+    val resultCount = MutableLiveData<Int>()
+
     val recentKeywords: LiveData<List<String>> = _recentKeywords
 
     var beforeSearchCommand: () -> Unit = {}
