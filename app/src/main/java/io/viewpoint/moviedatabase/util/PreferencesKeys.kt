@@ -7,4 +7,9 @@ object PreferencesKeys {
         key = "selectedLanguage",
         type = String::class
     )
+
+    val SEARCHED_KEYWORDS = PreferenceKey(
+        key = "searchedKeywords",
+        type = String::class
+    )
 }

@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MovieSearchFragment : Fragment() {
+class MovieSearchFragment : Fragment(), RecentSearchKeywordAdapter.Callbacks {
     private lateinit var binding: FragmentMovieSearchBinding
 
     private val viewModel: MovieSearchViewModel by viewModels()
@@ -38,6 +38,8 @@ class MovieSearchFragment : Fragment() {
             startActivity(SearchResultDetailActivity.intent(this, result), options.toBundle())
         }
     }
+
+    private val recentKeywordsAdapter = RecentSearchKeywordAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,10 +61,11 @@ class MovieSearchFragment : Fragment() {
         with(binding) {
             lifecycleOwner = this@MovieSearchFragment.viewLifecycleOwner
             vm = viewModel
-            adapter = searchResultAdapter.withLoadStateHeaderAndFooter(
+            resultAdapter = searchResultAdapter.withLoadStateHeaderAndFooter(
                 header = SearchResultLoadStateAdapter(),
                 footer = SearchResultLoadStateAdapter()
             )
+            keywordsAdapter = recentKeywordsAdapter
 
             searchInput.setOnEditorActionListener { v, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_GO) {
@@ -82,6 +85,9 @@ class MovieSearchFragment : Fragment() {
                 searchResultAdapter.submitData(it)
             }
         })
+        viewModel.recentKeywords.observe(viewLifecycleOwner, Observer {
+            recentKeywordsAdapter.updateKeywords(it)
+        })
 
         lifecycleScope.launch {
             searchResultAdapter.loadStateFlow
@@ -95,9 +101,25 @@ class MovieSearchFragment : Fragment() {
                     binding.searchResultList.scrollToPosition(0)
                 }
         }
+
+        // PagingData 에서 데이터 개수를 직접 가져올 수 없는 문제의 workaround
+        val searchResultDataObserver = SearchResultCountObserver(searchResultAdapter)
+        searchResultAdapter.registerAdapterDataObserver(searchResultDataObserver)
+        searchResultDataObserver.currentItemCount.observe(viewLifecycleOwner, Observer { newCount ->
+            viewModel.resultCount.value = newCount
+        })
     }
 
     companion object {
         const val TAG = "MovieSearchFragment"
+    }
+
+    override fun onRecentKeywordClick(keyword: String) {
+        viewModel.keyword.value = keyword
+        viewModel.searchCommand()
+    }
+
+    override fun onRemoved(keyword: String) {
+        viewModel.removeRecentKeyword(keyword)
     }
 }
