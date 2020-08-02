@@ -10,6 +10,7 @@ import io.viewpoint.moviedatabase.TestBase
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseSearchRepository
 import io.viewpoint.moviedatabase.mock.TestConfigurationApi
+import io.viewpoint.moviedatabase.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.mock.TestSearchApi
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.util.asyncPagingDataDiffer
@@ -28,8 +29,7 @@ class MovieSearchViewModelTest : TestBase() {
             ),
             MovieDatabaseSearchRepository(searchApi)
         )
-    private val vm =
-        MovieSearchViewModel(pager)
+    private val vm = MovieSearchViewModel(TestPreferencesService(), pager)
 
     private val differ: AsyncPagingDataDiffer<SearchResultModel> = asyncPagingDataDiffer()
 
