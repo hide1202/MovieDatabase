@@ -1,7 +1,7 @@
 ext.versions = [
         kotlin   : '1.4.10',
         kotlinx  : [
-                coroutines: '1.3.7'
+                coroutines: '1.3.9'
         ],
         android  : [
                 compileSdk: 29,
@@ -13,33 +13,33 @@ ext.versions = [
                 activity          : '1.1.0',
                 fragment          : '1.2.5',
                 appcompat         : '1.1.0',
-                recyclerview      : '1.2.0-alpha04',
+                recyclerview      : '1.2.0-alpha06',
                 swiperefreshlayout: '1.2.0-alpha01',
                 lifecycle         : '2.2.0',
-                material          : '1.2.0-beta01',
-                constraintlayout  : '1.1.3',
-                startup           : '1.0.0-alpha01',
-                ext_junit         : '1.1.1',
-                espresso_core     : '3.2.0',
-                hilt              : '1.0.0-alpha01',
-                paging            : '3.0.0-alpha02',
+                material          : '1.3.0-alpha03',
+                constraintlayout  : '2.0.1',
+                startup           : '1.0.0-beta01',
+                ext_junit         : '1.1.2',
+                espresso_core     : '3.3.0',
+                hilt              : '1.0.0-alpha02',
+                paging            : '3.0.0-alpha07',
                 navigation        : '2.3.0',
                 room              : '2.2.5'
         ],
         test     : [
-                junit       : '4.12',
+                junit       : '4.13',
                 android_core: '2.1.0',
-                mockk       : '1.10.0'
+                mockk       : '1.10.2'
         ],
         libraries: [
-                moshi         : '1.9.3',
+                moshi         : '1.11.0',
                 okhttp        : '4.9.0',
                 retrofit      : '2.9.0',
                 coroutine_core: '1.3.7',
-                arrow         : '0.10.4',
+                arrow         : '0.11.0',
                 timber        : '4.7.1',
-                hilt          : '2.28.3-alpha',
-                dagger        : '2.28.3',
+                hilt          : '2.29.1-alpha',
+                dagger        : '2.29.1',
                 glide         : '4.11.0'
         ]
 ]
@@ -94,7 +94,6 @@ ext.deps = [
                 okhttp_logging : "com.squareup.okhttp3:logging-interceptor:${versions.libraries.okhttp}",
                 retrofit       : "com.squareup.retrofit2:retrofit:${versions.libraries.retrofit}",
                 retrofit_moshi : "com.squareup.retrofit2:converter-moshi:${versions.libraries.retrofit}",
-                coroutine_core : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.libraries.coroutine_core}",
 
                 arrow_core     : "io.arrow-kt:arrow-core:${versions.libraries.arrow}",
                 arrow_syntax   : "io.arrow-kt:arrow-syntax:${versions.libraries.arrow}",

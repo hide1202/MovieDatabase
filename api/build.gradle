@@ -13,7 +13,7 @@ dependencies {
     implementation deps.libraries.okhttp_logging
     implementation deps.libraries.retrofit
     implementation deps.libraries.retrofit_moshi
-    implementation deps.libraries.coroutine_core
+    implementation deps.kotlin.coroutines
 
     api deps.libraries.arrow_core
     api deps.libraries.arrow_syntax
