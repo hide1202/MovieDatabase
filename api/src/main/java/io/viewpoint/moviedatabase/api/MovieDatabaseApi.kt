@@ -42,7 +42,7 @@ class MovieDatabaseApi private constructor(
                             request
                                 .newBuilder()
                                 .url(
-                                    request.url()
+                                    request.url
                                         .newBuilder()
                                         .addQueryParameter("api_key", apiKey)
                                         .addQueryParameter("region", getRegion())
