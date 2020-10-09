@@ -8,7 +8,7 @@
 - Application for the practice of android development using Movie Database API
 
 ## Prerequisites
-- Android Studio 4.2 Canary 7
+- Android Studio 4.2 Canary 13
 
 ## How to run
 - Create a file in the root of project with `external.properties` name.
