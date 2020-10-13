@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,22 +60,22 @@ class HomeFragment : Fragment() {
         )
 
         binding.homeSectionList.adapter = concatAdapter
-        viewModel.wantToSee.observe(viewLifecycleOwner, Observer {
+        viewModel.wantToSee.observe(viewLifecycleOwner) {
             wantToSeeLabelAdapter.updateIsEmpty(it.isEmpty())
             wantToSeeAdapter.updateResults(it)
-        })
-        viewModel.popular.observe(viewLifecycleOwner, Observer {
+        }
+        viewModel.popular.observe(viewLifecycleOwner) {
             popularAdapter.updateResults(it)
-        })
-        viewModel.nowPlaying.observe(viewLifecycleOwner, Observer {
+        }
+        viewModel.nowPlaying.observe(viewLifecycleOwner) {
             nowPlayingAdapter.updateResults(it)
-        })
-        viewModel.upcoming.observe(viewLifecycleOwner, Observer {
+        }
+        viewModel.upcoming.observe(viewLifecycleOwner) {
             upcomingAdapter.updateResults(it)
-        })
-        viewModel.topRated.observe(viewLifecycleOwner, Observer {
+        }
+        viewModel.topRated.observe(viewLifecycleOwner) {
             topRatedAdapter.updateResults(it)
-        })
+        }
 
         binding.refreshLayout.setOnRefreshListener {
             lifecycleScope.launch {
