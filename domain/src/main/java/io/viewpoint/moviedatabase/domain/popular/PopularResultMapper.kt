@@ -10,6 +10,7 @@ class PopularResultMapper(
 ) : Mapper<Movie, HomeMovieListResultModel> {
     override suspend fun map(input: Movie): HomeMovieListResultModel =
         HomeMovieListResultModel(
+            id = input.id,
             title = input.title,
             posterUrl = configurationRepository.getImageUrl {
                 input.poster_path

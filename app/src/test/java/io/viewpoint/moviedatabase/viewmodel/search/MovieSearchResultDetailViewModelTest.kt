@@ -6,6 +6,7 @@ import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeReposi
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapper
 import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
+import io.viewpoint.moviedatabase.mock.TestMovieRepository
 import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertNotEquals
@@ -19,7 +20,11 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         movieApi,
         TestWantToSeeDao()
     )
-    private val vm = MovieSearchResultDetailViewModel(repository)
+    private val vm = MovieSearchResultDetailViewModel(
+        movieRepository = TestMovieRepository(movieApi),
+        wantToSeeRepository = repository,
+        resultMapper = mapper
+    )
 
     @Test
     fun invertCommendTest() = runBlocking {

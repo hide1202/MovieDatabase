@@ -7,13 +7,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import arrow.core.getOrElse
+import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
+import io.viewpoint.moviedatabase.domain.search.SearchResultMapper
+import io.viewpoint.moviedatabase.model.api.toMovie
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.launch
 
 class MovieSearchResultDetailViewModel @ViewModelInject constructor(
-    private val wantToSeeRepository: WantToSeeRepository
+    private val movieRepository: MovieRepository,
+    private val wantToSeeRepository: WantToSeeRepository,
+    private val resultMapper: SearchResultMapper
 ) : ViewModel() {
     private var result: SearchResultModel? = null
     private var _wantToSee = MutableLiveData(false)
@@ -39,13 +44,24 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
         }
     }
 
+    suspend fun loadWithMovieId(movieId: Int): SearchResultModel? {
+        this.result = movieRepository.getMovieDetail(movieId)
+            ?.toMovie()
+            ?.let {
+                resultMapper.map(it)
+            }
+        _wantToSee.value = wantToSeeRepository.hasWantToSeeMovie(movieId)
+            .attempt()
+            .suspended()
+            .getOrElse { false }
+        return result
+    }
+
     suspend fun loadWithResult(result: SearchResultModel) {
         this.result = result
-        viewModelScope.launch {
-            _wantToSee.value = wantToSeeRepository.hasWantToSeeMovie(result.id)
-                .attempt()
-                .suspended()
-                .getOrElse { false }
-        }
+        _wantToSee.value = wantToSeeRepository.hasWantToSeeMovie(result.id)
+            .attempt()
+            .suspended()
+            .getOrElse { false }
     }
 }
