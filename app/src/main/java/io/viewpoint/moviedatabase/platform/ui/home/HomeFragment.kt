@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.ConcatAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.FragmentHomeBinding
+import io.viewpoint.moviedatabase.platform.ui.search.SearchResultDetailActivity
 import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel: MainViewModel by viewModels()
@@ -41,11 +42,11 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val wantToSeeLabelAdapter = LabelAdapter(getString(R.string.want_to_see_header))
-        val wantToSeeAdapter = HomeMovieListAdapter(circle = true)
-        val popularAdapter = HomeMovieListAdapter()
-        val nowPlayingAdapter = HomeMovieListAdapter()
-        val upcomingAdapter = HomeMovieListAdapter()
-        val topRatedAdapter = HomeMovieListAdapter()
+        val wantToSeeAdapter = HomeMovieListAdapter(circle = true, callback = this)
+        val popularAdapter = HomeMovieListAdapter(callback = this)
+        val nowPlayingAdapter = HomeMovieListAdapter(callback = this)
+        val upcomingAdapter = HomeMovieListAdapter(callback = this)
+        val topRatedAdapter = HomeMovieListAdapter(callback = this)
         val concatAdapter = ConcatAdapter(
             wantToSeeLabelAdapter,
             MovieListAdapter(wantToSeeAdapter),
@@ -82,6 +83,11 @@ class HomeFragment : Fragment() {
                 viewModel.loadData()
             }
         }
+    }
+
+    override fun onMovieClicked(movieId: Int) {
+        val activity = activity ?: return
+        activity.startActivity(SearchResultDetailActivity.withMovieId(activity, movieId))
     }
 
     companion object {

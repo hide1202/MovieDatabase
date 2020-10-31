@@ -1,8 +1,11 @@
 package io.viewpoint.moviedatabase.domain.repository
 
 import io.viewpoint.moviedatabase.model.api.Movie
+import io.viewpoint.moviedatabase.model.api.MovieDetail
 
 interface MovieRepository {
+    suspend fun getMovieDetail(movieId: Int): MovieDetail?
+
     suspend fun getPopular(): List<Movie>
 
     suspend fun getNowPlayings(): List<Movie>

@@ -9,7 +9,8 @@ import io.viewpoint.moviedatabase.databinding.ItemHomeMovieBinding
 import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
 
 class HomeMovieListAdapter(
-    private val circle: Boolean = false
+    private val circle: Boolean = false,
+    private val callback: Callback
 ) : RecyclerView.Adapter<HomeMovieListAdapter.ViewHolder>() {
     private val items: MutableList<HomeMovieListResultModel> = mutableListOf()
 
@@ -20,16 +21,21 @@ class HomeMovieListAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        DataBindingUtil.inflate<ItemHomeMovieBinding>(
-            LayoutInflater.from(parent.context),
-            R.layout.item_home_movie,
-            parent,
-            false
-        ).let { binding ->
-            binding.circle = circle
-            ViewHolder(
-                binding
+        ViewHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.item_home_movie,
+                parent,
+                false
             )
+        ).also { vh ->
+            vh.binding.circle = circle
+            vh.binding.root.setOnClickListener {
+                val position = vh.bindingAdapterPosition.takeIf {
+                    it != RecyclerView.NO_POSITION
+                } ?: return@setOnClickListener
+                callback.onMovieClicked(items[position].id)
+            }
         }
 
     override fun getItemCount(): Int = items.size
@@ -42,4 +48,8 @@ class HomeMovieListAdapter(
     }
 
     class ViewHolder(val binding: ItemHomeMovieBinding) : RecyclerView.ViewHolder(binding.root)
+
+    interface Callback {
+        fun onMovieClicked(movieId: Int)
+    }
 }

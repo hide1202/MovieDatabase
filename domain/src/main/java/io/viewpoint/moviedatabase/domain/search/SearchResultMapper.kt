@@ -4,8 +4,9 @@ import io.viewpoint.moviedatabase.domain.Mapper
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.model.api.Movie
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
+import javax.inject.Inject
 
-class SearchResultMapper(
+class SearchResultMapper @Inject constructor(
     private val configurationRepository: ConfigurationRepository
 ) : Mapper<Movie, SearchResultModel> {
     override suspend fun map(

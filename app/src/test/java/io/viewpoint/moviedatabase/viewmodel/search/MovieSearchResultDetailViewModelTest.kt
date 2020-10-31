@@ -6,9 +6,11 @@ import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeReposi
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapper
 import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
+import io.viewpoint.moviedatabase.mock.TestMovieRepository
 import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertNotEquals
+import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 
 class MovieSearchResultDetailViewModelTest : TestBase() {
@@ -19,7 +21,26 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         movieApi,
         TestWantToSeeDao()
     )
-    private val vm = MovieSearchResultDetailViewModel(repository)
+    private lateinit var vm: MovieSearchResultDetailViewModel
+
+    @Before
+    fun setUp() {
+        vm = MovieSearchResultDetailViewModel(
+            movieRepository = TestMovieRepository(movieApi),
+            wantToSeeRepository = repository,
+            resultMapper = mapper
+        )
+    }
+
+    @Test
+    fun invertCommendWithoutLoadTest() = runBlocking {
+        val before = vm.wantToSee.value
+        vm.invertWantToSeeCommand()
+        val after = vm.wantToSee.value
+        assertNotNull(before)
+        assertNotNull(after)
+        assertEquals(after, before)
+    }
 
     @Test
     fun invertCommendTest() = runBlocking {
@@ -35,5 +56,11 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         vm.invertWantToSeeCommand()
         val secondInvert = vm.wantToSee.value
         assertNotEquals(firstInvert, secondInvert)
+    }
+
+    @Test
+    fun loadWithMovieIdTest() = runBlocking {
+        val result = vm.loadWithMovieId(movieId = 557)
+        assertNotNull(result)
     }
 }
