@@ -10,7 +10,7 @@ import io.viewpoint.moviedatabase.databinding.ItemLabelBinding
 class LabelAdapter(
     private val labelString: String
 ) : RecyclerView.Adapter<LabelAdapter.LabelHolder>() {
-    private var isEmpty = false
+    private var isEmpty = true
 
     fun updateIsEmpty(isEmpty: Boolean) {
         this.isEmpty = isEmpty
