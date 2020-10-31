@@ -10,6 +10,7 @@ import io.viewpoint.moviedatabase.mock.TestMovieRepository
 import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertNotEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Test
 
 class MovieSearchResultDetailViewModelTest : TestBase() {
@@ -40,5 +41,11 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         vm.invertWantToSeeCommand()
         val secondInvert = vm.wantToSee.value
         assertNotEquals(firstInvert, secondInvert)
+    }
+
+    @Test
+    fun loadWithMovieIdTest() = runBlocking {
+        val result = vm.loadWithMovieId(movieId = 557)
+        assertNotNull(result)
     }
 }
