@@ -20,6 +20,7 @@ import junit.framework.Assert.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeoutOrNull
+import org.junit.Before
 import org.junit.Test
 
 class MovieSearchViewModelTest : TestBase() {
@@ -32,15 +33,20 @@ class MovieSearchViewModelTest : TestBase() {
             ),
             MovieDatabaseSearchRepository(searchApi)
         )
-    private val vm = MovieSearchViewModel(preferences, pager)
+    private lateinit var vm: MovieSearchViewModel
 
     private val differ: AsyncPagingDataDiffer<SearchResultModel> = asyncPagingDataDiffer()
+
+    @Before
+    fun setUp() {
+        vm = MovieSearchViewModel(preferences, pager)
+    }
 
     @Test
     fun searchTest() = runBlocking {
         val keyword = "test"
         vm.keyword.value = keyword
-        vm.searchCommand.action()
+        vm.searchCommand()
 
         val pagingData = vm.results
             .asFlow()
@@ -54,6 +60,19 @@ class MovieSearchViewModelTest : TestBase() {
 
         assertTrue(differ.itemCount > 0)
         assertTrue(preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS).contains(keyword))
+    }
+
+    @Test
+    fun removeKeywordTest() = runBlocking {
+        val keyword = "test"
+        vm.keyword.value = keyword
+        vm.searchCommand()
+
+        val before = vm.recentKeywords.value?.any { it == "test" } == true
+        vm.removeRecentKeyword("test")
+        val after = vm.recentKeywords.value?.any { it == "test" } == true
+        assertTrue(before)
+        assertTrue(after)
     }
 
     @Test
