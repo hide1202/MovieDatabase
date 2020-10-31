@@ -9,9 +9,7 @@ coverage:
     project:
       default:
         threshold: 3%
-    patch:
-      default:
-        threshold: 3%
+    patch: off
 
 parsers:
   gcov:
