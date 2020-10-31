@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.FragmentHomeBinding
+import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
 import io.viewpoint.moviedatabase.platform.ui.search.SearchResultDetailActivity
 import io.viewpoint.moviedatabase.viewmodel.main.MainViewModel
 import kotlinx.coroutines.launch
@@ -43,45 +45,48 @@ class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
 
         val wantToSeeLabelAdapter = LabelAdapter(getString(R.string.want_to_see_header))
         val wantToSeeAdapter = HomeMovieListAdapter(circle = true, callback = this)
+        val popularLabelAdapter = LabelAdapter(getString(R.string.popular_header))
         val popularAdapter = HomeMovieListAdapter(callback = this)
+        val nowPlayingLabelAdapter = LabelAdapter(getString(R.string.now_playing_header))
         val nowPlayingAdapter = HomeMovieListAdapter(callback = this)
+        val upcomingLabelAdapter = LabelAdapter(getString(R.string.upcoming_header))
         val upcomingAdapter = HomeMovieListAdapter(callback = this)
+        val topRatedLabelAdapter = LabelAdapter(getString(R.string.top_rated_header))
         val topRatedAdapter = HomeMovieListAdapter(callback = this)
         val concatAdapter = ConcatAdapter(
             wantToSeeLabelAdapter,
             MovieListAdapter(wantToSeeAdapter),
-            LabelAdapter(getString(R.string.popular_header)),
+            popularLabelAdapter,
             MovieListAdapter(popularAdapter),
-            LabelAdapter(getString(R.string.now_playing_header)),
+            nowPlayingLabelAdapter,
             MovieListAdapter(nowPlayingAdapter),
-            LabelAdapter(getString(R.string.upcoming_header)),
+            upcomingLabelAdapter,
             MovieListAdapter(upcomingAdapter),
-            LabelAdapter(getString(R.string.top_rated_header)),
+            topRatedLabelAdapter,
             MovieListAdapter(topRatedAdapter)
         )
 
         binding.homeSectionList.adapter = concatAdapter
-        viewModel.wantToSee.observe(viewLifecycleOwner) {
-            wantToSeeLabelAdapter.updateIsEmpty(it.isEmpty())
-            wantToSeeAdapter.updateResults(it)
-        }
-        viewModel.popular.observe(viewLifecycleOwner) {
-            popularAdapter.updateResults(it)
-        }
-        viewModel.nowPlaying.observe(viewLifecycleOwner) {
-            nowPlayingAdapter.updateResults(it)
-        }
-        viewModel.upcoming.observe(viewLifecycleOwner) {
-            upcomingAdapter.updateResults(it)
-        }
-        viewModel.topRated.observe(viewLifecycleOwner) {
-            topRatedAdapter.updateResults(it)
-        }
+        viewModel.wantToSee.observeSectionAdapter(wantToSeeLabelAdapter, wantToSeeAdapter)
+        viewModel.popular.observeSectionAdapter(popularLabelAdapter, popularAdapter)
+        viewModel.nowPlaying.observeSectionAdapter(nowPlayingLabelAdapter, nowPlayingAdapter)
+        viewModel.upcoming.observeSectionAdapter(upcomingLabelAdapter, upcomingAdapter)
+        viewModel.topRated.observeSectionAdapter(topRatedLabelAdapter, topRatedAdapter)
 
         binding.refreshLayout.setOnRefreshListener {
             lifecycleScope.launch {
                 viewModel.loadData()
             }
+        }
+    }
+
+    private fun LiveData<List<HomeMovieListResultModel>>.observeSectionAdapter(
+        labelAdapter: LabelAdapter,
+        dataAdapter: HomeMovieListAdapter
+    ) {
+        this.observe(viewLifecycleOwner) {
+            labelAdapter.updateIsEmpty(it.isEmpty())
+            dataAdapter.updateResults(it)
         }
     }
 
