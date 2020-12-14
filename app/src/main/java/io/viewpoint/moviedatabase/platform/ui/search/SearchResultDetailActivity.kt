@@ -11,7 +11,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivitySearchResultDetailBinding
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
+import io.viewpoint.moviedatabase.platform.externsion.dp
 import io.viewpoint.moviedatabase.platform.externsion.intentToActivity
+import io.viewpoint.moviedatabase.platform.util.SpaceItemDecoration
 import io.viewpoint.moviedatabase.viewmodel.search.MovieSearchResultDetailViewModel
 import kotlinx.coroutines.launch
 
@@ -35,12 +37,22 @@ class SearchResultDetailActivity : AppCompatActivity() {
             it > Int.MIN_VALUE
         }
         val resultArgument = intent?.getSerializableExtra(EXTRA_RESULT_MODEL) as? SearchResultModel
+        binding.result = resultArgument
 
         lifecycleScope.launch {
             val result =
                 if (movieId != null) viewModel.loadWithMovieId(movieId)
-                else resultArgument ?: throw IllegalArgumentException()
+                else resultArgument?.apply {
+                    viewModel.loadWithResult(this)
+                } ?: throw IllegalArgumentException()
             binding.result = result
+        }
+
+        val adapter = GenreAdapter()
+        binding.genreList.addItemDecoration(SpaceItemDecoration(spacing = 4.dp))
+        binding.genreList.adapter = adapter
+        viewModel.genres.observe(this) {
+            adapter.updateGenres(it)
         }
     }
 

@@ -3,22 +3,21 @@ package io.viewpoint.moviedatabase.util
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.InputStream
 
 object ResponseReader {
+    suspend fun fromFileAsync(fileName: String): String =
+        withContext(Dispatchers.IO) {
+            blockingFromFile(fileName)
+        }
+
     fun blockingFromFile(fileName: String): String =
-        ClassLoader::class.java.getResourceAsStream(fileName).use {
+        getResourceAsStream(fileName).use {
             String(it?.readBytes() ?: ByteArray(0))
         }
 
-    suspend fun fromFileAsync(fileName: String): String =
-        withContext(Dispatchers.IO) {
-            ClassLoader::class.java.getResourceAsStream(fileName).use {
-                String(it?.readBytes() ?: ByteArray(0))
-            }
-        }
-
-    inline fun <reified T> blockingJsonFromFile(fileName: String, adapter: JsonAdapter<T>): T =
-        MoshiReader.read(blockingFromFile(fileName), adapter)
+    private fun getResourceAsStream(fileName: String): InputStream? =
+        Thread.currentThread().contextClassLoader?.getResourceAsStream(fileName)
 
     suspend inline fun <reified T> jsonFromFileAsync(fileName: String, adapter: JsonAdapter<T>): T {
         val json = fromFileAsync(fileName)

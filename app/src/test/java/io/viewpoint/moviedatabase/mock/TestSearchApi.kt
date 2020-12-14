@@ -12,7 +12,7 @@ class TestSearchApi : SearchApi {
         IO.fx {
             !effect {
                 ResponseReader.jsonFromFileAsync(
-                    "/responses/search-results.json",
+                    "responses/search-results.json",
                     MoshiReader.moshi.adapter(MovieListResponse::class.java)
                 )
             }

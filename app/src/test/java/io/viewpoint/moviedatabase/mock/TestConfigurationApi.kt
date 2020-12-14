@@ -14,7 +14,7 @@ class TestConfigurationApi : ConfigurationApi {
         IO.fx {
             !effect {
                 ResponseReader.jsonFromFileAsync(
-                    "/responses/configuration-results.json",
+                    "responses/configuration-results.json",
                     MoshiReader.moshi.adapter(ConfigurationResponse::class.java)
                 )
             }
@@ -26,7 +26,7 @@ class TestConfigurationApi : ConfigurationApi {
                 val type =
                     Types.newParameterizedType(List::class.java, ConfigurationLanguage::class.java)
                 ResponseReader.jsonFromFileAsync(
-                    "/responses/languages-results.json",
+                    "responses/languages-results.json",
                     MoshiReader.moshi.adapter<List<ConfigurationLanguage>>(type)
                 )
             }

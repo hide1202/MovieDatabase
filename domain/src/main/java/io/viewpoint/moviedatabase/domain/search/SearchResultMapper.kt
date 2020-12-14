@@ -14,6 +14,7 @@ class SearchResultMapper @Inject constructor(
     ): SearchResultModel = SearchResultModel(
         id = input.id,
         title = input.title,
+        originalTitle = input.original_title,
         overview = input.overview,
         posterUrl = configurationRepository.getImageUrl {
             input.poster_path

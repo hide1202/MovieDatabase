@@ -21,12 +21,13 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         movieApi,
         TestWantToSeeDao()
     )
+    private val movieRepository = TestMovieRepository(movieApi)
     private lateinit var vm: MovieSearchResultDetailViewModel
 
     @Before
     fun setUp() {
         vm = MovieSearchResultDetailViewModel(
-            movieRepository = TestMovieRepository(movieApi),
+            movieRepository = movieRepository,
             wantToSeeRepository = repository,
             resultMapper = mapper
         )
@@ -61,6 +62,8 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
     @Test
     fun loadWithMovieIdTest() = runBlocking {
         val result = vm.loadWithMovieId(movieId = 557)
+        val genres = vm.genres
         assertNotNull(result)
+        assertNotNull(genres.value)
     }
 }
