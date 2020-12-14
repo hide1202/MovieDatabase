@@ -113,6 +113,19 @@
                 android:focusable="false" />
         </FrameLayout>
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/originalTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{result.originalTitle}"
+            android:textColor="@color/search_description_text"
+            android:textSize="15sp"
+            app:gone="@{result.originalTitle == null}"
+            app:layout_constraintEnd_toEndOf="@id/title"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="Spiderman" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/genreList"
             android:layout_width="0dp"
@@ -123,7 +136,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="@id/want_to_see"
             app:layout_constraintStart_toStartOf="@id/title"
-            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/originalTitle"
             tools:listitem="@layout/item_genre" />
 
         <ScrollView
