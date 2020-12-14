@@ -12,7 +12,7 @@ class TestWantToSeeDao : WantToSeeDao {
     private val detail: IO<MovieDetail> = IO.fx {
         !effect {
             ResponseReader.jsonFromFileAsync(
-                "/responses/movie-detail.json",
+                "responses/movie-detail.json",
                 MoshiReader.moshi.adapter(MovieDetail::class.java)
             )
         }

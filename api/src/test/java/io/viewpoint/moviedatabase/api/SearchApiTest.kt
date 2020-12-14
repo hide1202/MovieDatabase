@@ -20,7 +20,7 @@ class SearchApiTest : ApiTest() {
     fun `success to search movie`() =
         withMockResponse(
             MockResponse()
-                .setBody(MockResponseReader.fromFile("/responses/search/spider-man.json"))
+                .setBody(MockResponseReader.fromFile("responses/search/spider-man.json"))
         ) {
             val api = api.get<SearchApi>()
 
@@ -35,7 +35,7 @@ class SearchApiTest : ApiTest() {
         withMockResponse(
             MockResponse()
                 .setResponseCode(401)
-                .setBody(MockResponseReader.fromFile("/responses/search/spider-man.json"))
+                .setBody(MockResponseReader.fromFile("responses/search/spider-man.json"))
         ) {
             val api = api.get<SearchApi>()
             val either = api.searchMovie("")
