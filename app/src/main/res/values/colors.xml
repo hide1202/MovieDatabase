@@ -4,8 +4,10 @@
     <color name="colorPrimaryDark">#FF3700B3</color>
     <color name="colorAccent">#FF03DAC5</color>
 
-    <color name="default_text_color">@color/black</color>
+    <color name="default_foreground">@color/black</color>
     <color name="default_background">@color/white</color>
+
+    <color name="default_text_color">@color/default_foreground</color>
 
     <!--search result-->
     <color name="search_title_text">@color/default_text_color</color>
