@@ -55,7 +55,16 @@ android {
     }
 
     testOptions {
-        unitTests.includeAndroidResources = true
+        unitTests {
+            all {
+                jvmArgs '-noverify', '-ea'
+                jacoco {
+                    includeNoLocationClasses = true
+                    excludes = ['jdk.internal.*'] // for jdk-9 higher
+                }
+            }
+            includeAndroidResources = true
+        }
     }
 }
 
