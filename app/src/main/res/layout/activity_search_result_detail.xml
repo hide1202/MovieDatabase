@@ -40,7 +40,7 @@
             android:scaleType="centerCrop"
             android:transitionName="@string/result_to_detail_transition"
             app:borderColor="@{@color/white}"
-            app:borderWidth="@{Dimensions.dp(3)}"
+            app:borderWidth="@{Dimensions.dp(2)}"
             app:imageUrl="@{result.posterUrl}"
             app:layout_constraintBottom_toBottomOf="@id/backdrop"
             app:layout_constraintStart_toStartOf="@id/backdrop"
