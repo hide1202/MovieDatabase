@@ -53,6 +53,10 @@ android {
         jvmTarget = "1.8"
         freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     }
+
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
 }
 
 kapt {
@@ -106,9 +110,11 @@ dependencies {
     testImplementation deps.test.junit
     testImplementation deps.test.mockk
     testImplementation deps.test.mockk_agent_jvm
+    testImplementation deps.test.android_test_core
     testImplementation deps.test.android_core
     testImplementation deps.libraries.moshi
     testImplementation deps.test.coroutine_test
+    testImplementation deps.test.robolectric
 
     // android test
     androidTestImplementation deps.android_test.junit

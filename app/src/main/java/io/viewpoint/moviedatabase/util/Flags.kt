@@ -12,7 +12,9 @@ object Flags {
             "flag_${isoCountryCode.toLowerCase(Locale.US)}",
             "drawable",
             context.packageName
-        )
+        ).takeIf {
+            it != 0
+        } ?: return null
         return ResourcesCompat.getDrawable(resources, id, context.theme)
     }
 }
