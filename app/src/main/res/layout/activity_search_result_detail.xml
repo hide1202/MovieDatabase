@@ -35,9 +35,9 @@
         <ImageView
             android:id="@+id/poster"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="220dp"
             android:layout_marginStart="16dp"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:transitionName="@string/result_to_detail_transition"
             app:borderColor="@{@color/white}"
             app:borderWidth="@{Dimensions.dp(3)}"
@@ -46,6 +46,15 @@
             app:layout_constraintStart_toStartOf="@id/backdrop"
             app:layout_constraintTop_toBottomOf="@id/backdrop"
             tools:background="@color/gray" />
+
+        <ImageView
+            android:id="@+id/flag"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            app:flag="@{vm.country}"
+            app:layout_constraintBottom_toBottomOf="@id/poster"
+            app:layout_constraintStart_toEndOf="@id/poster" />
 
         <TextView
             android:id="@+id/release_date"

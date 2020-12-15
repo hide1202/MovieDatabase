@@ -30,7 +30,7 @@ class SearchResultMapperTest {
         }
 
         val expectedImageBaseUrl = "http://image.tmdb.org/t/p/"
-        val mapper = SearchResultMapper(object : ConfigurationRepository {
+        val mapper = SearchResultMapperProvider(object : ConfigurationRepository {
             override suspend fun getImageBaseUrl(): Option<String> =
                 expectedImageBaseUrl.some()
 
@@ -40,7 +40,7 @@ class SearchResultMapperTest {
 
         assertEquals(
             "${expectedImageBaseUrl}eXbCqcUsUDUq2qqGmU5i20S0tjo.jpg",
-            mapper.map(response).posterUrl
+            mapper.mapperFromMovie.map(response).posterUrl
         )
     }
 

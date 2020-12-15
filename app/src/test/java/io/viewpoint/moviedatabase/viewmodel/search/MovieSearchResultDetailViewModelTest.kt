@@ -3,7 +3,7 @@ package io.viewpoint.moviedatabase.viewmodel.search
 import io.viewpoint.moviedatabase.TestBase
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
-import io.viewpoint.moviedatabase.domain.search.SearchResultMapper
+import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
 import io.viewpoint.moviedatabase.mock.TestMovieRepository
@@ -14,8 +14,8 @@ import org.junit.Before
 import org.junit.Test
 
 class MovieSearchResultDetailViewModelTest : TestBase() {
-    private val mapper =
-        SearchResultMapper(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
+    private val mapperProvider =
+        SearchResultMapperProvider(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
     private val movieApi = TestMovieApi()
     private val repository = MovieDatabaseWantToSeeRepository(
         movieApi,
@@ -29,7 +29,7 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         vm = MovieSearchResultDetailViewModel(
             movieRepository = movieRepository,
             wantToSeeRepository = repository,
-            resultMapper = mapper
+            resultMapperProvider = mapperProvider
         )
     }
 
@@ -48,7 +48,7 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         val popular = movieApi.getPopular().suspended()
         val result = popular.results[0]
 
-        vm.loadWithResult(mapper.map(result))
+        vm.loadWithResult(mapperProvider.mapperFromMovie.map(result))
 
         val previous = vm.wantToSee.value
         vm.invertWantToSeeCommand()
@@ -63,7 +63,10 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
     fun loadWithMovieIdTest() = runBlocking {
         val result = vm.loadWithMovieId(movieId = 557)
         val genres = vm.genres
+        val country = vm.country
         assertNotNull(result)
         assertNotNull(genres.value)
+        assertNotNull(country.value)
+        assertEquals("US", country.value)
     }
 }

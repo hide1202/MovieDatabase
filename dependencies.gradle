@@ -27,9 +27,11 @@ ext.versions = [
                 room              : '2.2.5'
         ],
         test     : [
-                junit       : '4.13',
-                android_core: '2.1.0',
-                mockk       : '1.10.3'
+                junit            : '4.13',
+                android_test_core: '1.3.0',
+                android_core     : '2.1.0',
+                mockk            : '1.10.3',
+                robolectric      : '4.4'
         ],
         libraries: [
                 moshi         : '1.11.0',
@@ -79,12 +81,14 @@ ext.deps = [
                 room_ktx           : "androidx.room:room-ktx:${versions.androidx.room}"
         ],
         test        : [
-                junit          : "junit:junit:${versions.test.junit}",
-                android_core   : "androidx.arch.core:core-testing:${versions.test.android_core}",
-                mockk          : "io.mockk:mockk:${versions.test.mockk}",
-                mockk_agent_jvm: "io.mockk:mockk-agent-jvm:${versions.test.mockk}",
-                mockwebserver  : "com.squareup.okhttp3:mockwebserver:${versions.libraries.okhttp}",
-                coroutine_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}"
+                junit            : "junit:junit:${versions.test.junit}",
+                android_core     : "androidx.arch.core:core-testing:${versions.test.android_core}",
+                android_test_core: "androidx.test:core:${versions.test.android_test_core}",
+                mockk            : "io.mockk:mockk:${versions.test.mockk}",
+                mockk_agent_jvm  : "io.mockk:mockk-agent-jvm:${versions.test.mockk}",
+                mockwebserver    : "com.squareup.okhttp3:mockwebserver:${versions.libraries.okhttp}",
+                coroutine_test   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx.coroutines}",
+                robolectric      : "org.robolectric:robolectric:${versions.test.robolectric}"
         ],
         android_test: [
                 junit        : "androidx.test.ext:junit:${versions.androidx.ext_junit}",
