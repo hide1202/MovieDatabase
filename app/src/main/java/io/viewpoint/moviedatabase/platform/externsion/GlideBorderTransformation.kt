@@ -33,8 +33,7 @@ class GlideBorderTransformation(
         outWidth: Int,
         outHeight: Int
     ): Bitmap {
-        val borderWidth = borderWidth.toFloat()
-        val halfBorderWidth = borderWidth / 2
+        val halfBorderWidth = borderWidth / 2.0f
 
         rect.set(
             0.0f,
