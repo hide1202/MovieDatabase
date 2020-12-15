@@ -9,9 +9,8 @@ import arrow.core.Either
 import arrow.core.getOrElse
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
-import io.viewpoint.moviedatabase.domain.search.SearchResultMapper
+import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.model.api.MovieDetail
-import io.viewpoint.moviedatabase.model.api.toMovie
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.launch
@@ -19,17 +18,22 @@ import kotlinx.coroutines.launch
 class MovieSearchResultDetailViewModel @ViewModelInject constructor(
     private val movieRepository: MovieRepository,
     private val wantToSeeRepository: WantToSeeRepository,
-    private val resultMapper: SearchResultMapper
+    private val resultMapperProvider: SearchResultMapperProvider
 ) : ViewModel() {
     private var result: SearchResultModel? = null
-    private var _wantToSee = MutableLiveData(false)
-    private var _genres = MutableLiveData<List<MovieDetail.Genre>>(emptyList())
+    private val _wantToSee = MutableLiveData(false)
+    private val _genres = MutableLiveData<List<MovieDetail.Genre>>(emptyList())
+    private val _country = MutableLiveData<String>()
 
     val wantToSee: LiveData<Boolean>
         get() = _wantToSee
 
     val genres: LiveData<List<MovieDetail.Genre>>
         get() = _genres
+
+    // TODO implement multiple countries
+    val country: LiveData<String>
+        get() = _country
 
     val invertWantToSeeCommand = Command {
         val result = result ?: return@Command
@@ -51,12 +55,10 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
 
     suspend fun loadWithMovieId(movieId: Int): SearchResultModel? {
         val result = movieRepository.getMovieDetail(movieId)
-            ?.apply {
-                _genres.value = this.genres
-            }
-            ?.toMovie()
             ?.let {
-                resultMapper.map(it)
+                _genres.value = it.genres
+                _country.value = it.production_countries.getOrNull(0)?.iso_3166_1
+                resultMapperProvider.mapperFromMovieDetail.map(it)
             }
         if (result != null) {
             loadWithResult(result)

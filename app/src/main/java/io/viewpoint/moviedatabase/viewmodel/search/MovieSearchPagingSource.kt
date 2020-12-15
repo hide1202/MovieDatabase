@@ -3,7 +3,7 @@ package io.viewpoint.moviedatabase.viewmodel.search
 import androidx.paging.PagingSource
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.SearchRepository
-import io.viewpoint.moviedatabase.domain.search.SearchResultMapper
+import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.util.LoadResultMapper
 
@@ -12,13 +12,13 @@ class MovieSearchPagingSource(
     private val searchRepository: SearchRepository,
     configurationRepository: ConfigurationRepository
 ) : PagingSource<Int, SearchResultModel>() {
-    private val mapper: SearchResultMapper = SearchResultMapper(configurationRepository)
+    private val mapperProvider: SearchResultMapperProvider = SearchResultMapperProvider(configurationRepository)
     private val resultMapper: LoadResultMapper<Int, SearchResultModel> = LoadResultMapper()
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SearchResultModel> =
         searchRepository.searchKeyword(keyword, params.key)
             .map {
-                mapper.map(it)
+                mapperProvider.mapperFromMovie.map(it)
             }
             .let {
                 resultMapper.map(it)

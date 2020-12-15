@@ -12,6 +12,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.platform.externsion.GlideBorderTransformation
+import io.viewpoint.moviedatabase.util.Flags
 import io.viewpoint.moviedatabase.viewmodel.Command
 import timber.log.Timber
 
@@ -74,4 +75,13 @@ fun ImageView.setImageUrl(
         .placeholder(R.drawable.fallback_image)
         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
         .into(this)
+}
+
+@BindingAdapter("flag")
+fun ImageView.setCountryFlag(isoCountryCode: String?) {
+    setImageDrawable(
+        isoCountryCode?.let {
+            Flags.getDrawable(context, it)
+        }
+    )
 }

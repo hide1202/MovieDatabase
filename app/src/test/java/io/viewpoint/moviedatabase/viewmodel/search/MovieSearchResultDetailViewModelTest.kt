@@ -3,7 +3,7 @@ package io.viewpoint.moviedatabase.viewmodel.search
 import io.viewpoint.moviedatabase.TestBase
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
-import io.viewpoint.moviedatabase.domain.search.SearchResultMapper
+import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
 import io.viewpoint.moviedatabase.mock.TestMovieRepository
@@ -15,7 +15,7 @@ import org.junit.Test
 
 class MovieSearchResultDetailViewModelTest : TestBase() {
     private val mapper =
-        SearchResultMapper(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
+        SearchResultMapperProvider(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
     private val movieApi = TestMovieApi()
     private val repository = MovieDatabaseWantToSeeRepository(
         movieApi,
