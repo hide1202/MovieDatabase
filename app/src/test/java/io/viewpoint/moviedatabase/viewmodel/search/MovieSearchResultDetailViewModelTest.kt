@@ -63,10 +63,11 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
     fun loadWithMovieIdTest() = runBlocking {
         val result = vm.loadWithMovieId(movieId = 557)
         val genres = vm.genres
-        val country = vm.country
+        val country = vm.countries
         assertNotNull(result)
         assertNotNull(genres.value)
         assertNotNull(country.value)
-        assertEquals("US", country.value)
+        assertEquals(1, country.value?.size)
+        assertEquals("US", country.value?.getOrNull(0))
     }
 }

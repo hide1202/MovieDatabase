@@ -48,11 +48,18 @@ class SearchResultDetailActivity : AppCompatActivity() {
             binding.result = result
         }
 
-        val adapter = GenreAdapter()
+        val genreAdapter = GenreAdapter()
         binding.genreList.addItemDecoration(SpaceItemDecoration(spacing = 4.dp))
-        binding.genreList.adapter = adapter
+        binding.genreList.adapter = genreAdapter
         viewModel.genres.observe(this) {
-            adapter.updateGenres(it)
+            genreAdapter.updateGenres(it)
+        }
+
+        val countriesAdapter = CountriesAdapter()
+        binding.flags.addItemDecoration(SpaceItemDecoration(spacing = 4.dp))
+        binding.flags.adapter = countriesAdapter
+        viewModel.countries.observe(this) {
+            countriesAdapter.submitList(it)
         }
     }
 
