@@ -26,6 +26,14 @@ allprojects {
     }
 }
 
+// references https://github.com/ben-manes/gradle-versions-plugin#revisions
+tasks.named("dependencyUpdates").configure {
+    rejectVersionIf {
+        String version = it.candidate.version.toLowerCase(Locale.US)
+        version.contains("alpha") || version.contains("beta") || version.contains("rc")
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
