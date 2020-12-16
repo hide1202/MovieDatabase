@@ -67,6 +67,7 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         assertNotNull(result)
         assertNotNull(genres.value)
         assertNotNull(country.value)
-        assertEquals("US", country.value)
+        assertEquals(1, country.value?.size)
+        assertEquals("US", country.value?.getOrNull(0))
     }
 }
