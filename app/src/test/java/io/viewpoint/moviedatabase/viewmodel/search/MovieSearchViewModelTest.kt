@@ -54,11 +54,12 @@ class MovieSearchViewModelTest : TestBase() {
 
         assertNotNull(pagingData)
 
-        withTimeoutOrNull(1500) {
+        val itemCount = withTimeoutOrNull(3000) {
             differ.submitData(pagingData)
-        }
+            differ.itemCount
+        } ?: Int.MIN_VALUE
 
-        assertTrue(differ.itemCount > 0)
+        assertTrue(itemCount > 0)
         assertTrue(preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS).contains(keyword))
     }
 
