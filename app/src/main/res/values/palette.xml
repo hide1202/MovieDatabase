@@ -94,6 +94,7 @@
     <color name="blue_violet">#FF8A2BE2</color>
     <color name="light_sky_blue">#FF87CEFA</color>
     <color name="sky_blue">#FF87CEEB</color>
+    <color name="light_gray">#FFCCCCCC</color>
     <color name="gray">#FF808080</color>
     <color name="olive">#FF808000</color>
     <color name="purple">#FF800080</color>
