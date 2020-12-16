@@ -67,6 +67,7 @@
             app:layout_constraintBottom_toTopOf="@id/title"
             app:layout_constraintEnd_toStartOf="@id/vote"
             app:layout_constraintStart_toEndOf="@id/poster"
+            tools:itemCount="1"
             tools:listitem="@layout/item_country" />
 
         <com.google.android.material.textview.MaterialTextView
