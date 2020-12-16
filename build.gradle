@@ -10,9 +10,9 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.0-alpha02'
-        classpath "com.github.ben-manes:gradle-versions-plugin:0.33.0"
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-        classpath "org.jacoco:org.jacoco.core:0.8.1"
+        classpath "org.jacoco:org.jacoco.core:0.8.3"
 
         classpath "com.google.dagger:hilt-android-gradle-plugin:${versions.libraries.hilt}"
     }
@@ -23,6 +23,14 @@ allprojects {
         google()
         jcenter()
         maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }
+    }
+}
+
+// references https://github.com/ben-manes/gradle-versions-plugin#revisions
+tasks.named("dependencyUpdates").configure {
+    rejectVersionIf {
+        String version = it.candidate.version.toLowerCase(Locale.US)
+        version.contains("alpha") || version.contains("beta") || version.contains("rc")
     }
 }
 
