@@ -12,5 +12,4 @@
     <!--search result-->
     <color name="search_title_text">@color/white</color>
     <color name="search_description_text">@color/gray</color>
-    <color name="vote_count_text">@color/gray</color>
 </resources>
