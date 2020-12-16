@@ -23,7 +23,7 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
     private var result: SearchResultModel? = null
     private val _wantToSee = MutableLiveData(false)
     private val _genres = MutableLiveData<List<MovieDetail.Genre>>(emptyList())
-    private val _country = MutableLiveData<String>()
+    private val _countries = MutableLiveData<List<String>>(emptyList())
 
     val wantToSee: LiveData<Boolean>
         get() = _wantToSee
@@ -31,9 +31,8 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
     val genres: LiveData<List<MovieDetail.Genre>>
         get() = _genres
 
-    // TODO implement multiple countries
-    val country: LiveData<String>
-        get() = _country
+    val countries: LiveData<List<String>>
+        get() = _countries
 
     val invertWantToSeeCommand = Command {
         val result = result ?: return@Command
@@ -57,7 +56,7 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
         val result = movieRepository.getMovieDetail(movieId)
             ?.let {
                 _genres.value = it.genres
-                _country.value = it.production_countries.getOrNull(0)?.iso_3166_1
+                _countries.value = it.production_countries.map { it.iso_3166_1 }
                 resultMapperProvider.mapperFromMovieDetail.map(it)
             }
         if (result != null) {

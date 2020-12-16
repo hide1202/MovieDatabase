@@ -47,14 +47,19 @@
             app:layout_constraintTop_toBottomOf="@id/backdrop"
             tools:background="@color/gray" />
 
-        <ImageView
-            android:id="@+id/flag"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/flags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:flag="@{vm.country}"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="@id/poster"
-            app:layout_constraintStart_toEndOf="@id/poster" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/poster"
+            tools:listitem="@layout/item_country" />
 
         <TextView
             android:id="@+id/release_date"
