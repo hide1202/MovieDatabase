@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,8 +12,8 @@
 
     <ImageView
         android:id="@+id/flag"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="8dp"
-        app:flag="@{country}" />
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        app:flag="@{country}"
+        tools:src="@drawable/flag_us" />
 </layout>

@@ -56,7 +56,7 @@ class SearchResultDetailActivity : AppCompatActivity() {
         }
 
         val countriesAdapter = CountriesAdapter()
-        binding.flags.addItemDecoration(SpaceItemDecoration(spacing = 4.dp))
+        binding.flags.addItemDecoration(SpaceItemDecoration(spacing = 8.dp))
         binding.flags.adapter = countriesAdapter
         viewModel.countries.observe(this) {
             countriesAdapter.submitList(it)
