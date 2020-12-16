@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.text.TextUtils" />
+
         <variable
             name="result"
             type="io.viewpoint.moviedatabase.model.ui.SearchResultModel" />
@@ -70,7 +72,7 @@
                 android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toTopOf="@id/title"
-                app:layout_constraintEnd_toStartOf="@id/vote"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/poster"
                 tools:itemCount="1"
                 tools:listitem="@layout/item_country" />
@@ -186,6 +188,7 @@
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:gone="@{TextUtils.isEmpty(result.overview)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/first_section">
