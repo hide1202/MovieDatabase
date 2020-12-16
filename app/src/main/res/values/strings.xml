@@ -2,7 +2,6 @@
     <string name="app_name">TMDB</string>
 
     <string name="search_button">Search</string>
-    <string name="release_date">Release : %s</string>
     <string name="language_select">Language</string>
 
     <string name="want_to_see_header">Want To See</string>

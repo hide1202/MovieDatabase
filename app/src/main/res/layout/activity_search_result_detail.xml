@@ -34,9 +34,10 @@
 
         <ImageView
             android:id="@+id/poster"
-            android:layout_width="150dp"
-            android:layout_height="220dp"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
             android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
             android:transitionName="@string/result_to_detail_transition"
             app:borderColor="@{@color/white}"
@@ -44,7 +45,6 @@
             app:imageUrl="@{result.posterUrl}"
             app:layout_constraintBottom_toBottomOf="@id/backdrop"
             app:layout_constraintStart_toStartOf="@id/backdrop"
-            app:layout_constraintTop_toBottomOf="@id/backdrop"
             tools:background="@color/gray" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -57,22 +57,9 @@
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="@id/poster"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/vote"
             app:layout_constraintStart_toEndOf="@id/poster"
             tools:listitem="@layout/item_country" />
-
-        <TextView
-            android:id="@+id/release_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:padding="8dp"
-            android:text="@{@string/release_date(result.releaseDate)}"
-            app:gone="@{result.releaseDate == null}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backdrop"
-            tools:text="@string/release_date" />
 
         <TextView
             android:id="@+id/vote"
@@ -94,18 +81,49 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@{result.title}"
             android:textColor="@color/search_title_text"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@id/want_to_see"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toStartOf="@id/release_date"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/poster"
+            app:layout_constraintTop_toBottomOf="@id/backdrop"
             tools:text="스파이더맨: 홈커밍" />
+
+        <TextView
+            android:id="@+id/release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:gravity="bottom"
+            android:text="@{result.releaseDate.substring(0, 4)}"
+            app:gone="@{result.releaseDate == null}"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintEnd_toStartOf="@id/want_to_see"
+            app:layout_constraintStart_toEndOf="@id/title"
+            tools:text="2017" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/originalTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{result.originalTitle}"
+            android:textColor="@color/search_description_text"
+            android:textSize="15sp"
+            app:gone="@{result.originalTitle == null}"
+            app:layout_constraintEnd_toStartOf="@id/want_to_see"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="Spiderman" />
 
         <FrameLayout
             android:id="@+id/want_to_see"
@@ -113,7 +131,7 @@
             android:layout_height="36dp"
             android:layout_marginEnd="16dp"
             app:command="@{vm.invertWantToSeeCommand}"
-            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintBottom_toBottomOf="@id/originalTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/title">
 
@@ -127,24 +145,11 @@
                 android:focusable="false" />
         </FrameLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/originalTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{result.originalTitle}"
-            android:textColor="@color/search_description_text"
-            android:textSize="15sp"
-            app:gone="@{result.originalTitle == null}"
-            app:layout_constraintEnd_toEndOf="@id/title"
-            app:layout_constraintStart_toStartOf="@id/title"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            tools:text="Spiderman" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/genreList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
