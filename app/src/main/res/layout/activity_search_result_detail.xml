@@ -21,16 +21,23 @@
         android:layout_height="match_parent"
         tools:context=".platform.ui.search.SearchResultDetailActivity">
 
-        <ImageView
+        <FrameLayout
             android:id="@+id/backdrop"
             android:layout_width="0dp"
             android:layout_height="250dp"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{result.backdropUrl}"
+            android:foreground="@drawable/bg_backdrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/dark_gray" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{result.backdropUrl}"
+                tools:background="@color/dark_gray" />
+
+        </FrameLayout>
 
         <ImageView
             android:id="@+id/poster"

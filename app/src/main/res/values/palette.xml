@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="transparent">#00000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ivory">#FFFFFFF0</color>
     <color name="light_yellow">#FFFFFFE0</color>
@@ -140,4 +141,6 @@
     <color name="dark_blue">#FF00008B</color>
     <color name="navy">#FF000080</color>
     <color name="black">#FF000000</color>
+
+    <color name="black_50">#80000000</color>
 </resources>
