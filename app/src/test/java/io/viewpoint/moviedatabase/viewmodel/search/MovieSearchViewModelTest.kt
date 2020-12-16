@@ -14,10 +14,13 @@ import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.mock.TestSearchApi
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
+import io.viewpoint.moviedatabase.tryWithDelay
 import io.viewpoint.moviedatabase.util.PreferencesKeys
 import io.viewpoint.moviedatabase.util.asyncPagingDataDiffer
 import junit.framework.Assert.*
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeoutOrNull
 import org.junit.Before
@@ -54,13 +57,24 @@ class MovieSearchViewModelTest : TestBase() {
 
         assertNotNull(pagingData)
 
-        val itemCount = withTimeoutOrNull(3000) {
+        val submitJob = GlobalScope.launch {
             differ.submitData(pagingData)
-            differ.itemCount
-        } ?: Int.MIN_VALUE
+        }
+        try {
+            tryWithDelay {
+                if (differ.itemCount > 0) {
+                    differ.getItem(0)
+                    true
+                } else {
+                    false
+                }
+            }
 
-        assertTrue(itemCount > 0)
-        assertTrue(preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS).contains(keyword))
+            assertTrue(differ.itemCount > 0)
+            assertTrue(preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS).contains(keyword))
+        } finally {
+            submitJob.cancel()
+        }
     }
 
     @Test
