@@ -18,4 +18,5 @@ movie.database.api.key=YOUR_API_KEY
 ```
 
 ## References
+- The Movie Database API : https://developers.themoviedb.org/3/
 - Vector icons : https://www.flaticon.com/kr/
