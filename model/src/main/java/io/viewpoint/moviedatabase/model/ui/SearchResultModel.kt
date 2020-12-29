@@ -14,6 +14,7 @@ data class SearchResultModel(
     val releaseDate: String?
 ) : Serializable {
     data class ProductionCompany(
+        val id: Int,
         val name: String,
         val logoUrl: String?
     )

@@ -10,6 +10,6 @@
     <color name="default_text_color">@color/default_foreground</color>
 
     <!--search result-->
-    <color name="search_title_text">@color/white</color>
+    <color name="search_title_text">@color/default_text_color</color>
     <color name="search_description_text">@color/gray</color>
 </resources>

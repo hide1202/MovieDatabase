@@ -57,6 +57,7 @@ class SearchResultMapperProvider @Inject constructor(
                 productionCompanies = input.production_companies
                     .map {
                         SearchResultModel.ProductionCompany(
+                            id = it.id,
                             name = it.name,
                             logoUrl = configurationRepository.getImageUrl {
                                 it.logo_path
