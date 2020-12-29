@@ -9,6 +9,12 @@ data class SearchResultModel(
     val overview: String,
     val posterUrl: String?,
     val backdropUrl: String?,
+    val productionCompanies: List<ProductionCompany>,
     val vote: Double,
     val releaseDate: String?
-) : Serializable
+) : Serializable {
+    data class ProductionCompany(
+        val name: String,
+        val logoUrl: String?
+    )
+}
