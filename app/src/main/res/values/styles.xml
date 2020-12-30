@@ -17,11 +17,10 @@
         <item name="android:paddingBottom">6dp</item>
     </style>
 
-    <style name="DetailContentSection" parent="Widget.MaterialComponents.CardView">
+    <style name="DetailContentSection">
         <item name="android:layout_marginStart">8dp</item>
         <item name="android:layout_marginEnd">8dp</item>
         <item name="android:layout_marginTop">8dp</item>
-        <item name="cardBackgroundColor">@color/default_background</item>
-        <item name="cardCornerRadius">8dp</item>
+        <item name="android:background">@drawable/bg_detail_section</item>
     </style>
 </resources>

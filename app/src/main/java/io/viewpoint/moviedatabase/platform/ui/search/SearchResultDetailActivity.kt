@@ -63,7 +63,7 @@ class SearchResultDetailActivity : AppCompatActivity() {
         }
 
         val productionCompaniesAdapter = ProductionCompaniesAdapter()
-        binding.productionCompanies.addItemDecoration(SpaceItemDecoration(spacing = 8.dp))
+        binding.productionCompanies.addItemDecoration(SpaceItemDecoration(spacing = 16.dp))
         binding.productionCompanies.adapter = productionCompaniesAdapter
         viewModel.productionCompanies.observe(this) {
             productionCompaniesAdapter.submitList(it)

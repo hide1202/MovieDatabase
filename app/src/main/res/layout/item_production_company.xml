@@ -10,32 +10,33 @@
             type="io.viewpoint.moviedatabase.model.ui.SearchResultModel.ProductionCompany" />
     </data>
 
-    <FrameLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foreground="@drawable/bg_backdrop">
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:imageUrl="@{company.logoUrl}"
-                tools:background="@color/light_blue" />
-        </FrameLayout>
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{company.logoUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/light_blue" />
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginBottom="4dp"
             android:gravity="center"
             android:text="@{company.name}"
-            android:textColor="@color/default_background"
+            android:textColor="@color/default_text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo"
             tools:text="Marvel" />
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

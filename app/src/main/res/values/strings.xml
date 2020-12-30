@@ -17,5 +17,6 @@
     <string name="menu_search">Search</string>
     <string name="menu_setting">Setting</string>
 
-    <string name="detail_vote">Average ★ %s</string>
+    <string name="detail_vote">★ %s</string>
+    <string name="detail_overview_label">Overview</string>
 </resources>

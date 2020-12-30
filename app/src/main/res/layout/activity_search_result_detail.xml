@@ -110,81 +110,66 @@
                 app:layout_constraintStart_toEndOf="@id/poster"
                 tools:text="Spiderman" />
 
-            <androidx.cardview.widget.CardView
+            <TextView
                 android:id="@+id/vote_section"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@{@string/detail_vote(String.valueOf(result.vote))}"
+                android:textColor="@color/default_text_color"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/backdrop">
+                app:layout_constraintTop_toBottomOf="@id/backdrop"
+                tools:ignore="SpUsage"
+                tools:text="@string/detail_vote" />
 
-                <TextView
-                    android:id="@+id/vote"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@{@string/detail_vote(String.valueOf(result.vote))}"
-                    android:textColor="@color/default_text_color"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@id/backdrop"
-                    app:layout_constraintEnd_toEndOf="@id/backdrop"
-                    tools:ignore="SpUsage"
-                    tools:text="@string/detail_vote" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:id="@+id/first_section"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/vote_section">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/genreList"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_genre" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/genreList"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:overScrollMode="never"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/item_genre" />
+                <FrameLayout
+                    android:id="@+id/want_to_see"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:command="@{vm.invertWantToSeeCommand}">
 
-                    <FrameLayout
-                        android:id="@+id/want_to_see"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        app:command="@{vm.invertWantToSeeCommand}">
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_heart_check"
+                        android:button="@null"
+                        android:checked="@{vm.wantToSee}"
+                        android:clickable="false"
+                        android:focusable="false" />
+                </FrameLayout>
 
-                        <CheckBox
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_heart_check"
-                            android:button="@null"
-                            android:checked="@{vm.wantToSee}"
-                            android:clickable="false"
-                            android:focusable="false" />
-                    </FrameLayout>
+            </LinearLayout>
 
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/second_section"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
@@ -195,37 +180,45 @@
                 app:layout_constraintTop_toBottomOf="@id/first_section">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/overview"
-                    android:layout_width="match_parent"
+                    android:id="@+id/overview_label"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:text="@string/detail_overview_label"
+                    android:textColor="@color/default_text_color"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/overview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
                     android:text="@{result.overview}"
                     android:textColor="@color/default_text_color"
                     android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/overview_label"
                     tools:text="토니 스타크(로버트 다우니 주니어)의 제안을 받고 시빌 워에 참여한 피터 파커(톰 홀랜드)은 다음 임무가 언제일지 설렘을 안고 하루하루를 보낸다. 토니는 MIT 진학 준비에 전념할 것을 권하지만 친절한" />
 
-            </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/third_section"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/production_companies"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/second_section">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/production_companies"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_production_company" />
-            </androidx.cardview.widget.CardView>
+                app:layout_constraintTop_toBottomOf="@id/second_section"
+                tools:listitem="@layout/item_production_company" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
