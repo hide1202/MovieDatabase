@@ -1,12 +1,13 @@
 package io.viewpoint.moviedatabase.viewmodel.search
 
 import io.viewpoint.moviedatabase.TestBase
+import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
-import io.viewpoint.moviedatabase.mock.TestMovieRepository
 import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
@@ -16,12 +17,14 @@ import org.junit.Test
 class MovieSearchResultDetailViewModelTest : TestBase() {
     private val mapperProvider =
         SearchResultMapperProvider(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
+    private val creditMapper =
+        CreditModelMapper(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
     private val movieApi = TestMovieApi()
     private val repository = MovieDatabaseWantToSeeRepository(
         movieApi,
         TestWantToSeeDao()
     )
-    private val movieRepository = TestMovieRepository(movieApi)
+    private val movieRepository = MovieDatabaseMovieRepository(movieApi)
     private lateinit var vm: MovieSearchResultDetailViewModel
 
     @Before
@@ -29,7 +32,8 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         vm = MovieSearchResultDetailViewModel(
             movieRepository = movieRepository,
             wantToSeeRepository = repository,
-            resultMapperProvider = mapperProvider
+            resultMapperProvider = mapperProvider,
+            creditModelMapper = creditMapper
         )
     }
 

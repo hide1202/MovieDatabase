@@ -33,6 +33,7 @@ class SearchResultMapperProvider @Inject constructor(
                 backdropUrl = configurationRepository.getImageUrl {
                     input.backdrop_path
                 },
+                productionCompanies = emptyList(),
                 vote = input.vote_average,
                 releaseDate = input.release_date
             )
@@ -53,6 +54,16 @@ class SearchResultMapperProvider @Inject constructor(
                 backdropUrl = configurationRepository.getImageUrl {
                     input.backdrop_path
                 },
+                productionCompanies = input.production_companies
+                    .map {
+                        SearchResultModel.ProductionCompany(
+                            id = it.id,
+                            name = it.name,
+                            logoUrl = configurationRepository.getImageUrl {
+                                it.logo_path
+                            }
+                        )
+                    },
                 vote = input.vote_average,
                 releaseDate = input.release_date
             )
