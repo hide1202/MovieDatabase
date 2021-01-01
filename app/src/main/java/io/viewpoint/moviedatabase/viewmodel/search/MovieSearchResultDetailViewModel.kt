@@ -10,6 +10,7 @@ import arrow.core.getOrElse
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
+import io.viewpoint.moviedatabase.model.api.Credit
 import io.viewpoint.moviedatabase.model.api.MovieDetail
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.Command
@@ -24,6 +25,7 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
     private val _wantToSee = MutableLiveData(false)
     private val _genres = MutableLiveData<List<MovieDetail.Genre>>(emptyList())
     private val _countries = MutableLiveData<List<String>>(emptyList())
+    private val _credits = MutableLiveData<List<Credit>>(emptyList())
     private val _productionCompanies =
         MutableLiveData<List<SearchResultModel.ProductionCompany>>(emptyList())
 
@@ -35,6 +37,9 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
 
     val countries: LiveData<List<String>>
         get() = _countries
+
+    val credits: LiveData<List<Credit>>
+        get() = _credits
 
     val productionCompanies: LiveData<List<SearchResultModel.ProductionCompany>>
         get() = _productionCompanies
@@ -87,6 +92,10 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
     private suspend fun fillDetailData(movieDetail: MovieDetail): SearchResultModel {
         _genres.value = movieDetail.genres
         _countries.value = movieDetail.production_countries.map { it.iso_3166_1 }
+
+        // TODO call parallel with a move detail
+        _credits.value = movieRepository.getCredits(movieDetail.id)
+
         return resultMapperProvider.mapperFromMovieDetail
             .map(movieDetail)
             .also {

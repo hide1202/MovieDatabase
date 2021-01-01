@@ -1,6 +1,7 @@
 package io.viewpoint.moviedatabase.api
 
 import arrow.fx.IO
+import io.viewpoint.moviedatabase.model.api.CreditsResponse
 import io.viewpoint.moviedatabase.model.api.MovieDetail
 import io.viewpoint.moviedatabase.model.api.MovieListResponse
 import retrofit2.http.GET
@@ -21,4 +22,7 @@ interface MovieApi {
 
     @GET("movie/top_rated")
     fun getTopRated(): IO<MovieListResponse>
+
+    @GET("/movie/{id}/credits")
+    fun getMovieCredits(@Path("id") id: Int): IO<CreditsResponse>
 }
