@@ -68,6 +68,13 @@ class SearchResultDetailActivity : AppCompatActivity() {
         viewModel.productionCompanies.observe(this) {
             productionCompaniesAdapter.submitList(it)
         }
+
+        val creditsAdapter = CreditAdapter()
+        binding.credits.addItemDecoration(SpaceItemDecoration(spacing = 16.dp))
+        binding.credits.adapter = creditsAdapter
+        viewModel.credits.observe(this) {
+            creditsAdapter.submitList(it)
+        }
     }
 
     companion object {

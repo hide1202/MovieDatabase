@@ -55,6 +55,11 @@ fun ImageView.setImageUrl(
     borderColor: Int?
 ) {
     Timber.d("image url : %s", url)
+    val fallbackImageDrawableId = if (circle == true) {
+        R.drawable.fallback_circle_image
+    } else {
+        R.drawable.fallback_image
+    }
     Glide.with(this)
         .load(url)
         .let {
@@ -70,9 +75,9 @@ fun ImageView.setImageUrl(
             if (circle == true) it.circleCrop()
             else it
         }
-        .fallback(R.drawable.fallback_image)
-        .error(R.drawable.fallback_image)
-        .placeholder(R.drawable.fallback_image)
+        .fallback(fallbackImageDrawableId)
+        .error(fallbackImageDrawableId)
+        .placeholder(fallbackImageDrawableId)
         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
         .into(this)
 }

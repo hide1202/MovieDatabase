@@ -2,7 +2,7 @@ package io.viewpoint.moviedatabase.model.api
 
 sealed class Credit(
     open val id: Int,
-    open val name: String?,
+    open val name: String,
     open val original_name: String?,
     open val gender: Int,
     open val profile_path: String?,
@@ -10,7 +10,7 @@ sealed class Credit(
 
 data class Cast(
     override val id: Int,
-    override val name: String?,
+    override val name: String,
     override val original_name: String?,
     override val gender: Int,
     override val profile_path: String?,
@@ -25,7 +25,7 @@ data class Cast(
 
 data class Crew(
     override val id: Int,
-    override val name: String?,
+    override val name: String,
     override val gender: Int,
     override val original_name: String?,
     override val profile_path: String?,

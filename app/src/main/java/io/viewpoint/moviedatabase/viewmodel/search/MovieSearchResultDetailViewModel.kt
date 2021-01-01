@@ -7,11 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import arrow.core.getOrElse
+import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
-import io.viewpoint.moviedatabase.model.api.Credit
 import io.viewpoint.moviedatabase.model.api.MovieDetail
+import io.viewpoint.moviedatabase.model.ui.CreditModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.launch
@@ -19,13 +20,14 @@ import kotlinx.coroutines.launch
 class MovieSearchResultDetailViewModel @ViewModelInject constructor(
     private val movieRepository: MovieRepository,
     private val wantToSeeRepository: WantToSeeRepository,
-    private val resultMapperProvider: SearchResultMapperProvider
+    private val resultMapperProvider: SearchResultMapperProvider,
+    private val creditModelMapper: CreditModelMapper
 ) : ViewModel() {
     private var result: SearchResultModel? = null
     private val _wantToSee = MutableLiveData(false)
     private val _genres = MutableLiveData<List<MovieDetail.Genre>>(emptyList())
     private val _countries = MutableLiveData<List<String>>(emptyList())
-    private val _credits = MutableLiveData<List<Credit>>(emptyList())
+    private val _credits = MutableLiveData<List<CreditModel>>(emptyList())
     private val _productionCompanies =
         MutableLiveData<List<SearchResultModel.ProductionCompany>>(emptyList())
 
@@ -38,7 +40,7 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
     val countries: LiveData<List<String>>
         get() = _countries
 
-    val credits: LiveData<List<Credit>>
+    val credits: LiveData<List<CreditModel>>
         get() = _credits
 
     val productionCompanies: LiveData<List<SearchResultModel.ProductionCompany>>
@@ -95,6 +97,9 @@ class MovieSearchResultDetailViewModel @ViewModelInject constructor(
 
         // TODO call parallel with a move detail
         _credits.value = movieRepository.getCredits(movieDetail.id)
+            .map {
+                creditModelMapper.map(it)
+            }
 
         return resultMapperProvider.mapperFromMovieDetail
             .map(movieDetail)

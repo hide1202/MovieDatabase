@@ -208,7 +208,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/production_companies"
+                android:id="@+id/credits"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -218,6 +218,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/second_section"
+                tools:listitem="@layout/item_credit" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/production_companies"
+                style="@style/DetailContentSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/credits"
                 tools:listitem="@layout/item_production_company" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

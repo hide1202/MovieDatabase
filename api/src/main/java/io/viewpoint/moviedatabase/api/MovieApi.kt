@@ -23,6 +23,6 @@ interface MovieApi {
     @GET("movie/top_rated")
     fun getTopRated(): IO<MovieListResponse>
 
-    @GET("/movie/{id}/credits")
+    @GET("movie/{id}/credits")
     fun getMovieCredits(@Path("id") id: Int): IO<CreditsResponse>
 }
