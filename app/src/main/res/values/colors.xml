@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#FF3700B3</color>
     <color name="colorAccent">#FF03DAC5</color>
 
+    <color name="splash_background">#0C253F</color>
+
     <color name="default_foreground">@color/black</color>
     <color name="default_background">@color/white</color>
 
