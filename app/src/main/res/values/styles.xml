@@ -9,6 +9,11 @@
         <item name="android:windowActivityTransitions">true</item>
     </style>
 
+    <style name="AppTheme.Main">
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:windowBackground">@drawable/layered_splash</item>
+    </style>
+
     <style name="Genre" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/default_text_color</item>
         <item name="android:paddingStart">12dp</item>
