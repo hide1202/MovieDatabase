@@ -68,10 +68,16 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         val result = vm.loadWithMovieId(movieId = 557)
         val genres = vm.genres
         val country = vm.countries
+        val credits = vm.credits
+        val productionCompanies = vm.productionCompanies
         assertNotNull(result)
         assertNotNull(genres.value)
         assertNotNull(country.value)
+        assertNotNull(credits.value)
+        assertNotNull(productionCompanies.value)
         assertEquals(1, country.value?.size)
         assertEquals("US", country.value?.getOrNull(0))
+        assertFalse(credits.value.isNullOrEmpty())
+        assertFalse(productionCompanies.value.isNullOrEmpty())
     }
 }
