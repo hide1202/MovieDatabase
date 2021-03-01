@@ -12,7 +12,7 @@ import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
 import io.viewpoint.moviedatabase.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
-import io.viewpoint.moviedatabase.ui.home.viewmodel.MainViewModel
+import io.viewpoint.moviedatabase.viewmodel.MainViewModel
 import junit.framework.Assert.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking

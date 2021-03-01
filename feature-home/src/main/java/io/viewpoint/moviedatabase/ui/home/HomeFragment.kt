@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.home.R
 import io.viewpoint.moviedatabase.home.databinding.FragmentHomeBinding
 import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
-import io.viewpoint.moviedatabase.ui.home.viewmodel.MainViewModel
+import io.viewpoint.moviedatabase.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
