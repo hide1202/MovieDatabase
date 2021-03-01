@@ -11,9 +11,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivitySearchResultDetailBinding
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
-import io.viewpoint.moviedatabase.platform.externsion.dp
-import io.viewpoint.moviedatabase.platform.externsion.intentToActivity
-import io.viewpoint.moviedatabase.platform.util.SpaceItemDecoration
+import io.viewpoint.moviedatabase.extensions.dp
+import io.viewpoint.moviedatabase.extensions.intentToActivity
+import io.viewpoint.moviedatabase.util.SpaceItemDecoration
 import io.viewpoint.moviedatabase.viewmodel.search.MovieSearchResultDetailViewModel
 import kotlinx.coroutines.launch
 

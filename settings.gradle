@@ -3,3 +3,6 @@ include ':domain'
 include ':api'
 include ':app'
 rootProject.name = "MovieDatabase"
+include ':feature-home'
+include ':resources'
+include ':common'

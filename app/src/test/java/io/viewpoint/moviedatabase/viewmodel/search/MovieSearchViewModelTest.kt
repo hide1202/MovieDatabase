@@ -7,6 +7,7 @@ import arrow.fx.extensions.fx
 import io.mockk.every
 import io.mockk.spyk
 import io.viewpoint.moviedatabase.TestBase
+import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.getValues
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseSearchRepository
@@ -15,7 +16,6 @@ import io.viewpoint.moviedatabase.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.mock.TestSearchApi
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.tryWithDelay
-import io.viewpoint.moviedatabase.util.PreferencesKeys
 import io.viewpoint.moviedatabase.util.asyncPagingDataDiffer
 import junit.framework.Assert.*
 import kotlinx.coroutines.GlobalScope

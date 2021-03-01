@@ -9,9 +9,9 @@ import androidx.fragment.app.commit
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivityMainBinding
-import io.viewpoint.moviedatabase.platform.ui.home.HomeFragment
 import io.viewpoint.moviedatabase.platform.ui.search.MovieSearchFragment
 import io.viewpoint.moviedatabase.platform.ui.setting.SettingFragment
+import io.viewpoint.moviedatabase.ui.home.HomeFragment
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
