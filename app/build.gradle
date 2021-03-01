@@ -132,7 +132,7 @@ task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) 
             '**/Manifest*.*'
     ]
     def excludePlatformCodes = [
-            '**/io/viewpoint/moviedatabase/platform/**',
+            '**/io/viewpoint/moviedatabase/ui/**',
             '**/io/viewpoint/moviedatabase/di/**',
     ]
     def javaClasses = fileTree(
