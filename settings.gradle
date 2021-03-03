@@ -6,3 +6,5 @@ rootProject.name = "MovieDatabase"
 include ':feature-home'
 include ':resources'
 include ':common'
+include ':feature-search'
+include ':widget'

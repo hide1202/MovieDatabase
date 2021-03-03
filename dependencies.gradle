@@ -73,6 +73,7 @@ ext.deps = [
                 hilt_lifecycle     : "androidx.hilt:hilt-lifecycle-viewmodel:${versions.androidx.hilt}",
                 hilt_kapt          : "androidx.hilt:hilt-compiler:${versions.androidx.hilt}",
 
+                paging_common      : "androidx.paging:paging-common:${versions.androidx.paging}",
                 paging             : "androidx.paging:paging-runtime:${versions.androidx.paging}",
 
                 room_common        : "androidx.room:room-common:${versions.androidx.room}",

@@ -16,6 +16,8 @@ import io.viewpoint.moviedatabase.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.mock.TestSearchApi
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.tryWithDelay
+import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchPager
+import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchViewModel
 import io.viewpoint.moviedatabase.util.asyncPagingDataDiffer
 import junit.framework.Assert.*
 import kotlinx.coroutines.GlobalScope

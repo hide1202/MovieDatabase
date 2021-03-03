@@ -1,7 +1,7 @@
 package io.viewpoint.moviedatabase.platform.ui.main
 
 import io.viewpoint.moviedatabase.R
-import io.viewpoint.moviedatabase.platform.ui.search.MovieSearchFragment
+import io.viewpoint.moviedatabase.ui.search.MovieSearchFragment
 import io.viewpoint.moviedatabase.platform.ui.setting.SettingFragment
 import io.viewpoint.moviedatabase.ui.home.HomeFragment
 
@@ -10,7 +10,7 @@ enum class MainTab(
     val tag: String
 ) {
     HOME(R.id.home_menu, HomeFragment.TAG),
-    MOVIE_SEARCH(R.id.movie_search_menu, MovieSearchFragment.TAG),
+    MOVIE_SEARCH(R.id.movie_search_menu, io.viewpoint.moviedatabase.ui.search.MovieSearchFragment.TAG),
     SETTING(R.id.setting_menu, SettingFragment.TAG);
 
     companion object
