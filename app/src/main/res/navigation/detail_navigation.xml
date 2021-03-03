@@ -6,7 +6,7 @@
 
     <activity
         android:id="@+id/searchResultDetailActivity"
-        android:name="io.viewpoint.moviedatabase.platform.ui.search.SearchResultDetailActivity"
+        android:name="io.viewpoint.moviedatabase.ui.search.SearchResultDetailActivity"
         android:label="SearchResultDetailActivity">
 
         <deepLink

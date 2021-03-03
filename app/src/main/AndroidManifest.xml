@@ -25,7 +25,7 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".platform.ui.search.SearchResultDetailActivity">
+        <activity android:name=".ui.search.SearchResultDetailActivity">
             <nav-graph android:value="@navigation/detail_navigation" />
         </activity>
 

@@ -9,7 +9,7 @@ import androidx.fragment.app.commit
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivityMainBinding
-import io.viewpoint.moviedatabase.platform.ui.search.MovieSearchFragment
+import io.viewpoint.moviedatabase.ui.search.MovieSearchFragment
 import io.viewpoint.moviedatabase.platform.ui.setting.SettingFragment
 import io.viewpoint.moviedatabase.ui.home.HomeFragment
 
@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home_menu -> replaceFragment<HomeFragment>(HomeFragment.TAG)
-                R.id.movie_search_menu -> replaceFragment<MovieSearchFragment>(MovieSearchFragment.TAG)
+                R.id.movie_search_menu -> replaceFragment<io.viewpoint.moviedatabase.ui.search.MovieSearchFragment>(
+                    io.viewpoint.moviedatabase.ui.search.MovieSearchFragment.TAG)
                 R.id.setting_menu -> replaceFragment<SettingFragment>(SettingFragment.TAG)
                 else -> false
             }

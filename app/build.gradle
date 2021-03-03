@@ -65,6 +65,7 @@ dependencies {
 
     // features
     implementation project(':feature-home')
+    implementation project(':feature-search')
 
     implementation deps.kotlin.stdlib
 
