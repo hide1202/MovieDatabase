@@ -1,0 +1,28 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: '../dependencies.gradle'
+apply from: '../android-configure.gradle'
+
+android {
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation project(':resources')
+
+    implementation deps.androidx.core
+    implementation deps.androidx.recyclerview
+
+    // timber
+    implementation deps.libraries.timber
+
+    // glide
+    implementation deps.libraries.glide
+    kapt deps.libraries.glide_kapt
+}

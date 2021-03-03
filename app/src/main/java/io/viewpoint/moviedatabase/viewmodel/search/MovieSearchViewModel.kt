@@ -6,12 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.preferences.addValue
 import io.viewpoint.moviedatabase.domain.preferences.getValues
 import io.viewpoint.moviedatabase.domain.preferences.removeValue
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
-import io.viewpoint.moviedatabase.util.PreferencesKeys
 import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin

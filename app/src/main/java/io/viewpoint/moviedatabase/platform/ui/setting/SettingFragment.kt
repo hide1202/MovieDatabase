@@ -13,9 +13,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.databinding.FragmentSettingBinding
+import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
-import io.viewpoint.moviedatabase.util.PreferencesKeys
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -49,8 +49,7 @@ class SettingFragment : Fragment() {
         lifecycleScope.launch {
             val languages = configurationRepository.getSupportedLanguages()
             val adapter = ArrayAdapter(requireContext(),
-                R.layout.item_language
-                , languages
+                R.layout.item_language, languages
                     .asSequence()
                     .map { it.name }
                     .filter { it.isNotEmpty() }

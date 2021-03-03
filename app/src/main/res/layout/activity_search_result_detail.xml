@@ -15,7 +15,7 @@
             name="vm"
             type="io.viewpoint.moviedatabase.viewmodel.search.MovieSearchResultDetailViewModel" />
 
-        <import type="io.viewpoint.moviedatabase.platform.externsion.Dimensions" />
+        <import type="io.viewpoint.moviedatabase.extensions.Dimensions" />
     </data>
 
     <androidx.core.widget.NestedScrollView

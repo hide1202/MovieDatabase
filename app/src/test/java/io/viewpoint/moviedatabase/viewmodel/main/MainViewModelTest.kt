@@ -3,6 +3,7 @@ package io.viewpoint.moviedatabase.viewmodel.main
 import androidx.lifecycle.Observer
 import io.viewpoint.moviedatabase.TestBase
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
+import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
@@ -11,7 +12,7 @@ import io.viewpoint.moviedatabase.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.mock.TestMovieApi
 import io.viewpoint.moviedatabase.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
-import io.viewpoint.moviedatabase.util.PreferencesKeys
+import io.viewpoint.moviedatabase.viewmodel.MainViewModel
 import junit.framework.Assert.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking

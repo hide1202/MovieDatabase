@@ -10,18 +10,11 @@ apply plugin: 'jacoco'
 apply from: '../dependencies.gradle'
 apply from: '../external.gradle'
 apply from: '../app.gradle'
+apply from: '../android-configure.gradle'
 
 android {
-    compileSdkVersion versions.android.compileSdk
-
     defaultConfig {
         applicationId "io.viewpoint.moviedatabase"
-        minSdkVersion versions.android.minSdk
-        targetSdkVersion versions.android.targetSdk
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -44,16 +37,6 @@ android {
         dataBinding true
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
-    }
-
     testOptions {
         unitTests {
             all {
@@ -73,9 +56,15 @@ kapt {
 }
 
 dependencies {
+    implementation project(':resources')
+
+    implementation project(':common')
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
+
+    // features
+    implementation project(':feature-home')
 
     implementation deps.kotlin.stdlib
 
@@ -144,6 +133,7 @@ task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) 
     ]
     def excludePlatformCodes = [
             '**/io/viewpoint/moviedatabase/platform/**',
+            '**/io/viewpoint/moviedatabase/ui/**',
             '**/io/viewpoint/moviedatabase/di/**',
     ]
     def javaClasses = fileTree(
