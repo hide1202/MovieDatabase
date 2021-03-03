@@ -1,5 +1,7 @@
 package io.viewpoint.moviedatabase.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -90,9 +92,15 @@ class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
     }
 
     override fun onMovieClicked(movieId: Int) {
-        // TODO using navigation
-//        val activity = activity ?: return
-//        activity.startActivity(SearchResultDetailActivity.withMovieId(activity, movieId))
+        val activity = activity ?: return
+
+        val intent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse("viewpoint://tmdb/movies/detail?movieId=$movieId")
+        )
+        if (intent.resolveActivity(activity.packageManager) != null) {
+            activity.startActivity(intent)
+        }
     }
 
     companion object {

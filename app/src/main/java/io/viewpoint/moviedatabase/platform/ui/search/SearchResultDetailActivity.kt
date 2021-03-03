@@ -10,9 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivitySearchResultDetailBinding
-import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.extensions.dp
 import io.viewpoint.moviedatabase.extensions.intentToActivity
+import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.util.SpaceItemDecoration
 import io.viewpoint.moviedatabase.viewmodel.search.MovieSearchResultDetailViewModel
 import kotlinx.coroutines.launch
@@ -35,7 +35,7 @@ class SearchResultDetailActivity : AppCompatActivity() {
 
         val movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, Int.MIN_VALUE)?.takeIf {
             it > Int.MIN_VALUE
-        }
+        } ?: intent.data?.getQueryParameter(EXTRA_MOVIE_ID)?.toInt()
         val resultArgument = intent?.getSerializableExtra(EXTRA_RESULT_MODEL) as? SearchResultModel
         binding.result = resultArgument
 

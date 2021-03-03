@@ -21,9 +21,13 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
+
         </activity>
-        <activity android:name=".platform.ui.search.SearchResultDetailActivity" />
+        <activity android:name=".platform.ui.search.SearchResultDetailActivity">
+            <nav-graph android:value="@navigation/detail_navigation" />
+        </activity>
 
         <provider
             android:name="androidx.startup.InitializationProvider"
