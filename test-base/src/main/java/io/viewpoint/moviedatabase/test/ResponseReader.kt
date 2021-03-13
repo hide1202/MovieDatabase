@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.util
+package io.viewpoint.moviedatabase.test
 
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.Dispatchers

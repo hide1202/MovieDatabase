@@ -1,8 +1,10 @@
-package io.viewpoint.moviedatabase.mock
+package io.viewpoint.moviedatabase.test.mock
 
+import android.annotation.SuppressLint
 import io.viewpoint.moviedatabase.domain.preferences.PreferenceKey
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 
+@SuppressLint("NewApi")
 class TestPreferencesService :
     PreferencesService {
     private val preferences = mutableMapOf<String, Any>()

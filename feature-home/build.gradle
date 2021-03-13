@@ -7,6 +7,7 @@ plugins {
 
 apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
+apply from: '../android-jacoco.gradle'
 
 android {
     defaultConfig {
@@ -25,6 +26,8 @@ dependencies {
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
+
+    testImplementation project(':test-base')
 
     // androidx
     implementation deps.androidx.core

@@ -1,18 +1,18 @@
-package io.viewpoint.moviedatabase.viewmodel.main
+package io.viewpoint.moviedatabase.viewmodel
+
 
 import androidx.lifecycle.Observer
-import io.viewpoint.moviedatabase.TestBase
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
-import io.viewpoint.moviedatabase.mock.TestConfigurationApi
-import io.viewpoint.moviedatabase.mock.TestMovieApi
-import io.viewpoint.moviedatabase.mock.TestPreferencesService
-import io.viewpoint.moviedatabase.mock.TestWantToSeeDao
-import io.viewpoint.moviedatabase.viewmodel.MainViewModel
+import io.viewpoint.moviedatabase.test.TestBase
+import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
+import io.viewpoint.moviedatabase.test.mock.TestMovieApi
+import io.viewpoint.moviedatabase.test.mock.TestPreferencesService
+import io.viewpoint.moviedatabase.test.mock.TestWantToSeeDao
 import junit.framework.Assert.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
