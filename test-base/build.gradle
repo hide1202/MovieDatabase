@@ -1,0 +1,22 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: '../dependencies.gradle'
+apply from: '../android-configure.gradle'
+
+dependencies {
+    implementation project(':model')
+    implementation project(':api')
+    implementation project(':domain')
+
+    implementation deps.test.junit
+    implementation deps.libraries.moshi
+    implementation deps.test.coroutine_test
+
+    implementation deps.test.android_core
+    implementation deps.androidx.lifecycle_runtime
+    implementation deps.androidx.paging
+    implementation deps.androidx.recyclerview
+}

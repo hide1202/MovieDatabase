@@ -1,5 +1,6 @@
-package io.viewpoint.moviedatabase.util
+package io.viewpoint.moviedatabase.test
 
+import android.annotation.SuppressLint
 import androidx.paging.AsyncPagingDataDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListUpdateCallback
@@ -10,6 +11,7 @@ private val diffUtil = object : DiffUtil.ItemCallback<Any>() {
         newItem: Any
     ): Boolean = oldItem === newItem
 
+    @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(
         oldItem: Any,
         newItem: Any

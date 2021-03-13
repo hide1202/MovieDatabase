@@ -6,6 +6,7 @@ buildscript {
 
     repositories {
         google()
+        mavenCentral()
         jcenter()
     }
     dependencies {
@@ -15,15 +16,21 @@ buildscript {
         classpath "org.jacoco:org.jacoco.core:0.8.3"
 
         classpath "com.google.dagger:hilt-android-gradle-plugin:${versions.libraries.hilt}"
+
+        classpath 'com.netflix.nebula:gradle-lint-plugin:16.17.0'
     }
 }
 
 allprojects {
+    apply plugin: 'nebula.lint'
+
     repositories {
         google()
         jcenter()
         maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }
     }
+
+    gradleLint.rules = ['unused-dependency']
 }
 
 // references https://github.com/ben-manes/gradle-versions-plugin#revisions

@@ -1,19 +1,17 @@
-package io.viewpoint.moviedatabase.mock
+package io.viewpoint.moviedatabase.test.mock
 
 import arrow.fx.IO
 import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.domain.repository.dao.WantToSeeDao
 import io.viewpoint.moviedatabase.domain.repository.entity.WantToSeeMovieEntity
 import io.viewpoint.moviedatabase.model.api.MovieDetail
-import io.viewpoint.moviedatabase.util.MoshiReader
-import io.viewpoint.moviedatabase.util.ResponseReader
 
 class TestWantToSeeDao : WantToSeeDao {
     private val detail: IO<MovieDetail> = IO.fx {
         !effect {
-            ResponseReader.jsonFromFileAsync(
+            io.viewpoint.moviedatabase.test.ResponseReader.jsonFromFileAsync(
                 "responses/movie-detail.json",
-                MoshiReader.moshi.adapter(MovieDetail::class.java)
+                io.viewpoint.moviedatabase.test.MoshiReader.moshi.adapter(MovieDetail::class.java)
             )
         }
     }

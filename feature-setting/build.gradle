@@ -7,13 +7,8 @@ plugins {
 
 apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
-apply from: '../android-jacoco.gradle'
 
 android {
-    defaultConfig {
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
     buildFeatures {
         dataBinding true
     }
@@ -22,12 +17,9 @@ android {
 dependencies {
     implementation project(':resources')
 
-    implementation project(':common')
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
-
-    testImplementation project(':test-base')
 
     // androidx
     implementation deps.androidx.core
@@ -41,6 +33,7 @@ dependencies {
     implementation deps.androidx.lifecycle_viewmodel
     implementation deps.androidx.lifecycle_livedata
     implementation deps.androidx.lifecycle_runtime
+    implementation deps.androidx.paging
 
     // dagger/hilt
     implementation deps.libraries.hilt
@@ -51,17 +44,4 @@ dependencies {
 
     // timber
     implementation deps.libraries.timber
-
-    // test
-    testImplementation deps.test.junit
-    testImplementation deps.test.mockk
-    testImplementation deps.test.mockk_agent_jvm
-    testImplementation deps.test.android_test_core
-    testImplementation deps.test.android_core
-    testImplementation deps.test.coroutine_test
-    testImplementation deps.test.robolectric
-
-    // android test
-    androidTestImplementation deps.android_test.junit
-    androidTestImplementation deps.android_test.espresso_core
 }

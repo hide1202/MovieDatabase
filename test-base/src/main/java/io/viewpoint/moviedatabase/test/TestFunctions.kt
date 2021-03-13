@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase
+package io.viewpoint.moviedatabase.test
 
 import kotlinx.coroutines.delay
 

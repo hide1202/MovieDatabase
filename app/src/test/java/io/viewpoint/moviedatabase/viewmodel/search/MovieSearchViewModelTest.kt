@@ -6,19 +6,16 @@ import arrow.fx.IO
 import arrow.fx.extensions.fx
 import io.mockk.every
 import io.mockk.spyk
-import io.viewpoint.moviedatabase.TestBase
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.getValues
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseSearchRepository
-import io.viewpoint.moviedatabase.mock.TestConfigurationApi
-import io.viewpoint.moviedatabase.mock.TestPreferencesService
-import io.viewpoint.moviedatabase.mock.TestSearchApi
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
-import io.viewpoint.moviedatabase.tryWithDelay
+import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
+import io.viewpoint.moviedatabase.test.mock.TestPreferencesService
+import io.viewpoint.moviedatabase.test.mock.TestSearchApi
 import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchPager
 import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchViewModel
-import io.viewpoint.moviedatabase.util.asyncPagingDataDiffer
 import junit.framework.Assert.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
@@ -28,7 +25,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import org.junit.Before
 import org.junit.Test
 
-class MovieSearchViewModelTest : TestBase() {
+class MovieSearchViewModelTest : io.viewpoint.moviedatabase.test.TestBase() {
     private val preferences = TestPreferencesService()
     private val searchApi = spyk(TestSearchApi())
     private val pager =
@@ -40,7 +37,8 @@ class MovieSearchViewModelTest : TestBase() {
         )
     private lateinit var vm: MovieSearchViewModel
 
-    private val differ: AsyncPagingDataDiffer<SearchResultModel> = asyncPagingDataDiffer()
+    private val differ: AsyncPagingDataDiffer<SearchResultModel> =
+        io.viewpoint.moviedatabase.test.asyncPagingDataDiffer()
 
     @Before
     fun setUp() {
@@ -63,7 +61,7 @@ class MovieSearchViewModelTest : TestBase() {
             differ.submitData(pagingData)
         }
         try {
-            tryWithDelay {
+            io.viewpoint.moviedatabase.test.tryWithDelay {
                 if (differ.itemCount > 0) {
                     differ.getItem(0)
                     true

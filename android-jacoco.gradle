@@ -1,0 +1,53 @@
+apply plugin: 'jacoco'
+
+android {
+    testOptions {
+        unitTests {
+            all {
+                jvmArgs '-noverify', '-ea'
+                jacoco {
+                    includeNoLocationClasses = true
+                    excludes = ['jdk.internal.*'] // for jdk-9 higher
+                }
+            }
+            includeAndroidResources = true
+        }
+    }
+}
+
+task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+    def coverageSourceDirs = [
+            "src/main/java"
+    ]
+    def fileFilter = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/*$ViewInjector*.*',
+            '**/*$ViewBinder*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*'
+    ]
+    def excludePlatformCodes = [
+            '**/io/viewpoint/moviedatabase/platform/**',
+            '**/io/viewpoint/moviedatabase/ui/**',
+            '**/io/viewpoint/moviedatabase/di/**',
+    ]
+    def javaClasses = fileTree(
+            dir: "$buildDir/tmp/kotlin-classes/debug",
+            excludes: fileFilter + excludePlatformCodes
+    )
+    classDirectories.from(files([javaClasses]))
+    additionalSourceDirs.from(files(coverageSourceDirs))
+    sourceDirectories.from(files(coverageSourceDirs))
+    executionData.from(fileTree(dir: "$buildDir", includes: [
+            "jacoco/testDebugUnitTest.exec"
+    ]))
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+jacoco {
+    reportsDir = file("${buildDir}/reports")
+}
