@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: '../dependencies.gradle'
+apply from: '../android-configure.gradle'
+
+android {
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation project(':resources')
+
+    implementation project(':model')
+    implementation project(':api')
+    implementation project(':domain')
+
+    // androidx
+    implementation deps.androidx.core
+    implementation deps.androidx.activity
+    implementation deps.androidx.fragment
+    implementation deps.androidx.recyclerview
+    implementation deps.androidx.swiperefreshlayout
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.material
+    implementation deps.androidx.constraintlayout
+    implementation deps.androidx.lifecycle_viewmodel
+    implementation deps.androidx.lifecycle_livedata
+    implementation deps.androidx.lifecycle_runtime
+    implementation deps.androidx.paging
+
+    // dagger/hilt
+    implementation deps.libraries.hilt
+    kapt deps.libraries.hilt_kapt
+    // hilt with androidx
+    implementation deps.androidx.hilt_lifecycle
+    kapt deps.androidx.hilt_kapt
+
+    // timber
+    implementation deps.libraries.timber
+}

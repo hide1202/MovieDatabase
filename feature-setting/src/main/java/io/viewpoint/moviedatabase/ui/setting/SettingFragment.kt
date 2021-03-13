@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.platform.ui.setting
+package io.viewpoint.moviedatabase.ui.setting
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
-import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
-import io.viewpoint.moviedatabase.databinding.FragmentSettingBinding
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
+import io.viewpoint.moviedatabase.ui.setting.databinding.FragmentSettingBinding
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
