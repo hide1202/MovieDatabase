@@ -10,27 +10,21 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha08'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha14'
         classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath "org.jacoco:org.jacoco.core:0.8.3"
 
         classpath "com.google.dagger:hilt-android-gradle-plugin:${versions.libraries.hilt}"
-
-        classpath 'com.netflix.nebula:gradle-lint-plugin:16.17.0'
     }
 }
 
 allprojects {
-    apply plugin: 'nebula.lint'
-
     repositories {
         google()
         jcenter()
         maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }
     }
-
-    gradleLint.rules = ['unused-dependency']
 }
 
 // references https://github.com/ben-manes/gradle-versions-plugin#revisions
