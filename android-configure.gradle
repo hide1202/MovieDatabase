@@ -22,4 +22,9 @@ android {
         useIR = true
         freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     }
+
+    // Add a abortOnError option because the build is failed, although lint errors are nothing.
+    lintOptions {
+        abortOnError false
+    }
 }

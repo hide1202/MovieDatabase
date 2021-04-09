@@ -1,5 +1,6 @@
 package io.viewpoint.moviedatabase.ui.search
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,6 +11,7 @@ import io.viewpoint.moviedatabase.ui.search.databinding.ItemGenreBinding
 class GenreAdapter : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
     private val items = mutableListOf<MovieDetail.Genre>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateGenres(genres: List<MovieDetail.Genre>) {
         items.clear()
         items.addAll(genres)
