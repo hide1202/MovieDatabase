@@ -1,9 +1,10 @@
 package io.viewpoint.moviedatabase.ui.home
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.home.databinding.ItemHomeMovieBinding
 import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
@@ -11,14 +12,21 @@ import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
 class HomeMovieListAdapter(
     private val circle: Boolean = false,
     private val callback: Callback
-) : RecyclerView.Adapter<HomeMovieListAdapter.ViewHolder>() {
-    private val items: MutableList<HomeMovieListResultModel> = mutableListOf()
+) : ListAdapter<HomeMovieListResultModel, HomeMovieListAdapter.ViewHolder>(
+    object : DiffUtil.ItemCallback<HomeMovieListResultModel>() {
+        override fun areItemsTheSame(
+            oldItem: HomeMovieListResultModel,
+            newItem: HomeMovieListResultModel
+        ): Boolean = oldItem.id == newItem.id
 
-    @SuppressLint("NotifyDataSetChanged")
+        override fun areContentsTheSame(
+            oldItem: HomeMovieListResultModel,
+            newItem: HomeMovieListResultModel
+        ): Boolean = oldItem == newItem
+    }
+) {
     fun updateResults(results: List<HomeMovieListResultModel>) {
-        items.clear()
-        items.addAll(results)
-        notifyDataSetChanged()
+        submitList(results)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
@@ -35,15 +43,13 @@ class HomeMovieListAdapter(
                 val position = vh.bindingAdapterPosition.takeIf {
                     it != RecyclerView.NO_POSITION
                 } ?: return@setOnClickListener
-                callback.onMovieClicked(items[position].id)
+                callback.onMovieClicked(getItem(position).id)
             }
         }
 
-    override fun getItemCount(): Int = items.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
-            model = items[position]
+            model = getItem(position)
             executePendingBindings()
         }
     }
