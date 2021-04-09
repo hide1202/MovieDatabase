@@ -3,7 +3,7 @@ package io.viewpoint.moviedatabase.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import io.viewpoint.moviedatabase.BuildConfig
 import io.viewpoint.moviedatabase.api.ConfigurationApi
 import io.viewpoint.moviedatabase.api.MovieApi
@@ -12,7 +12,7 @@ import io.viewpoint.moviedatabase.api.SearchApi
 import timber.log.Timber
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class ApiModule {
     @Provides
     fun movieDatabaseApi(): MovieDatabaseApi = MovieDatabaseApi
