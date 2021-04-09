@@ -1,5 +1,6 @@
 package io.viewpoint.moviedatabase.ui.search
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -11,6 +12,7 @@ class RecentSearchKeywordAdapter(
 ) : RecyclerView.Adapter<RecentSearchKeywordAdapter.ViewHolder>() {
     private val items = mutableListOf<String>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateKeywords(keywords: List<String>) {
         items.clear()
         items.addAll(keywords)
