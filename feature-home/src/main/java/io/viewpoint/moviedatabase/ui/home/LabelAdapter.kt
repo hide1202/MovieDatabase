@@ -1,7 +1,6 @@
 package io.viewpoint.moviedatabase.ui.home
 
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -12,13 +11,20 @@ import io.viewpoint.moviedatabase.home.databinding.ItemLabelBinding
 class LabelAdapter(
     private val labelString: String
 ) : RecyclerView.Adapter<LabelAdapter.LabelHolder>() {
-    private var isEmpty = true
+    var isVisible = true
+        set(value) {
+            if (field != value) {
+                val oldValue = field
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateIsEmpty(isEmpty: Boolean) {
-        this.isEmpty = isEmpty
-        notifyDataSetChanged()
-    }
+                field = value
+
+                if (value) {
+                    notifyItemInserted(0)
+                } else {
+                    notifyItemRemoved(0)
+                }
+            }
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LabelHolder =
         LabelHolder(
@@ -30,7 +36,7 @@ class LabelAdapter(
             )
         )
 
-    override fun getItemCount(): Int = if (isEmpty) 0 else 1
+    override fun getItemCount(): Int = if (isVisible) 1 else 0
 
     override fun onBindViewHolder(holder: LabelHolder, position: Int) =
         with(holder.binding) {

@@ -86,7 +86,7 @@ class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
         dataAdapter: HomeMovieListAdapter
     ) {
         this.observe(viewLifecycleOwner) {
-            labelAdapter.updateIsEmpty(it.isEmpty())
+            labelAdapter.isVisible = it.isNotEmpty()
             dataAdapter.updateResults(it)
         }
     }

@@ -1,22 +1,26 @@
 package io.viewpoint.moviedatabase.ui.search
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.ui.search.databinding.ItemRecentSearchKeywordBinding
 
 class RecentSearchKeywordAdapter(
     private val callback: Callbacks
-) : RecyclerView.Adapter<RecentSearchKeywordAdapter.ViewHolder>() {
-    private val items = mutableListOf<String>()
+) : ListAdapter<String, RecentSearchKeywordAdapter.ViewHolder>(
+    object : DiffUtil.ItemCallback<String>() {
+        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean =
+            oldItem == newItem
 
-    @SuppressLint("NotifyDataSetChanged")
+        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean =
+            oldItem == newItem
+    }
+) {
     fun updateKeywords(keywords: List<String>) {
-        items.clear()
-        items.addAll(keywords)
-        notifyDataSetChanged()
+        submitList(keywords)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,25 +37,23 @@ class RecentSearchKeywordAdapter(
                     it != RecyclerView.NO_POSITION
                 } ?: return@setOnClickListener
 
-                callback.onRecentKeywordClick(items[position])
+                callback.onRecentKeywordClick(getItem(position))
             }
             vh.binding.remove.setOnClickListener {
                 val position = vh.bindingAdapterPosition.takeIf {
                     it != RecyclerView.NO_POSITION
                 } ?: return@setOnClickListener
 
-                val removedKeyword = items.removeAt(position)
+                val removedKeyword = getItem(position)
+                submitList(currentList - removedKeyword)
                 callback.onRemoved(removedKeyword)
-                notifyItemRemoved(position)
             }
         }
     }
 
-    override fun getItemCount(): Int = items.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         with(holder.binding) {
-            keyword = items[position]
+            keyword = getItem(position)
             executePendingBindings()
         }
 

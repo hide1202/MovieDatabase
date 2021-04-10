@@ -1,22 +1,29 @@
 package io.viewpoint.moviedatabase.ui.search
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.model.api.MovieDetail
 import io.viewpoint.moviedatabase.ui.search.databinding.ItemGenreBinding
 
-class GenreAdapter : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
-    private val items = mutableListOf<MovieDetail.Genre>()
+class GenreAdapter : ListAdapter<MovieDetail.Genre, GenreAdapter.GenreViewHolder>(
+    object : DiffUtil.ItemCallback<MovieDetail.Genre>() {
+        override fun areItemsTheSame(
+            oldItem: MovieDetail.Genre,
+            newItem: MovieDetail.Genre
+        ): Boolean = oldItem.id == newItem.id
 
-    @SuppressLint("NotifyDataSetChanged")
+        override fun areContentsTheSame(
+            oldItem: MovieDetail.Genre,
+            newItem: MovieDetail.Genre
+        ): Boolean = oldItem == newItem
+    }
+) {
     fun updateGenres(genres: List<MovieDetail.Genre>) {
-        items.clear()
-        items.addAll(genres)
-
-        notifyDataSetChanged()
+        submitList(genres)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder {
@@ -32,11 +39,9 @@ class GenreAdapter : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
 
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) =
         with(holder.binding) {
-            genreName = items[position].name
+            genreName = getItem(position).name
             executePendingBindings()
         }
-
-    override fun getItemCount(): Int = items.size
 
     class GenreViewHolder(val binding: ItemGenreBinding) : RecyclerView.ViewHolder(binding.root)
 }
