@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.preferences.addValue
@@ -30,7 +31,7 @@ class MovieSearchViewModel @ViewModelInject constructor(
 
     val keyword: MutableLiveData<String> = MutableLiveData()
 
-    val results: LiveData<PagingData<SearchResultModel>> = _results
+    val results: LiveData<PagingData<SearchResultModel>> = _results.cachedIn(this)
 
     val resultCount = MutableLiveData<Int>()
 
