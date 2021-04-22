@@ -74,6 +74,7 @@ dependencies {
     implementation deps.androidx.paging
     implementation deps.androidx.navigation_fragment
     implementation deps.androidx.navigation_ui
+    implementation deps.androidx.datastore_prefs
 
     // androidx.room
     implementation deps.androidx.room_runtime

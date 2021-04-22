@@ -11,6 +11,7 @@ import io.viewpoint.moviedatabase.domain.preferences.getValues
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseSearchRepository
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
+import io.viewpoint.moviedatabase.test.TestBase
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.test.mock.TestSearchApi
@@ -25,7 +26,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import org.junit.Before
 import org.junit.Test
 
-class MovieSearchViewModelTest : io.viewpoint.moviedatabase.test.TestBase() {
+class MovieSearchViewModelTest : TestBase() {
     private val preferences = TestPreferencesService()
     private val searchApi = spyk(TestSearchApi())
     private val pager =

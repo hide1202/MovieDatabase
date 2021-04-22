@@ -10,11 +10,13 @@ import dagger.hilt.components.SingletonComponent
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.platform.common.AndroidPreferencesService
 import io.viewpoint.moviedatabase.platform.external.AppDatabase
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 class AndroidModule {
     @Provides
+    @Singleton
     fun preferencesService(@ApplicationContext context: Context): PreferencesService =
         AndroidPreferencesService(context)
 

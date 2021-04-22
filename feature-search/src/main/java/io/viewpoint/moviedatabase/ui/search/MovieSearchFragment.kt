@@ -115,6 +115,8 @@ class MovieSearchFragment : Fragment(), RecentSearchKeywordAdapter.Callbacks {
     }
 
     override fun onRemoved(keyword: String) {
-        viewModel.removeRecentKeyword(keyword)
+        lifecycleScope.launch {
+            viewModel.removeRecentKeyword(keyword)
+        }
     }
 }
