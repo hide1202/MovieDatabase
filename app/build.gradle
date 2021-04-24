@@ -50,6 +50,7 @@ dependencies {
     implementation project(':domain')
 
     testImplementation project(':test-base')
+    androidTestImplementation project(':test-base')
 
     // features
     implementation project(':feature-home')

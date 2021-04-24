@@ -18,11 +18,8 @@ import io.viewpoint.moviedatabase.test.mock.TestSearchApi
 import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchPager
 import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchViewModel
 import junit.framework.Assert.*
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withTimeoutOrNull
 import org.junit.Before
 import org.junit.Test
 
@@ -84,8 +81,12 @@ class MovieSearchViewModelTest : TestBase() {
         vm.keyword.value = keyword
         vm.searchCommand()
 
+        // TODO Remove delays
+        delay(500L)
         val before = vm.recentKeywords.value?.any { it == "test" } == true
         vm.removeRecentKeyword("test")
+        delay(500L)
+
         val after = vm.recentKeywords.value?.any { it == "test" } == true
         assertTrue(before)
         assertTrue(after)

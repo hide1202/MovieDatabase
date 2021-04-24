@@ -3,18 +3,20 @@ package io.viewpoint.moviedatabase.platform.common
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import io.viewpoint.moviedatabase.domain.preferences.PreferenceKey
+import io.viewpoint.moviedatabase.test.TestBase
 import junit.framework.Assert.assertEquals
+import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class AndroidPreferencesServiceTest {
+class AndroidPreferencesServiceTest : TestBase() {
     private val preferencesService =
         AndroidPreferencesService(InstrumentationRegistry.getInstrumentation().context)
 
     @Test
-    fun preferencesCanGetAndSetStringSet() {
+    fun preferencesCanGetAndSetStringSet() = runBlocking {
         val preferenceKey = PreferenceKey(
             key = "list_test",
             type = TestData::class
