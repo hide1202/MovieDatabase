@@ -40,7 +40,9 @@ class MovieSearchViewModel @ViewModelInject constructor(
     var beforeSearchCommand: () -> Unit = {}
 
     init {
-        loadRecentKeywords()
+        viewModelScope.launch {
+            loadRecentKeywords()
+        }
     }
 
     val searchCommand = Command {
@@ -64,11 +66,11 @@ class MovieSearchViewModel @ViewModelInject constructor(
         }
     }
 
-    fun removeRecentKeyword(keyword: String) {
+    suspend fun removeRecentKeyword(keyword: String) {
         preferences.removeValue(PreferencesKeys.SEARCHED_KEYWORDS, keyword)
     }
 
-    private fun loadRecentKeywords() {
+    private suspend fun loadRecentKeywords() {
         _recentKeywords.value = preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS)
     }
 }

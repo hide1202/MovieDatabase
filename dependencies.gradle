@@ -24,7 +24,8 @@ ext.versions = [
                 hilt              : '1.0.0-alpha03',
                 paging            : '3.0.0-beta03',
                 navigation        : '2.3.2',
-                room              : '2.2.5'
+                room              : '2.2.5',
+                datastore         : '1.0.0-alpha08'
         ],
         test     : [
                 junit            : '4.13.1',
@@ -79,7 +80,9 @@ ext.deps = [
                 room_common        : "androidx.room:room-common:${versions.androidx.room}",
                 room_runtime       : "androidx.room:room-runtime:${versions.androidx.room}",
                 room_compiler      : "androidx.room:room-compiler:${versions.androidx.room}",
-                room_ktx           : "androidx.room:room-ktx:${versions.androidx.room}"
+                room_ktx           : "androidx.room:room-ktx:${versions.androidx.room}",
+
+                datastore_prefs    : "androidx.datastore:datastore-preferences:${versions.androidx.datastore}"
         ],
         test        : [
                 junit            : "junit:junit:${versions.test.junit}",
