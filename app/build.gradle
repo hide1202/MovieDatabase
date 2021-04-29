@@ -98,6 +98,7 @@ dependencies {
 
     // test
     testImplementation deps.test.junit
+    testImplementation deps.test.strikt
     testImplementation deps.test.mockk
     testImplementation deps.test.mockk_agent_jvm
     testImplementation deps.test.android_test_core

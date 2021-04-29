@@ -3,10 +3,13 @@ package io.viewpoint.moviedatabase.repository
 import io.mockk.spyk
 import io.mockk.verify
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository.Companion.SUPPORTED_LANGUAGE_CODES
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
 
 class MovieDatabaseConfigurationRepositoryTest {
     @Test
@@ -44,4 +47,13 @@ class MovieDatabaseConfigurationRepositoryTest {
 
             verify(exactly = 1) { api.getSupportedLanguages() }
         }
+
+    @Test
+    fun `get supported languages`(): Unit = runBlocking {
+        val repository = MovieDatabaseConfigurationRepository(TestConfigurationApi())
+        val supportedLanguages = repository.getSupportedLanguages()
+
+        expectThat(supportedLanguages.size).isEqualTo(SUPPORTED_LANGUAGE_CODES.size)
+        expectThat(supportedLanguages.map { it.iso_639_1 }).isEqualTo(SUPPORTED_LANGUAGE_CODES.map { it.language })
+    }
 }
