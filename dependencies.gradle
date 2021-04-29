@@ -29,6 +29,7 @@ ext.versions = [
         ],
         test     : [
                 junit            : '4.13.1',
+                strikt           : '0.31.0',
                 android_test_core: '1.3.0',
                 android_core     : '2.1.0',
                 mockk            : '1.10.3',
@@ -86,6 +87,7 @@ ext.deps = [
         ],
         test        : [
                 junit            : "junit:junit:${versions.test.junit}",
+                strikt           : "io.strikt:strikt-core:${versions.test.strikt}",
                 android_core     : "androidx.arch.core:core-testing:${versions.test.android_core}",
                 android_test_core: "androidx.test:core:${versions.test.android_test_core}",
                 mockk            : "io.mockk:mockk:${versions.test.mockk}",
