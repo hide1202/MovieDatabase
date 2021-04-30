@@ -2,10 +2,13 @@ package io.viewpoint.moviedatabase.api
 
 import arrow.core.Either
 import io.viewpoint.moviedatabase.api.util.MockResponseReader
-import junit.framework.Assert.*
+import junit.framework.Assert.fail
 import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import retrofit2.HttpException
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
+import strikt.assertions.isTrue
 
 class SearchApiTest : ApiTest() {
     private val api by lazy {
@@ -26,8 +29,10 @@ class SearchApiTest : ApiTest() {
 
             val response = api.searchMovie("")
                 .suspended()
-            assertEquals(1, response.page)
-            assertEquals(56, response.total_results)
+            expectThat(response) {
+                get { page }.isEqualTo(1)
+                get { total_results }.isEqualTo(56)
+            }
         }
 
     @Test
@@ -42,12 +47,12 @@ class SearchApiTest : ApiTest() {
                 .attempt()
                 .suspended()
 
-            assertTrue("response must have a error", either.isLeft())
+            expectThat(either.isLeft()).isTrue()
             when (either) {
                 is Either.Left -> {
                     val exception = either.a
                     if (exception is HttpException) {
-                        assertTrue("code must be 401", exception.code() == 401)
+                        expectThat(exception.code()).isEqualTo(401)
                     } else {
                         fail("error must be HttpException")
                     }
