@@ -20,6 +20,8 @@ dependencies {
     api deps.libraries.arrow_syntax
     api deps.libraries.arrow_fx
     kapt deps.libraries.arrow_meta_kapt
+
+    testImplementation deps.test.mockwebserver
 }
 
 compileKotlin {
