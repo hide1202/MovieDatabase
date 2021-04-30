@@ -9,6 +9,7 @@ apply from: '../dependencies.gradle'
 apply from: '../external.gradle'
 apply from: '../app.gradle'
 apply from: '../android-configure.gradle'
+apply from: '../android-test-dependencies.gradle'
 apply from: '../android-jacoco.gradle'
 
 android {
@@ -48,9 +49,6 @@ dependencies {
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
-
-    testImplementation project(':test-base')
-    androidTestImplementation project(':test-base')
 
     // features
     implementation project(':feature-home')
@@ -95,19 +93,4 @@ dependencies {
     // glide
     implementation deps.libraries.glide
     kapt deps.libraries.glide_kapt
-
-    // test
-    testImplementation deps.test.junit
-    testImplementation deps.test.strikt
-    testImplementation deps.test.mockk
-    testImplementation deps.test.mockk_agent_jvm
-    testImplementation deps.test.android_test_core
-    testImplementation deps.test.android_core
-    testImplementation deps.libraries.moshi
-    testImplementation deps.test.coroutine_test
-    testImplementation deps.test.robolectric
-
-    // android test
-    androidTestImplementation deps.android_test.junit
-    androidTestImplementation deps.android_test.espresso_core
 }

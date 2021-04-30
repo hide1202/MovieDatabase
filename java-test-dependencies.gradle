@@ -1,0 +1,13 @@
+apply from: '../dependencies.gradle'
+
+dependencies {
+    testImplementation project(':test-base')
+
+    // test
+    testImplementation deps.test.junit
+    testImplementation deps.test.strikt
+    testImplementation deps.test.mockk
+    testImplementation deps.test.mockk_agent_jvm
+    testImplementation deps.libraries.moshi
+    testImplementation deps.test.coroutine_test
+}

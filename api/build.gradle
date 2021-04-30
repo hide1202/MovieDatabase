@@ -3,6 +3,7 @@ apply plugin: 'kotlin'
 apply plugin: 'kotlin-kapt'
 
 apply from: '../dependencies.gradle'
+apply from: '../java-test-dependencies.gradle'
 
 dependencies {
     implementation deps.kotlin.stdlib
@@ -19,9 +20,6 @@ dependencies {
     api deps.libraries.arrow_syntax
     api deps.libraries.arrow_fx
     kapt deps.libraries.arrow_meta_kapt
-
-    testImplementation deps.test.junit
-    testImplementation deps.test.mockwebserver
 }
 
 compileKotlin {
