@@ -28,8 +28,6 @@ dependencies {
     implementation project(':api')
     implementation project(':domain')
 
-    testImplementation project(':test-base')
-
     // androidx
     implementation deps.androidx.core
     implementation deps.androidx.activity

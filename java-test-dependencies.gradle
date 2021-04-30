@@ -1,8 +1,6 @@
 apply from: '../dependencies.gradle'
 
 dependencies {
-    testImplementation project(':test-base')
-
     // test
     testImplementation deps.test.junit
     testImplementation deps.test.strikt

@@ -2,6 +2,7 @@ apply from: '../dependencies.gradle'
 apply from: '../java-test-dependencies.gradle'
 
 dependencies {
+    testImplementation project(':test-base')
     androidTestImplementation project(':test-base')
 
     // test
