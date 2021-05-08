@@ -1,6 +1,5 @@
 package io.viewpoint.moviedatabase.viewmodel
 
-
 import androidx.lifecycle.Observer
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
@@ -13,10 +12,14 @@ import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieApi
 import io.viewpoint.moviedatabase.test.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.test.mock.TestWantToSeeDao
-import junit.framework.Assert.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
+import strikt.assertions.isNotEqualTo
+import strikt.assertions.isNotNull
+import strikt.assertions.isNull
 
 class MainViewModelTest : TestBase() {
     private val vm
@@ -45,15 +48,24 @@ class MainViewModelTest : TestBase() {
         val nowPlayingList = vm.nowPlaying.value
         val upcomingList = vm.upcoming.value
         val topRatedList = vm.topRated.value
-        assertNotNull(wantToSeeList)
-        assertNotNull(popularList)
-        assertNotNull(nowPlayingList)
-        assertNotNull(upcomingList)
-        assertNotNull(topRatedList)
-        assertEquals(2, requireNotNull(popularList).size)
-        assertEquals(2, requireNotNull(nowPlayingList).size)
-        assertEquals(2, requireNotNull(upcomingList).size)
-        assertEquals(2, requireNotNull(topRatedList).size)
+
+        expectThat(wantToSeeList).isNotNull()
+        expectThat(popularList) {
+            isNotNull()
+            get { this?.size }.isEqualTo(2)
+        }
+        expectThat(nowPlayingList) {
+            isNotNull()
+            get { this?.size }.isEqualTo(2)
+        }
+        expectThat(upcomingList) {
+            isNotNull()
+            get { this?.size }.isEqualTo(2)
+        }
+        expectThat(topRatedList) {
+            isNotNull()
+            get { this?.size }.isEqualTo(2)
+        }
     }
 
     @Test
@@ -69,18 +81,18 @@ class MainViewModelTest : TestBase() {
         vm.loadData()
 
         delay(1500L)
-        assertEquals(2, set.size)
+        expectThat(set.size).isEqualTo(2)
 
         vm.isLoading.removeObserver(observer)
     }
 
     @Test
-    fun `load saved language when initialize view`() = runBlocking {
+    fun `load saved language when initialize view`(): Unit = runBlocking {
         val preferencesService = TestPreferencesService()
 
         val firstPreLanguage = MovieDatabaseApi.language
         createVmWith(preferencesService).awaitInit()
-        assertNull(firstPreLanguage)
+        expectThat(firstPreLanguage).isNull()
 
         val expectedLanguage = TestConfigurationApi()
             .getSupportedLanguages()
@@ -94,7 +106,7 @@ class MainViewModelTest : TestBase() {
 
         val secondPreLanguage = MovieDatabaseApi.language
         createVmWith(preferencesService).awaitInit()
-        assertTrue(secondPreLanguage != MovieDatabaseApi.language)
-        assertEquals(expectedLanguage, MovieDatabaseApi.language)
+        expectThat(secondPreLanguage).isNotEqualTo(MovieDatabaseApi.language)
+        expectThat(MovieDatabaseApi.language).isEqualTo(expectedLanguage)
     }
 }

@@ -1,21 +1,22 @@
 package io.viewpoint.moviedatabase.viewmodel.search
 
-import io.viewpoint.moviedatabase.test.TestBase
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
+import io.viewpoint.moviedatabase.test.TestBase
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieApi
 import io.viewpoint.moviedatabase.test.mock.TestWantToSeeDao
 import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchResultDetailViewModel
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import strikt.api.expectThat
+import strikt.assertions.*
 
-class MovieSearchResultDetailViewModelTest : io.viewpoint.moviedatabase.test.TestBase() {
+class MovieSearchResultDetailViewModelTest : TestBase() {
     private val mapperProvider =
         SearchResultMapperProvider(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
     private val creditMapper =
@@ -39,17 +40,18 @@ class MovieSearchResultDetailViewModelTest : io.viewpoint.moviedatabase.test.Tes
     }
 
     @Test
-    fun invertCommendWithoutLoadTest() = runBlocking {
+    fun invertCommendWithoutLoadTest(): Unit = runBlocking {
         val before = vm.wantToSee.value
         vm.invertWantToSeeCommand()
         val after = vm.wantToSee.value
-        assertNotNull(before)
-        assertNotNull(after)
-        assertEquals(after, before)
+
+        expectThat(before).isNotNull()
+        expectThat(after).isNotNull()
+        expectThat(after).isEqualTo(before)
     }
 
     @Test
-    fun invertCommendTest() = runBlocking {
+    fun invertCommendTest(): Unit = runBlocking {
         val popular = movieApi.getPopular().suspended()
         val result = popular.results[0]
 
@@ -58,27 +60,35 @@ class MovieSearchResultDetailViewModelTest : io.viewpoint.moviedatabase.test.Tes
         val previous = vm.wantToSee.value
         vm.invertWantToSeeCommand()
         val firstInvert = vm.wantToSee.value
-        assertNotEquals(previous, firstInvert)
         vm.invertWantToSeeCommand()
         val secondInvert = vm.wantToSee.value
-        assertNotEquals(firstInvert, secondInvert)
+
+        expectThat(firstInvert).isNotEqualTo(previous)
+        expectThat(secondInvert).isNotEqualTo(firstInvert)
     }
 
     @Test
-    fun loadWithMovieIdTest() = runBlocking {
+    fun loadWithMovieIdTest(): Unit = runBlocking {
         val result = vm.loadWithMovieId(movieId = 557)
         val genres = vm.genres
         val country = vm.countries
         val credits = vm.credits
         val productionCompanies = vm.productionCompanies
-        assertNotNull(result)
-        assertNotNull(genres.value)
-        assertNotNull(country.value)
-        assertNotNull(credits.value)
-        assertNotNull(productionCompanies.value)
-        assertEquals(1, country.value?.size)
-        assertEquals("US", country.value?.getOrNull(0))
-        assertFalse(credits.value.isNullOrEmpty())
-        assertFalse(productionCompanies.value.isNullOrEmpty())
+
+        expectThat(result).isNotNull()
+        expectThat(genres.value).isNotNull()
+        expectThat(country.value).isNotNull()
+        expectThat(credits.value).isNotNull()
+        expectThat(productionCompanies.value).isNotNull()
+
+        expectThat(country.value)
+            .isNotNull()
+            .and {
+                hasSize(1)
+                get(0).isEqualTo("US")
+            }
+
+        expectThat(credits.value).isNotNull().isNotEmpty()
+        expectThat(productionCompanies.value).isNotNull().isNotEmpty()
     }
 }

@@ -7,10 +7,11 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
 import io.viewpoint.moviedatabase.model.api.Movie
-import junit.framework.Assert.assertEquals
 import junit.framework.Assert.fail
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
 
 class SearchResultMapperTest {
     private val moshi = Moshi.Builder()
@@ -38,10 +39,8 @@ class SearchResultMapperTest {
                 emptyList()
         })
 
-        assertEquals(
-            "${expectedImageBaseUrl}eXbCqcUsUDUq2qqGmU5i20S0tjo.jpg",
-            mapper.mapperFromMovie.map(response).posterUrl
-        )
+        expectThat(mapper.mapperFromMovie.map(response).posterUrl)
+            .isEqualTo("${expectedImageBaseUrl}eXbCqcUsUDUq2qqGmU5i20S0tjo.jpg")
     }
 
     companion object {

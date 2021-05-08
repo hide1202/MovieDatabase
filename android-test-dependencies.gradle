@@ -1,0 +1,17 @@
+apply from: '../dependencies.gradle'
+apply from: '../java-test-dependencies.gradle'
+
+dependencies {
+    testImplementation project(':test-base')
+    androidTestImplementation project(':test-base')
+
+    // test
+    testImplementation deps.test.android_test_core
+    testImplementation deps.test.android_core
+    testImplementation deps.test.robolectric
+
+    // android test
+    androidTestImplementation deps.android_test.junit
+    androidTestImplementation deps.test.strikt
+    androidTestImplementation deps.android_test.espresso_core
+}

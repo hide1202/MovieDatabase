@@ -6,7 +6,6 @@ import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
 
-
 abstract class ApiTest {
     protected val mockServer = MockWebServer()
 

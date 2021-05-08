@@ -5,6 +5,7 @@ plugins {
 }
 
 apply from: '../dependencies.gradle'
+apply from: '../java-test-dependencies.gradle'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -42,9 +43,4 @@ dependencies {
 
     implementation deps.libraries.dagger
     kapt deps.libraries.dagger_kapt
-
-    // test
-    testImplementation deps.kotlin.coroutines
-    testImplementation deps.test.junit
-    testImplementation deps.libraries.moshi
 }

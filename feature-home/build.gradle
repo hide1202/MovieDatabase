@@ -8,6 +8,7 @@ plugins {
 apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
 apply from: '../android-jacoco.gradle'
+apply from: '../android-test-dependencies.gradle'
 
 android {
     defaultConfig {
@@ -26,8 +27,6 @@ dependencies {
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
-
-    testImplementation project(':test-base')
 
     // androidx
     implementation deps.androidx.core
@@ -51,17 +50,4 @@ dependencies {
 
     // timber
     implementation deps.libraries.timber
-
-    // test
-    testImplementation deps.test.junit
-    testImplementation deps.test.mockk
-    testImplementation deps.test.mockk_agent_jvm
-    testImplementation deps.test.android_test_core
-    testImplementation deps.test.android_core
-    testImplementation deps.test.coroutine_test
-    testImplementation deps.test.robolectric
-
-    // android test
-    androidTestImplementation deps.android_test.junit
-    androidTestImplementation deps.android_test.espresso_core
 }

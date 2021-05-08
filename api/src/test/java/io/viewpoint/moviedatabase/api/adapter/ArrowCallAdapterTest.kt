@@ -5,13 +5,16 @@ import arrow.fx.IO
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.viewpoint.moviedatabase.api.ApiTest
-import junit.framework.Assert.*
+import junit.framework.Assert.fail
 import okhttp3.mockwebserver.MockResponse
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
+import strikt.assertions.isTrue
 
 class ArrowCallAdapterTest : ApiTest() {
     private val retrofit by lazy {
@@ -53,12 +56,14 @@ class ArrowCallAdapterTest : ApiTest() {
         val response = api.test()
             .attempt()
             .suspended()
-        assertTrue(response.isRight())
+        expectThat(response.isRight()).isTrue()
         when (response) {
             is Either.Left -> fail()
             is Either.Right -> {
-                assertEquals("test", response.b.name)
-                assertEquals(30, response.b.age)
+                expectThat(response.b) {
+                    get { name }.isEqualTo("test")
+                    get { age }.isEqualTo(30)
+                }
             }
         }
     }

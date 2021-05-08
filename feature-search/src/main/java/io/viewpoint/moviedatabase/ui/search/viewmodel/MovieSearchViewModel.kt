@@ -68,6 +68,7 @@ class MovieSearchViewModel @ViewModelInject constructor(
 
     suspend fun removeRecentKeyword(keyword: String) {
         preferences.removeValue(PreferencesKeys.SEARCHED_KEYWORDS, keyword)
+        loadRecentKeywords()
     }
 
     private suspend fun loadRecentKeywords() {
