@@ -47,6 +47,6 @@ class TestPreferencesService : PreferencesService {
         value: List<T>,
         converter: (T) -> String
     ) {
-        preferences.putIfAbsent(key.key, value.map(converter))
+        preferences[key.key] = value.map(converter)
     }
 }

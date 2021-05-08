@@ -5,11 +5,12 @@ import io.mockk.verify
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository.Companion.SUPPORTED_LANGUAGE_CODES
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
-import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import strikt.api.expectThat
 import strikt.assertions.isEqualTo
+import strikt.assertions.isNotEmpty
+import strikt.assertions.isTrue
 
 class MovieDatabaseConfigurationRepositoryTest {
     @Test
@@ -22,10 +23,10 @@ class MovieDatabaseConfigurationRepositoryTest {
                 )
 
             val imageUrl = repository.getImageBaseUrl()
-            assertTrue(imageUrl.isDefined())
+            expectThat(imageUrl).get { isDefined() }.isTrue()
 
             val secondImageUrl = repository.getImageBaseUrl()
-            assertTrue(secondImageUrl.isDefined())
+            expectThat(secondImageUrl).get { isDefined() }.isTrue()
 
             verify(exactly = 1) { api.getConfiguration() }
         }
@@ -40,10 +41,10 @@ class MovieDatabaseConfigurationRepositoryTest {
                 )
 
             val languages = repository.getSupportedLanguages()
-            assertTrue(languages.isNotEmpty())
+            expectThat(languages).isNotEmpty()
 
             val secondLanguages = repository.getSupportedLanguages()
-            assertTrue(secondLanguages.isNotEmpty())
+            expectThat(secondLanguages).isNotEmpty()
 
             verify(exactly = 1) { api.getSupportedLanguages() }
         }

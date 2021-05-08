@@ -4,11 +4,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import io.viewpoint.moviedatabase.domain.preferences.PreferenceKey
 import io.viewpoint.moviedatabase.test.TestBase
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 import org.junit.Test
 import org.junit.runner.RunWith
+import strikt.api.expectThat
+import strikt.assertions.hasSize
+import strikt.assertions.isEmpty
 
 @RunWith(AndroidJUnit4::class)
 class AndroidPreferencesServiceTest : TestBase() {
@@ -24,7 +26,7 @@ class AndroidPreferencesServiceTest : TestBase() {
         val zero = preferencesService.getValues(preferenceKey) {
             TestData.from(it)
         }
-        assertEquals(0, zero.size)
+        expectThat(zero).isEmpty()
 
         preferencesService.putValues(
             preferenceKey, listOf(
@@ -38,7 +40,7 @@ class AndroidPreferencesServiceTest : TestBase() {
         val two = preferencesService.getValues(preferenceKey) {
             TestData.from(it)
         }
-        assertEquals(2, two.size)
+        expectThat(two).hasSize(2)
 
         preferencesService.putValues(preferenceKey, emptyList()) {
             it.toString()
@@ -47,7 +49,7 @@ class AndroidPreferencesServiceTest : TestBase() {
         val againZero = preferencesService.getValues(preferenceKey) {
             TestData.from(it)
         }
-        assertEquals(0, againZero.size)
+        expectThat(againZero).isEmpty()
     }
 
     data class TestData(
