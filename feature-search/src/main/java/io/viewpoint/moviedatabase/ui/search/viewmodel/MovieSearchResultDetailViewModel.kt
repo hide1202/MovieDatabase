@@ -1,12 +1,12 @@
 package io.viewpoint.moviedatabase.ui.search.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import arrow.core.getOrElse
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
@@ -16,8 +16,10 @@ import io.viewpoint.moviedatabase.model.ui.CreditModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MovieSearchResultDetailViewModel @ViewModelInject constructor(
+@HiltViewModel
+class MovieSearchResultDetailViewModel @Inject constructor(
     private val movieRepository: MovieRepository,
     private val wantToSeeRepository: WantToSeeRepository,
     private val resultMapperProvider: SearchResultMapperProvider,

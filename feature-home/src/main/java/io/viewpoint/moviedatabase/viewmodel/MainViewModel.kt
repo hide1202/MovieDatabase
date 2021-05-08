@@ -1,12 +1,12 @@
 package io.viewpoint.moviedatabase.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.getOrElse
 import arrow.fx.extensions.io.async.effectMap
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.popular.PopularResultMapper
@@ -18,8 +18,10 @@ import io.viewpoint.moviedatabase.model.api.toMovie
 import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel @ViewModelInject constructor(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val preferences: PreferencesService,
     configurationRepository: ConfigurationRepository,
     private val wantToSeeRepository: WantToSeeRepository,

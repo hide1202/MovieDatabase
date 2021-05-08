@@ -15,12 +15,13 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath "org.jacoco:org.jacoco.core:0.8.3"
 
-        classpath "com.google.dagger:hilt-android-gradle-plugin:${versions.libraries.hilt}"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:${versions.libraries.dagger}"
     }
 }
 
 allprojects {
     repositories {
+        mavenCentral()
         google()
         jcenter()
         maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }

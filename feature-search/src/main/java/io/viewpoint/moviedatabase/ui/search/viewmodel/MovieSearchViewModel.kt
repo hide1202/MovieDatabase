@@ -1,12 +1,12 @@
 package io.viewpoint.moviedatabase.ui.search.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.preferences.addValue
@@ -18,8 +18,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MovieSearchViewModel @ViewModelInject constructor(
+@HiltViewModel
+class MovieSearchViewModel @Inject constructor(
     private val preferences: PreferencesService,
     private val pager: MovieSearchPager
 ) : ViewModel() {
