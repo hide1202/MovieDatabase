@@ -45,7 +45,6 @@ dependencies {
     implementation deps.libraries.hilt
     kapt deps.libraries.hilt_kapt
     // hilt with androidx
-    implementation deps.androidx.hilt_lifecycle
     kapt deps.androidx.hilt_kapt
 
     // timber

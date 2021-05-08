@@ -21,7 +21,7 @@ ext.versions = [
                 startup           : '1.0.0',
                 ext_junit         : '1.1.2',
                 espresso_core     : '3.3.0',
-                hilt              : '1.0.0-alpha03',
+                hilt              : '1.0.0',
                 paging            : '3.0.0-beta03',
                 navigation        : '2.3.2',
                 room              : '2.2.5',
@@ -42,8 +42,7 @@ ext.versions = [
                 coroutine_core: '1.3.7',
                 arrow         : '0.11.0',
                 timber        : '4.7.1',
-                hilt          : '2.29.1-alpha',
-                dagger        : '2.30.1',
+                dagger        : '2.35.1',
                 glide         : '4.11.0'
         ]
 ]
@@ -72,7 +71,6 @@ ext.deps = [
 
                 startup            : "androidx.startup:startup-runtime:${versions.androidx.startup}",
 
-                hilt_lifecycle     : "androidx.hilt:hilt-lifecycle-viewmodel:${versions.androidx.hilt}",
                 hilt_kapt          : "androidx.hilt:hilt-compiler:${versions.androidx.hilt}",
 
                 paging_common      : "androidx.paging:paging-common:${versions.androidx.paging}",
@@ -112,8 +110,8 @@ ext.deps = [
                 arrow_meta_kapt: "io.arrow-kt:arrow-meta:${versions.libraries.arrow}",
                 timber         : "com.jakewharton.timber:timber:${versions.libraries.timber}",
 
-                hilt           : "com.google.dagger:hilt-android:${versions.libraries.hilt}",
-                hilt_kapt      : "com.google.dagger:hilt-android-compiler:${versions.libraries.hilt}",
+                hilt           : "com.google.dagger:hilt-android:${versions.libraries.dagger}",
+                hilt_kapt      : "com.google.dagger:hilt-android-compiler:${versions.libraries.dagger}",
 
                 dagger         : "com.google.dagger:dagger:${versions.libraries.dagger}",
                 dagger_kapt    : "com.google.dagger:dagger-compiler:${versions.libraries.dagger}",
