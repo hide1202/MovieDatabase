@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="io.viewpoint.moviedatabase">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".platform.MovieDatabaseApp"
         android:allowBackup="false"
@@ -25,6 +23,7 @@
             </intent-filter>
 
         </activity>
+
         <activity android:name=".ui.search.SearchResultDetailActivity">
             <nav-graph android:value="@navigation/detail_navigation" />
         </activity>
@@ -38,6 +37,21 @@
                 android:name="io.viewpoint.moviedatabase.platform.startup.TimberInitializer"
                 android:value="androidx.startup" />
         </provider>
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            tools:node="remove" />
+
+        <receiver
+            android:name=".platform.receiver.LocaleChangeListener"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+        </receiver>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

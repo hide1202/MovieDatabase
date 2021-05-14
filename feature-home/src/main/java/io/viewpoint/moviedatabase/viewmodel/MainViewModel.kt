@@ -39,16 +39,8 @@ class MainViewModel @Inject constructor(
 
     init {
         initJob = viewModelScope.launch {
-            preferences.getValue(PreferencesKeys.SELECTED_LANGUAGE_ISO)
-                ?.let { savedSelectedLanguageIso ->
-                    val languages = configurationRepository.getSupportedLanguages()
-                    languages.firstOrNull {
-                        it.iso_639_1 == savedSelectedLanguageIso
-                    }
-                }
-                ?.let {
-                    MovieDatabaseApi.language = it.iso_639_1
-                }
+            MovieDatabaseApi.language =
+                preferences.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
 
             loadData()
         }
