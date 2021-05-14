@@ -9,8 +9,8 @@ object Languages {
         SUPPORTED_LANGUAGE_CODES.any { it.language == default.language }
     } ?: SUPPORTED_LANGUAGE_CODES[0]
         set(value) {
-            field = value.takeIf {
-                SUPPORTED_LANGUAGE_CODES.contains(value)
+            field = value.takeIf { locale ->
+                SUPPORTED_LANGUAGE_CODES.any { it.language == locale.language }
             } ?: SUPPORTED_LANGUAGE_CODES[0]
         }
 }

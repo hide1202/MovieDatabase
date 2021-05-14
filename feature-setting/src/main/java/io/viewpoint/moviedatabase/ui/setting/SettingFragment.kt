@@ -46,27 +46,7 @@ class SettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            val languages = configurationRepository.getSupportedLanguages()
-            val adapter = ArrayAdapter(requireContext(),
-                R.layout.item_language, languages
-                    .asSequence()
-                    .map { it.name }
-                    .filter { it.isNotEmpty() }
-                    .toList()
-            )
-
-            binding.languageSelect.setAdapter(adapter)
-
-            val savedLanguageIso =
-                preferences.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
-
-            languages.firstOrNull {
-                it.iso_639_1 == savedLanguageIso
-            }?.let {
-                binding.languageSelect.setText(it.name, false)
-            }
-        }
+        loadSavedLanguage()
 
         binding.languageSelect.onItemClickListener = object : AdapterView.OnItemClickListener {
             override fun onItemClick(
@@ -90,6 +70,45 @@ class SettingFragment : Fragment() {
                     )
                 }
             }
+        }
+
+        binding.languageClear.setOnClickListener {
+            lifecycleScope.launch {
+                preferences.putValue(PreferencesKeys.SELECTED_LANGUAGE_ISO, null)
+                MovieDatabaseApi.language =
+                    preferences.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+                loadSavedLanguage()
+            }
+        }
+    }
+
+    private fun loadSavedLanguage() {
+        lifecycleScope.launch {
+            val languages = configurationRepository.getSupportedLanguages()
+            val adapter = ArrayAdapter(requireContext(),
+                R.layout.item_language, languages
+                    .asSequence()
+                    .map { it.name }
+                    .filter { it.isNotEmpty() }
+                    .toList()
+            )
+
+            binding.languageSelect.setAdapter(adapter)
+
+            val savedLanguageIso =
+                preferences.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+
+            languages.firstOrNull {
+                it.iso_639_1 == savedLanguageIso
+            }?.let {
+                binding.languageSelect.setText(it.name, false)
+            }
+        }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        if (!hidden) {
+            loadSavedLanguage()
         }
     }
 

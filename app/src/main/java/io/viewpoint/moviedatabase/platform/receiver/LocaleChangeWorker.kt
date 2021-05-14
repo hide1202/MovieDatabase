@@ -19,7 +19,7 @@ class LocaleChangeWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
         MovieDatabaseApi.language =
-            preferencesService.getValue(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+            preferencesService.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
         return Result.success()
     }
 }
