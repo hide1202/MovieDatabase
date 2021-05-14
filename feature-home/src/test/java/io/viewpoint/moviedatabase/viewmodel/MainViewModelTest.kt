@@ -2,6 +2,7 @@ package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.lifecycle.Observer
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
+import io.viewpoint.moviedatabase.domain.Languages
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
@@ -89,21 +90,23 @@ class MainViewModelTest : TestBase() {
     @Test
     fun `load saved language when initialize view`(): Unit = runBlocking {
         val originalLocale = Locale.getDefault()
+        val originalApiLanguage = MovieDatabaseApi.language
 
         try {
-            Locale.setDefault(Locale.KOREA)
+            Locale.setDefault(Languages.SUPPORTED_LANGUAGE_CODES[0])
+            MovieDatabaseApi.language = null
 
             val preferencesService = TestPreferencesService()
 
             val firstPreLanguage = MovieDatabaseApi.language
             createVmWith(preferencesService).awaitInit()
-            expectThat(firstPreLanguage).isEqualTo(Locale.KOREA.language)
+            expectThat(firstPreLanguage).isNotEqualTo(Languages.SUPPORTED_LANGUAGE_CODES[0].language)
 
             val expectedLanguage = TestConfigurationApi()
                 .getSupportedLanguages()
                 .suspended()
                 .map { it.iso_639_1 }
-                .first { it == "en" }
+                .first { it == Languages.SUPPORTED_LANGUAGE_CODES[1].language }
             preferencesService.putValue(
                 PreferencesKeys.SELECTED_LANGUAGE_ISO,
                 expectedLanguage
@@ -115,6 +118,7 @@ class MainViewModelTest : TestBase() {
             expectThat(MovieDatabaseApi.language).isEqualTo(expectedLanguage)
         } finally {
             Locale.setDefault(originalLocale)
+            MovieDatabaseApi.language = originalApiLanguage
         }
     }
 }
