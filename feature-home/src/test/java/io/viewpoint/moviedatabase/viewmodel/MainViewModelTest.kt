@@ -19,7 +19,7 @@ import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 import strikt.assertions.isNotEqualTo
 import strikt.assertions.isNotNull
-import strikt.assertions.isNull
+import java.util.*
 
 class MainViewModelTest : TestBase() {
     private val vm
@@ -88,25 +88,33 @@ class MainViewModelTest : TestBase() {
 
     @Test
     fun `load saved language when initialize view`(): Unit = runBlocking {
-        val preferencesService = TestPreferencesService()
+        val originalLocale = Locale.getDefault()
 
-        val firstPreLanguage = MovieDatabaseApi.language
-        createVmWith(preferencesService).awaitInit()
-        expectThat(firstPreLanguage).isNull()
+        try {
+            Locale.setDefault(Locale.KOREA)
 
-        val expectedLanguage = TestConfigurationApi()
-            .getSupportedLanguages()
-            .suspended()
-            .map { it.iso_639_1 }
-            .first { it == "en" }
-        preferencesService.putValue(
-            PreferencesKeys.SELECTED_LANGUAGE_ISO,
-            expectedLanguage
-        )
+            val preferencesService = TestPreferencesService()
 
-        val secondPreLanguage = MovieDatabaseApi.language
-        createVmWith(preferencesService).awaitInit()
-        expectThat(secondPreLanguage).isNotEqualTo(MovieDatabaseApi.language)
-        expectThat(MovieDatabaseApi.language).isEqualTo(expectedLanguage)
+            val firstPreLanguage = MovieDatabaseApi.language
+            createVmWith(preferencesService).awaitInit()
+            expectThat(firstPreLanguage).isEqualTo(Locale.KOREA.language)
+
+            val expectedLanguage = TestConfigurationApi()
+                .getSupportedLanguages()
+                .suspended()
+                .map { it.iso_639_1 }
+                .first { it == "en" }
+            preferencesService.putValue(
+                PreferencesKeys.SELECTED_LANGUAGE_ISO,
+                expectedLanguage
+            )
+
+            val secondPreLanguage = MovieDatabaseApi.language
+            createVmWith(preferencesService).awaitInit()
+            expectThat(secondPreLanguage).isNotEqualTo(MovieDatabaseApi.language)
+            expectThat(MovieDatabaseApi.language).isEqualTo(expectedLanguage)
+        } finally {
+            Locale.setDefault(originalLocale)
+        }
     }
 }

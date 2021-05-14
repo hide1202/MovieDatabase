@@ -2,8 +2,8 @@ package io.viewpoint.moviedatabase.repository
 
 import io.mockk.spyk
 import io.mockk.verify
+import io.viewpoint.moviedatabase.domain.Languages.SUPPORTED_LANGUAGE_CODES
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository.Companion.SUPPORTED_LANGUAGE_CODES
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
