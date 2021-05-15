@@ -25,7 +25,8 @@ ext.versions = [
                 paging            : '3.0.0-beta03',
                 navigation        : '2.3.2',
                 room              : '2.2.5',
-                datastore         : '1.0.0-alpha08'
+                datastore         : '1.0.0-alpha08',
+                workmanager       : '2.5.0'
         ],
         test     : [
                 junit            : '4.13.1',
@@ -72,6 +73,7 @@ ext.deps = [
                 startup            : "androidx.startup:startup-runtime:${versions.androidx.startup}",
 
                 hilt_kapt          : "androidx.hilt:hilt-compiler:${versions.androidx.hilt}",
+                hilt_work          : "androidx.hilt:hilt-work:${versions.androidx.hilt}",
 
                 paging_common      : "androidx.paging:paging-common:${versions.androidx.paging}",
                 paging             : "androidx.paging:paging-runtime:${versions.androidx.paging}",
@@ -81,7 +83,8 @@ ext.deps = [
                 room_compiler      : "androidx.room:room-compiler:${versions.androidx.room}",
                 room_ktx           : "androidx.room:room-ktx:${versions.androidx.room}",
 
-                datastore_prefs    : "androidx.datastore:datastore-preferences:${versions.androidx.datastore}"
+                datastore_prefs    : "androidx.datastore:datastore-preferences:${versions.androidx.datastore}",
+                workmanager        : "androidx.work:work-runtime-ktx:${versions.androidx.workmanager}"
         ],
         test        : [
                 junit            : "junit:junit:${versions.test.junit}",

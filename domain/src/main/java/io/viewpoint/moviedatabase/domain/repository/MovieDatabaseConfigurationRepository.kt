@@ -4,9 +4,9 @@ import arrow.core.*
 import arrow.fx.IO
 import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.api.ConfigurationApi
+import io.viewpoint.moviedatabase.domain.Languages
 import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
 import io.viewpoint.moviedatabase.model.api.ConfigurationResponse
-import java.util.*
 import javax.inject.Inject
 
 class MovieDatabaseConfigurationRepository @Inject constructor(
@@ -62,7 +62,7 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
                 }
             }
             .map { languages ->
-                SUPPORTED_LANGUAGE_CODES
+                Languages.SUPPORTED_LANGUAGE_CODES
                     .mapNotNull { locale ->
                         languages.firstOrNull { it.iso_639_1 == locale.language }
                     }
@@ -96,8 +96,4 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
             .apply {
                 cache(this.orNull())
             }
-
-    companion object {
-        val SUPPORTED_LANGUAGE_CODES = listOf(Locale.ENGLISH, Locale.KOREAN, Locale.JAPANESE)
-    }
 }

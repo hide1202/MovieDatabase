@@ -2,6 +2,7 @@ package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.lifecycle.Observer
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
+import io.viewpoint.moviedatabase.domain.Languages
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
@@ -19,7 +20,7 @@ import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 import strikt.assertions.isNotEqualTo
 import strikt.assertions.isNotNull
-import strikt.assertions.isNull
+import java.util.*
 
 class MainViewModelTest : TestBase() {
     private val vm
@@ -88,25 +89,36 @@ class MainViewModelTest : TestBase() {
 
     @Test
     fun `load saved language when initialize view`(): Unit = runBlocking {
-        val preferencesService = TestPreferencesService()
+        val originalLocale = Locale.getDefault()
+        val originalApiLanguage = MovieDatabaseApi.language
 
-        val firstPreLanguage = MovieDatabaseApi.language
-        createVmWith(preferencesService).awaitInit()
-        expectThat(firstPreLanguage).isNull()
+        try {
+            Locale.setDefault(Languages.SUPPORTED_LANGUAGE_CODES[0])
+            MovieDatabaseApi.language = null
 
-        val expectedLanguage = TestConfigurationApi()
-            .getSupportedLanguages()
-            .suspended()
-            .map { it.iso_639_1 }
-            .first { it == "en" }
-        preferencesService.putValue(
-            PreferencesKeys.SELECTED_LANGUAGE_ISO,
-            expectedLanguage
-        )
+            val preferencesService = TestPreferencesService()
 
-        val secondPreLanguage = MovieDatabaseApi.language
-        createVmWith(preferencesService).awaitInit()
-        expectThat(secondPreLanguage).isNotEqualTo(MovieDatabaseApi.language)
-        expectThat(MovieDatabaseApi.language).isEqualTo(expectedLanguage)
+            val firstPreLanguage = MovieDatabaseApi.language
+            createVmWith(preferencesService).awaitInit()
+            expectThat(firstPreLanguage).isNotEqualTo(Languages.SUPPORTED_LANGUAGE_CODES[0].language)
+
+            val expectedLanguage = TestConfigurationApi()
+                .getSupportedLanguages()
+                .suspended()
+                .map { it.iso_639_1 }
+                .first { it == Languages.SUPPORTED_LANGUAGE_CODES[1].language }
+            preferencesService.putValue(
+                PreferencesKeys.SELECTED_LANGUAGE_ISO,
+                expectedLanguage
+            )
+
+            val secondPreLanguage = MovieDatabaseApi.language
+            createVmWith(preferencesService).awaitInit()
+            expectThat(secondPreLanguage).isNotEqualTo(MovieDatabaseApi.language)
+            expectThat(MovieDatabaseApi.language).isEqualTo(expectedLanguage)
+        } finally {
+            Locale.setDefault(originalLocale)
+            MovieDatabaseApi.language = originalApiLanguage
+        }
     }
 }

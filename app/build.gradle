@@ -74,6 +74,8 @@ dependencies {
     implementation deps.androidx.navigation_fragment
     implementation deps.androidx.navigation_ui
     implementation deps.androidx.datastore_prefs
+    implementation deps.androidx.workmanager
+    implementation deps.androidx.hilt_work
 
     // androidx.room
     implementation deps.androidx.room_runtime

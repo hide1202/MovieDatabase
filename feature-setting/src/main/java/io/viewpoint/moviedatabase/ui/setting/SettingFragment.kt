@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.core.widget.addTextChangedListener
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -45,6 +46,43 @@ class SettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loadSavedLanguage()
+
+        binding.languageSelect.onItemClickListener = object : AdapterView.OnItemClickListener {
+            override fun onItemClick(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val displayName = (view as? TextView)?.text ?: return
+                lifecycleScope.launch {
+                    val languages = configurationRepository.getSupportedLanguages()
+                    languages.firstOrNull {
+                        it.name == displayName.toString()
+                    }?.let {
+                        MovieDatabaseApi.language = it.iso_639_1
+                    }
+
+                    preferences.putValue(
+                        PreferencesKeys.SELECTED_LANGUAGE_ISO,
+                        MovieDatabaseApi.language
+                    )
+                }
+            }
+        }
+
+        binding.languageClear.setOnClickListener {
+            lifecycleScope.launch {
+                preferences.putValue(PreferencesKeys.SELECTED_LANGUAGE_ISO, null)
+                MovieDatabaseApi.language =
+                    preferences.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+                loadSavedLanguage()
+            }
+        }
+    }
+
+    private fun loadSavedLanguage() {
         lifecycleScope.launch {
             val languages = configurationRepository.getSupportedLanguages()
             val adapter = ArrayAdapter(requireContext(),
@@ -57,29 +95,20 @@ class SettingFragment : Fragment() {
 
             binding.languageSelect.setAdapter(adapter)
 
-            preferences.getValue(PreferencesKeys.SELECTED_LANGUAGE_ISO)
-                ?.let { savedLanguageIso ->
-                    languages.firstOrNull { it.iso_639_1 == savedLanguageIso }
-                }
-                ?.let {
-                    binding.languageSelect.setText(it.name, false)
-                }
-        }
-        binding.languageSelect.addTextChangedListener { editable ->
-            editable ?: return@addTextChangedListener
-            lifecycleScope.launch {
-                val languages = configurationRepository.getSupportedLanguages()
-                languages.firstOrNull {
-                    it.name == editable.toString()
-                }?.let {
-                    MovieDatabaseApi.language = it.iso_639_1
-                }
+            val savedLanguageIso =
+                preferences.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
 
-                preferences.putValue(
-                    PreferencesKeys.SELECTED_LANGUAGE_ISO,
-                    MovieDatabaseApi.language
-                )
+            languages.firstOrNull {
+                it.iso_639_1 == savedLanguageIso
+            }?.let {
+                binding.languageSelect.setText(it.name, false)
             }
+        }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        if (!hidden) {
+            loadSavedLanguage()
         }
     }
 

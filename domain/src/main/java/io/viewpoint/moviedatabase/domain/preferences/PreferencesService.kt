@@ -3,6 +3,10 @@ package io.viewpoint.moviedatabase.domain.preferences
 interface PreferencesService {
     suspend fun <T : Any> getValue(key: PreferenceKey<T>, defaultValue: T? = null): T?
 
+    suspend fun <T : Any> getValueWithDefault(key: PreferenceKeyWithDefault<T>): T {
+        return getValue(key, null) ?: key.defaultProvider()
+    }
+
     suspend fun <T : Any> putValue(key: PreferenceKey<T>, value: T?)
 
     suspend fun <T : Any> getValue(key: PreferenceKey<T>, converter: (String) -> T): T?
