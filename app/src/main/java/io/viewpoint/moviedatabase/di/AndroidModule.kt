@@ -21,6 +21,7 @@ class AndroidModule {
         AndroidPreferencesService(context)
 
     @Provides
+    @Singleton
     fun applicationDatabase(@ApplicationContext context: Context): AppDatabase =
         Room.databaseBuilder(
             context,

@@ -9,12 +9,15 @@ import io.viewpoint.moviedatabase.api.ConfigurationApi
 import io.viewpoint.moviedatabase.api.MovieApi
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.api.SearchApi
+import io.viewpoint.moviedatabase.platform.util.Flippers
 import timber.log.Timber
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 class ApiModule {
     @Provides
+    @Singleton
     fun movieDatabaseApi(): MovieDatabaseApi = MovieDatabaseApi
         .Builder()
         .apply {
@@ -24,18 +27,23 @@ class ApiModule {
                     Timber.d(it)
                 }
             }
+
+            Flippers.networkInterceptor()?.let { interceptor ->
+                addInterceptor(MovieDatabaseApi.Builder.InterceptorType.NETWORK, interceptor)
+            }
         }
         .build()
 
     @Provides
+    @Singleton
     fun configurationApi(movieDatabaseApi: MovieDatabaseApi): ConfigurationApi =
         movieDatabaseApi.get()
 
     @Provides
-    fun movieApi(movieDatabaseApi: MovieDatabaseApi): MovieApi =
-        movieDatabaseApi.get()
+    @Singleton
+    fun movieApi(movieDatabaseApi: MovieDatabaseApi): MovieApi = movieDatabaseApi.get()
 
     @Provides
-    fun searchApi(movieDatabaseApi: MovieDatabaseApi): SearchApi =
-        movieDatabaseApi.get()
+    @Singleton
+    fun searchApi(movieDatabaseApi: MovieDatabaseApi): SearchApi = movieDatabaseApi.get()
 }

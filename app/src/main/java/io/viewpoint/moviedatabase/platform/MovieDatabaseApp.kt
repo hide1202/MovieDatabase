@@ -6,11 +6,13 @@ import android.app.Application
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
+import io.viewpoint.moviedatabase.platform.util.Flippers
 import javax.inject.Inject
 
 
 @HiltAndroidApp
 class MovieDatabaseApp : Application(), Configuration.Provider {
+    // region HiltWorker
     @Inject
     internal lateinit var workerFactory: HiltWorkerFactory
 
@@ -18,5 +20,12 @@ class MovieDatabaseApp : Application(), Configuration.Provider {
         return Configuration.Builder()
             .setWorkerFactory(workerFactory)
             .build()
+    }
+    // endregion
+
+    override fun onCreate() {
+        super.onCreate()
+
+        Flippers.initialize(this)
     }
 }

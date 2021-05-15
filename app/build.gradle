@@ -94,4 +94,14 @@ dependencies {
     // glide
     implementation deps.libraries.glide
     kapt deps.libraries.glide_kapt
+
+    // okhttp
+    implementation deps.libraries.okhttp
+
+    // flipper (don't use a external gradle file, because of build types)
+    debugImplementation 'com.facebook.flipper:flipper:0.90.2'
+    debugImplementation 'com.facebook.soloader:soloader:0.10.1'
+    debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.90.2'
+
+    releaseImplementation 'com.facebook.flipper:flipper-noop:0.90.2'
 }

@@ -103,6 +103,7 @@ ext.deps = [
         ],
         libraries   : [
                 moshi          : "com.squareup.moshi:moshi-kotlin:${versions.libraries.moshi}",
+                okhttp         : "com.squareup.okhttp3:okhttp:${versions.libraries.okhttp}",
                 okhttp_logging : "com.squareup.okhttp3:logging-interceptor:${versions.libraries.okhttp}",
                 retrofit       : "com.squareup.retrofit2:retrofit:${versions.libraries.retrofit}",
                 retrofit_moshi : "com.squareup.retrofit2:converter-moshi:${versions.libraries.retrofit}",
