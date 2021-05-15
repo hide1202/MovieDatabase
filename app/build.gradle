@@ -17,6 +17,17 @@ android {
         applicationId "io.viewpoint.moviedatabase"
     }
 
+    signingConfigs {
+        releaseKeystore {
+            Properties prop = new Properties()
+            prop.load(project.rootProject.file('keystore.properties').newDataInputStream())
+            storeFile project.rootProject.file('debug.keystore')
+            storePassword prop.getProperty('storePassword')
+            keyAlias prop.getProperty('keyAlias')
+            keyPassword prop.getProperty('keyPassword')
+        }
+    }
+
     buildTypes {
         debug {
             testCoverageEnabled((findProperty("enableJacoco") ?: "false").toBoolean())
@@ -26,6 +37,8 @@ android {
         release {
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
             buildConfigField("int", "DATABASE_VERSION", "${app.database_version}")
+
+            signingConfig signingConfigs.releaseKeystore
 
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
