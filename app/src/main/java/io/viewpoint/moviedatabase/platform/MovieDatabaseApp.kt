@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 
 @HiltAndroidApp
-class MovieDatabaseApp : Application(), Configuration.Provider {
+open class MovieDatabaseApp : Application(), Configuration.Provider {
     // region HiltWorker
     @Inject
     internal lateinit var workerFactory: HiltWorkerFactory
