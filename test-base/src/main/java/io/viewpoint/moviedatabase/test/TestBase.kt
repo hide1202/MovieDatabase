@@ -15,10 +15,4 @@ abstract class TestBase {
     val coroutineRule = TestCoroutineRule()
 
     protected val testScope = TestCoroutineScope()
-
-    protected fun <T> runBlocking(block: suspend CoroutineScope.() -> T) {
-        testScope.launch {
-            block()
-        }
-    }
 }
