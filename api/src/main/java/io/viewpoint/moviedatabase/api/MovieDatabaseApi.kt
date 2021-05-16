@@ -3,6 +3,7 @@ package io.viewpoint.moviedatabase.api
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.viewpoint.moviedatabase.api.adapter.ArrowCallAdapterFactory
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -56,6 +57,14 @@ class MovieDatabaseApi private constructor(
                                 .build()
                         )
                     }
+
+                    builder.interceptors.forEach {
+                        val (type, interceptor) = it
+                        when (type) {
+                            Builder.InterceptorType.NORMAL -> addInterceptor(interceptor)
+                            Builder.InterceptorType.NETWORK -> addNetworkInterceptor(interceptor)
+                        }
+                    }
                 }
                 .build())
             .addCallAdapterFactory(ArrowCallAdapterFactory())
@@ -76,12 +85,25 @@ class MovieDatabaseApi private constructor(
     }
 
     class Builder {
+        private val _interceptors: MutableList<Pair<InterceptorType, Interceptor>> = mutableListOf()
+        internal val interceptors: List<Pair<InterceptorType, Interceptor>>
+            get() = _interceptors
+
         var url: String = BASE_URL
         var debugLog: ((String) -> Unit)? = null
         var apiKey: String? = null
 
-        fun build(): MovieDatabaseApi =
-            MovieDatabaseApi(this)
+
+        fun addInterceptor(type: InterceptorType, interceptor: Interceptor): Builder = apply {
+            _interceptors += type to interceptor
+        }
+
+        fun build(): MovieDatabaseApi = MovieDatabaseApi(this)
+
+        enum class InterceptorType {
+            NORMAL,
+            NETWORK
+        }
     }
 
     companion object {

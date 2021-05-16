@@ -17,13 +17,18 @@ import io.viewpoint.moviedatabase.test.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.test.mock.TestSearchApi
 import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchPager
 import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 import org.junit.Before
 import org.junit.Test
 import strikt.api.expectThat
 import strikt.assertions.*
 
+//@RunWith(RobolectricTestRunner::class)
+//@Config(application = TestApplication::class)
 class MovieSearchViewModelTest : TestBase() {
     private val preferences = TestPreferencesService()
     private val searchApi = spyk(TestSearchApi())
@@ -45,90 +50,98 @@ class MovieSearchViewModelTest : TestBase() {
     }
 
     @Test
-    fun searchTest(): Unit = runBlocking {
-        val keyword = "test"
-        vm.keyword.value = keyword
-        vm.searchCommand()
+    fun searchTest() {
+        testScope.launch {
+            val keyword = "test"
+            vm.keyword.value = keyword
+            vm.searchCommand()
 
-        val pagingData = vm.results
-            .asFlow()
-            .first()
-
-        val submitJob = GlobalScope.launch {
-            differ.submitData(pagingData)
-        }
-        try {
-            io.viewpoint.moviedatabase.test.tryWithDelay {
-                if (differ.itemCount > 0) {
-                    differ.getItem(0)
-                    true
-                } else {
-                    false
-                }
-            }
-
-            expectThat(differ.itemCount).isGreaterThan(0)
-            expectThat(preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS))
-                .contains(keyword)
-        } finally {
-            submitJob.cancel()
-        }
-    }
-
-    @Test
-    fun removeKeywordTest(): Unit = runBlocking {
-        val keyword = "test"
-        vm.keyword.value = keyword
-        vm.searchCommand()
-
-        // TODO Remove delays
-        delay(800L)
-        val before = vm.recentKeywords.value?.any { it == "test" } == true
-
-        vm.removeRecentKeyword("test")
-
-        delay(800L)
-        val after = vm.recentKeywords.value?.none { it == "test" } == true
-
-        expectThat(before).isTrue()
-        expectThat(after).isTrue()
-    }
-
-    @Test
-    fun searchEmptyKeywordTest(): Unit = runBlocking {
-        val keyword = ""
-        vm.keyword.value = keyword
-        vm.searchCommand.action()
-
-        val pagingData = withTimeoutOrNull(1500) {
-            vm.results
+            val pagingData = vm.results
                 .asFlow()
                 .first()
-        }
 
-        expectThat(pagingData).isNull()
-        expectThat(preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS))
-            .doesNotContain(keyword)
+            val submitJob = GlobalScope.launch {
+                differ.submitData(pagingData)
+            }
+            try {
+                io.viewpoint.moviedatabase.test.tryWithDelay {
+                    if (differ.itemCount > 0) {
+                        differ.getItem(0)
+                        true
+                    } else {
+                        false
+                    }
+                }
+
+                expectThat(differ.itemCount).isGreaterThan(0)
+                expectThat(preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS))
+                    .contains(keyword)
+            } finally {
+                submitJob.cancel()
+            }
+        }
     }
 
     @Test
-    fun searchErrorTest(): Unit = runBlocking {
-        every { searchApi.searchMovie(any(), any()) }
-            .returns(IO.fx {
-                throw IllegalStateException()
-            })
+    fun removeKeywordTest() {
+        testScope.launch {
+            val keyword = "test"
+            vm.keyword.value = keyword
+            vm.searchCommand()
 
-        vm.keyword.value = "test"
-        vm.searchCommand.action()
+            // TODO Remove delays
+            delay(800L)
+            val before = vm.recentKeywords.value?.any { it == "test" } == true
 
-        val pagingData = vm.results
-            .asFlow()
-            .first()
+            vm.removeRecentKeyword("test")
 
-        withTimeoutOrNull(1500) {
-            differ.submitData(pagingData)
+            delay(800L)
+            val after = vm.recentKeywords.value?.none { it == "test" } == true
+
+            expectThat(before).isTrue()
+            expectThat(after).isTrue()
         }
+    }
 
-        expectThat(differ.itemCount).isEqualTo(0)
+    @Test
+    fun searchEmptyKeywordTest() {
+        testScope.launch {
+            val keyword = ""
+            vm.keyword.value = keyword
+            vm.searchCommand.action()
+
+            val pagingData = withTimeoutOrNull(1500) {
+                vm.results
+                    .asFlow()
+                    .first()
+            }
+
+            expectThat(pagingData).isNull()
+            expectThat(preferences.getValues(PreferencesKeys.SEARCHED_KEYWORDS))
+                .doesNotContain(keyword)
+        }
+    }
+
+    @Test
+    fun searchErrorTest() {
+        testScope.launch {
+            every { searchApi.searchMovie(any(), any()) }
+                .returns(IO.fx {
+                    throw IllegalStateException()
+                })
+
+            vm.keyword.value = "test"
+            vm.searchCommand.action()
+
+            val pagingData = vm.results
+                .asFlow()
+                .first()
+
+            withTimeoutOrNull(1500) {
+                differ.submitData(pagingData)
+            }
+
+            expectThat(differ.itemCount).isEqualTo(0)
+        }
     }
 }
