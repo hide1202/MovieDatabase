@@ -170,6 +170,31 @@
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/keyword_section"
+                style="@style/DetailContentSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                app:gone="@{TextUtils.isEmpty(result.overview)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/first_section">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/keyword_list"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:listitem="@layout/item_genre" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/second_section"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
@@ -177,7 +202,7 @@
                 app:gone="@{TextUtils.isEmpty(result.overview)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/first_section">
+                app:layout_constraintTop_toBottomOf="@id/keyword_section">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/overview_label"
