@@ -9,10 +9,7 @@ import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRe
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
 import io.viewpoint.moviedatabase.test.TestBase
-import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
-import io.viewpoint.moviedatabase.test.mock.TestMovieApi
-import io.viewpoint.moviedatabase.test.mock.TestPreferencesService
-import io.viewpoint.moviedatabase.test.mock.TestWantToSeeDao
+import io.viewpoint.moviedatabase.test.mock.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
@@ -33,7 +30,7 @@ class MainViewModelTest : TestBase() {
                 TestConfigurationApi()
             ),
             MovieDatabaseWantToSeeRepository(
-                TestMovieApi(),
+                TestMovieDetailApi(),
                 TestWantToSeeDao()
             ),
             MovieDatabaseMovieRepository(
