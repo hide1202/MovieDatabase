@@ -34,7 +34,7 @@
             android:layout_marginBottom="4dp"
             android:ellipsize="end"
             android:gravity="center"
-            android:maxLines="1"
+            android:maxLines="2"
             android:paddingHorizontal="8dp"
             android:text="@{credit.name}"
             android:textColor="@color/default_text_color"
