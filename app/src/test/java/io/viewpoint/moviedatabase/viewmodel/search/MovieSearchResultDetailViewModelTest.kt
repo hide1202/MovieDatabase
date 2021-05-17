@@ -1,9 +1,9 @@
 package io.viewpoint.moviedatabase.viewmodel.search
 
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
+import io.viewpoint.moviedatabase.domain.KeywordModelMapper
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieDetailRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.test.TestBase
@@ -23,13 +23,14 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         SearchResultMapperProvider(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
     private val creditMapper =
         CreditModelMapper(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
+    private val keywordMapper = KeywordModelMapper()
+
     private val movieApi = TestMovieApi()
     private val movieDetailApi = TestMovieDetailApi()
     private val repository = MovieDatabaseWantToSeeRepository(
         movieDetailApi,
         TestWantToSeeDao()
     )
-    private val movieRepository = MovieDatabaseMovieRepository(movieApi)
     private val movieDetailRepository = MovieDatabaseMovieDetailRepository(movieDetailApi)
     private lateinit var vm: MovieSearchResultDetailViewModel
 
@@ -39,7 +40,8 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
             movieDetailRepository = movieDetailRepository,
             wantToSeeRepository = repository,
             resultMapperProvider = mapperProvider,
-            creditModelMapper = creditMapper
+            creditModelMapper = creditMapper,
+            keywordModelMapper = keywordMapper
         )
     }
 
@@ -78,12 +80,14 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         val country = vm.countries
         val credits = vm.credits
         val productionCompanies = vm.productionCompanies
+        val keywords = vm.keywords
 
         expectThat(result).isNotNull()
         expectThat(genres.value).isNotNull()
         expectThat(country.value).isNotNull()
         expectThat(credits.value).isNotNull()
         expectThat(productionCompanies.value).isNotNull()
+        expectThat(keywords.value).isNotNull()
 
         expectThat(country.value)
             .isNotNull()
@@ -94,5 +98,7 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
 
         expectThat(credits.value).isNotNull().isNotEmpty()
         expectThat(productionCompanies.value).isNotNull().isNotEmpty()
+        expectThat(keywords.value).isNotNull().hasSize(20)
+        expectThat(keywords.value).isNotNull().isNotEmpty()
     }
 }

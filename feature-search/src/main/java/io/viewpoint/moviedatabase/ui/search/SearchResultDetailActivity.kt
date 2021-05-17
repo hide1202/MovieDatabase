@@ -54,6 +54,13 @@ class SearchResultDetailActivity : AppCompatActivity() {
             genreAdapter.updateGenres(it)
         }
 
+        val keywordAdapter = KeywordAdapter()
+        binding.keywordList.addItemDecoration(SpaceItemDecoration(spacing = 4.dp))
+        binding.keywordList.adapter = keywordAdapter
+        viewModel.keywords.observe(this) {
+            keywordAdapter.updateGenres(it)
+        }
+
         val countriesAdapter = CountriesAdapter()
         binding.flags.addItemDecoration(SpaceItemDecoration(spacing = 8.dp))
         binding.flags.adapter = countriesAdapter

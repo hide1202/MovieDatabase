@@ -8,11 +8,13 @@ import arrow.core.Either
 import arrow.core.getOrElse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
+import io.viewpoint.moviedatabase.domain.KeywordModelMapper
 import io.viewpoint.moviedatabase.domain.repository.MovieDetailRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.model.api.MovieDetail
 import io.viewpoint.moviedatabase.model.ui.CreditModel
+import io.viewpoint.moviedatabase.model.ui.KeywordModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.launch
@@ -23,7 +25,8 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     private val movieDetailRepository: MovieDetailRepository,
     private val wantToSeeRepository: WantToSeeRepository,
     private val resultMapperProvider: SearchResultMapperProvider,
-    private val creditModelMapper: CreditModelMapper
+    private val creditModelMapper: CreditModelMapper,
+    private val keywordModelMapper: KeywordModelMapper
 ) : ViewModel() {
     private var result: SearchResultModel? = null
     private val _wantToSee = MutableLiveData(false)
@@ -32,6 +35,7 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     private val _credits = MutableLiveData<List<CreditModel>>(emptyList())
     private val _productionCompanies =
         MutableLiveData<List<SearchResultModel.ProductionCompany>>(emptyList())
+    private val _keywords = MutableLiveData<List<KeywordModel>>()
 
     val wantToSee: LiveData<Boolean>
         get() = _wantToSee
@@ -47,6 +51,9 @@ class MovieSearchResultDetailViewModel @Inject constructor(
 
     val productionCompanies: LiveData<List<SearchResultModel.ProductionCompany>>
         get() = _productionCompanies
+
+    val keywords: LiveData<List<KeywordModel>>
+        get() = _keywords
 
     val invertWantToSeeCommand = Command {
         val result = result ?: return@Command
@@ -101,6 +108,10 @@ class MovieSearchResultDetailViewModel @Inject constructor(
         _credits.value = movieDetailRepository.getCredits(movieDetail.id)
             .map {
                 creditModelMapper.map(it)
+            }
+        _keywords.value = movieDetailRepository.getKeywords(movieDetail.id)
+            .map {
+                keywordModelMapper.map(it)
             }
 
         return resultMapperProvider.mapperFromMovieDetail
