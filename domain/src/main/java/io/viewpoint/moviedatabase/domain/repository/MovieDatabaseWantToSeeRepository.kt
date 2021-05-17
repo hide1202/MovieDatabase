@@ -2,14 +2,14 @@ package io.viewpoint.moviedatabase.domain.repository
 
 import arrow.fx.IO
 import arrow.fx.extensions.fx
-import io.viewpoint.moviedatabase.api.MovieApi
+import io.viewpoint.moviedatabase.api.MovieDetailApi
 import io.viewpoint.moviedatabase.domain.repository.dao.WantToSeeDao
 import io.viewpoint.moviedatabase.domain.repository.entity.WantToSeeMovieEntity
 import io.viewpoint.moviedatabase.model.api.MovieDetail
 import javax.inject.Inject
 
 class MovieDatabaseWantToSeeRepository @Inject constructor(
-    private val movieApi: MovieApi,
+    private val movieDetailApi: MovieDetailApi,
     private val dao: WantToSeeDao
 ) : WantToSeeRepository {
     override fun hasWantToSeeMovie(id: Int): IO<Boolean> = IO.fx {
@@ -27,7 +27,7 @@ class MovieDatabaseWantToSeeRepository @Inject constructor(
         }
 
         !ids.map { id ->
-            movieApi.getMovieDetail(id)
+            movieDetailApi.getMovieDetail(id)
         }.parSequence()
     }
 

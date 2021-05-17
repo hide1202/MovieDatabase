@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import io.viewpoint.moviedatabase.api.MovieApi
+import io.viewpoint.moviedatabase.api.MovieDetailApi
 import io.viewpoint.moviedatabase.domain.repository.*
 import io.viewpoint.moviedatabase.platform.external.AppDatabase
 import javax.inject.Singleton
@@ -27,6 +27,12 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
+    abstract fun movieDetailRepository(
+        repository: MovieDatabaseMovieDetailRepository
+    ): MovieDetailRepository
+
+    @Binds
+    @Singleton
     abstract fun searchRepository(
         repository: MovieDatabaseSearchRepository
     ): SearchRepository
@@ -37,9 +43,9 @@ abstract class RepositoryModule {
         @Provides
         @Singleton
         fun wantToSeeRepository(
-            movieApi: MovieApi,
+            movieDetailApi: MovieDetailApi,
             database: AppDatabase
         ): WantToSeeRepository =
-            MovieDatabaseWantToSeeRepository(movieApi, database.wantToSeeDao())
+            MovieDatabaseWantToSeeRepository(movieDetailApi, database.wantToSeeDao())
     }
 }

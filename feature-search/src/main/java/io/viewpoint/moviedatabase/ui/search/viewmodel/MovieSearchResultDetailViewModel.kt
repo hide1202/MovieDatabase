@@ -8,7 +8,7 @@ import arrow.core.Either
 import arrow.core.getOrElse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
-import io.viewpoint.moviedatabase.domain.repository.MovieRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDetailRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.model.api.MovieDetail
@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieSearchResultDetailViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
+    private val movieDetailRepository: MovieDetailRepository,
     private val wantToSeeRepository: WantToSeeRepository,
     private val resultMapperProvider: SearchResultMapperProvider,
     private val creditModelMapper: CreditModelMapper
@@ -67,7 +67,7 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     }
 
     suspend fun loadWithMovieId(movieId: Int): SearchResultModel? {
-        val result = movieRepository.getMovieDetail(movieId)
+        val result = movieDetailRepository.getMovieDetail(movieId)
             ?.let {
                 fillDetailData(it)
                 resultMapperProvider.mapperFromMovieDetail.map(it)
@@ -86,7 +86,7 @@ class MovieSearchResultDetailViewModel @Inject constructor(
             .getOrElse { false }
 
         if (_genres.value?.isEmpty() == true) {
-            movieRepository.getMovieDetail(result.id)
+            movieDetailRepository.getMovieDetail(result.id)
                 ?.let {
                     fillDetailData(it)
                 }
@@ -98,7 +98,7 @@ class MovieSearchResultDetailViewModel @Inject constructor(
         _countries.value = movieDetail.production_countries.map { it.iso_3166_1 }
 
         // TODO call parallel with a move detail
-        _credits.value = movieRepository.getCredits(movieDetail.id)
+        _credits.value = movieDetailRepository.getCredits(movieDetail.id)
             .map {
                 creditModelMapper.map(it)
             }

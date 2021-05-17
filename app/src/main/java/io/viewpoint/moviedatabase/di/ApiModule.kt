@@ -5,10 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.viewpoint.moviedatabase.BuildConfig
-import io.viewpoint.moviedatabase.api.ConfigurationApi
-import io.viewpoint.moviedatabase.api.MovieApi
-import io.viewpoint.moviedatabase.api.MovieDatabaseApi
-import io.viewpoint.moviedatabase.api.SearchApi
+import io.viewpoint.moviedatabase.api.*
 import io.viewpoint.moviedatabase.platform.util.Flippers
 import timber.log.Timber
 import javax.inject.Singleton
@@ -42,6 +39,10 @@ class ApiModule {
     @Provides
     @Singleton
     fun movieApi(movieDatabaseApi: MovieDatabaseApi): MovieApi = movieDatabaseApi.get()
+
+    @Provides
+    @Singleton
+    fun movieDetailApi(movieDatabaseApi: MovieDatabaseApi): MovieDetailApi = movieDatabaseApi.get()
 
     @Provides
     @Singleton
