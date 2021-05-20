@@ -81,6 +81,7 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         val credits = vm.credits
         val productionCompanies = vm.productionCompanies
         val keywords = vm.keywords
+        val recommendations = vm.recommendations
 
         expectThat(result).isNotNull()
         expectThat(genres.value).isNotNull()
@@ -88,6 +89,7 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         expectThat(credits.value).isNotNull()
         expectThat(productionCompanies.value).isNotNull()
         expectThat(keywords.value).isNotNull()
+        expectThat(recommendations.value).isNotNull()
 
         expectThat(country.value)
             .isNotNull()
@@ -99,6 +101,6 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         expectThat(credits.value).isNotNull().isNotEmpty()
         expectThat(productionCompanies.value).isNotNull().isNotEmpty()
         expectThat(keywords.value).isNotNull().hasSize(20)
-        expectThat(keywords.value).isNotNull().isNotEmpty()
+        expectThat(recommendations.value).isNotNull().hasSize(21)
     }
 }
