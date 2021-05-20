@@ -20,4 +20,11 @@
 
     <string name="detail_vote">★ %s</string>
     <string name="detail_overview_label">Overview</string>
+    <string name="detail_genres_label">Genres</string>
+    <string name="detail_keywords_label">Keywords</string>
+    <string name="detail_credits_label">Credits</string>
+    <string name="detail_companies_label">Companies</string>
+    <string name="detail_recommendations_label">Recommendations</string>
+
+    <string name="not_yet_date">Not yet</string>
 </resources>

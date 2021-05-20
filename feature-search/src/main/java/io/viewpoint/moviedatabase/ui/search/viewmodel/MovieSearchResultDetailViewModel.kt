@@ -36,6 +36,7 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     private val _productionCompanies =
         MutableLiveData<List<SearchResultModel.ProductionCompany>>(emptyList())
     private val _keywords = MutableLiveData<List<KeywordModel>>()
+    private val _recommendations = MutableLiveData<List<SearchResultModel>>()
 
     val wantToSee: LiveData<Boolean>
         get() = _wantToSee
@@ -54,6 +55,9 @@ class MovieSearchResultDetailViewModel @Inject constructor(
 
     val keywords: LiveData<List<KeywordModel>>
         get() = _keywords
+
+    val recommendations: LiveData<List<SearchResultModel>>
+        get() = _recommendations
 
     val invertWantToSeeCommand = Command {
         val result = result ?: return@Command
@@ -112,6 +116,10 @@ class MovieSearchResultDetailViewModel @Inject constructor(
         _keywords.value = movieDetailRepository.getKeywords(movieDetail.id)
             .map {
                 keywordModelMapper.map(it)
+            }
+        _recommendations.value = movieDetailRepository.getRecommendations(movieDetail.id)
+            .map {
+                resultMapperProvider.mapperFromMovie.map(it)
             }
 
         return resultMapperProvider.mapperFromMovieDetail
