@@ -7,7 +7,7 @@
 - Application for the practice of android development using Movie Database API
 
 ## Prerequisites
-- Android Studio Arctic Fox | 2020.3.1 Canary 15
+- Android Studio Arctic Fox | 2020.3.1 Beta 2
 
 ## How to run
 - Create a file in the root of project with `external.properties` name.
