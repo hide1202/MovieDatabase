@@ -20,4 +20,5 @@
 
     <string name="detail_vote">★ %s</string>
     <string name="detail_overview_label">Overview</string>
+    <string name="detail_recommendations_label">Recommendations</string>
 </resources>

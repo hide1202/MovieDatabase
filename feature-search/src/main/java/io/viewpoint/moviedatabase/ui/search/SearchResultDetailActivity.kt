@@ -81,6 +81,15 @@ class SearchResultDetailActivity : AppCompatActivity() {
         viewModel.credits.observe(this) {
             creditsAdapter.submitList(it)
         }
+
+        val recommendAdapter = RecommendAdapter()
+        with(binding.recommendations) {
+            addItemDecoration(SpaceItemDecoration(spacing = 16.dp))
+            adapter = recommendAdapter
+        }
+        viewModel.recommendations.observe(this) {
+            recommendAdapter.submitList(it)
+        }
     }
 
     companion object {

@@ -4,6 +4,7 @@ import arrow.fx.IO
 import io.viewpoint.moviedatabase.model.api.CreditsResponse
 import io.viewpoint.moviedatabase.model.api.KeywordResponse
 import io.viewpoint.moviedatabase.model.api.MovieDetail
+import io.viewpoint.moviedatabase.model.api.MovieListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -16,4 +17,7 @@ interface MovieDetailApi {
 
     @GET("movie/{id}/keywords")
     fun getKeywords(@Path("id") id: Int): IO<KeywordResponse>
+
+    @GET("movie/{id}/recommendations")
+    fun getRecommendations(@Path("id") id: Int): IO<MovieListResponse>
 }
