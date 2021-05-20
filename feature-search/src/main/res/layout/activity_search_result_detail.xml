@@ -110,88 +110,142 @@
                 app:layout_constraintStart_toEndOf="@id/poster"
                 tools:text="Spiderman" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/vote_section"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="@{@string/detail_vote(String.valueOf(result.vote))}"
-                android:textColor="@color/default_text_color"
-                android:textSize="14sp"
+                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/backdrop"
-                tools:ignore="SpUsage"
-                tools:text="@string/detail_vote" />
+                app:layout_constraintTop_toBottomOf="@id/backdrop">
 
-            <LinearLayout
-                android:id="@+id/first_section"
-                style="@style/DetailContentSection"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/vote_section">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/genreList"
+                <TextView
+                    android:id="@+id/vote"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:overScrollMode="never"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_genre" />
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@{@string/detail_vote(String.valueOf(result.vote))}"
+                    android:textColor="@color/default_text_color"
+                    android:textSize="14sp"
+                    tools:ignore="SpUsage"
+                    tools:text="@string/detail_vote" />
+
+                <TextView
+                    android:id="@+id/release_date"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@{result.releaseDate ?? @string/not_yet_date}"
+                    tools:text="2021-05-05" />
 
                 <FrameLayout
                     android:id="@+id/want_to_see"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:command="@{vm.invertWantToSeeCommand}">
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    app:command="@{vm.invertWantToSeeCommand}"
+                    app:layout_constraintBottom_toBottomOf="@id/genreList"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/genreList">
 
                     <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
                         android:background="@drawable/ic_heart_check"
                         android:button="@null"
                         android:checked="@{vm.wantToSee}"
                         android:clickable="false"
                         android:focusable="false" />
                 </FrameLayout>
-
             </LinearLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/first_section"
+                style="@style/DetailContentSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vote_section">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/genres_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/detail_genres_label"
+                    android:textColor="@color/default_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/genreList"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/want_to_see"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/genres_label"
+                    tools:listitem="@layout/item_genre" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/keyword_section"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 app:gone="@{TextUtils.isEmpty(result.overview)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/first_section">
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/keywords_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/detail_keywords_label"
+                    android:textColor="@color/default_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/keyword_list"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="16dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
                     android:layout_weight="1"
                     android:orientation="horizontal"
                     android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/keywords_label"
                     tools:listitem="@layout/item_genre" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -233,31 +287,73 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/credits"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/credits_section"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/second_section"
-                tools:listitem="@layout/item_credit" />
+                app:layout_constraintTop_toBottomOf="@id/second_section">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/production_companies"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/credits_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/detail_credits_label"
+                    android:textColor="@color/default_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/credits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/credits_label"
+                    tools:listitem="@layout/item_credit" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/production_companies_sections"
                 style="@style/DetailContentSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/credits"
-                tools:listitem="@layout/item_production_company" />
+                app:layout_constraintTop_toBottomOf="@id/credits_section">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/production_companies_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/detail_companies_label"
+                    android:textColor="@color/default_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/production_companies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/production_companies_label"
+                    tools:listitem="@layout/item_production_company" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/recommendations_section"
@@ -267,7 +363,7 @@
                 app:gone="@{TextUtils.isEmpty(result.overview)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/production_companies">
+                app:layout_constraintTop_toBottomOf="@id/production_companies_sections">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/recommendations_label"
