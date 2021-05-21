@@ -20,7 +20,7 @@
 movie.database.api.key=YOUR_API_KEY
 ```
 
-## Mad Scorecard
+## Mad Scorecard (2021/05/21)
 
 ![summary](arts/mad-scorecard/summary.png)
 [Go to details](MAD_SCOREBOARDS.md)

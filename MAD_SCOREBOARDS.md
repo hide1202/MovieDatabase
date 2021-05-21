@@ -1,3 +1,6 @@
+# Mad Scoreboard
+- 2021/05/21
+
 ## Summary
 ![summary](arts/mad-scorecard/summary.png)
 
