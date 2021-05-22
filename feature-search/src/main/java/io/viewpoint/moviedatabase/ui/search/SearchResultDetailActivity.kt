@@ -90,6 +90,16 @@ class SearchResultDetailActivity : AppCompatActivity() {
         viewModel.recommendations.observe(this) {
             recommendAdapter.submitList(it)
         }
+
+        val watchProviderAdapter = WatchProviderAdapter()
+        with(binding.watchProviders) {
+            addItemDecoration(SpaceItemDecoration(spacing = 8.dp))
+            adapter = watchProviderAdapter
+        }
+        viewModel.watchProviders.observe(this) { model ->
+            val providers = model?.providers?.values?.flatten() ?: emptyList()
+            watchProviderAdapter.submitList(providers.distinctBy { it.providerId })
+        }
     }
 
     companion object {

@@ -1,9 +1,6 @@
 package io.viewpoint.moviedatabase.domain.repository
 
-import io.viewpoint.moviedatabase.model.api.Credit
-import io.viewpoint.moviedatabase.model.api.Keyword
-import io.viewpoint.moviedatabase.model.api.Movie
-import io.viewpoint.moviedatabase.model.api.MovieDetail
+import io.viewpoint.moviedatabase.model.api.*
 
 interface MovieDetailRepository {
     suspend fun getMovieDetail(movieId: Int): MovieDetail?
@@ -13,4 +10,6 @@ interface MovieDetailRepository {
     suspend fun getKeywords(movieId: Int): List<Keyword>
 
     suspend fun getRecommendations(movieId: Int): List<Movie>
+
+    suspend fun getWatchProviders(movieId: Int, countryCode: String): WatchProvider?
 }

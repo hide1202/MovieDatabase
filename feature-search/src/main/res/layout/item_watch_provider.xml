@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="io.viewpoint.moviedatabase.model.ui.WatchProviderModel.Info" />
+    </data>
+
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        app:circle="@{true}"
+        app:imageUrl="@{model.logoUrl}"
+        tools:background="@color/yellow_green" />
+
+</layout>
