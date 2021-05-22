@@ -35,8 +35,7 @@ class MovieDetailApiTest : ApiTest() {
             is Either.Left -> fail("response must have a successful response")
             is Either.Right -> {
                 expectThat(either.b.results) {
-                    isNotNull()
-                    get { this?.get("US")?.link }
+                    get { get("US")?.link }
                         .isNotNull()
                         .isEqualTo("https://www.themoviedb.org/movie/557-spider-man/watch?locale=US")
                 }

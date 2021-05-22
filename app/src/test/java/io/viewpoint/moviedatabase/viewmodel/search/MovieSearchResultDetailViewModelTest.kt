@@ -2,6 +2,7 @@ package io.viewpoint.moviedatabase.viewmodel.search
 
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.KeywordModelMapper
+import io.viewpoint.moviedatabase.domain.WatchProviderModelMapper
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieDetailRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
@@ -19,11 +20,10 @@ import strikt.api.expectThat
 import strikt.assertions.*
 
 class MovieSearchResultDetailViewModelTest : TestBase() {
+    private val configurationRepository =
+        MovieDatabaseConfigurationRepository(TestConfigurationApi())
     private val mapperProvider =
-        SearchResultMapperProvider(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
-    private val creditMapper =
-        CreditModelMapper(MovieDatabaseConfigurationRepository(TestConfigurationApi()))
-    private val keywordMapper = KeywordModelMapper()
+        SearchResultMapperProvider(configurationRepository)
 
     private val movieApi = TestMovieApi()
     private val movieDetailApi = TestMovieDetailApi()
@@ -39,9 +39,10 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
         vm = MovieSearchResultDetailViewModel(
             movieDetailRepository = movieDetailRepository,
             wantToSeeRepository = repository,
-            resultMapperProvider = mapperProvider,
-            creditModelMapper = creditMapper,
-            keywordModelMapper = keywordMapper
+            resultMapperProvider = SearchResultMapperProvider(configurationRepository),
+            creditModelMapper = CreditModelMapper(configurationRepository),
+            keywordModelMapper = KeywordModelMapper(),
+            watchProviderModelMapper = WatchProviderModelMapper(configurationRepository)
         )
     }
 
