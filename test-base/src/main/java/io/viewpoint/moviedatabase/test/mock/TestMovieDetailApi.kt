@@ -44,11 +44,11 @@ class TestMovieDetailApi : MovieDetailApi {
         }
     }
 
-    override fun getWatchProviders(id: Int): IO<ProviderResponse> = IO.fx {
+    override fun getWatchProviders(id: Int): IO<WatchProviderResponse> = IO.fx {
         !effect {
             ResponseReader.jsonFromFileAsync(
                 "responses/movie-watch-providers.json",
-                MoshiReader.moshi.adapter(ProviderResponse::class.java)
+                MoshiReader.moshi.adapter(WatchProviderResponse::class.java)
             )
         }
     }

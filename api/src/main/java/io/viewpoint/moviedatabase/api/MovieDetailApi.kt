@@ -19,5 +19,5 @@ interface MovieDetailApi {
     fun getRecommendations(@Path("id") id: Int): IO<MovieListResponse>
 
     @GET("movie/{id}/watch/providers")
-    fun getWatchProviders(@Path("id") id: Int): IO<ProviderResponse>
+    fun getWatchProviders(@Path("id") id: Int): IO<WatchProviderResponse>
 }

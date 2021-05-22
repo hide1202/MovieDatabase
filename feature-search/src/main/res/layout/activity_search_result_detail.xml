@@ -63,6 +63,22 @@
                 tools:background="@color/gray" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/watch_providers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/flags"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/poster"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_watch_provider" />
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/flags"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -201,7 +217,7 @@
                     android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/want_to_see"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/genres_label"
                     tools:listitem="@layout/item_genre" />

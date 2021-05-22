@@ -9,6 +9,7 @@ import arrow.core.getOrElse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.KeywordModelMapper
+import io.viewpoint.moviedatabase.domain.WatchProviderModelMapper
 import io.viewpoint.moviedatabase.domain.repository.MovieDetailRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
@@ -16,8 +17,10 @@ import io.viewpoint.moviedatabase.model.api.MovieDetail
 import io.viewpoint.moviedatabase.model.ui.CreditModel
 import io.viewpoint.moviedatabase.model.ui.KeywordModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
+import io.viewpoint.moviedatabase.model.ui.WatchProviderModel
 import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,7 +29,8 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     private val wantToSeeRepository: WantToSeeRepository,
     private val resultMapperProvider: SearchResultMapperProvider,
     private val creditModelMapper: CreditModelMapper,
-    private val keywordModelMapper: KeywordModelMapper
+    private val keywordModelMapper: KeywordModelMapper,
+    private val watchProviderModelMapper: WatchProviderModelMapper,
 ) : ViewModel() {
     private var result: SearchResultModel? = null
     private val _wantToSee = MutableLiveData(false)
@@ -37,6 +41,7 @@ class MovieSearchResultDetailViewModel @Inject constructor(
         MutableLiveData<List<SearchResultModel.ProductionCompany>>(emptyList())
     private val _keywords = MutableLiveData<List<KeywordModel>>()
     private val _recommendations = MutableLiveData<List<SearchResultModel>>()
+    private val _watchProviders = MutableLiveData<WatchProviderModel?>()
 
     val wantToSee: LiveData<Boolean>
         get() = _wantToSee
@@ -58,6 +63,9 @@ class MovieSearchResultDetailViewModel @Inject constructor(
 
     val recommendations: LiveData<List<SearchResultModel>>
         get() = _recommendations
+
+    val watchProviders: LiveData<WatchProviderModel?>
+        get() = _watchProviders
 
     val invertWantToSeeCommand = Command {
         val result = result ?: return@Command
@@ -121,6 +129,11 @@ class MovieSearchResultDetailViewModel @Inject constructor(
             .map {
                 resultMapperProvider.mapperFromMovie.map(it)
             }
+        _watchProviders.value =
+            movieDetailRepository.getWatchProviders(movieDetail.id, Locale.getDefault().country)
+                ?.let {
+                    watchProviderModelMapper.map(it)
+                }
 
         return resultMapperProvider.mapperFromMovieDetail
             .map(movieDetail)
