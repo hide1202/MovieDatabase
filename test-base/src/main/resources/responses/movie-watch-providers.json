@@ -1,0 +1,2790 @@
+{
+  "id": 557,
+  "results": {
+    "AR": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=AR",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 43,
+          "logo_path": "/rgbalNWbAuhWklHH5JAnF53Wjey.jpg",
+          "provider_id": 339,
+          "provider_name": "Movistar Play"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 43,
+          "logo_path": "/rgbalNWbAuhWklHH5JAnF53Wjey.jpg",
+          "provider_id": 339,
+          "provider_name": "Movistar Play"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ]
+    },
+    "AT": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=AT",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 99,
+          "logo_path": "/pZgeSWpfvD59x6sY6stT5c6uc2h.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 212,
+          "logo_path": "/mosNtwHNCqCmjk7n5odKgYYf2GI.jpg",
+          "provider_id": 20,
+          "provider_name": "maxdome Store"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 99,
+          "logo_path": "/pZgeSWpfvD59x6sY6stT5c6uc2h.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 212,
+          "logo_path": "/mosNtwHNCqCmjk7n5odKgYYf2GI.jpg",
+          "provider_id": 20,
+          "provider_name": "maxdome Store"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ]
+    },
+    "AU": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=AU",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 40,
+          "logo_path": "/43Ykyf69e9Ca3jmTtefhINkw6PN.jpg",
+          "provider_id": 436,
+          "provider_name": "Fetch TV"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 40,
+          "logo_path": "/43Ykyf69e9Ca3jmTtefhINkw6PN.jpg",
+          "provider_id": 436,
+          "provider_name": "Fetch TV"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ]
+    },
+    "BE": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=BE",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ]
+    },
+    "BR": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=BR",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 28,
+          "logo_path": "/dNAz0MMIPiqCD2axGIktXSFWmkz.jpg",
+          "provider_id": 484,
+          "provider_name": "NOW"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 73,
+          "logo_path": "/mzu37NQphDvqN2BHKM0Rwq9Es3r.jpg",
+          "provider_id": 167,
+          "provider_name": "Claro video"
+        },
+        {
+          "display_priority": 108,
+          "logo_path": "/hcWBV1zDoMOxAbyaVbj7SNSPgPg.jpg",
+          "provider_id": 227,
+          "provider_name": "Telecine Play"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 118,
+          "logo_path": "/jkBsuKubyoStcP1whxrbxzDMnMD.jpg",
+          "provider_id": 47,
+          "provider_name": "Looke"
+        }
+      ]
+    },
+    "CA": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=CA",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 203,
+          "logo_path": "/xEWgUq2tJyggisxbJ3fNOV9Inj2.jpg",
+          "provider_id": 140,
+          "provider_name": "Cineplex"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 203,
+          "logo_path": "/xEWgUq2tJyggisxbJ3fNOV9Inj2.jpg",
+          "provider_id": 140,
+          "provider_name": "Cineplex"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ]
+    },
+    "CH": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=CH",
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 70,
+          "logo_path": "/68MNrwlkpF7WnmNPXLah69CR5cb.jpg",
+          "provider_id": 119,
+          "provider_name": "Amazon Prime Video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 3,
+          "logo_path": "/dSBzj4T9P7PMUr015gnV7meT2LR.jpg",
+          "provider_id": 150,
+          "provider_name": "SwissCom"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/567LmXMmafb8e2jGOmpHDZNl2r8.jpg",
+          "provider_id": 164,
+          "provider_name": "Hollystar"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/dSBzj4T9P7PMUr015gnV7meT2LR.jpg",
+          "provider_id": 150,
+          "provider_name": "SwissCom"
+        },
+        {
+          "display_priority": 8,
+          "logo_path": "/567LmXMmafb8e2jGOmpHDZNl2r8.jpg",
+          "provider_id": 164,
+          "provider_name": "Hollystar"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ]
+    },
+    "CL": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=CL",
+      "flatrate": [
+        {
+          "display_priority": 43,
+          "logo_path": "/rgbalNWbAuhWklHH5JAnF53Wjey.jpg",
+          "provider_id": 339,
+          "provider_name": "Movistar Play"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 73,
+          "logo_path": "/mzu37NQphDvqN2BHKM0Rwq9Es3r.jpg",
+          "provider_id": 167,
+          "provider_name": "Claro video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "CO": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=CO",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 43,
+          "logo_path": "/rgbalNWbAuhWklHH5JAnF53Wjey.jpg",
+          "provider_id": 339,
+          "provider_name": "Movistar Play"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 73,
+          "logo_path": "/mzu37NQphDvqN2BHKM0Rwq9Es3r.jpg",
+          "provider_id": 167,
+          "provider_name": "Claro video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "CZ": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=CZ",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 3,
+          "logo_path": "/oWdLYAsfb61wUUkGKdLifBbJinI.jpg",
+          "provider_id": 308,
+          "provider_name": "O2 TV"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "DE": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=DE",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 99,
+          "logo_path": "/pZgeSWpfvD59x6sY6stT5c6uc2h.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 212,
+          "logo_path": "/mosNtwHNCqCmjk7n5odKgYYf2GI.jpg",
+          "provider_id": 20,
+          "provider_name": "maxdome Store"
+        },
+        {
+          "display_priority": 246,
+          "logo_path": "/6QfNLK9toSu2bvsWN7A0sEsTz3j.jpg",
+          "provider_id": 178,
+          "provider_name": "EntertainTV"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 99,
+          "logo_path": "/pZgeSWpfvD59x6sY6stT5c6uc2h.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 212,
+          "logo_path": "/mosNtwHNCqCmjk7n5odKgYYf2GI.jpg",
+          "provider_id": 20,
+          "provider_name": "maxdome Store"
+        },
+        {
+          "display_priority": 246,
+          "logo_path": "/6QfNLK9toSu2bvsWN7A0sEsTz3j.jpg",
+          "provider_id": 178,
+          "provider_name": "EntertainTV"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ]
+    },
+    "DK": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=DK",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ]
+    },
+    "EC": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=EC",
+      "flatrate": [
+        {
+          "display_priority": 43,
+          "logo_path": "/rgbalNWbAuhWklHH5JAnF53Wjey.jpg",
+          "provider_id": 339,
+          "provider_name": "Movistar Play"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 73,
+          "logo_path": "/mzu37NQphDvqN2BHKM0Rwq9Es3r.jpg",
+          "provider_id": 167,
+          "provider_name": "Claro video"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "EE": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=EE",
+      "flatrate": [
+        {
+          "display_priority": 94,
+          "logo_path": "/okuStqHQL2ImgtNxNM40La91u3A.jpg",
+          "provider_id": 76,
+          "provider_name": "Viaplay"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "ES": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=ES",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 100,
+          "logo_path": "/vAtH6Z6Oq7zCmEGS3Sdu08dxvYZ.jpg",
+          "provider_id": 118,
+          "provider_name": "HBO"
+        },
+        {
+          "display_priority": 552,
+          "logo_path": "/zznIwoeBvIUHJUfCaXzzmvJz2WH.jpg",
+          "provider_id": 194,
+          "provider_name": "Starz Play Amazon Channel"
+        }
+      ]
+    },
+    "FI": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=FI",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 68,
+          "logo_path": "/oEntjkQyz84qo1C4FZK9jW1qznl.jpg",
+          "provider_id": 423,
+          "provider_name": "Blockbuster"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 68,
+          "logo_path": "/oEntjkQyz84qo1C4FZK9jW1qznl.jpg",
+          "provider_id": 423,
+          "provider_name": "Blockbuster"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ]
+    },
+    "FR": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=FR",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/bqgpWEtokIEOF5nsliXca2BQMEn.jpg",
+          "provider_id": 61,
+          "provider_name": "Orange VOD"
+        },
+        {
+          "display_priority": 18,
+          "logo_path": "/74cM9bbEjdUt7tRtCMv7rnRDKkm.jpg",
+          "provider_id": 58,
+          "provider_name": "Canal VOD"
+        },
+        {
+          "display_priority": 19,
+          "logo_path": "/8TMHKzfYC8vhJpU4Vfa5Knmeg1v.jpg",
+          "provider_id": 59,
+          "provider_name": "Bbox VOD"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 43,
+          "logo_path": "/yYQKaKhMW1Tl8pJYv509AtpSSlf.jpg",
+          "provider_id": 239,
+          "provider_name": "Universcine"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 108,
+          "logo_path": "/5DORP3F8POafFQGy7j6YtXkjPjl.jpg",
+          "provider_id": 138,
+          "provider_name": "Filmo TV"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 70,
+          "logo_path": "/68MNrwlkpF7WnmNPXLah69CR5cb.jpg",
+          "provider_id": 119,
+          "provider_name": "Amazon Prime Video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 11,
+          "logo_path": "/bqgpWEtokIEOF5nsliXca2BQMEn.jpg",
+          "provider_id": 61,
+          "provider_name": "Orange VOD"
+        },
+        {
+          "display_priority": 18,
+          "logo_path": "/74cM9bbEjdUt7tRtCMv7rnRDKkm.jpg",
+          "provider_id": 58,
+          "provider_name": "Canal VOD"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 43,
+          "logo_path": "/yYQKaKhMW1Tl8pJYv509AtpSSlf.jpg",
+          "provider_id": 239,
+          "provider_name": "Universcine"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 108,
+          "logo_path": "/5DORP3F8POafFQGy7j6YtXkjPjl.jpg",
+          "provider_id": 138,
+          "provider_name": "Filmo TV"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ]
+    },
+    "GB": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=GB",
+      "flatrate": [
+        {
+          "display_priority": 85,
+          "logo_path": "/zLX0ExkHc8xJ9W4u9JgnldDQLKv.jpg",
+          "provider_id": 29,
+          "provider_name": "Sky Go"
+        },
+        {
+          "display_priority": 92,
+          "logo_path": "/bzWGPi4Jxdzm9ehkT9ZDuiwj1Hp.jpg",
+          "provider_id": 39,
+          "provider_name": "Now TV"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 99,
+          "logo_path": "/pZgeSWpfvD59x6sY6stT5c6uc2h.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ]
+    },
+    "GR": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=GR",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "HU": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=HU",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ]
+    },
+    "ID": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=ID",
+      "flatrate": [
+        {
+          "display_priority": 44,
+          "logo_path": "/12w89KdhlruBTJEkHR0kMKKgLKx.jpg",
+          "provider_id": 425,
+          "provider_name": "HBO Go"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 95,
+          "logo_path": "/pDNmGWlZj9sMIG6sfCedgqCoqML.jpg",
+          "provider_id": 159,
+          "provider_name": "Catchplay"
+        }
+      ]
+    },
+    "IE": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=IE",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 99,
+          "logo_path": "/pZgeSWpfvD59x6sY6stT5c6uc2h.jpg",
+          "provider_id": 130,
+          "provider_name": "Sky Store"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 85,
+          "logo_path": "/zLX0ExkHc8xJ9W4u9JgnldDQLKv.jpg",
+          "provider_id": 29,
+          "provider_name": "Sky Go"
+        },
+        {
+          "display_priority": 92,
+          "logo_path": "/bzWGPi4Jxdzm9ehkT9ZDuiwj1Hp.jpg",
+          "provider_id": 39,
+          "provider_name": "Now TV"
+        }
+      ]
+    },
+    "IN": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=IN",
+      "flatrate": [
+        {
+          "display_priority": 70,
+          "logo_path": "/68MNrwlkpF7WnmNPXLah69CR5cb.jpg",
+          "provider_id": 119,
+          "provider_name": "Amazon Prime Video"
+        },
+        {
+          "display_priority": 79,
+          "logo_path": "/w7kXF4vhToDuBOXxByI5zN7MMut.jpg",
+          "provider_id": 237,
+          "provider_name": "Sony Liv"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ]
+    },
+    "IT": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=IT",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 100,
+          "logo_path": "/mn4yGYhpzVMKr9WFvcxmZK9RK86.jpg",
+          "provider_id": 109,
+          "provider_name": "Timvision"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 100,
+          "logo_path": "/mn4yGYhpzVMKr9WFvcxmZK9RK86.jpg",
+          "provider_id": 109,
+          "provider_name": "Timvision"
+        }
+      ]
+    },
+    "JP": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=JP",
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 90,
+          "logo_path": "/92xPNIrrXdgtfPu4Dd4tFryc9LW.jpg",
+          "provider_id": 84,
+          "provider_name": "U-NEXT"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/1MXP8yzNAuVHQAT0sqBIFI9Fc2M.jpg",
+          "provider_id": 85,
+          "provider_name": "dTV"
+        },
+        {
+          "display_priority": 575,
+          "logo_path": "/68MNrwlkpF7WnmNPXLah69CR5cb.jpg",
+          "provider_id": 9,
+          "provider_name": "Amazon Prime Video"
+        },
+        {
+          "display_priority": 580,
+          "logo_path": "/giwM8XX4V2AQb9vsoN7yti82tKK.jpg",
+          "provider_id": 15,
+          "provider_name": "Hulu"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ]
+    },
+    "KR": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=KR",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/8N0DNa4BO3lH24KWv1EjJh4TxoD.jpg",
+          "provider_id": 356,
+          "provider_name": "wavve"
+        },
+        {
+          "display_priority": 4,
+          "logo_path": "/gvykO994iHcqL1Cgpii4RJCtDud.jpg",
+          "provider_id": 96,
+          "provider_name": "Naver Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 2,
+          "logo_path": "/8N0DNa4BO3lH24KWv1EjJh4TxoD.jpg",
+          "provider_id": 356,
+          "provider_name": "wavve"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 71,
+          "logo_path": "/cNi4Nv5EPsnvf5WmgwhfWDsdMUd.jpg",
+          "provider_id": 97,
+          "provider_name": "Watcha"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/8N0DNa4BO3lH24KWv1EjJh4TxoD.jpg",
+          "provider_id": 356,
+          "provider_name": "wavve"
+        },
+        {
+          "display_priority": 4,
+          "logo_path": "/gvykO994iHcqL1Cgpii4RJCtDud.jpg",
+          "provider_id": 96,
+          "provider_name": "Naver Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "LT": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=LT",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 94,
+          "logo_path": "/okuStqHQL2ImgtNxNM40La91u3A.jpg",
+          "provider_id": 76,
+          "provider_name": "Viaplay"
+        }
+      ]
+    },
+    "LV": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=LV",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 94,
+          "logo_path": "/okuStqHQL2ImgtNxNM40La91u3A.jpg",
+          "provider_id": 76,
+          "provider_name": "Viaplay"
+        }
+      ]
+    },
+    "MX": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=MX",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 70,
+          "logo_path": "/1UQQbaTE96rWiyJpzI2F2yhbuhR.jpg",
+          "provider_id": 558,
+          "provider_name": "Cinépolis KLIC"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 73,
+          "logo_path": "/mzu37NQphDvqN2BHKM0Rwq9Es3r.jpg",
+          "provider_id": 167,
+          "provider_name": "Claro video"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 70,
+          "logo_path": "/1UQQbaTE96rWiyJpzI2F2yhbuhR.jpg",
+          "provider_id": 558,
+          "provider_name": "Cinépolis KLIC"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ]
+    },
+    "MY": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=MY",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 44,
+          "logo_path": "/12w89KdhlruBTJEkHR0kMKKgLKx.jpg",
+          "provider_id": 425,
+          "provider_name": "HBO Go"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "NL": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=NL",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 35,
+          "logo_path": "/9sOKDL0W3HeUFAY8kCJGz9kadhC.jpg",
+          "provider_id": 563,
+          "provider_name": "KPN"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ]
+    },
+    "NO": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=NO",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 68,
+          "logo_path": "/oEntjkQyz84qo1C4FZK9jW1qznl.jpg",
+          "provider_id": 423,
+          "provider_name": "Blockbuster"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 68,
+          "logo_path": "/oEntjkQyz84qo1C4FZK9jW1qznl.jpg",
+          "provider_id": 423,
+          "provider_name": "Blockbuster"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 122,
+          "logo_path": "/2SZVMASyXPKC7sEBHgmTjCMySNG.jpg",
+          "provider_id": 578,
+          "provider_name": "Strim"
+        }
+      ]
+    },
+    "NZ": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=NZ",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 71,
+          "logo_path": "/wRfIw4x22z9Zag6DZ8qLYwzpjOA.jpg",
+          "provider_id": 273,
+          "provider_name": "Neon TV"
+        }
+      ]
+    },
+    "PE": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=PE",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 73,
+          "logo_path": "/mzu37NQphDvqN2BHKM0Rwq9Es3r.jpg",
+          "provider_id": 167,
+          "provider_name": "Claro video"
+        }
+      ]
+    },
+    "PH": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=PH",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 44,
+          "logo_path": "/12w89KdhlruBTJEkHR0kMKKgLKx.jpg",
+          "provider_id": 425,
+          "provider_name": "HBO Go"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "PL": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=PL",
+      "ads": [
+        {
+          "display_priority": 46,
+          "logo_path": "/lfjI3SjcFS4prMWggqUKWACsrWv.jpg",
+          "provider_id": 505,
+          "provider_name": "Player"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 46,
+          "logo_path": "/lfjI3SjcFS4prMWggqUKWACsrWv.jpg",
+          "provider_id": 505,
+          "provider_name": "Player"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 65,
+          "logo_path": "/vjKeS7Y9fNyqNtvp2ROCc71iu1u.jpg",
+          "provider_id": 40,
+          "provider_name": "Chili"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ]
+    },
+    "PT": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=PT",
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 38,
+          "logo_path": "/3zw07sM5b9FWcB1QXXt3uLpjn9r.jpg",
+          "provider_id": 271,
+          "provider_name": "HBO Portugal"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ]
+    },
+    "RU": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=RU",
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/4AWMLvjQUQNmU3CkpLp7FSSIyZX.jpg",
+          "provider_id": 501,
+          "provider_name": "Wink"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 74,
+          "logo_path": "/2DpMZHxP9jzu3v70bph1UD3LLv3.jpg",
+          "provider_id": 113,
+          "provider_name": "Ivi"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/4AWMLvjQUQNmU3CkpLp7FSSIyZX.jpg",
+          "provider_id": 501,
+          "provider_name": "Wink"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/4AWMLvjQUQNmU3CkpLp7FSSIyZX.jpg",
+          "provider_id": 501,
+          "provider_name": "Wink"
+        }
+      ]
+    },
+    "SE": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=SE",
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 68,
+          "logo_path": "/oEntjkQyz84qo1C4FZK9jW1qznl.jpg",
+          "provider_id": 423,
+          "provider_name": "Blockbuster"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 68,
+          "logo_path": "/oEntjkQyz84qo1C4FZK9jW1qznl.jpg",
+          "provider_id": 423,
+          "provider_name": "Blockbuster"
+        },
+        {
+          "display_priority": 91,
+          "logo_path": "/wuViyDkbFp4r7VqI0efPW5hFfQj.jpg",
+          "provider_id": 35,
+          "provider_name": "Rakuten TV"
+        }
+      ]
+    },
+    "SG": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=SG",
+      "flatrate": [
+        {
+          "display_priority": 44,
+          "logo_path": "/12w89KdhlruBTJEkHR0kMKKgLKx.jpg",
+          "provider_id": 425,
+          "provider_name": "HBO Go"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "TH": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=TH",
+      "flatrate": [
+        {
+          "display_priority": 44,
+          "logo_path": "/12w89KdhlruBTJEkHR0kMKKgLKx.jpg",
+          "provider_id": 425,
+          "provider_name": "HBO Go"
+        },
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "TR": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=TR",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "US": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=US",
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 47,
+          "logo_path": "/qZdEeINwQotbr1Rq15dL5G2BaAh.jpg",
+          "provider_id": 358,
+          "provider_name": "DIRECTV"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 134,
+          "logo_path": "/p1e92kLeYHalxC9GClqNJ75lBDG.jpg",
+          "provider_id": 352,
+          "provider_name": "AMC on Demand"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 477,
+          "logo_path": "/pgaPsqgFh2grkcr7ROkoBajHJnf.jpg",
+          "provider_id": 7,
+          "provider_name": "Vudu"
+        },
+        {
+          "display_priority": 614,
+          "logo_path": "/nSr2IQSwc5C2QrttIWen8s06ofe.jpg",
+          "provider_id": 279,
+          "provider_name": "Redbox"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 41,
+          "logo_path": "/paq2o2dIfQnxcERsVoq7Ys8KYz8.jpg",
+          "provider_id": 68,
+          "provider_name": "Microsoft Store"
+        },
+        {
+          "display_priority": 47,
+          "logo_path": "/qZdEeINwQotbr1Rq15dL5G2BaAh.jpg",
+          "provider_id": 358,
+          "provider_name": "DIRECTV"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        },
+        {
+          "display_priority": 134,
+          "logo_path": "/p1e92kLeYHalxC9GClqNJ75lBDG.jpg",
+          "provider_id": 352,
+          "provider_name": "AMC on Demand"
+        },
+        {
+          "display_priority": 448,
+          "logo_path": "/vDCcryHD32b0yMeSCgBhuYavsmx.jpg",
+          "provider_id": 192,
+          "provider_name": "YouTube"
+        },
+        {
+          "display_priority": 477,
+          "logo_path": "/pgaPsqgFh2grkcr7ROkoBajHJnf.jpg",
+          "provider_id": 7,
+          "provider_name": "Vudu"
+        },
+        {
+          "display_priority": 614,
+          "logo_path": "/nSr2IQSwc5C2QrttIWen8s06ofe.jpg",
+          "provider_id": 279,
+          "provider_name": "Redbox"
+        },
+        {
+          "display_priority": 630,
+          "logo_path": "/sVBEF7q7LqjHAWSnKwDbzmr2EMY.jpg",
+          "provider_id": 10,
+          "provider_name": "Amazon Video"
+        }
+      ],
+      "flatrate": [
+        {
+          "display_priority": 47,
+          "logo_path": "/qZdEeINwQotbr1Rq15dL5G2BaAh.jpg",
+          "provider_id": 358,
+          "provider_name": "DIRECTV"
+        },
+        {
+          "display_priority": 488,
+          "logo_path": "/pDcaPupcS7YxKce2sQePrq8k1gK.jpg",
+          "provider_id": 43,
+          "provider_name": "Starz"
+        },
+        {
+          "display_priority": 552,
+          "logo_path": "/zznIwoeBvIUHJUfCaXzzmvJz2WH.jpg",
+          "provider_id": 194,
+          "provider_name": "Starz Play Amazon Channel"
+        }
+      ]
+    },
+    "VE": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=VE",
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    },
+    "ZA": {
+      "link": "https://www.themoviedb.org/movie/557-spider-man/watch?locale=ZA",
+      "flatrate": [
+        {
+          "display_priority": 57,
+          "logo_path": "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "buy": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ],
+      "rent": [
+        {
+          "display_priority": 2,
+          "logo_path": "/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg",
+          "provider_id": 2,
+          "provider_name": "Apple iTunes"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg",
+          "provider_id": 3,
+          "provider_name": "Google Play Movies"
+        }
+      ]
+    }
+  }
+}

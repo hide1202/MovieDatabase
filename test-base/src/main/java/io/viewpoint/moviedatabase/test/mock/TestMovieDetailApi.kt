@@ -3,10 +3,7 @@ package io.viewpoint.moviedatabase.test.mock
 import arrow.fx.IO
 import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.api.MovieDetailApi
-import io.viewpoint.moviedatabase.model.api.CreditsResponse
-import io.viewpoint.moviedatabase.model.api.KeywordResponse
-import io.viewpoint.moviedatabase.model.api.MovieDetail
-import io.viewpoint.moviedatabase.model.api.MovieListResponse
+import io.viewpoint.moviedatabase.model.api.*
 import io.viewpoint.moviedatabase.test.MoshiReader
 import io.viewpoint.moviedatabase.test.ResponseReader
 
@@ -43,6 +40,15 @@ class TestMovieDetailApi : MovieDetailApi {
             ResponseReader.jsonFromFileAsync(
                 "responses/movie-recommendations.json",
                 MoshiReader.moshi.adapter(MovieListResponse::class.java)
+            )
+        }
+    }
+
+    override fun getWatchProviders(id: Int): IO<ProviderResponse> = IO.fx {
+        !effect {
+            ResponseReader.jsonFromFileAsync(
+                "responses/movie-watch-providers.json",
+                MoshiReader.moshi.adapter(ProviderResponse::class.java)
             )
         }
     }
