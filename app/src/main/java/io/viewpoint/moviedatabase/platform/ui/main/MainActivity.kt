@@ -3,15 +3,13 @@ package io.viewpoint.moviedatabase.platform.ui.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.R
 import io.viewpoint.moviedatabase.databinding.ActivityMainBinding
-import io.viewpoint.moviedatabase.ui.home.HomeFragment
-import io.viewpoint.moviedatabase.ui.search.MovieSearchFragment
-import io.viewpoint.moviedatabase.ui.setting.SettingFragment
+import io.viewpoint.moviedatabase.platform.navigation.BottomNavigator
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -19,44 +17,38 @@ class MainActivity : AppCompatActivity() {
         DataBindingUtil.setContentView(this, R.layout.activity_main)
     }
 
+    private val navController: NavController by lazy {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+            ?: throw IllegalStateException("the container MUST contain a fragment at least one")
+        navHostFragment.findNavController()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.bottomNavigation.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.home_menu -> replaceFragment<HomeFragment>(HomeFragment.TAG)
-                R.id.movie_search_menu -> replaceFragment<MovieSearchFragment>(MovieSearchFragment.TAG)
-                R.id.setting_menu -> replaceFragment<SettingFragment>(SettingFragment.TAG)
-                else -> false
-            }
+        binding.lifecycleOwner = this
+
+        navController.apply {
+            navigatorProvider.addNavigator(
+                BottomNavigator(
+                    R.id.fragment_container,
+                    supportFragmentManager
+                )
+            )
+            // set a graph at code not XML, because add a custom navigator
+            setGraph(R.navigation.bottom_navigation)
+
+            binding.bottomNavigation.setupWithNavController(this)
         }
-        binding.bottomNavigation.selectedItemId = savedInstanceState?.getInt(KEY_SELECTED_TAB)
+
+        savedInstanceState?.getInt(KEY_SELECTED_TAB)
             ?.let {
                 MainTab.from(it)
             }
             ?.itemId
-            ?: MainTab.HOME.itemId
-    }
-
-    private inline fun <reified T : Fragment> replaceFragment(tag: String): Boolean {
-        val current = supportFragmentManager.findFragmentByTag(tag)
-        val others = MainTab.otherTab(exceptTag = tag)
-            .mapNotNull {
-                supportFragmentManager.findFragmentByTag(it.tag)
+            ?.let {
+                binding.bottomNavigation.selectedItemId = it
             }
-
-        supportFragmentManager.commit {
-            if (current == null) {
-                add<T>(R.id.fragment_container, tag)
-            } else {
-                show(current)
-            }
-
-            others.forEach {
-                hide(it)
-            }
-        }
-        return true
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
