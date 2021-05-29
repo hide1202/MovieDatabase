@@ -94,6 +94,7 @@ class BottomNavigator(
         }
     }
 
+    @NavDestination.ClassType(Fragment::class)
     class Destination(navigator: BottomNavigator) : NavDestination(navigator) {
         internal var className: String? = null
             private set
