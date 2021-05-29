@@ -34,8 +34,7 @@ class BottomNavigator(
         navigatorExtras: Extras?
     ): NavDestination? {
         val className = destination.className ?: return null
-        val targetFragmentClass = Class.forName(className).asSubclass(Fragment::class.java)
-        val tag = targetFragmentClass.simpleName
+        val tag = className.split('.').last()
 
         if (backStack.peekLast() == tag) {
             return null
@@ -48,7 +47,11 @@ class BottomNavigator(
         val current = fragmentManager.findFragmentByTag(tag)
         fragmentManager.commit {
             if (current == null) {
-                add(fragmentContainerId, targetFragmentClass, null, tag)
+                val fragment = fragmentManager.fragmentFactory.instantiate(
+                    ClassLoader.getSystemClassLoader(),
+                    className
+                )
+                add(fragmentContainerId, fragment, tag)
             } else {
                 show(current)
             }
@@ -66,8 +69,8 @@ class BottomNavigator(
         fragmentManager.commit {
             newCurrent?.let {
                 show(it)
+                hideOthers(newCurrentTag)
             }
-            hideOthers(newCurrentTag)
         }
         return true
     }
