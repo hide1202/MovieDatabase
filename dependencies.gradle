@@ -23,7 +23,7 @@ ext.versions = [
                 espresso_core     : '3.3.0',
                 hilt              : '1.0.0',
                 paging            : '3.0.0-beta03',
-                navigation        : '2.3.2',
+                navigation        : '2.3.5',
                 room              : '2.2.5',
                 datastore         : '1.0.0-alpha08',
                 workmanager       : '2.5.0'
