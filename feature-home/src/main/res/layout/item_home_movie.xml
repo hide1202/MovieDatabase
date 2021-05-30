@@ -11,7 +11,7 @@
 
         <variable
             name="model"
-            type="io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel" />
+            type="io.viewpoint.moviedatabase.model.ui.SearchResultModel" />
     </data>
 
     <LinearLayout
