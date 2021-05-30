@@ -9,13 +9,12 @@ import arrow.fx.extensions.io.async.effectMap
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
-import io.viewpoint.moviedatabase.domain.popular.PopularResultMapper
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
-import io.viewpoint.moviedatabase.model.api.toMovie
-import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
+import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
+import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -27,13 +26,13 @@ class MainViewModel @Inject constructor(
     private val wantToSeeRepository: WantToSeeRepository,
     private val movieRepository: MovieRepository
 ) : ViewModel() {
-    private val mapper = PopularResultMapper(configurationRepository)
+    private val mapper = SearchResultMapperProvider(configurationRepository)
     private val _isLoading = MutableLiveData<Boolean>(false)
-    private val _wantToSee = MutableLiveData<List<HomeMovieListResultModel>>()
-    private val _popular = MutableLiveData<List<HomeMovieListResultModel>>()
-    private val _nowPlaying = MutableLiveData<List<HomeMovieListResultModel>>()
-    private val _upcoming = MutableLiveData<List<HomeMovieListResultModel>>()
-    private val _topRated = MutableLiveData<List<HomeMovieListResultModel>>()
+    private val _wantToSee = MutableLiveData<List<SearchResultModel>>()
+    private val _popular = MutableLiveData<List<SearchResultModel>>()
+    private val _nowPlaying = MutableLiveData<List<SearchResultModel>>()
+    private val _upcoming = MutableLiveData<List<SearchResultModel>>()
+    private val _topRated = MutableLiveData<List<SearchResultModel>>()
 
     private val initJob: Job
 
@@ -52,7 +51,7 @@ class MainViewModel @Inject constructor(
         _wantToSee.postValue(wantToSeeRepository.getWantToSeeMovies()
             .effectMap { list ->
                 list.map {
-                    mapper.map(it.toMovie())
+                    mapper.mapperFromMovieDetail.map(it)
                 }
             }
             .attempt()
@@ -61,22 +60,22 @@ class MainViewModel @Inject constructor(
 
         _popular.postValue(movieRepository.getPopular()
             .map {
-                mapper.map(it)
+                mapper.mapperFromMovie.map(it)
             })
 
         _nowPlaying.postValue(movieRepository.getNowPlayings()
             .map {
-                mapper.map(it)
+                mapper.mapperFromMovie.map(it)
             })
 
         _upcoming.postValue(movieRepository.getUpcoming()
             .map {
-                mapper.map(it)
+                mapper.mapperFromMovie.map(it)
             })
 
         _topRated.postValue(movieRepository.getTopRated()
             .map {
-                mapper.map(it)
+                mapper.mapperFromMovie.map(it)
             })
 
         _isLoading.value = false
@@ -85,19 +84,19 @@ class MainViewModel @Inject constructor(
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
-    val wantToSee: LiveData<List<HomeMovieListResultModel>>
+    val wantToSee: LiveData<List<SearchResultModel>>
         get() = _wantToSee
 
-    val popular: LiveData<List<HomeMovieListResultModel>>
+    val popular: LiveData<List<SearchResultModel>>
         get() = _popular
 
-    val nowPlaying: LiveData<List<HomeMovieListResultModel>>
+    val nowPlaying: LiveData<List<SearchResultModel>>
         get() = _nowPlaying
 
-    val upcoming: LiveData<List<HomeMovieListResultModel>>
+    val upcoming: LiveData<List<SearchResultModel>>
         get() = _upcoming
 
-    val topRated: LiveData<List<HomeMovieListResultModel>>
+    val topRated: LiveData<List<SearchResultModel>>
         get() = _topRated
 
     suspend fun awaitInit(): MainViewModel = apply {

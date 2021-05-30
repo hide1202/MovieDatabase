@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.home.R
 import io.viewpoint.moviedatabase.home.databinding.FragmentHomeBinding
-import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
+import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
@@ -81,7 +81,7 @@ class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
         }
     }
 
-    private fun LiveData<List<HomeMovieListResultModel>>.observeSectionAdapter(
+    private fun LiveData<List<SearchResultModel>>.observeSectionAdapter(
         labelAdapter: LabelAdapter,
         dataAdapter: HomeMovieListAdapter
     ) {
@@ -91,13 +91,16 @@ class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
         }
     }
 
-    override fun onMovieClicked(movieId: Int) {
+    override fun onMovieClicked(movie: SearchResultModel) {
         val activity = activity ?: return
 
         val intent = Intent(
             Intent.ACTION_VIEW,
-            Uri.parse("viewpoint://tmdb/movies/detail?movieId=$movieId")
-        )
+            Uri.parse("viewpoint://tmdb/movies/detail")
+        ).apply {
+            // TODO don't use constant name
+            putExtra("resultModel", movie)
+        }
         if (intent.resolveActivity(activity.packageManager) != null) {
             activity.startActivity(intent)
         }

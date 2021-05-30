@@ -10,11 +10,12 @@
             type="io.viewpoint.moviedatabase.model.ui.WatchProviderModel.Info" />
     </data>
 
-    <ImageView
+    <io.viewpoint.moviedatabase.widget.GlideImageView
         android:layout_width="18dp"
         android:layout_height="18dp"
-        app:circle="@{true}"
+        app:fallbackImage="@drawable/fallback_circle_image"
         app:imageUrl="@{model.logoUrl}"
+        app:isCircle="true"
         tools:background="@color/yellow_green" />
 
 </layout>

@@ -11,7 +11,7 @@
 
         <variable
             name="model"
-            type="io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel" />
+            type="io.viewpoint.moviedatabase.model.ui.SearchResultModel" />
     </data>
 
     <LinearLayout
@@ -23,22 +23,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <io.viewpoint.moviedatabase.widget.GlideImageView
+                android:id="@+id/poster"
                 android:layout_width="150dp"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
+                app:fallbackImage="@drawable/fallback_image"
                 app:gone="@{circle}"
                 app:imageUrl="@{model.posterUrl}"
                 tools:background="@color/light_grey"
                 tools:ignore="ContentDescription" />
 
-            <ImageView
+            <io.viewpoint.moviedatabase.widget.GlideImageView
+                android:id="@+id/circle_poster"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
-                app:circle="@{true}"
+                app:fallbackImage="@drawable/fallback_circle_image"
                 app:gone="@{!circle}"
                 app:imageUrl="@{model.posterUrl}"
+                app:isCircle="true"
                 tools:background="@color/indian_red"
                 tools:ignore="ContentDescription" />
         </FrameLayout>

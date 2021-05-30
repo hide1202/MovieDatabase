@@ -7,25 +7,25 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.home.databinding.ItemHomeMovieBinding
-import io.viewpoint.moviedatabase.model.ui.HomeMovieListResultModel
+import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 
 class HomeMovieListAdapter(
     private val circle: Boolean = false,
     private val callback: Callback
-) : ListAdapter<HomeMovieListResultModel, HomeMovieListAdapter.ViewHolder>(
-    object : DiffUtil.ItemCallback<HomeMovieListResultModel>() {
+) : ListAdapter<SearchResultModel, HomeMovieListAdapter.ViewHolder>(
+    object : DiffUtil.ItemCallback<SearchResultModel>() {
         override fun areItemsTheSame(
-            oldItem: HomeMovieListResultModel,
-            newItem: HomeMovieListResultModel
+            oldItem: SearchResultModel,
+            newItem: SearchResultModel
         ): Boolean = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
-            oldItem: HomeMovieListResultModel,
-            newItem: HomeMovieListResultModel
+            oldItem: SearchResultModel,
+            newItem: SearchResultModel
         ): Boolean = oldItem == newItem
     }
 ) {
-    fun updateResults(results: List<HomeMovieListResultModel>) {
+    fun updateResults(results: List<SearchResultModel>) {
         submitList(results)
     }
 
@@ -43,7 +43,7 @@ class HomeMovieListAdapter(
                 val position = vh.bindingAdapterPosition.takeIf {
                     it != RecyclerView.NO_POSITION
                 } ?: return@setOnClickListener
-                callback.onMovieClicked(getItem(position).id)
+                callback.onMovieClicked(getItem(position))
             }
         }
 
@@ -57,6 +57,6 @@ class HomeMovieListAdapter(
     class ViewHolder(val binding: ItemHomeMovieBinding) : RecyclerView.ViewHolder(binding.root)
 
     interface Callback {
-        fun onMovieClicked(movieId: Int)
+        fun onMovieClicked(movie: SearchResultModel)
     }
 }
