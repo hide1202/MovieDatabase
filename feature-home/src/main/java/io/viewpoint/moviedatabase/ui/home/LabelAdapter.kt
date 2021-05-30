@@ -9,9 +9,10 @@ import io.viewpoint.moviedatabase.home.R
 import io.viewpoint.moviedatabase.home.databinding.ItemLabelBinding
 
 class LabelAdapter(
-    private val labelString: String
+    private val labelString: String,
+    initialVisible: Boolean = true
 ) : RecyclerView.Adapter<LabelAdapter.LabelHolder>() {
-    var isVisible = true
+    var isVisible = initialVisible
         set(value) {
             if (field != value) {
                 val oldValue = field
