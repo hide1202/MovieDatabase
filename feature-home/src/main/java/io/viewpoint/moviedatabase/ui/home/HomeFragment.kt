@@ -44,7 +44,7 @@ class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val wantToSeeLabelAdapter = LabelAdapter(getString(R.string.want_to_see_header))
+        val wantToSeeLabelAdapter = LabelAdapter(getString(R.string.want_to_see_header), initialVisible = false)
         val wantToSeeAdapter = HomeMovieListAdapter(circle = true, callback = this)
         val popularLabelAdapter = LabelAdapter(getString(R.string.popular_header))
         val popularAdapter = HomeMovieListAdapter(callback = this)
