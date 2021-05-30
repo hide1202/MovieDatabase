@@ -24,6 +24,7 @@ dependencies {
     implementation project(':resources')
 
     implementation project(':common')
+    implementation project(':widget')
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')

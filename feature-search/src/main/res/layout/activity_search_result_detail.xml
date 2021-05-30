@@ -38,16 +38,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
+                <io.viewpoint.moviedatabase.widget.GlideImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
+                    app:fallbackImage="@drawable/fallback_image"
                     app:imageUrl="@{result.backdropUrl}"
                     tools:background="@color/dark_gray" />
 
             </FrameLayout>
 
-            <ImageView
+            <io.viewpoint.moviedatabase.widget.GlideImageView
                 android:id="@+id/poster"
                 android:layout_width="100dp"
                 android:layout_height="150dp"
@@ -55,8 +56,9 @@
                 android:layout_marginBottom="8dp"
                 android:scaleType="centerCrop"
                 android:transitionName="@string/result_to_detail_transition"
-                app:borderColor="@{@color/white}"
-                app:borderWidth="@{Dimensions.dp(2)}"
+                app:borderColor="@color/white"
+                app:borderWidth="2dp"
+                app:fallbackImage="@drawable/fallback_image"
                 app:imageUrl="@{result.posterUrl}"
                 app:layout_constraintBottom_toBottomOf="@id/backdrop"
                 app:layout_constraintStart_toStartOf="@id/backdrop"

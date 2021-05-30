@@ -7,12 +7,23 @@ plugins {
 apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
 
+android {
+    buildFeatures {
+        dataBinding true
+    }
+}
+
 dependencies {
+    implementation project(":common")
+
     // androidx
     implementation deps.androidx.core
     implementation deps.androidx.appcompat
     implementation deps.androidx.material
     implementation deps.androidx.constraintlayout
+
+    // glide
+    implementation deps.libraries.glide
 
     // timber
     implementation deps.libraries.timber

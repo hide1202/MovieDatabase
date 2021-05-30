@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GlideImageView">
+        <attr name="isCircle" format="boolean" />
+        <attr name="fallbackImage" format="reference" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="imageUrl" format="string" />
+    </declare-styleable>
+</resources>

@@ -14,11 +14,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <io.viewpoint.moviedatabase.widget.GlideImageView
             android:id="@+id/logo"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:scaleType="centerInside"
+            app:fallbackImage="@drawable/fallback_image"
             app:imageUrl="@{company.logoUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -15,10 +15,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
+        <io.viewpoint.moviedatabase.widget.GlideImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
+            app:fallbackImage="@drawable/fallback_image"
             app:imageUrl="@{model.posterUrl}"
             tools:background="@color/light_grey"
             tools:ignore="ContentDescription" />

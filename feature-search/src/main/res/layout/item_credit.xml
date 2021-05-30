@@ -14,13 +14,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <io.viewpoint.moviedatabase.widget.GlideImageView
             android:id="@+id/profile"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:scaleType="centerInside"
-            app:circle="@{true}"
+            app:fallbackImage="@drawable/fallback_circle_image"
             app:imageUrl="@{credit.profileUrl}"
+            app:isCircle="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
