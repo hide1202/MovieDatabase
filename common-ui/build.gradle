@@ -11,10 +11,6 @@ apply from: '../android-jacoco.gradle'
 apply from: '../android-test-dependencies.gradle'
 
 android {
-    defaultConfig {
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
     buildFeatures {
         dataBinding true
     }
@@ -28,7 +24,6 @@ dependencies {
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
-    implementation project(':common-ui')
 
     // androidx
     implementation deps.androidx.core

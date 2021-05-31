@@ -44,15 +44,28 @@ class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val wantToSeeLabelAdapter = LabelAdapter(getString(R.string.want_to_see_header), initialVisible = false)
+        val wantToSeeLabelAdapter =
+            LabelAdapter(getString(R.string.want_to_see_header), initialVisible = false)
         val wantToSeeAdapter = HomeMovieListAdapter(circle = true, callback = this)
-        val popularLabelAdapter = LabelAdapter(getString(R.string.popular_header))
+        val popularLabelAdapter = LabelAdapter(
+            getString(R.string.popular_header),
+            providerClass = PopularMovieListProvider::class
+        )
         val popularAdapter = HomeMovieListAdapter(callback = this)
-        val nowPlayingLabelAdapter = LabelAdapter(getString(R.string.now_playing_header))
+        val nowPlayingLabelAdapter = LabelAdapter(
+            getString(R.string.now_playing_header),
+            providerClass = NowPlayingMovieListProvider::class
+        )
         val nowPlayingAdapter = HomeMovieListAdapter(callback = this)
-        val upcomingLabelAdapter = LabelAdapter(getString(R.string.upcoming_header))
+        val upcomingLabelAdapter = LabelAdapter(
+            getString(R.string.upcoming_header),
+            providerClass = UpcomingMovieListProvider::class
+        )
         val upcomingAdapter = HomeMovieListAdapter(callback = this)
-        val topRatedLabelAdapter = LabelAdapter(getString(R.string.top_rated_header))
+        val topRatedLabelAdapter = LabelAdapter(
+            getString(R.string.top_rated_header),
+            providerClass = TopRatedMovieListProvider::class
+        )
         val topRatedAdapter = HomeMovieListAdapter(callback = this)
         val concatAdapter = ConcatAdapter(
             wantToSeeLabelAdapter,

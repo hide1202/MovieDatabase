@@ -4,3 +4,7 @@ plugins {
 }
 
 apply from: '../android-configure.gradle'
+
+dependencies {
+    implementation deps.androidx.material
+}

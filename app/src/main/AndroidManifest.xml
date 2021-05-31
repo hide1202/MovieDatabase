@@ -24,7 +24,9 @@
 
         </activity>
 
-        <activity android:name=".ui.search.SearchResultDetailActivity">
+        <activity
+            android:name=".ui.search.SearchResultDetailActivity"
+            android:theme="@style/AppTheme.Activity">
             <nav-graph android:value="@navigation/detail_navigation" />
         </activity>
 
