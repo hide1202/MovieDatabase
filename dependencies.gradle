@@ -43,7 +43,7 @@ ext.versions = [
                 coroutine_core: '1.3.7',
                 arrow         : '0.11.0',
                 timber        : '4.7.1',
-                dagger        : '2.35.1',
+                dagger        : '2.37',
                 glide         : '4.11.0'
         ]
 ]
