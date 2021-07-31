@@ -9,7 +9,7 @@
 
 ## Prerequisites
 
-- Android Studio Arctic Fox | 2020.3.1 RC 1
+- Android Studio Arctic Fox | 2020.3.1 (stable)
 
 ## How to run
 
