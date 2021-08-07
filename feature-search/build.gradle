@@ -19,6 +19,7 @@ dependencies {
     implementation project(':resources')
 
     implementation project(':common')
+    implementation project(':common-ui')
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
