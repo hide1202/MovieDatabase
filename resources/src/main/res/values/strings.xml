@@ -9,6 +9,7 @@
     <string name="now_playing_header">Now playing</string>
     <string name="upcoming_header">Upcoming</string>
     <string name="top_rated_header">Top Rated</string>
+    <string name="more">More ></string>
 
     <string name="setting_header">Setting</string>
     <string name="setting_language">Language</string>

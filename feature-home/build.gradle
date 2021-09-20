@@ -28,6 +28,7 @@ dependencies {
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
+    implementation project(':common-ui')
 
     // androidx
     implementation deps.androidx.core
@@ -41,6 +42,7 @@ dependencies {
     implementation deps.androidx.lifecycle_viewmodel
     implementation deps.androidx.lifecycle_livedata
     implementation deps.androidx.lifecycle_runtime
+    implementation deps.androidx.paging
 
     // dagger/hilt
     implementation deps.libraries.hilt

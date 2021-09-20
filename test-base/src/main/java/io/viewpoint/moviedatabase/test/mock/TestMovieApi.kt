@@ -6,7 +6,7 @@ import io.viewpoint.moviedatabase.api.MovieApi
 import io.viewpoint.moviedatabase.model.api.MovieListResponse
 
 class TestMovieApi : MovieApi {
-    override fun getPopular(): IO<MovieListResponse> = IO.fx {
+    override fun getPopular(page: Int): IO<MovieListResponse> = IO.fx {
         !effect {
             io.viewpoint.moviedatabase.test.ResponseReader.jsonFromFileAsync(
                 "responses/movie-list-results.json",
@@ -15,7 +15,7 @@ class TestMovieApi : MovieApi {
         }
     }
 
-    override fun getNowPlaying(): IO<MovieListResponse> = IO.fx {
+    override fun getNowPlaying(page: Int): IO<MovieListResponse> = IO.fx {
         !effect {
             io.viewpoint.moviedatabase.test.ResponseReader.jsonFromFileAsync(
                 "responses/movie-list-results.json",
@@ -24,7 +24,7 @@ class TestMovieApi : MovieApi {
         }
     }
 
-    override fun getUpcoming(): IO<MovieListResponse> = IO.fx {
+    override fun getUpcoming(page: Int): IO<MovieListResponse> = IO.fx {
         !effect {
             io.viewpoint.moviedatabase.test.ResponseReader.jsonFromFileAsync(
                 "responses/movie-list-results.json",
@@ -33,7 +33,7 @@ class TestMovieApi : MovieApi {
         }
     }
 
-    override fun getTopRated(): IO<MovieListResponse> = IO.fx {
+    override fun getTopRated(page: Int): IO<MovieListResponse> = IO.fx {
         !effect {
             io.viewpoint.moviedatabase.test.ResponseReader.jsonFromFileAsync(
                 "responses/movie-list-results.json",

@@ -8,7 +8,7 @@ import javax.inject.Inject
 class MovieDatabaseMovieRepository @Inject constructor(
     private val movieApi: MovieApi
 ) : MovieRepository {
-    override suspend fun getPopular(): List<Movie> = movieApi.getPopular()
+    override suspend fun getPopular(page: Int): List<Movie> = movieApi.getPopular(page)
         .attempt()
         .suspended()
         .map {
@@ -16,7 +16,7 @@ class MovieDatabaseMovieRepository @Inject constructor(
         }
         .getOrElse { emptyList() }
 
-    override suspend fun getNowPlayings(): List<Movie> = movieApi.getNowPlaying()
+    override suspend fun getNowPlayings(page: Int): List<Movie> = movieApi.getNowPlaying(page)
         .attempt()
         .suspended()
         .map {
@@ -24,7 +24,7 @@ class MovieDatabaseMovieRepository @Inject constructor(
         }
         .getOrElse { emptyList() }
 
-    override suspend fun getUpcoming(): List<Movie> = movieApi.getUpcoming()
+    override suspend fun getUpcoming(page: Int): List<Movie> = movieApi.getUpcoming(page)
         .attempt()
         .suspended()
         .map {
@@ -32,7 +32,7 @@ class MovieDatabaseMovieRepository @Inject constructor(
         }
         .getOrElse { emptyList() }
 
-    override suspend fun getTopRated(): List<Movie> = movieApi.getTopRated()
+    override suspend fun getTopRated(page: Int): List<Movie> = movieApi.getTopRated(page)
         .attempt()
         .suspended()
         .map {

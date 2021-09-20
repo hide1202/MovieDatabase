@@ -7,6 +7,7 @@ plugins {
 
 apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
+apply from: '../android-jacoco.gradle'
 apply from: '../android-test-dependencies.gradle'
 
 android {
@@ -19,11 +20,10 @@ dependencies {
     implementation project(':resources')
 
     implementation project(':common')
-    implementation project(':common-ui')
+    implementation project(':widget')
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
-    implementation project(':widget')
 
     // androidx
     implementation deps.androidx.core

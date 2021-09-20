@@ -7,10 +7,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.home.R
 import io.viewpoint.moviedatabase.home.databinding.ItemLabelBinding
+import io.viewpoint.moviedatabase.ui.common.MovieListActivity
+import io.viewpoint.moviedatabase.ui.common.MovieListProvider
+import kotlin.reflect.KClass
 
 class LabelAdapter(
     private val labelString: String,
-    initialVisible: Boolean = true
+    initialVisible: Boolean = true,
+    private val providerClass: KClass<out MovieListProvider>? = null
 ) : RecyclerView.Adapter<LabelAdapter.LabelHolder>() {
     var isVisible = initialVisible
         set(value) {
@@ -35,7 +39,13 @@ class LabelAdapter(
                 parent,
                 false
             )
-        )
+        ).also { vh ->
+            vh.binding.more.setOnClickListener {
+                val context = it.context
+                val providerClass = providerClass ?: return@setOnClickListener
+                context.startActivity(MovieListActivity.intent(context, providerClass))
+            }
+        }
 
     override fun getItemCount(): Int = if (isVisible) 1 else 0
 
