@@ -1,6 +1,7 @@
 package io.viewpoint.moviedatabase.ui.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -43,7 +44,13 @@ class HomeMovieListAdapter(
                 val position = vh.bindingAdapterPosition.takeIf {
                     it != RecyclerView.NO_POSITION
                 } ?: return@setOnClickListener
-                callback.onMovieClicked(getItem(position))
+                callback.onMovieClicked(
+                    if (circle) {
+                        vh.binding.circlePoster
+                    } else {
+                        vh.binding.poster
+                    }, getItem(position)
+                )
             }
         }
 
@@ -57,6 +64,6 @@ class HomeMovieListAdapter(
     class ViewHolder(val binding: ItemHomeMovieBinding) : RecyclerView.ViewHolder(binding.root)
 
     interface Callback {
-        fun onMovieClicked(movie: SearchResultModel)
+        fun onMovieClicked(posterView: View, movie: SearchResultModel)
     }
 }
