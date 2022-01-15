@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -104,9 +105,14 @@ class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
         }
     }
 
-    override fun onMovieClicked(movie: SearchResultModel) {
+    override fun onMovieClicked(posterView: View, movie: SearchResultModel) {
         val activity = activity ?: return
 
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            activity,
+            posterView,
+            posterView.transitionName
+        )
         val intent = Intent(
             Intent.ACTION_VIEW,
             Uri.parse("viewpoint://tmdb/movies/detail")
@@ -115,7 +121,7 @@ class HomeFragment : Fragment(), HomeMovieListAdapter.Callback {
             putExtra("resultModel", movie)
         }
         if (intent.resolveActivity(activity.packageManager) != null) {
-            activity.startActivity(intent)
+            activity.startActivity(intent, options.toBundle())
         }
     }
 
