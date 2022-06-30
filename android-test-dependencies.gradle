@@ -3,6 +3,8 @@ apply from: '../java-test-dependencies.gradle'
 
 dependencies {
     testImplementation project(':test-base')
+    testImplementation project(':test-common')
+    testImplementation project(':test-mock')
     androidTestImplementation project(':test-base')
 
     // test

@@ -6,14 +6,16 @@ import com.squareup.moshi.Types
 import io.viewpoint.moviedatabase.api.ConfigurationApi
 import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
 import io.viewpoint.moviedatabase.model.api.ConfigurationResponse
+import io.viewpoint.moviedatabase.test.common.MoshiReader
+import io.viewpoint.moviedatabase.test.common.ResponseReader
 
 class TestConfigurationApi : ConfigurationApi {
     override fun getConfiguration(): IO<ConfigurationResponse> =
         IO.fx {
             !effect {
-                io.viewpoint.moviedatabase.test.ResponseReader.jsonFromFileAsync(
+                ResponseReader.jsonFromFileAsync(
                     "responses/configuration-results.json",
-                    io.viewpoint.moviedatabase.test.MoshiReader.moshi.adapter(ConfigurationResponse::class.java)
+                    MoshiReader.moshi.adapter(ConfigurationResponse::class.java)
                 )
             }
         }
@@ -23,9 +25,9 @@ class TestConfigurationApi : ConfigurationApi {
             !effect {
                 val type =
                     Types.newParameterizedType(List::class.java, ConfigurationLanguage::class.java)
-                io.viewpoint.moviedatabase.test.ResponseReader.jsonFromFileAsync(
+                ResponseReader.jsonFromFileAsync(
                     "responses/languages-results.json",
-                    io.viewpoint.moviedatabase.test.MoshiReader.moshi.adapter<List<ConfigurationLanguage>>(type)
+                    MoshiReader.moshi.adapter<List<ConfigurationLanguage>>(type)
                 )
             }
         }

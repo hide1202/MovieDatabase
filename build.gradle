@@ -12,7 +12,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.0'
         classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
         classpath "org.jacoco:org.jacoco.core:0.8.7"
 
         classpath "com.google.dagger:hilt-android-gradle-plugin:${versions.libraries.dagger}"
