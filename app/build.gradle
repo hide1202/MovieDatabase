@@ -30,7 +30,7 @@ android {
 
     buildTypes {
         debug {
-            testCoverageEnabled((findProperty("enableJacoco") ?: "false").toBoolean())
+//            testCoverageEnabled((findProperty("enableJacoco") ?: "false").toBoolean())
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
             buildConfigField("int", "DATABASE_VERSION", "${app.database_version}")
         }
