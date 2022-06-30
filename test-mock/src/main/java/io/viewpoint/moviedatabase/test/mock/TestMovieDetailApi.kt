@@ -13,7 +13,9 @@ class TestMovieDetailApi : MovieDetailApi {
             ResponseReader.jsonFromFileAsync(
                 "responses/movie-detail.json",
                 MoshiReader.moshi.adapter(MovieDetail::class.java)
-            )
+            ).takeIf {
+                it.id == id
+            } ?: throw NoSuchElementException()
         }
     }
 
@@ -22,7 +24,9 @@ class TestMovieDetailApi : MovieDetailApi {
             ResponseReader.jsonFromFileAsync(
                 "responses/movie-credits.json",
                 MoshiReader.moshi.adapter(CreditsResponse::class.java)
-            )
+            ).takeIf {
+                it.id == id
+            } ?: throw NoSuchElementException()
         }
     }
 
@@ -31,12 +35,17 @@ class TestMovieDetailApi : MovieDetailApi {
             ResponseReader.jsonFromFileAsync(
                 "responses/movie-keywords.json",
                 MoshiReader.moshi.adapter(KeywordResponse::class.java)
-            )
+            ).takeIf {
+                it.id == id
+            } ?: throw NoSuchElementException()
         }
     }
 
     override fun getRecommendations(id: Int): IO<MovieListResponse> = IO.fx {
         !effect {
+            if (id != VALID_ID) {
+                throw NoSuchElementException()
+            }
             ResponseReader.jsonFromFileAsync(
                 "responses/movie-recommendations.json",
                 MoshiReader.moshi.adapter(MovieListResponse::class.java)
@@ -49,7 +58,13 @@ class TestMovieDetailApi : MovieDetailApi {
             ResponseReader.jsonFromFileAsync(
                 "responses/movie-watch-providers.json",
                 MoshiReader.moshi.adapter(WatchProviderResponse::class.java)
-            )
+            ).takeIf {
+                it.id == id
+            } ?: throw NoSuchElementException()
         }
+    }
+
+    companion object {
+        const val VALID_ID = 557
     }
 }
