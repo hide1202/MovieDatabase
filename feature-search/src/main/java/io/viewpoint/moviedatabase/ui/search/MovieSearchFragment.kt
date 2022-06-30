@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.extensions.hideSoftInput
 import io.viewpoint.moviedatabase.ui.common.SearchResultAdapter
 import io.viewpoint.moviedatabase.ui.search.databinding.FragmentMovieSearchBinding
-import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchViewModel
+import io.viewpoint.moviedatabase.viewmodel.MovieSearchViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

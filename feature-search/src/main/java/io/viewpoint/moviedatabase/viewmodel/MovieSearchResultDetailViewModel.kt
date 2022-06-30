@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.ui.search.viewmodel
+package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +18,6 @@ import io.viewpoint.moviedatabase.model.ui.CreditModel
 import io.viewpoint.moviedatabase.model.ui.KeywordModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.model.ui.WatchProviderModel
-import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject

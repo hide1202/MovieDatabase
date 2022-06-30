@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.viewmodel.search
+package io.viewpoint.moviedatabase.viewmodel
 
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.KeywordModelMapper
@@ -12,7 +12,7 @@ import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieDetailApi
 import io.viewpoint.moviedatabase.test.mock.TestWantToSeeDao
-import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchResultDetailViewModel
+import io.viewpoint.moviedatabase.viewmodel.MovieSearchResultDetailViewModel
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test

@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.viewmodel.search
+package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.lifecycle.asFlow
 import androidx.paging.AsyncPagingDataDiffer
@@ -15,8 +15,6 @@ import io.viewpoint.moviedatabase.test.TestBase
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.test.mock.TestSearchApi
-import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchPager
-import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first

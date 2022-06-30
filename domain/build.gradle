@@ -5,6 +5,7 @@ plugins {
 }
 
 apply from: '../dependencies.gradle'
+apply from: '../java-jacoco.gradle'
 apply from: '../java-test-dependencies.gradle'
 
 java {
