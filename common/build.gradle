@@ -6,6 +6,8 @@ plugins {
 
 apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
+apply from: '../android-jacoco.gradle'
+apply from: '../android-test-dependencies.gradle'
 
 android {
     buildFeatures {

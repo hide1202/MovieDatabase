@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.viewmodel.search
+package io.viewpoint.moviedatabase.viewmodel
 
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.KeywordModelMapper
