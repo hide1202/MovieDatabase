@@ -11,7 +11,10 @@ class LocalizedRect(
     val bottom: Int
 ) {
     fun toRect(): Rect =
-        if (Resources.getSystem().configuration?.layoutDirection == View.LAYOUT_DIRECTION_RTL) {
+        toRect(Resources.getSystem().configuration?.layoutDirection == View.LAYOUT_DIRECTION_RTL)
+
+    fun toRect(isRtl: Boolean): Rect =
+        if (isRtl) {
             Rect(end, top, start, bottom)
         } else {
             Rect(start, top, end, bottom)
