@@ -1,0 +1,27 @@
+apply plugin: 'jacoco'
+
+task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['test']) {
+    def coverageSourceDirs = [
+            "src/main/java"
+    ]
+    def javaClasses = fileTree(
+            dir: "$buildDir/classes/java/main"
+    )
+    def kotlinClasses = fileTree(
+            dir: "$buildDir/classes/kotlin/main"
+    )
+    classDirectories.from(files([javaClasses, kotlinClasses]))
+    additionalSourceDirs.from(files(coverageSourceDirs))
+    sourceDirectories.from(files(coverageSourceDirs))
+    executionData.from(fileTree(dir: "$buildDir", includes: [
+            "jacoco/test.exec"
+    ]))
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+jacoco {
+    reportsDir = file("${buildDir}/reports")
+}
