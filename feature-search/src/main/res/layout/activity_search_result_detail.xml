@@ -13,7 +13,7 @@
 
         <variable
             name="vm"
-            type="io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchResultDetailViewModel" />
+            type="io.viewpoint.moviedatabase.viewmodel.MovieSearchResultDetailViewModel" />
 
         <import type="io.viewpoint.moviedatabase.extensions.Dimensions" />
     </data>

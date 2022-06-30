@@ -15,8 +15,8 @@ import io.viewpoint.moviedatabase.test.TestBase
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestPreferencesService
 import io.viewpoint.moviedatabase.test.mock.TestSearchApi
-import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchPager
-import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchViewModel
+import io.viewpoint.moviedatabase.viewmodel.MovieSearchPager
+import io.viewpoint.moviedatabase.viewmodel.MovieSearchViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first

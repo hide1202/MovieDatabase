@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.ui.search.viewmodel
+package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig

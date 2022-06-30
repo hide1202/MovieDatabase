@@ -12,7 +12,7 @@ import io.viewpoint.moviedatabase.extensions.dp
 import io.viewpoint.moviedatabase.extensions.intentToActivity
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.ui.search.databinding.ActivitySearchResultDetailBinding
-import io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchResultDetailViewModel
+import io.viewpoint.moviedatabase.viewmodel.MovieSearchResultDetailViewModel
 import io.viewpoint.moviedatabase.util.SpaceItemDecoration
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.ui.search.viewmodel
+package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +13,6 @@ import io.viewpoint.moviedatabase.domain.preferences.addValue
 import io.viewpoint.moviedatabase.domain.preferences.getValues
 import io.viewpoint.moviedatabase.domain.preferences.removeValue
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
-import io.viewpoint.moviedatabase.viewmodel.Command
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.collectLatest

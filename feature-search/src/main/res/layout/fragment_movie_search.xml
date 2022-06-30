@@ -11,7 +11,7 @@
 
         <variable
             name="vm"
-            type="io.viewpoint.moviedatabase.ui.search.viewmodel.MovieSearchViewModel" />
+            type="io.viewpoint.moviedatabase.viewmodel.MovieSearchViewModel" />
 
         <variable
             name="resultAdapter"
