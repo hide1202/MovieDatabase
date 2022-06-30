@@ -1,12 +1,10 @@
 plugins {
     id 'java-library'
     id 'kotlin'
-    id 'kotlin-kapt'
 }
 
 apply from: '../dependencies.gradle'
 apply from: '../java-jacoco.gradle'
-apply from: '../java-test-dependencies.gradle'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -30,20 +28,5 @@ compileTestKotlin {
 dependencies {
     implementation deps.kotlin.stdlib
     implementation deps.kotlin.coroutines
-
-    implementation project(':model')
-    implementation project(':api')
-
-    implementation deps.androidx.room_common
-    implementation deps.androidx.paging_common
-
-    api deps.libraries.arrow_core
-    api deps.libraries.arrow_syntax
-    api deps.libraries.arrow_fx
-    kapt deps.libraries.arrow_meta_kapt
-
-    implementation deps.libraries.dagger
-    kapt deps.libraries.dagger_kapt
-
-    testImplementation project(':test-mock')
+    implementation deps.libraries.moshi
 }

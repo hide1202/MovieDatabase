@@ -4,8 +4,8 @@ import arrow.fx.IO
 import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.api.MovieDetailApi
 import io.viewpoint.moviedatabase.model.api.*
-import io.viewpoint.moviedatabase.test.MoshiReader
-import io.viewpoint.moviedatabase.test.ResponseReader
+import io.viewpoint.moviedatabase.test.common.MoshiReader
+import io.viewpoint.moviedatabase.test.common.ResponseReader
 
 class TestMovieDetailApi : MovieDetailApi {
     override fun getMovieDetail(id: Int): IO<MovieDetail> = IO.fx {

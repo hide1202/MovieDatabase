@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.test
+package io.viewpoint.moviedatabase.test.common
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi

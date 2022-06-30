@@ -4,14 +4,16 @@ import arrow.fx.IO
 import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.api.SearchApi
 import io.viewpoint.moviedatabase.model.api.MovieListResponse
+import io.viewpoint.moviedatabase.test.common.MoshiReader
+import io.viewpoint.moviedatabase.test.common.ResponseReader
 
 class TestSearchApi : SearchApi {
     override fun searchMovie(query: String, page: Int): IO<MovieListResponse> =
         IO.fx {
             !effect {
-                io.viewpoint.moviedatabase.test.ResponseReader.jsonFromFileAsync(
+                ResponseReader.jsonFromFileAsync(
                     "responses/search-results.json",
-                    io.viewpoint.moviedatabase.test.MoshiReader.moshi.adapter(MovieListResponse::class.java)
+                    MoshiReader.moshi.adapter(MovieListResponse::class.java)
                 )
             }
         }

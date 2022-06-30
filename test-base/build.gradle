@@ -10,6 +10,7 @@ dependencies {
     implementation project(':model')
     implementation project(':api')
     implementation project(':domain')
+    implementation project(':test-common')
 
     implementation deps.test.junit
     implementation deps.libraries.moshi
