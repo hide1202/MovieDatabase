@@ -1,9 +1,11 @@
-apply plugin: 'com.android.application'
-apply plugin: 'dagger.hilt.android.plugin'
-
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-parcelize'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id "com.android.application"
+    id "com.google.dagger.hilt.android"
+    id "org.jetbrains.kotlin.android"
+    id "kotlin-android"
+    id "kotlin-parcelize"
+    id "kotlin-kapt"
+}
 
 apply from: '../dependencies.gradle'
 apply from: '../external.gradle'

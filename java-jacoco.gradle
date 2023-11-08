@@ -1,5 +1,3 @@
-apply plugin: 'jacoco'
-
 task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['test']) {
     def coverageSourceDirs = [
             "src/main/java"

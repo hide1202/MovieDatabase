@@ -1,5 +1,3 @@
-apply plugin: 'jacoco'
-
 android {
     testOptions {
         unitTests {
