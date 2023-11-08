@@ -6,8 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import io.viewpoint.moviedatabase.feature.search.R
+import io.viewpoint.moviedatabase.feature.search.databinding.ItemWatchProviderBinding
 import io.viewpoint.moviedatabase.model.ui.WatchProviderModel
-import io.viewpoint.moviedatabase.ui.search.databinding.ItemWatchProviderBinding
 
 class WatchProviderAdapter :
     ListAdapter<WatchProviderModel.Info, WatchProviderAdapter.WatchProviderViewHolder>(

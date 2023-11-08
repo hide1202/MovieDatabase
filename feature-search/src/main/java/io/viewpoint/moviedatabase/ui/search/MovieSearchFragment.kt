@@ -13,8 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.extensions.hideSoftInput
+import io.viewpoint.moviedatabase.feature.search.R
+import io.viewpoint.moviedatabase.feature.search.databinding.FragmentMovieSearchBinding
 import io.viewpoint.moviedatabase.ui.common.SearchResultAdapter
-import io.viewpoint.moviedatabase.ui.search.databinding.FragmentMovieSearchBinding
 import io.viewpoint.moviedatabase.viewmodel.MovieSearchViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

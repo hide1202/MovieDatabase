@@ -29,17 +29,15 @@ dependencies {
 
 compileKotlin {
     kotlinOptions {
-        jvmTarget = "1.8"
-        useIR = true
+        jvmTarget = "17"
     }
 }
 
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = "1.8"
-        useIR = true
+        jvmTarget = "17"
     }
 }
 
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
+sourceCompatibility = "17"
+targetCompatibility = "17"

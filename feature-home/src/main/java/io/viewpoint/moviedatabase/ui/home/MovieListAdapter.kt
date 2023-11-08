@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import io.viewpoint.moviedatabase.home.R
 import io.viewpoint.moviedatabase.extensions.dp
-import io.viewpoint.moviedatabase.home.databinding.ItemHomeMovieListBinding
+import io.viewpoint.moviedatabase.feature.home.R
+import io.viewpoint.moviedatabase.feature.home.databinding.ItemHomeMovieListBinding
 import io.viewpoint.moviedatabase.util.SpaceItemDecoration
 
 class MovieListAdapter(

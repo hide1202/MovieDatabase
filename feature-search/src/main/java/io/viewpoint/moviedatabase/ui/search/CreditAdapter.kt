@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.model.ui.CreditModel
-import io.viewpoint.moviedatabase.ui.search.databinding.ItemCreditBinding
+import io.viewpoint.moviedatabase.feature.search.databinding.ItemCreditBinding
 
 private val diffCallback =
     object : DiffUtil.ItemCallback<CreditModel>() {

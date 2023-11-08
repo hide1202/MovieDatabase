@@ -6,8 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import io.viewpoint.moviedatabase.feature.search.R
 import io.viewpoint.moviedatabase.model.ui.KeywordModel
-import io.viewpoint.moviedatabase.ui.search.databinding.ItemGenreBinding
+import io.viewpoint.moviedatabase.feature.search.databinding.ItemGenreBinding
 
 class KeywordAdapter : ListAdapter<KeywordModel, KeywordAdapter.KeywordViewHolder>(
     object : DiffUtil.ItemCallback<KeywordModel>() {

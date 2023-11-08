@@ -14,8 +14,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import io.viewpoint.moviedatabase.home.R
-import io.viewpoint.moviedatabase.home.databinding.FragmentHomeBinding
+import io.viewpoint.moviedatabase.feature.home.R
+import io.viewpoint.moviedatabase.feature.home.databinding.FragmentHomeBinding
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.MainViewModel
 import kotlinx.coroutines.launch

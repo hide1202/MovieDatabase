@@ -5,6 +5,10 @@ plugins {
 
 apply from: '../android-configure.gradle'
 
+android {
+    namespace "io.viewpoint.moviedatabase.resources"
+}
+
 dependencies {
     implementation deps.androidx.material
 }

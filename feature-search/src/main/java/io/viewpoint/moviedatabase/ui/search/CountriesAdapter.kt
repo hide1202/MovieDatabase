@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.viewpoint.moviedatabase.ui.search.databinding.ItemCountryBinding
+import io.viewpoint.moviedatabase.feature.search.databinding.ItemCountryBinding
 
 private val diffCallback = object : DiffUtil.ItemCallback<String>() {
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean = oldItem === newItem

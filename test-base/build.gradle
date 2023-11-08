@@ -6,6 +6,10 @@ plugins {
 apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
 
+android {
+    namespace "io.viewpoint.moviedatabase.test.base"
+}
+
 dependencies {
     implementation project(':model')
     implementation project(':api')

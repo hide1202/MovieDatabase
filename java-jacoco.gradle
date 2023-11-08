@@ -15,11 +15,11 @@ task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['test']) {
             "jacoco/test.exec"
     ]))
     reports {
-        xml.enabled = true
-        html.enabled = true
+        xml.getRequired().set(true)
+        html.getRequired().set(true)
     }
 }
 
 jacoco {
-    reportsDir = file("${buildDir}/reports")
+    reportsDirectory = layout.buildDirectory.dir('reports')
 }

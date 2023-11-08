@@ -6,8 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import io.viewpoint.moviedatabase.feature.search.R
+import io.viewpoint.moviedatabase.feature.search.databinding.ItemGenreBinding
 import io.viewpoint.moviedatabase.model.api.MovieDetail
-import io.viewpoint.moviedatabase.ui.search.databinding.ItemGenreBinding
 
 class GenreAdapter : ListAdapter<MovieDetail.Genre, GenreAdapter.GenreViewHolder>(
     object : DiffUtil.ItemCallback<MovieDetail.Genre>() {

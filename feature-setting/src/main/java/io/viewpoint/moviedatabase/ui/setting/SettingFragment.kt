@@ -15,7 +15,8 @@ import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
-import io.viewpoint.moviedatabase.ui.setting.databinding.FragmentSettingBinding
+import io.viewpoint.moviedatabase.feature.setting.R
+import io.viewpoint.moviedatabase.feature.setting.databinding.FragmentSettingBinding
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

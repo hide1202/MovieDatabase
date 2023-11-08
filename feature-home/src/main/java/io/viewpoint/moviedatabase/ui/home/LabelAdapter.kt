@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import io.viewpoint.moviedatabase.home.R
-import io.viewpoint.moviedatabase.home.databinding.ItemLabelBinding
+import io.viewpoint.moviedatabase.feature.home.R
+import io.viewpoint.moviedatabase.feature.home.databinding.ItemLabelBinding
 import io.viewpoint.moviedatabase.ui.common.MovieListActivity
 import io.viewpoint.moviedatabase.ui.common.MovieListProvider
 import kotlin.reflect.KClass

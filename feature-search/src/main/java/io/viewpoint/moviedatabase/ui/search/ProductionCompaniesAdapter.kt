@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel.ProductionCompany
 import io.viewpoint.moviedatabase.ui.search.ProductionCompaniesAdapter.ProductionCompanyViewHolder
-import io.viewpoint.moviedatabase.ui.search.databinding.ItemProductionCompanyBinding
+import io.viewpoint.moviedatabase.feature.search.databinding.ItemProductionCompanyBinding
 
 
 private val diffCallback =

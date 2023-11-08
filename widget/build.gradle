@@ -8,6 +8,7 @@ apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
 
 android {
+    namespace "io.viewpoint.moviedatabase.widget"
     buildFeatures {
         dataBinding true
     }

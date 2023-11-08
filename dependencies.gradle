@@ -4,18 +4,18 @@ ext.versions = [
                 coroutines: '1.5.1'
         ],
         android  : [
-                compileSdk: 29,
+                compileSdk: 33,
                 minSdk    : 21,
                 targetSdk : 29
         ],
         androidx : [
                 core              : '1.6.0',
-                activity          : '1.2.3',
-                fragment          : '1.3.5',
+                activity          : '1.5.1',
+                fragment          : '1.5.7',
                 appcompat         : '1.3.0',
                 recyclerview      : '1.2.1',
                 swiperefreshlayout: '1.2.0-alpha01',
-                lifecycle         : '2.3.1',
+                lifecycle         : '2.4.0',
                 material          : '1.4.0',
                 constraintlayout  : '2.0.4',
                 startup           : '1.0.0',
@@ -34,7 +34,7 @@ ext.versions = [
                 android_test_core: '1.4.0',
                 android_core     : '2.1.0',
                 mockk            : '1.12.0',
-                robolectric      : '4.6.1'
+                robolectric      : '4.9'
         ],
         libraries: [
                 moshi         : '1.12.0',
@@ -43,7 +43,7 @@ ext.versions = [
                 coroutine_core: '1.3.7',
                 arrow         : '0.11.0',
                 timber        : '4.7.1',
-                dagger        : '2.37',
+                dagger        : '2.44',
                 glide         : '4.12.0'
         ]
 ]

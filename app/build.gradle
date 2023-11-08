@@ -15,6 +15,8 @@ apply from: '../android-test-dependencies.gradle'
 apply from: '../android-jacoco.gradle'
 
 android {
+    namespace "io.viewpoint.moviedatabase"
+
     defaultConfig {
         applicationId "io.viewpoint.moviedatabase"
     }

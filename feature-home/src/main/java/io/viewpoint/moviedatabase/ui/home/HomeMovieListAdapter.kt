@@ -7,7 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.viewpoint.moviedatabase.home.databinding.ItemHomeMovieBinding
+import io.viewpoint.moviedatabase.feature.home.R
+import io.viewpoint.moviedatabase.feature.home.databinding.ItemHomeMovieBinding
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 
 class HomeMovieListAdapter(
@@ -34,7 +35,7 @@ class HomeMovieListAdapter(
         ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                io.viewpoint.moviedatabase.home.R.layout.item_home_movie,
+                R.layout.item_home_movie,
                 parent,
                 false
             )

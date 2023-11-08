@@ -6,8 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import io.viewpoint.moviedatabase.feature.search.R
+import io.viewpoint.moviedatabase.feature.search.databinding.ItemRecommendBinding
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
-import io.viewpoint.moviedatabase.ui.search.databinding.ItemRecommendBinding
 
 class RecommendAdapter : ListAdapter<SearchResultModel, RecommendAdapter.RecommendViewHolder>(
     object : DiffUtil.ItemCallback<SearchResultModel>() {

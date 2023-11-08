@@ -3,11 +3,12 @@ android {
         unitTests {
             all {
                 jvmArgs '-noverify', '-ea'
-                jacoco {
-                    includeNoLocationClasses = true
-                    excludes = ['jdk.internal.*'] // for jdk-9 higher
-                }
+//                jacoco {
+//                    includeNoLocationClasses = true
+//                    excludes = ['jdk.internal.*'] // for jdk-9 higher
+//                }
             }
+//            includeNoLocationClasses = true
             includeAndroidResources = true
         }
     }
@@ -41,11 +42,11 @@ task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) 
             "jacoco/testDebugUnitTest.exec"
     ]))
     reports {
-        xml.enabled = true
-        html.enabled = true
+        xml.getRequired().set(true)
+        html.getRequired().set(true)
     }
 }
 
 jacoco {
-    reportsDir = file("${buildDir}/reports")
+    reportsDirectory = layout.buildDirectory.dir('reports')
 }

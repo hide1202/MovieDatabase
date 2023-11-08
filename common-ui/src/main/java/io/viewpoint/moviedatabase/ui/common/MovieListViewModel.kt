@@ -1,6 +1,12 @@
 package io.viewpoint.moviedatabase.ui.common
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -42,12 +48,12 @@ class MovieListViewModel @AssistedInject constructor(
         fun viewModelFactory(
             factory: Factory,
             provider: MovieListProvider
-        ): ViewModelProvider.Factory =
-            object : ViewModelProvider.Factory {
-                @Suppress("UNCHECKED_CAST")
-                override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                    return factory.create(provider) as T
+        ): ViewModelProvider.Factory {
+            return viewModelFactory {
+                initializer {
+                    factory.create(provider)
                 }
             }
+        }
     }
 }

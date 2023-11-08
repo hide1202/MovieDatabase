@@ -11,6 +11,7 @@ apply from: '../android-jacoco.gradle'
 apply from: '../android-test-dependencies.gradle'
 
 android {
+    namespace "io.viewpoint.moviedatabase.feature.search"
     buildFeatures {
         dataBinding true
     }

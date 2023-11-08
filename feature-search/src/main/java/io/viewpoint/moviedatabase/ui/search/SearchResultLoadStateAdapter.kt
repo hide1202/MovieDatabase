@@ -6,7 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.viewpoint.moviedatabase.ui.search.databinding.ItemSearchLoadStateBinding
+import io.viewpoint.moviedatabase.feature.search.R
+import io.viewpoint.moviedatabase.feature.search.databinding.ItemSearchLoadStateBinding
 
 class SearchResultLoadStateAdapter : LoadStateAdapter<SearchResultLoadStateAdapter.ViewHolder>() {
     override fun onBindViewHolder(
