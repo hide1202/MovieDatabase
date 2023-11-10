@@ -1,7 +1,7 @@
 plugins {
     id "java"
-    id "kotlin"
-    id "kotlin-kapt"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 apply from: '../dependencies.gradle'
