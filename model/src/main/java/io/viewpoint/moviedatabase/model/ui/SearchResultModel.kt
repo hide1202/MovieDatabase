@@ -17,5 +17,5 @@ data class SearchResultModel(
         val id: Int,
         val name: String,
         val logoUrl: String?
-    )
+    ) : Serializable
 }
