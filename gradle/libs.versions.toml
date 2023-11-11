@@ -41,11 +41,13 @@ retrofit = "2.9.0"
 arrow = "0.11.0"
 timber = "5.0.1"
 glide = "4.16.0"
+glideCompose = "1.0.0-beta01"
 
 [libraries]
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
 androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "androidxActivity" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
 androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "androidxFragment" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
 androidx-material = { module = "com.google.android.material:material", version.ref = "androidxMaterial" }
@@ -63,8 +65,9 @@ androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", ver
 androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidxStartup" }
 androidx-hilt-kapt = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxHilt" }
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "androidxHilt" }
-androidx-paging-common = { module = "androidx.paging:paging-common", version.ref = "androidxPaging" }
 androidx-paging = { module = "androidx.paging:paging-runtime", version.ref = "androidxPaging" }
+androidx-paging-common = { module = "androidx.paging:paging-common", version.ref = "androidxPaging" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "androidxPaging" }
 androidx-room-common = { module = "androidx.room:room-common", version.ref = "androidxRoom" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidxRoom" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidxRoom" }
@@ -106,6 +109,7 @@ hilt-kapt = { module = "com.google.dagger:hilt-android-compiler", version.ref = 
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-kapt = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideCompose" }
 glide-kapt = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 
 [plugins]

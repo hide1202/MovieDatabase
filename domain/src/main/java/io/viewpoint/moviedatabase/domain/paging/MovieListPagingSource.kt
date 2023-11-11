@@ -16,10 +16,23 @@ class MovieListPagingSource(
     private val mapperProvider: SearchResultMapperProvider =
         SearchResultMapperProvider(configurationRepository)
     private val resultMapper: LoadResultMapper<Int, SearchResultModel> = LoadResultMapper()
+    private val loadedMovieId = mutableSetOf<Int>()
+
+    protected fun List<Movie>.distinctByLoadedItems(): List<Movie> {
+        return this.filter { item ->
+            loadedMovieId.none { id -> item.id == id }
+        }.also {
+            loadedMovieId.addAll(it.map { it.id })
+        }
+    }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SearchResultModel> {
         val page = params.key ?: INITIAL_PAGE
+        if (params.key == null) {
+            loadedMovieId.clear()
+        }
         return loader(page)
+            .distinctByLoadedItems()
             .let {
                 PagingResult.Success(
                     data = it,
