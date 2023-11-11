@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 
 @AndroidEntryPoint
 class SettingFragment : Fragment() {
-    private val viewModel: SettingViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +21,7 @@ class SettingFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MovieDatabaseTheme {
-                    SettingScreen(viewModel)
+                    SettingScreen()
                 }
             }
         }

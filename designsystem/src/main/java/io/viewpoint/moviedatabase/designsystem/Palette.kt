@@ -148,9 +148,5 @@ object Palette {
     val black_50 = Color(0x80000000)
 
     val splashBackground = Color(0xFF0C253F)
-    val defaultForeground = Palette.black
-    val defaultBackground = Palette.white
-    val defaultTextColor = defaultForeground
-    val searchTitleText = defaultTextColor
     val searchDescriptionText = Palette.gray
 }
