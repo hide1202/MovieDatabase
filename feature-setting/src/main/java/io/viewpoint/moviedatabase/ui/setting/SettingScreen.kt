@@ -13,6 +13,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,9 +32,23 @@ import io.viewpoint.moviedatabase.feature.setting.R
 import io.viewpoint.moviedatabase.ui.setting.model.Language
 
 @Composable
+internal fun SettingScreen(
+    viewModel: SettingViewModel,
+) {
+    val uiState by viewModel.uiState.collectAsState()
+
+    SettingScreen(
+        languages = uiState.languages,
+        selectLanguage = uiState.selectLanguage,
+        onLanguageSelected = viewModel::onLanguageSelected,
+        onUseDefaultLanguageClick = viewModel::clearLanguage,
+    )
+}
+
+@Composable
 fun SettingScreen(
     languages: List<Language>,
-    selectLanguage: Language,
+    selectLanguage: Language?,
     onLanguageSelected: (Language) -> Unit,
     onUseDefaultLanguageClick: () -> Unit,
 ) {
@@ -70,7 +85,7 @@ fun SettingScreen(
                         style = MaterialTheme.typography.bodySmall,
                     )
                     Text(
-                        text = selectLanguage.name,
+                        text = selectLanguage?.name ?: "",
                         style = MaterialTheme.typography.titleMedium,
                     )
                 }
