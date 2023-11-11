@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-kapt'
 }
 
-apply from: '../dependencies.gradle'
 apply from: '../java-jacoco.gradle'
 apply from: '../java-test-dependencies.gradle'
 
@@ -26,22 +25,21 @@ compileTestKotlin {
 }
 
 dependencies {
-    implementation deps.kotlin.stdlib
-    implementation deps.kotlin.coroutines
+    implementation libs.kotlinx.coroutines.core
 
     implementation project(':model')
     implementation project(':api')
 
-    implementation deps.androidx.room_common
-    implementation deps.androidx.paging_common
+    implementation libs.androidx.room.common
+    implementation libs.androidx.paging.common
 
-    api deps.libraries.arrow_core
-    api deps.libraries.arrow_syntax
-    api deps.libraries.arrow_fx
-    kapt deps.libraries.arrow_meta_kapt
+    api libs.arrow.core
+    api libs.arrow.syntax
+    api libs.arrow.fx
+    kapt libs.arrow.meta.kapt
 
-    implementation deps.libraries.dagger
-    kapt deps.libraries.dagger_kapt
+    implementation libs.dagger
+    kapt libs.dagger.kapt
 
     testImplementation project(':test-mock')
 }

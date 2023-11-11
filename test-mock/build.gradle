@@ -4,8 +4,6 @@ plugins {
     id 'kotlin-kapt'
 }
 
-apply from: '../dependencies.gradle'
-
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -24,9 +22,8 @@ compileTestKotlin {
 }
 
 dependencies {
-    implementation deps.kotlin.stdlib
-    implementation deps.kotlin.coroutines
-    implementation deps.libraries.moshi
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.moshi
 
     implementation project(':model')
     implementation project(':api')

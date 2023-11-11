@@ -4,27 +4,24 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
 }
 
-apply from: '../dependencies.gradle'
 apply from: '../java-jacoco.gradle'
 apply from: '../java-test-dependencies.gradle'
 
 dependencies {
-    implementation deps.kotlin.stdlib
-
     implementation project(':model')
 
-    implementation deps.libraries.moshi
-    implementation deps.libraries.okhttp_logging
-    implementation deps.libraries.retrofit
-    implementation deps.libraries.retrofit_moshi
-    implementation deps.kotlin.coroutines
+    implementation libs.moshi
+    implementation libs.okhttp.logging
+    implementation libs.retrofit
+    implementation libs.retrofit.moshi
+    implementation libs.kotlinx.coroutines.core
 
-    api deps.libraries.arrow_core
-    api deps.libraries.arrow_syntax
-    api deps.libraries.arrow_fx
-    kapt deps.libraries.arrow_meta_kapt
+    api libs.arrow.core
+    api libs.arrow.syntax
+    api libs.arrow.fx
+    kapt libs.arrow.meta.kapt
 
-    testImplementation deps.test.mockwebserver
+    testImplementation libs.test.mockwebserver
 }
 
 compileKotlin {

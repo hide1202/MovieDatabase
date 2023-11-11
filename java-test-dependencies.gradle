@@ -1,11 +1,9 @@
-apply from: '../dependencies.gradle'
-
 dependencies {
     // test
-    testImplementation deps.test.junit
-    testImplementation deps.test.strikt
-    testImplementation deps.test.mockk
-    testImplementation deps.test.mockk_agent_jvm
-    testImplementation deps.libraries.moshi
-    testImplementation deps.test.coroutine_test
+    testImplementation libs.test.junit
+    testImplementation libs.test.strikt
+    testImplementation libs.test.mockk
+    testImplementation libs.test.mockk.agent.jvm
+    testImplementation libs.moshi
+    testImplementation libs.test.coroutine.test
 }

@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-android'
 }
 
-apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
 
 android {
@@ -16,12 +15,12 @@ dependencies {
     implementation project(':domain')
     implementation project(':test-common')
 
-    implementation deps.test.junit
-    implementation deps.libraries.moshi
-    implementation deps.test.coroutine_test
+    implementation libs.test.junit
+    implementation libs.moshi
+    implementation libs.test.coroutine.test
 
-    implementation deps.test.android_core
-    implementation deps.androidx.lifecycle_runtime
-    implementation deps.androidx.paging
-    implementation deps.androidx.recyclerview
+    implementation libs.test.android.core
+    implementation libs.androidx.lifecycle.runtime
+    implementation libs.androidx.paging
+    implementation libs.androidx.recyclerview
 }

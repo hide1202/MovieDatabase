@@ -3,7 +3,6 @@ plugins {
     id 'kotlin'
 }
 
-apply from: '../dependencies.gradle'
 apply from: '../java-jacoco.gradle'
 
 java {
@@ -24,7 +23,6 @@ compileTestKotlin {
 }
 
 dependencies {
-    implementation deps.kotlin.stdlib
-    implementation deps.kotlin.coroutines
-    implementation deps.libraries.moshi
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.moshi
 }

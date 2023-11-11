@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-kapt'
 }
 
-apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
 
 android {
@@ -18,14 +17,14 @@ dependencies {
     implementation project(":common")
 
     // androidx
-    implementation deps.androidx.core
-    implementation deps.androidx.appcompat
-    implementation deps.androidx.material
-    implementation deps.androidx.constraintlayout
+    implementation libs.androidx.core
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.material
+    implementation libs.androidx.constraintlayout
 
     // glide
-    implementation deps.libraries.glide
+    implementation libs.glide
 
     // timber
-    implementation deps.libraries.timber
+    implementation libs.timber
 }

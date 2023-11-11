@@ -5,7 +5,6 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
-apply from: '../dependencies.gradle'
 apply from: '../android-configure.gradle'
 apply from: '../android-jacoco.gradle'
 apply from: '../android-test-dependencies.gradle'
@@ -28,25 +27,25 @@ dependencies {
     implementation project(':widget')
 
     // androidx
-    implementation deps.androidx.core
-    implementation deps.androidx.activity
-    implementation deps.androidx.fragment
-    implementation deps.androidx.recyclerview
-    implementation deps.androidx.swiperefreshlayout
-    implementation deps.androidx.appcompat
-    implementation deps.androidx.material
-    implementation deps.androidx.constraintlayout
-    implementation deps.androidx.lifecycle_viewmodel
-    implementation deps.androidx.lifecycle_livedata
-    implementation deps.androidx.lifecycle_runtime
-    implementation deps.androidx.paging
+    implementation libs.androidx.core
+    implementation libs.androidx.activity
+    implementation libs.androidx.fragment
+    implementation libs.androidx.recyclerview
+    implementation libs.androidx.swiperefreshlayout
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.material
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.lifecycle.viewmodel
+    implementation libs.androidx.lifecycle.livedata
+    implementation libs.androidx.lifecycle.runtime
+    implementation libs.androidx.paging
 
     // dagger/hilt
-    implementation deps.libraries.hilt
-    kapt deps.libraries.hilt_kapt
+    implementation libs.hilt
+    kapt libs.hilt.kapt
     // hilt with androidx
-    kapt deps.androidx.hilt_kapt
+    kapt libs.androidx.hilt.kapt
 
     // timber
-    implementation deps.libraries.timber
+    implementation libs.timber
 }

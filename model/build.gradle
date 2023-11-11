@@ -24,5 +24,4 @@ sourceCompatibility = "17"
 targetCompatibility = "17"
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
 }

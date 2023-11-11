@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
 }
 
-apply from: '../dependencies.gradle'
 apply from: '../external.gradle'
 apply from: '../app.gradle'
 apply from: '../android-configure.gradle'
@@ -72,48 +71,46 @@ dependencies {
     implementation project(':feature-search')
     implementation project(':feature-setting')
 
-    implementation deps.kotlin.stdlib
-
     // androidx
-    implementation deps.androidx.core
-    implementation deps.androidx.activity
-    implementation deps.androidx.fragment
-    implementation deps.androidx.recyclerview
-    implementation deps.androidx.swiperefreshlayout
-    implementation deps.androidx.appcompat
-    implementation deps.androidx.material
-    implementation deps.androidx.constraintlayout
-    implementation deps.androidx.lifecycle_viewmodel
-    implementation deps.androidx.lifecycle_livedata
-    implementation deps.androidx.lifecycle_runtime
-    implementation deps.androidx.startup
-    implementation deps.androidx.paging
-    implementation deps.androidx.navigation_fragment
-    implementation deps.androidx.navigation_ui
-    implementation deps.androidx.datastore_prefs
-    implementation deps.androidx.workmanager
-    implementation deps.androidx.hilt_work
+    implementation libs.androidx.core
+    implementation libs.androidx.activity
+    implementation libs.androidx.fragment
+    implementation libs.androidx.recyclerview
+    implementation libs.androidx.swiperefreshlayout
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.material
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.lifecycle.viewmodel
+    implementation libs.androidx.lifecycle.livedata
+    implementation libs.androidx.lifecycle.runtime
+    implementation libs.androidx.startup
+    implementation libs.androidx.paging
+    implementation libs.androidx.navigation.fragment
+    implementation libs.androidx.navigation.ui
+    implementation libs.androidx.datastore.prefs
+    implementation libs.androidx.workmanager
+    implementation libs.androidx.hilt.work
 
     // androidx.room
-    implementation deps.androidx.room_runtime
-    implementation deps.androidx.room_ktx
-    kapt deps.androidx.room_compiler
+    implementation libs.androidx.room.runtime
+    implementation libs.androidx.room
+    kapt libs.androidx.room.compiler
 
     // dagger/hilt
-    implementation deps.libraries.hilt
-    kapt deps.libraries.hilt_kapt
+    implementation libs.hilt
+    kapt libs.hilt.kapt
     // hilt with androidx
-    kapt deps.androidx.hilt_kapt
+    kapt libs.androidx.hilt.kapt
 
     // timber
-    implementation deps.libraries.timber
+    implementation libs.timber
 
     // glide
-    implementation deps.libraries.glide
-    kapt deps.libraries.glide_kapt
+    implementation libs.glide
+    kapt libs.glide.kapt
 
     // okhttp
-    implementation deps.libraries.okhttp
+    implementation libs.okhttp
 
     // flipper (don't use a external gradle file, because of build types)
     debugImplementation 'com.facebook.flipper:flipper:0.98.0'
