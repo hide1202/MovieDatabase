@@ -1,0 +1,13 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+}
+
+apply from: '../android-configure.gradle'
+
+android {
+    namespace 'io.viewpoint.moviedatabase.designsystem'
+}
+
+dependencies {
+}
