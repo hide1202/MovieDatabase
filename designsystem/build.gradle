@@ -7,7 +7,26 @@ apply from: '../android-configure.gradle'
 
 android {
     namespace 'io.viewpoint.moviedatabase.designsystem'
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
+    implementation platform(libs.compose.bom)
+    implementation libs.compose.ui
+    implementation libs.compose.uigraphics
+    implementation libs.compose.tooling.preview
+    debugImplementation libs.compose.tooling
+
+    implementation libs.androidx.material3.compose
 }
