@@ -1,5 +1,6 @@
 package io.viewpoint.moviedatabase.ui.setting
 
+import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,6 +15,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -31,6 +33,7 @@ import androidx.compose.ui.window.PopupProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import io.viewpoint.moviedatabase.designsystem.Colors
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
+import io.viewpoint.moviedatabase.designsystem.Palette
 import io.viewpoint.moviedatabase.feature.setting.R
 import io.viewpoint.moviedatabase.ui.setting.model.Language
 
@@ -132,13 +135,14 @@ fun SettingScreen(
         ) {
             Text(
                 text = stringResource(id = R.string.setting_language_clear),
-                color = MaterialTheme.colorScheme.surface,
+                color = Palette.white,
             )
         }
     }
 }
 
 @Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun SettingScreenPreview() {
     MovieDatabaseTheme {
@@ -148,15 +152,18 @@ fun SettingScreenPreview() {
             Language("일본어", "japanese", "ja"),
         )
         var selectLanguage by remember { mutableStateOf(0) }
-        SettingScreen(
-            languages = languages,
-            selectLanguage = languages[selectLanguage],
-            onLanguageSelected = { language ->
-                selectLanguage = languages.indexOfFirst {
-                    it.languageCode == language.languageCode
-                }
-            },
-            onUseDefaultLanguageClick = {},
-        )
+
+        Surface {
+            SettingScreen(
+                languages = languages,
+                selectLanguage = languages[selectLanguage],
+                onLanguageSelected = { language ->
+                    selectLanguage = languages.indexOfFirst {
+                        it.languageCode == language.languageCode
+                    }
+                },
+                onUseDefaultLanguageClick = {},
+            )
+        }
     }
 }
