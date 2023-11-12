@@ -13,6 +13,11 @@ android {
     namespace "io.viewpoint.moviedatabase.feature.search"
     buildFeatures {
         dataBinding true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 }
 
@@ -25,6 +30,8 @@ dependencies {
     implementation project(':api')
     implementation project(':domain')
     implementation project(':widget')
+
+    implementation project(':designsystem')
 
     // androidx
     implementation libs.androidx.core
@@ -39,6 +46,15 @@ dependencies {
     implementation libs.androidx.lifecycle.livedata
     implementation libs.androidx.lifecycle.runtime
     implementation libs.androidx.paging
+    implementation libs.androidx.paging.compose
+
+    // compose
+    implementation platform(libs.compose.bom)
+    implementation libs.compose.ui
+    implementation libs.compose.uigraphics
+    implementation libs.androidx.material3.compose
+    implementation libs.compose.tooling.preview
+    debugImplementation libs.compose.tooling
 
     // dagger/hilt
     implementation libs.hilt
