@@ -2,6 +2,7 @@ package io.viewpoint.moviedatabase.ui.search
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.LocalTextStyle
@@ -37,5 +38,25 @@ internal fun MovieDetailSectionTitle(@StringRes titleResId: Int) {
         text = stringResource(id = titleResId),
         style = LocalTextStyle.current.merge(MaterialTheme.typography.titleMedium),
         fontWeight = FontWeight.ExtraBold,
+    )
+}
+
+@Composable
+internal fun MovieDetailChip(
+    modifier: Modifier = Modifier,
+    text: String,
+) {
+    Text(
+        modifier = modifier
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.onPrimary,
+                shape = RoundedCornerShape(32.dp),
+            )
+            .padding(
+                horizontal = 12.dp,
+                vertical = 6.dp,
+            ),
+        text = text,
     )
 }

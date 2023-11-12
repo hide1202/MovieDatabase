@@ -20,8 +20,19 @@ fun MovieDetailScreen() {
     ) {
         item {
             MovieDetailHeader()
-            MovieDetailVoteSection(modifier = Modifier.padding(8.dp), want = true)
-            MovieDetailGenres(modifier = Modifier.padding(8.dp))
+            MovieDetailVoteSection(
+                modifier = Modifier.padding(top = 8.dp, start = 8.dp, end = 8.dp),
+                want = true,
+            )
+            MovieDetailGenres(
+                modifier = Modifier.padding(top = 8.dp, start = 8.dp, end = 8.dp),
+            )
+            MovieDetailKeywords(
+                modifier = Modifier.padding(top = 8.dp, start = 8.dp, end = 8.dp),
+            )
+            MovieDetailOverview(
+                modifier = Modifier.padding(top = 8.dp, start = 8.dp, end = 8.dp),
+            )
         }
     }
 }

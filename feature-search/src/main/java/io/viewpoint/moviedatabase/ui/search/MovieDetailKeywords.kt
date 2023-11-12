@@ -1,7 +1,7 @@
 package io.viewpoint.moviedatabase.ui.search
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
@@ -12,33 +12,28 @@ import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 import io.viewpoint.moviedatabase.feature.search.R
 
 @Composable
-internal fun MovieDetailGenres(
+fun MovieDetailKeywords(
     modifier: Modifier = Modifier,
 ) {
-    MovieDetailElement(modifier = modifier) {
-        Column {
-            MovieDetailSectionTitle(titleResId = R.string.detail_genres_label)
-            Genres()
-        }
-    }
-}
-
-@Composable
-private fun Genres() {
-    LazyRow(
-        modifier = Modifier.padding(top = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+    MovieDetailElement(
+        modifier = modifier
+            .fillMaxWidth(),
     ) {
-        items(count = 10) {
-            MovieDetailChip(text = "Action")
+        Column {
+            MovieDetailSectionTitle(titleResId = R.string.detail_keywords_label)
+            LazyRow(modifier = Modifier.padding(top = 16.dp)) {
+                items(count = 10) {
+                    MovieDetailChip(text = "Action")
+                }
+            }
         }
     }
 }
 
 @Preview
 @Composable
-internal fun MovieDetailGenresPreview() {
+fun MovieDetailKeywordsPreview() {
     MovieDatabaseTheme {
-        MovieDetailGenres()
+        MovieDetailKeywords()
     }
 }
