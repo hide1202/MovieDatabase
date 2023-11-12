@@ -56,6 +56,9 @@ dependencies {
     implementation libs.compose.tooling.preview
     debugImplementation libs.compose.tooling
 
+    // glide
+    implementation libs.glide.compose
+
     // dagger/hilt
     implementation libs.hilt
     kapt libs.hilt.kapt
