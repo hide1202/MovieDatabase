@@ -1,7 +1,6 @@
 package io.viewpoint.moviedatabase.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
@@ -18,9 +17,26 @@ import io.viewpoint.moviedatabase.model.ui.CreditModel
 import io.viewpoint.moviedatabase.model.ui.KeywordModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.model.ui.WatchProviderModel
+import io.viewpoint.moviedatabase.ui.search.SearchResultDetailActivity
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.util.*
+import timber.log.Timber
+import java.util.Locale
 import javax.inject.Inject
+
+data class MovieDetailUiState(
+    val wantToSee: Boolean = false,
+    val genres: List<MovieDetail.Genre> = emptyList(),
+    val countries: List<String> = emptyList(),
+    val credits: List<CreditModel> = emptyList(),
+    val productionCompanies: List<SearchResultModel.ProductionCompany> = emptyList(),
+    val keywords: List<KeywordModel> = emptyList(),
+    val recommendations: List<SearchResultModel> = emptyList(),
+    val watchProviders: WatchProviderModel? = null,
+)
 
 @HiltViewModel
 class MovieSearchResultDetailViewModel @Inject constructor(
@@ -30,45 +46,18 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     private val creditModelMapper: CreditModelMapper,
     private val keywordModelMapper: KeywordModelMapper,
     private val watchProviderModelMapper: WatchProviderModelMapper,
+    savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-    private var result: SearchResultModel? = null
-    private val _wantToSee = MutableLiveData(false)
-    private val _genres = MutableLiveData<List<MovieDetail.Genre>>(emptyList())
-    private val _countries = MutableLiveData<List<String>>(emptyList())
-    private val _credits = MutableLiveData<List<CreditModel>>(emptyList())
-    private val _productionCompanies =
-        MutableLiveData<List<SearchResultModel.ProductionCompany>>(emptyList())
-    private val _keywords = MutableLiveData<List<KeywordModel>>()
-    private val _recommendations = MutableLiveData<List<SearchResultModel>>()
-    private val _watchProviders = MutableLiveData<WatchProviderModel?>()
+    private val _result =
+        MutableStateFlow<SearchResultModel?>(savedStateHandle[SearchResultDetailActivity.EXTRA_RESULT_MODEL])
+    val result: StateFlow<SearchResultModel?> = _result.asStateFlow()
 
-    val wantToSee: LiveData<Boolean>
-        get() = _wantToSee
-
-    val genres: LiveData<List<MovieDetail.Genre>>
-        get() = _genres
-
-    val countries: LiveData<List<String>>
-        get() = _countries
-
-    val credits: LiveData<List<CreditModel>>
-        get() = _credits
-
-    val productionCompanies: LiveData<List<SearchResultModel.ProductionCompany>>
-        get() = _productionCompanies
-
-    val keywords: LiveData<List<KeywordModel>>
-        get() = _keywords
-
-    val recommendations: LiveData<List<SearchResultModel>>
-        get() = _recommendations
-
-    val watchProviders: LiveData<WatchProviderModel?>
-        get() = _watchProviders
+    private val _uiState = MutableStateFlow(MovieDetailUiState())
+    val uiState: StateFlow<MovieDetailUiState> = _uiState.asStateFlow()
 
     val invertWantToSeeCommand = Command {
-        val result = result ?: return@Command
-        val wantToSee = _wantToSee.value ?: return@Command
+        val result = result.value ?: return@Command
+        val wantToSee = uiState.value.wantToSee
 
         viewModelScope.launch {
             val either = if (wantToSee) {
@@ -79,7 +68,9 @@ class MovieSearchResultDetailViewModel @Inject constructor(
                 .suspended()
 
             if (either is Either.Right) {
-                _wantToSee.value = !wantToSee
+                _uiState.update { prev ->
+                    prev.copy(wantToSee = !wantToSee)
+                }
             }
         }
     }
@@ -97,13 +88,18 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     }
 
     suspend fun loadWithResult(result: SearchResultModel) {
-        this.result = result
-        _wantToSee.value = wantToSeeRepository.hasWantToSeeMovie(result.id)
+        _result.value = result
+
+        val wantToSee = wantToSeeRepository.hasWantToSeeMovie(result.id)
             .attempt()
             .suspended()
             .getOrElse { false }
 
-        if (_genres.value?.isEmpty() == true) {
+        _uiState.update { prev ->
+            prev.copy(wantToSee = wantToSee)
+        }
+
+        if (uiState.value.genres.isEmpty()) {
             movieDetailRepository.getMovieDetail(result.id)
                 ?.let {
                     fillDetailData(it)
@@ -112,32 +108,61 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     }
 
     private suspend fun fillDetailData(movieDetail: MovieDetail): SearchResultModel {
-        _genres.value = movieDetail.genres
-        _countries.value = movieDetail.production_countries.map { it.iso_3166_1 }
+        val genres = movieDetail.genres
+        val countries = movieDetail.production_countries.map { it.iso_3166_1 }
 
         // TODO call parallel with a move detail
-        _credits.value = movieDetailRepository.getCredits(movieDetail.id)
+        val credits = movieDetailRepository.getCredits(movieDetail.id)
             .map {
                 creditModelMapper.map(it)
             }
-        _keywords.value = movieDetailRepository.getKeywords(movieDetail.id)
+        val keywords = movieDetailRepository.getKeywords(movieDetail.id)
             .map {
                 keywordModelMapper.map(it)
             }
-        _recommendations.value = movieDetailRepository.getRecommendations(movieDetail.id)
+        val recommendations = movieDetailRepository.getRecommendations(movieDetail.id)
             .map {
                 resultMapperProvider.mapperFromMovie.map(it)
             }
-        _watchProviders.value =
+        val watchProviders =
             movieDetailRepository.getWatchProviders(movieDetail.id, Locale.getDefault().country)
                 ?.let {
                     watchProviderModelMapper.map(it)
                 }
 
-        return resultMapperProvider.mapperFromMovieDetail
+        val result = resultMapperProvider.mapperFromMovieDetail
             .map(movieDetail)
-            .also {
-                _productionCompanies.value = it.productionCompanies
+
+        _uiState.update { prev ->
+            prev.copy(
+                genres = genres,
+                countries = countries,
+                credits = credits,
+                productionCompanies = result.productionCompanies,
+                keywords = keywords,
+                recommendations = recommendations,
+                watchProviders = watchProviders,
+            )
+        }
+
+        return result
+    }
+
+    init {
+        val movieId: Int? = savedStateHandle[SearchResultDetailActivity.EXTRA_MOVIE_ID]
+        val resultArgument: SearchResultModel? =
+            savedStateHandle[SearchResultDetailActivity.EXTRA_RESULT_MODEL]
+
+        viewModelScope.launch {
+            _result.value = if (movieId != null) {
+                loadWithMovieId(movieId)
+            } else {
+                resultArgument?.also {
+                    loadWithResult(it)
+                } ?: throw IllegalArgumentException()
             }
+
+            Timber.d("result %s", _result.value)
+        }
     }
 }
