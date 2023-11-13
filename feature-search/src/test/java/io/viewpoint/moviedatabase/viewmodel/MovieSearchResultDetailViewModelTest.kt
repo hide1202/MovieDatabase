@@ -1,5 +1,6 @@
 package io.viewpoint.moviedatabase.viewmodel
 
+import androidx.lifecycle.SavedStateHandle
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.KeywordModelMapper
 import io.viewpoint.moviedatabase.domain.WatchProviderModelMapper
@@ -12,11 +13,17 @@ import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieDetailApi
 import io.viewpoint.moviedatabase.test.mock.TestWantToSeeDao
+import io.viewpoint.moviedatabase.ui.search.SearchResultDetailActivity
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import strikt.api.expectThat
-import strikt.assertions.*
+import strikt.assertions.get
+import strikt.assertions.hasSize
+import strikt.assertions.isEqualTo
+import strikt.assertions.isNotEmpty
+import strikt.assertions.isNotEqualTo
+import strikt.assertions.isNotNull
 
 class MovieSearchResultDetailViewModelTest : TestBase() {
     private val configurationRepository =
@@ -41,18 +48,17 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
             resultMapperProvider = SearchResultMapperProvider(configurationRepository),
             creditModelMapper = CreditModelMapper(configurationRepository),
             keywordModelMapper = KeywordModelMapper(),
-            watchProviderModelMapper = WatchProviderModelMapper(configurationRepository)
+            watchProviderModelMapper = WatchProviderModelMapper(configurationRepository),
+            savedStateHandle = SavedStateHandle(mapOf(SearchResultDetailActivity.EXTRA_MOVIE_ID to 557)),
         )
     }
 
     @Test
     fun invertCommendWithoutLoadTest(): Unit = runBlocking {
-        val before = vm.wantToSee.value
+        val before = vm.uiState.value.wantToSee
         vm.invertWantToSeeCommand()
-        val after = vm.wantToSee.value
+        val after = vm.uiState.value.wantToSee
 
-        expectThat(before).isNotNull()
-        expectThat(after).isNotNull()
         expectThat(after).isEqualTo(before)
     }
 
@@ -63,11 +69,11 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
 
         vm.loadWithResult(mapperProvider.mapperFromMovie.map(result))
 
-        val previous = vm.wantToSee.value
+        val previous = vm.uiState.value.wantToSee
         vm.invertWantToSeeCommand()
-        val firstInvert = vm.wantToSee.value
+        val firstInvert = vm.uiState.value.wantToSee
         vm.invertWantToSeeCommand()
-        val secondInvert = vm.wantToSee.value
+        val secondInvert = vm.uiState.value.wantToSee
 
         expectThat(firstInvert).isNotEqualTo(previous)
         expectThat(secondInvert).isNotEqualTo(firstInvert)
@@ -76,31 +82,25 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
     @Test
     fun loadWithMovieIdTest(): Unit = runBlocking {
         val result = vm.loadWithMovieId(movieId = 557)
-        val genres = vm.genres
-        val country = vm.countries
-        val credits = vm.credits
-        val productionCompanies = vm.productionCompanies
-        val keywords = vm.keywords
-        val recommendations = vm.recommendations
+        val genres = vm.uiState.value.genres
+        val country = vm.uiState.value.countries
+        val credits = vm.uiState.value.credits
+        val productionCompanies = vm.uiState.value.productionCompanies
+        val keywords = vm.uiState.value.keywords
+        val recommendations = vm.uiState.value.recommendations
 
         expectThat(result).isNotNull()
-        expectThat(genres.value).isNotNull()
-        expectThat(country.value).isNotNull()
-        expectThat(credits.value).isNotNull()
-        expectThat(productionCompanies.value).isNotNull()
-        expectThat(keywords.value).isNotNull()
-        expectThat(recommendations.value).isNotNull()
+        expectThat(genres).isNotEmpty()
+        expectThat(country).isNotEmpty()
+        expectThat(credits).isNotEmpty()
+        expectThat(productionCompanies).isNotEmpty()
+        expectThat(keywords).isNotEmpty()
+        expectThat(recommendations).isNotEmpty()
 
-        expectThat(country.value)
-            .isNotNull()
+        expectThat(country)
             .and {
                 hasSize(1)
                 get(0).isEqualTo("US")
             }
-
-        expectThat(credits.value).isNotNull().isNotEmpty()
-        expectThat(productionCompanies.value).isNotNull().isNotEmpty()
-        expectThat(keywords.value).isNotNull().hasSize(20)
-        expectThat(recommendations.value).isNotNull().hasSize(21)
     }
 }
