@@ -1,6 +1,5 @@
 package io.viewpoint.moviedatabase.viewmodel
 
-import androidx.lifecycle.asFlow
 import androidx.paging.AsyncPagingDataDiffer
 import arrow.fx.IO
 import arrow.fx.extensions.fx
@@ -23,7 +22,12 @@ import kotlinx.coroutines.withTimeoutOrNull
 import org.junit.Before
 import org.junit.Test
 import strikt.api.expectThat
-import strikt.assertions.*
+import strikt.assertions.contains
+import strikt.assertions.doesNotContain
+import strikt.assertions.isEqualTo
+import strikt.assertions.isGreaterThan
+import strikt.assertions.isNull
+import strikt.assertions.isTrue
 
 //@RunWith(RobolectricTestRunner::class)
 //@Config(application = TestApplication::class)
@@ -51,11 +55,10 @@ class MovieSearchViewModelTest : TestBase() {
     fun searchTest() {
         testScope.launch {
             val keyword = "test"
-            vm.keyword.value = keyword
+            vm.onKeywordChanged(keyword)
             vm.searchCommand()
 
             val pagingData = vm.results
-                .asFlow()
                 .first()
 
             val submitJob = GlobalScope.launch {
@@ -84,7 +87,7 @@ class MovieSearchViewModelTest : TestBase() {
     fun removeKeywordTest() {
         testScope.launch {
             val keyword = "test"
-            vm.keyword.value = keyword
+            vm.onKeywordChanged(keyword)
             vm.searchCommand()
 
             // TODO Remove delays
@@ -105,12 +108,11 @@ class MovieSearchViewModelTest : TestBase() {
     fun searchEmptyKeywordTest() {
         testScope.launch {
             val keyword = ""
-            vm.keyword.value = keyword
+            vm.onKeywordChanged(keyword)
             vm.searchCommand.action()
 
             val pagingData = withTimeoutOrNull(1500) {
                 vm.results
-                    .asFlow()
                     .first()
             }
 
@@ -128,11 +130,10 @@ class MovieSearchViewModelTest : TestBase() {
                     throw IllegalStateException()
                 })
 
-            vm.keyword.value = "test"
+            vm.onKeywordChanged("test")
             vm.searchCommand.action()
 
             val pagingData = vm.results
-                .asFlow()
                 .first()
 
             withTimeoutOrNull(1500) {
