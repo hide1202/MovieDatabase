@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalComposeUiApi::class)
+
 package io.viewpoint.moviedatabase.ui.search
 
 import androidx.compose.foundation.Image
@@ -28,13 +30,18 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
@@ -50,7 +57,55 @@ import com.bumptech.glide.integration.compose.GlideImage
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 import io.viewpoint.moviedatabase.feature.search.R
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
+import io.viewpoint.moviedatabase.viewmodel.MovieSearchViewModel
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.launch
+
+@Composable
+fun MovieSearchRoute(
+    viewModel: MovieSearchViewModel,
+    onSearchResultClick: (SearchResultModel) -> Unit,
+) {
+    val coroutineScope = rememberCoroutineScope()
+
+    val keyword by viewModel.keyword.collectAsState()
+    val results = viewModel.results.collectAsLazyPagingItems()
+    val recentKeywords by viewModel.recentKeywords.collectAsState()
+
+    val imeController = LocalSoftwareKeyboardController.current
+    LaunchedEffect(Unit) {
+        viewModel.beforeSearchCommand = {
+            imeController?.hide()
+        }
+    }
+
+    MovieDatabaseTheme {
+        MovieSearchScreen(
+            searchKeyword = keyword,
+            searchResult = results,
+            recentKeywords = recentKeywords,
+            onSearchKeywordChanged = {
+                viewModel.onKeywordChanged(it)
+            },
+            onSearchClick = {
+                viewModel.searchCommand.invoke()
+            },
+            onSearchKeywordCleared = {
+                viewModel.clearSearchKeyword()
+            },
+            onRecentKeywordClick = {
+                viewModel.onKeywordChanged(it)
+                viewModel.searchCommand.invoke()
+            },
+            onRecentKeywordRemoveClick = {
+                coroutineScope.launch {
+                    viewModel.removeRecentKeyword(it)
+                }
+            },
+            onSearchResultClick = onSearchResultClick,
+        )
+    }
+}
 
 @Composable
 fun MovieSearchScreen(

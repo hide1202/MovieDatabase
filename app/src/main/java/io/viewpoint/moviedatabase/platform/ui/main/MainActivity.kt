@@ -1,59 +1,47 @@
 package io.viewpoint.moviedatabase.platform.ui.main
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import io.viewpoint.moviedatabase.R
-import io.viewpoint.moviedatabase.databinding.ActivityMainBinding
-import io.viewpoint.moviedatabase.platform.navigation.BottomNavigator
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val binding: ActivityMainBinding by lazy {
-        DataBindingUtil.setContentView(this, R.layout.activity_main)
-    }
-
-    private val navController: NavController by lazy {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
-            ?: throw IllegalStateException("the container MUST contain a fragment at least one")
-        navHostFragment.findNavController()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.lifecycleOwner = this
+        setContent {
+            val navHostController = rememberNavController()
+            var selectedItem by remember {
+                mutableStateOf(MainTab.HOME)
+            }
 
-        navController.apply {
-            navigatorProvider.addNavigator(
-                BottomNavigator(
-                    R.id.fragment_container,
-                    supportFragmentManager
-                )
+            LaunchedEffect(Unit) {
+                navHostController.addOnDestinationChangedListener { _, dest, _ ->
+                    val route = dest.route ?: return@addOnDestinationChangedListener
+                    val tab = MainTab.findTag(route) ?: return@addOnDestinationChangedListener
+                    if (selectedItem != tab) {
+                        selectedItem = tab
+                    }
+                }
+            }
+
+            MovieDatabaseRoute(
+                navController = navHostController,
+                selectedTab = selectedItem,
+                onTabSelected = {
+                    selectedItem = it
+
+                    navHostController.navigate(it.tag)
+                },
             )
-            // set a graph at code not XML, because add a custom navigator
-            setGraph(R.navigation.bottom_navigation)
-
-            binding.bottomNavigation.setupWithNavController(this)
         }
-
-        savedInstanceState?.getInt(KEY_SELECTED_TAB)
-            ?.let {
-                MainTab.from(it)
-            }
-            ?.itemId
-            ?.let {
-                binding.bottomNavigation.selectedItemId = it
-            }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt(KEY_SELECTED_TAB, binding.bottomNavigation.selectedItemId)
     }
 
     companion object {

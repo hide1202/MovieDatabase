@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
@@ -16,7 +17,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.onEach
@@ -53,6 +53,7 @@ class MovieSearchViewModel @Inject constructor(
                     }
             }
         }
+        .cachedIn(viewModelScope)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), PagingData.empty())
 
     val resultCount = MutableLiveData<Int>()

@@ -1,20 +1,34 @@
 package io.viewpoint.moviedatabase.platform.ui.main
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import io.viewpoint.moviedatabase.R
-import io.viewpoint.moviedatabase.ui.home.HomeFragment
-import io.viewpoint.moviedatabase.ui.search.MovieSearchFragment
-import io.viewpoint.moviedatabase.ui.setting.SettingFragment
 
 enum class MainTab(
-    val itemId: Int,
+    @StringRes val titleResId: Int,
+    @DrawableRes val iconResId: Int,
     val tag: String
 ) {
-    HOME(R.id.home_menu, HomeFragment.TAG),
-    MOVIE_SEARCH(R.id.movie_search_menu, MovieSearchFragment.TAG),
-    SETTING(R.id.setting_menu, SettingFragment.TAG);
+    HOME(
+        titleResId = R.string.menu_home,
+        iconResId = R.drawable.ic_home,
+        tag = "main_tab_home",
+    ),
+    MOVIE_SEARCH(
+        titleResId = R.string.menu_search,
+        iconResId = R.drawable.ic_search,
+        tag = "main_tab_search",
+    ),
+    SETTING(
+        titleResId = R.string.menu_setting,
+        iconResId = R.drawable.ic_settings,
+        tag = "main_tab_setting",
+    );
 
     companion object {
-        fun from(itemId: Int): MainTab? = values().firstOrNull { it.itemId == itemId }
+        fun findTag(tag: String): MainTab? {
+            return values().firstOrNull { it.tag == tag }
+        }
     }
 }
 

@@ -12,6 +12,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
@@ -23,6 +25,7 @@ import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 import io.viewpoint.moviedatabase.feature.home.R
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.ui.common.MovieListProvider
+import io.viewpoint.moviedatabase.viewmodel.MainViewModel
 import kotlin.reflect.KClass
 
 enum class Section(
@@ -56,6 +59,26 @@ data class HomeSection(
     val list: List<SearchResultModel>,
     val circle: Boolean,
 )
+
+@Composable
+fun HomeRoute(
+    viewModel: MainViewModel,
+    onMoreClicked: (Section) -> Unit,
+    onMovieClicked: (SearchResultModel) -> Unit,
+) {
+    val uiState by viewModel.uiState.collectAsState()
+    MovieDatabaseTheme {
+        HomeScreen(
+            wantToSeeList = uiState.wantToSeeList,
+            popularList = uiState.popularList,
+            nowPlayingList = uiState.nowPlayingList,
+            upcomingList = uiState.upcomingList,
+            topRatedList = uiState.topRatedList,
+            onMoreClicked = onMoreClicked,
+            onMovieClicked = onMovieClicked,
+        )
+    }
+}
 
 @Composable
 internal fun HomeScreen(

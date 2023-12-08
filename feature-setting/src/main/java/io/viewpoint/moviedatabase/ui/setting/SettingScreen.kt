@@ -38,12 +38,12 @@ import io.viewpoint.moviedatabase.feature.setting.R
 import io.viewpoint.moviedatabase.ui.setting.model.Language
 
 @Composable
-internal fun SettingScreen(
+fun SettingRoute(
     viewModel: SettingViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    SettingScreen(
+    SettingRoute(
         languages = uiState.languages,
         selectLanguage = uiState.selectLanguage,
         onLanguageSelected = viewModel::onLanguageSelected,
@@ -52,7 +52,7 @@ internal fun SettingScreen(
 }
 
 @Composable
-fun SettingScreen(
+fun SettingRoute(
     languages: List<Language>,
     selectLanguage: Language?,
     onLanguageSelected: (Language) -> Unit,
@@ -154,7 +154,7 @@ fun SettingScreenPreview() {
         var selectLanguage by remember { mutableStateOf(0) }
 
         Surface {
-            SettingScreen(
+            SettingRoute(
                 languages = languages,
                 selectLanguage = languages[selectLanguage],
                 onLanguageSelected = { language ->

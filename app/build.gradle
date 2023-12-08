@@ -50,6 +50,11 @@ android {
 
     buildFeatures {
         dataBinding true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 }
 
@@ -74,6 +79,7 @@ dependencies {
     // androidx
     implementation libs.androidx.core
     implementation libs.androidx.activity
+    implementation libs.androidx.activity.compose
     implementation libs.androidx.fragment
     implementation libs.androidx.recyclerview
     implementation libs.androidx.swiperefreshlayout
@@ -87,9 +93,19 @@ dependencies {
     implementation libs.androidx.paging
     implementation libs.androidx.navigation.fragment
     implementation libs.androidx.navigation.ui
+    implementation libs.androidx.navigation.compose
     implementation libs.androidx.datastore.prefs
     implementation libs.androidx.workmanager
     implementation libs.androidx.hilt.work
+    implementation libs.androidx.hilt.navigation.compose
+
+    // compose
+    implementation platform(libs.compose.bom)
+    implementation libs.compose.ui
+    implementation libs.compose.uigraphics
+    implementation libs.androidx.material3.compose
+    implementation libs.compose.tooling.preview
+    debugImplementation libs.compose.tooling
 
     // androidx.room
     implementation libs.androidx.room.runtime
