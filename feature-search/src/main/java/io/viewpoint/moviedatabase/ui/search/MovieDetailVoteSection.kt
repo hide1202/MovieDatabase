@@ -1,5 +1,6 @@
 package io.viewpoint.moviedatabase.ui.search
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -56,6 +57,7 @@ internal fun MovieDetailVoteSection(
 }
 
 @Preview(backgroundColor = 0xFF808080)
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 internal fun MovieDetailVoteSectionPreview() {
     MovieDatabaseTheme {

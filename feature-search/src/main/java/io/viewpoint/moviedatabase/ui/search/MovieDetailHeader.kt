@@ -150,10 +150,11 @@ private fun Flags(countries: List<String>) {
 @Composable
 private fun MovieTitle(title: String) {
     Text(
+        modifier = Modifier.background(MaterialTheme.colorScheme.surface.copy(alpha = 0.5f)),
         text = title,
         maxLines = 1,
         style = LocalTextStyle.current.merge(MaterialTheme.typography.titleLarge),
-        color = MaterialTheme.colorScheme.surface,
+        color = MaterialTheme.colorScheme.onPrimary,
         overflow = TextOverflow.Ellipsis,
     )
 }

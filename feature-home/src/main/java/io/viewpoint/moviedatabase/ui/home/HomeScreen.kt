@@ -67,17 +67,16 @@ fun HomeRoute(
     onMovieClicked: (SearchResultModel) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    MovieDatabaseTheme {
-        HomeScreen(
-            wantToSeeList = uiState.wantToSeeList,
-            popularList = uiState.popularList,
-            nowPlayingList = uiState.nowPlayingList,
-            upcomingList = uiState.upcomingList,
-            topRatedList = uiState.topRatedList,
-            onMoreClicked = onMoreClicked,
-            onMovieClicked = onMovieClicked,
-        )
-    }
+
+    HomeScreen(
+        wantToSeeList = uiState.wantToSeeList,
+        popularList = uiState.popularList,
+        nowPlayingList = uiState.nowPlayingList,
+        upcomingList = uiState.upcomingList,
+        topRatedList = uiState.topRatedList,
+        onMoreClicked = onMoreClicked,
+        onMovieClicked = onMovieClicked,
+    )
 }
 
 @Composable

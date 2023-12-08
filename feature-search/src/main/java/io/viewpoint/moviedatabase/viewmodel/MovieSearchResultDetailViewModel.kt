@@ -17,7 +17,6 @@ import io.viewpoint.moviedatabase.model.ui.CreditModel
 import io.viewpoint.moviedatabase.model.ui.KeywordModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.model.ui.WatchProviderModel
-import io.viewpoint.moviedatabase.ui.search.SearchResultDetailActivity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -49,7 +48,7 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     private val _result =
-        MutableStateFlow<SearchResultModel?>(savedStateHandle[SearchResultDetailActivity.EXTRA_RESULT_MODEL])
+        MutableStateFlow<SearchResultModel?>(savedStateHandle[EXTRA_RESULT_MODEL])
     val result: StateFlow<SearchResultModel?> = _result.asStateFlow()
 
     private val _uiState = MutableStateFlow(MovieDetailUiState())
@@ -149,9 +148,8 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     }
 
     init {
-        val movieId: Int? = savedStateHandle[SearchResultDetailActivity.EXTRA_MOVIE_ID]
-        val resultArgument: SearchResultModel? =
-            savedStateHandle[SearchResultDetailActivity.EXTRA_RESULT_MODEL]
+        val movieId: Int? = savedStateHandle[EXTRA_MOVIE_ID]
+        val resultArgument: SearchResultModel? = savedStateHandle[EXTRA_RESULT_MODEL]
 
         viewModelScope.launch {
             _result.value = if (movieId != null) {
@@ -164,5 +162,10 @@ class MovieSearchResultDetailViewModel @Inject constructor(
 
             Timber.d("result %s", _result.value)
         }
+    }
+
+    companion object {
+        const val EXTRA_RESULT_MODEL = "resultModel"
+        const val EXTRA_MOVIE_ID = "movieId"
     }
 }

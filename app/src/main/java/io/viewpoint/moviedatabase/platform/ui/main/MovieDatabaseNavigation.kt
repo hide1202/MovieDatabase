@@ -2,10 +2,12 @@ package io.viewpoint.moviedatabase.platform.ui.main
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 
@@ -21,6 +23,7 @@ fun MovieDatabaseNavigation(
                     icon = {
                         Image(
                             painter = painterResource(id = it.iconResId),
+                            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
                             contentDescription = null,
                         )
                     },

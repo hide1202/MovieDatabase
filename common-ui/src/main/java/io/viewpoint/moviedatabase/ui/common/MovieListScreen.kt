@@ -3,6 +3,7 @@
 package io.viewpoint.moviedatabase.ui.common
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -44,7 +45,11 @@ fun MovieListScreen(
 ) {
     val items: LazyPagingItems<SearchResultModel> = movies.collectAsLazyPagingItems()
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.surface)
+    ) {
         Box(modifier = Modifier.height(60.dp)) {
             Image(
                 modifier = Modifier

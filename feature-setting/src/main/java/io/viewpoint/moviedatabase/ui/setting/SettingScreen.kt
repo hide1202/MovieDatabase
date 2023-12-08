@@ -41,6 +41,7 @@ import io.viewpoint.moviedatabase.ui.setting.model.Language
 fun SettingRoute(
     viewModel: SettingViewModel = viewModel(),
 ) {
+
     val uiState by viewModel.uiState.collectAsState()
 
     SettingRoute(

@@ -70,6 +70,7 @@ dependencies {
     implementation project(':api')
     implementation project(':domain')
     implementation project(':common-ui')
+    implementation project(':designsystem')
 
     // features
     implementation project(':feature-home')

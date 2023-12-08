@@ -2,6 +2,7 @@
 
 package io.viewpoint.moviedatabase.ui.search
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -79,32 +80,30 @@ fun MovieSearchRoute(
         }
     }
 
-    MovieDatabaseTheme {
-        MovieSearchScreen(
-            searchKeyword = keyword,
-            searchResult = results,
-            recentKeywords = recentKeywords,
-            onSearchKeywordChanged = {
-                viewModel.onKeywordChanged(it)
-            },
-            onSearchClick = {
-                viewModel.searchCommand.invoke()
-            },
-            onSearchKeywordCleared = {
-                viewModel.clearSearchKeyword()
-            },
-            onRecentKeywordClick = {
-                viewModel.onKeywordChanged(it)
-                viewModel.searchCommand.invoke()
-            },
-            onRecentKeywordRemoveClick = {
-                coroutineScope.launch {
-                    viewModel.removeRecentKeyword(it)
-                }
-            },
-            onSearchResultClick = onSearchResultClick,
-        )
-    }
+    MovieSearchScreen(
+        searchKeyword = keyword,
+        searchResult = results,
+        recentKeywords = recentKeywords,
+        onSearchKeywordChanged = {
+            viewModel.onKeywordChanged(it)
+        },
+        onSearchClick = {
+            viewModel.searchCommand.invoke()
+        },
+        onSearchKeywordCleared = {
+            viewModel.clearSearchKeyword()
+        },
+        onRecentKeywordClick = {
+            viewModel.onKeywordChanged(it)
+            viewModel.searchCommand.invoke()
+        },
+        onRecentKeywordRemoveClick = {
+            coroutineScope.launch {
+                viewModel.removeRecentKeyword(it)
+            }
+        },
+        onSearchResultClick = onSearchResultClick,
+    )
 }
 
 @Composable
@@ -171,6 +170,7 @@ private fun SearchInputField(
                     .weight(1f),
                 value = searchKeyword,
                 onValueChange = onSearchKeywordChanged,
+                textStyle = LocalTextStyle.current,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                 keyboardActions = KeyboardActions(
                     onSearch = { onSearchClick() }
@@ -329,9 +329,10 @@ private fun RecentSearchKeyword(
 }
 
 @Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun MovieSearchScreenPreview() {
-    var keyword by remember { mutableStateOf("") }
+    var keyword by remember { mutableStateOf("spiderman") }
     val result = flowOf(
         PagingData.from(
 //            listOf(
