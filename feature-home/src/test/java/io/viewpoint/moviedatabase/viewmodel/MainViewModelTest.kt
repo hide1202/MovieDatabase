@@ -1,6 +1,5 @@
 package io.viewpoint.moviedatabase.viewmodel
 
-import androidx.lifecycle.Observer
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.domain.Languages
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
@@ -9,15 +8,17 @@ import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRe
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
 import io.viewpoint.moviedatabase.test.TestBase
-import io.viewpoint.moviedatabase.test.mock.*
-import kotlinx.coroutines.delay
+import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
+import io.viewpoint.moviedatabase.test.mock.TestMovieApi
+import io.viewpoint.moviedatabase.test.mock.TestMovieDetailApi
+import io.viewpoint.moviedatabase.test.mock.TestPreferencesService
+import io.viewpoint.moviedatabase.test.mock.TestWantToSeeDao
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 import strikt.assertions.isNotEqualTo
-import strikt.assertions.isNotNull
-import java.util.*
+import java.util.Locale
 
 class MainViewModelTest : TestBase() {
     private val vm
@@ -41,47 +42,23 @@ class MainViewModelTest : TestBase() {
     @Test
     fun `load movie lists when initialize view`() = runBlocking {
         val vm = vm.awaitInit()
-        val wantToSeeList = vm.wantToSee.value
-        val popularList = vm.popular.value
-        val nowPlayingList = vm.nowPlaying.value
-        val upcomingList = vm.upcoming.value
-        val topRatedList = vm.topRated.value
+        val popularList = vm.uiState.value.popularList
+        val nowPlayingList = vm.uiState.value.nowPlayingList
+        val upcomingList = vm.uiState.value.upcomingList
+        val topRatedList = vm.uiState.value.topRatedList
 
-        expectThat(wantToSeeList).isNotNull()
         expectThat(popularList) {
-            isNotNull()
-            get { this?.size }.isEqualTo(2)
+            get { this.size }.isEqualTo(2)
         }
         expectThat(nowPlayingList) {
-            isNotNull()
-            get { this?.size }.isEqualTo(2)
+            get { this.size }.isEqualTo(2)
         }
         expectThat(upcomingList) {
-            isNotNull()
-            get { this?.size }.isEqualTo(2)
+            get { this.size }.isEqualTo(2)
         }
         expectThat(topRatedList) {
-            isNotNull()
-            get { this?.size }.isEqualTo(2)
+            get { this.size }.isEqualTo(2)
         }
-    }
-
-    @Test
-    fun `loadData will change isLoading property`() = runBlocking {
-        val vm = vm.awaitInit()
-
-        val set = mutableSetOf<Boolean>()
-        val observer = Observer<Boolean> {
-            set += it
-        }
-        vm.isLoading.observeForever(observer)
-
-        vm.loadData()
-
-        delay(1500L)
-        expectThat(set.size).isEqualTo(2)
-
-        vm.isLoading.removeObserver(observer)
     }
 
     @Test
