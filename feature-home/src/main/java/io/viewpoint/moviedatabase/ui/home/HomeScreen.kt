@@ -1,22 +1,28 @@
+@file:OptIn(ExperimentalMaterialApi::class)
+
 package io.viewpoint.moviedatabase.ui.home
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,6 +32,7 @@ import io.viewpoint.moviedatabase.feature.home.R
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.ui.common.MovieListProvider
 import io.viewpoint.moviedatabase.viewmodel.MainViewModel
+import kotlinx.coroutines.launch
 import kotlin.reflect.KClass
 
 enum class Section(
@@ -67,6 +74,7 @@ fun HomeRoute(
     onMovieClicked: (SearchResultModel) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val coroutineScope = rememberCoroutineScope()
 
     HomeScreen(
         wantToSeeList = uiState.wantToSeeList,
@@ -74,6 +82,12 @@ fun HomeRoute(
         nowPlayingList = uiState.nowPlayingList,
         upcomingList = uiState.upcomingList,
         topRatedList = uiState.topRatedList,
+        refreshing = uiState.isLoading,
+        onRefresh = {
+            coroutineScope.launch {
+                viewModel.loadData()
+            }
+        },
         onMoreClicked = onMoreClicked,
         onMovieClicked = onMovieClicked,
     )
@@ -86,6 +100,8 @@ internal fun HomeScreen(
     nowPlayingList: List<SearchResultModel>,
     upcomingList: List<SearchResultModel>,
     topRatedList: List<SearchResultModel>,
+    refreshing: Boolean,
+    onRefresh: () -> Unit,
     onMoreClicked: (Section) -> Unit,
     onMovieClicked: (SearchResultModel) -> Unit,
 ) {
@@ -117,6 +133,8 @@ internal fun HomeScreen(
                 circle = false,
             ),
         ),
+        refreshing = refreshing,
+        onRefresh = onRefresh,
         onMoreClicked = onMoreClicked,
         onMovieClicked = onMovieClicked,
     )
@@ -125,29 +143,36 @@ internal fun HomeScreen(
 @Composable
 private fun HomeScreen(
     sections: List<HomeSection>,
+    refreshing: Boolean,
+    onRefresh: () -> Unit,
     onMoreClicked: (Section) -> Unit,
     onMovieClicked: (SearchResultModel) -> Unit,
 ) {
-    LazyColumn {
-        items(sections) { section ->
-            if (section.list.isNotEmpty()) {
-                Column(modifier = Modifier.fillMaxWidth()) {
-                    Label(
-                        section = section.section,
-                        onMoreClicked = onMoreClicked,
-                    )
-                    HomeMovieList(
-                        items = section.list,
-                        posterShape = if (section.circle) {
-                            CircleShape
-                        } else {
-                            RectangleShape
-                        },
-                        onMovieClicked = onMovieClicked,
-                    )
+    val state = rememberPullRefreshState(refreshing, onRefresh)
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .pullRefresh(state)
+    ) {
+        LazyColumn {
+            items(sections) { section ->
+                if (section.list.isNotEmpty()) {
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Label(
+                            section = section.section,
+                            onMoreClicked = onMoreClicked,
+                        )
+                        HomeMovieList(
+                            items = section.list,
+                            isCircle = section.circle,
+                            onMovieClicked = onMovieClicked,
+                        )
+                    }
                 }
             }
         }
+        PullRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
     }
 }
 
@@ -191,6 +216,8 @@ fun HomeScreenPreview() {
             nowPlayingList = listOf(PreviewSearchResultModel),
             upcomingList = listOf(PreviewSearchResultModel),
             topRatedList = listOf(PreviewSearchResultModel),
+            refreshing = false,
+            onRefresh = {},
             onMoreClicked = {},
             onMovieClicked = {},
         )

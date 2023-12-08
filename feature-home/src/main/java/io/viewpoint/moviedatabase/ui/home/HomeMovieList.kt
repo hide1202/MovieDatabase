@@ -4,6 +4,7 @@ package io.viewpoint.moviedatabase.ui.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -13,9 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,14 +27,14 @@ import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 @Composable
 fun HomeMovieList(
     items: List<SearchResultModel>,
-    posterShape: Shape,
+    isCircle: Boolean,
     onMovieClicked: (SearchResultModel) -> Unit,
 ) {
     LazyRow {
         items(items) {
             HomeMovieListElement(
                 model = it,
-                posterShape = posterShape,
+                isCircle = isCircle,
                 onMovieClicked = onMovieClicked,
             )
         }
@@ -45,7 +44,7 @@ fun HomeMovieList(
 @Composable
 private fun HomeMovieListElement(
     model: SearchResultModel,
-    posterShape: Shape,
+    isCircle: Boolean,
     onMovieClicked: (SearchResultModel) -> Unit,
 ) {
     Column(
@@ -55,9 +54,26 @@ private fun HomeMovieListElement(
     ) {
         GlideImage(
             modifier = Modifier
-                .size(150.dp)
-                .clip(posterShape),
+                .then(
+                    if (isCircle) {
+                        Modifier
+                            .size(150.dp)
+                            .padding(all = 8.dp)
+                    } else {
+                        Modifier
+                            .width(150.dp)
+                            .height(200.dp)
+                    }
+                ),
             model = model.posterUrl,
+            contentScale = ContentScale.Fit,
+            requestBuilderTransform = {
+                if (isCircle) {
+                    it.circleCrop()
+                } else {
+                    it
+                }
+            },
             contentDescription = null,
         )
         Text(
@@ -81,7 +97,7 @@ fun HomeMovieListElementPreview() {
                 .copy(
                     title = "스파이더맨: 홈커밍",
                 ),
-            posterShape = RectangleShape,
+            isCircle = false,
             onMovieClicked = {},
         )
     }

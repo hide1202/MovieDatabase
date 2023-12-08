@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -49,8 +48,6 @@ fun MovieDatabaseRoute(
     selectedTab: MainTab,
     onTabSelected: (MainTab) -> Unit
 ) {
-    val context = LocalContext.current
-
     Column(
         modifier = Modifier
             .systemBarsPadding()

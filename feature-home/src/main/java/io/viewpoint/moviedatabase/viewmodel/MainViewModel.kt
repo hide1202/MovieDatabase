@@ -24,6 +24,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 data class HomeUiState(
+    val isLoading: Boolean = true,
     val wantToSeeList: List<SearchResultModel> = emptyList(),
     val popularList: List<SearchResultModel> = emptyList(),
     val nowPlayingList: List<SearchResultModel> = emptyList(),
@@ -55,6 +56,8 @@ class MainViewModel @Inject constructor(
     }
 
     suspend fun loadData() = coroutineScope {
+        _uiState.update { prev -> prev.copy(isLoading = true) }
+
         val wantToSeeDeferred = async {
             wantToSeeRepository.getWantToSeeMovies()
                 .effectMap { list ->
@@ -103,6 +106,7 @@ class MainViewModel @Inject constructor(
 
         _uiState.update { prev ->
             prev.copy(
+                isLoading = false,
                 wantToSeeList = wantToSee,
                 popularList = popular,
                 nowPlayingList = nowPlaying,
