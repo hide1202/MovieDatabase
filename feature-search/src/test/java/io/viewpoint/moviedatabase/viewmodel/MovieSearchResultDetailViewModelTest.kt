@@ -13,7 +13,6 @@ import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieDetailApi
 import io.viewpoint.moviedatabase.test.mock.TestWantToSeeDao
-import io.viewpoint.moviedatabase.ui.search.SearchResultDetailActivity
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -49,7 +48,7 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
             creditModelMapper = CreditModelMapper(configurationRepository),
             keywordModelMapper = KeywordModelMapper(),
             watchProviderModelMapper = WatchProviderModelMapper(configurationRepository),
-            savedStateHandle = SavedStateHandle(mapOf(SearchResultDetailActivity.EXTRA_MOVIE_ID to 557)),
+            savedStateHandle = SavedStateHandle(mapOf(MovieSearchResultDetailViewModel.EXTRA_MOVIE_ID to 557)),
         )
     }
 
