@@ -12,7 +12,6 @@ apply from: '../android-test-dependencies.gradle'
 android {
     namespace "io.viewpoint.moviedatabase.ui.common"
     buildFeatures {
-        dataBinding true
         compose true
     }
 
@@ -36,11 +35,7 @@ dependencies {
     implementation libs.androidx.core
     implementation libs.androidx.activity.compose
     implementation libs.androidx.fragment
-    implementation libs.androidx.recyclerview
-    implementation libs.androidx.swiperefreshlayout
     implementation libs.androidx.appcompat
-    implementation libs.androidx.material
-    implementation libs.androidx.constraintlayout
     implementation libs.androidx.lifecycle.viewmodel
     implementation libs.androidx.lifecycle.livedata
     implementation libs.androidx.lifecycle.runtime

@@ -8,9 +8,6 @@ apply from: '../android-configure.gradle'
 
 android {
     namespace "io.viewpoint.moviedatabase.widget"
-    buildFeatures {
-        dataBinding true
-    }
 }
 
 dependencies {
@@ -19,8 +16,6 @@ dependencies {
     // androidx
     implementation libs.androidx.core
     implementation libs.androidx.appcompat
-    implementation libs.androidx.material
-    implementation libs.androidx.constraintlayout
 
     // glide
     implementation libs.glide

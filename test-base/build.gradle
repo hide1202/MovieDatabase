@@ -22,5 +22,4 @@ dependencies {
     implementation libs.test.android.core
     implementation libs.androidx.lifecycle.runtime
     implementation libs.androidx.paging
-    implementation libs.androidx.recyclerview
 }
