@@ -1,20 +1,26 @@
 package io.viewpoint.moviedatabase.platform.ui.main
 
+import android.os.Bundle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.dialog
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import io.viewpoint.moviedatabase.ui.common.MovieListProvider
@@ -31,11 +37,14 @@ import io.viewpoint.moviedatabase.viewmodel.MovieSearchViewModel
 import kotlin.reflect.KClass
 
 private const val movieDetailRoute = "movies/{movieId}"
-fun movieDetailRoute(movieId: Int) = "movies/$movieId"
+private fun movieDetailRoute(movieId: Int) = "movies/$movieId"
 
 private const val movieListProviderArgument = "provider"
 private const val movieListRoute = "movieList/{$movieListProviderArgument}"
-fun movieListRoute(provider: KClass<out MovieListProvider>) = "movieList/${provider.qualifiedName}"
+private fun movieListRoute(provider: KClass<out MovieListProvider>) =
+    "movieList/${provider.qualifiedName}"
+
+private val fullScreenRoutes = listOf(movieDetailRoute, movieListRoute)
 
 @Composable
 fun MovieDatabaseRoute(
@@ -48,6 +57,27 @@ fun MovieDatabaseRoute(
     selectedTab: MainTab,
     onTabSelected: (MainTab) -> Unit
 ) {
+    var visibleBottomNavigation by remember {
+        mutableStateOf(true)
+    }
+
+    DisposableEffect(Unit) {
+        val listener = object : NavController.OnDestinationChangedListener {
+            override fun onDestinationChanged(
+                controller: NavController,
+                destination: NavDestination,
+                arguments: Bundle?
+            ) {
+                visibleBottomNavigation = !fullScreenRoutes.contains(destination.route)
+            }
+        }
+        navController.addOnDestinationChangedListener(listener)
+
+        onDispose {
+            navController.removeOnDestinationChangedListener(listener)
+        }
+    }
+
     Column(
         modifier = Modifier
             .systemBarsPadding()
@@ -87,30 +117,24 @@ fun MovieDatabaseRoute(
                 )
             }
 
-            dialog(
+            // region full-screen
+
+            composable(
                 route = movieDetailRoute,
                 arguments = listOf(navArgument(MovieSearchResultDetailViewModel.EXTRA_MOVIE_ID) {
                     type = NavType.IntType
                 }),
-                dialogProperties = DialogProperties(
-                    usePlatformDefaultWidth = false,
-                    decorFitsSystemWindows = false,
-                ),
             ) {
                 MovieDetailRoute(
                     viewModel = hiltViewModel(),
                 )
             }
 
-            dialog(
+            composable(
                 route = movieListRoute,
                 arguments = listOf(navArgument(movieListProviderArgument) {
                     type = NavType.StringType
                 }),
-                dialogProperties = DialogProperties(
-                    usePlatformDefaultWidth = false,
-                    decorFitsSystemWindows = false,
-                ),
             ) {
                 val providerClassName = it.arguments?.getString(movieListProviderArgument)
                     ?: throw IllegalStateException()
@@ -129,11 +153,15 @@ fun MovieDatabaseRoute(
                     },
                 )
             }
+
+            // endregion
         }
 
-        MovieDatabaseNavigation(
-            selectedItem = selectedTab,
-            onSelected = onTabSelected,
-        )
+        if (visibleBottomNavigation) {
+            MovieDatabaseNavigation(
+                selectedItem = selectedTab,
+                onSelected = onTabSelected,
+            )
+        }
     }
 }
