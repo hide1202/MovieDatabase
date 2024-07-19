@@ -9,7 +9,7 @@
 
 ## Prerequisites
 
-- Android Studio Arctic Fox | 2020.3.1 (stable)
+- Android Studio Koala | 2024.1.1 (stable)
 
 ## How to run
 
@@ -19,12 +19,6 @@
 ```
 movie.database.api.key=YOUR_API_KEY
 ```
-
-## Mad Scorecard (2021/05/21)
-
-![summary](arts/mad-scorecard/summary.png)
-
-- [Go to details](https://madscorecard.withgoogle.com/scorecards/2230721075/#summary)
 
 ## References
 
