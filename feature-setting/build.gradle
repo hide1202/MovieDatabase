@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+
+    alias(libs.plugins.compose.compiler)
 }
 
 apply from: '../android-configure.gradle'
@@ -13,10 +15,6 @@ android {
     namespace "io.viewpoint.moviedatabase.feature.setting"
     buildFeatures {
         compose true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 }
 
