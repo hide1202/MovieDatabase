@@ -20,6 +20,8 @@ jobs:
     - name: Build with Gradle and Jacoco
       run: ./gradlew --stacktrace clean koverXmlReport
     - name: Codecov
-      uses: codecov/codecov-action@v1.0.15
+      uses: codecov/codecov-action@v5
       with:
         flags: unittests
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
