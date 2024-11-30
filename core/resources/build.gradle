@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    alias(libs.plugins.kotlin.kover)
 }
 
 apply from: "$rootDir/android-configure.gradle"

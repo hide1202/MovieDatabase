@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    alias(libs.plugins.kotlin.kover)
 
     alias(libs.plugins.compose.compiler)
 }
