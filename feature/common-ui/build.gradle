@@ -7,9 +7,9 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-apply from: '../android-configure.gradle'
-apply from: '../android-jacoco.gradle'
-apply from: '../android-test-dependencies.gradle'
+apply from: "$rootDir/android-configure.gradle"
+apply from: "$rootDir/android-jacoco.gradle"
+apply from: "$rootDir/android-test-dependencies.gradle"
 
 android {
     namespace "io.viewpoint.moviedatabase.ui.common"
@@ -19,15 +19,15 @@ android {
 }
 
 dependencies {
-    implementation project(':resources')
+    implementation project(':core:resources')
 
-    implementation project(':common')
-    implementation project(':widget')
-    implementation project(':model')
-    implementation project(':api')
-    implementation project(':domain')
+    implementation project(':core:common')
+    implementation project(':core:widget')
+    implementation project(':core:model')
+    implementation project(':core:api')
+    implementation project(':core:domain')
 
-    implementation project(':designsystem')
+    implementation project(':core:designsystem')
 
     // androidx
     implementation libs.androidx.core

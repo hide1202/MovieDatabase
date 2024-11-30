@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-apply from: '../android-configure.gradle'
+apply from: "$rootDir/android-configure.gradle"
 
 android {
     namespace 'io.viewpoint.moviedatabase.designsystem'

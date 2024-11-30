@@ -59,19 +59,19 @@ kapt {
 }
 
 dependencies {
-    implementation project(':resources')
+    implementation project(':core:resources')
 
-    implementation project(':common')
-    implementation project(':model')
-    implementation project(':api')
-    implementation project(':domain')
-    implementation project(':common-ui')
-    implementation project(':designsystem')
+    implementation project(':core:common')
+    implementation project(':core:model')
+    implementation project(':core:api')
+    implementation project(':core:domain')
+    implementation project(':core:designsystem')
 
     // features
-    implementation project(':feature-home')
-    implementation project(':feature-search')
-    implementation project(':feature-setting')
+    implementation project(':feature:common-ui')
+    implementation project(':feature:home')
+    implementation project(':feature:search')
+    implementation project(':feature:setting')
 
     // androidx
     implementation libs.androidx.core

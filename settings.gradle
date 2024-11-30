@@ -11,19 +11,24 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-include ':model'
-include ':domain'
-include ':api'
-include ':app'
+
 rootProject.name = "MovieDatabase"
-include ':feature-home'
-include ':resources'
-include ':common'
-include ':feature-search'
-include ':widget'
-include ':feature-setting'
-include ':test-base'
-include ':common-ui'
-include ':test-mock'
-include ':test-common'
-include ':designsystem'
+
+include ':app'
+
+include ':core:model'
+include ':core:common'
+include ':core:api'
+include ':core:resources'
+include ':core:domain'
+include ':core:designsystem'
+include ':core:widget'
+
+include ':feature:home'
+include ':feature:search'
+include ':feature:setting'
+include ':feature:common-ui'
+
+include ':test:base'
+include ':test:mock'
+include ':test:common'

@@ -4,11 +4,11 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
 }
 
-apply from: '../java-jacoco.gradle'
-apply from: '../java-test-dependencies.gradle'
+apply from: "$rootDir/java-jacoco.gradle"
+apply from: "$rootDir/java-test-dependencies.gradle"
 
 dependencies {
-    implementation project(':model')
+    implementation project(':core:model')
 
     implementation libs.moshi
     implementation libs.okhttp.logging

@@ -7,36 +7,40 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-apply from: '../android-configure.gradle'
-apply from: '../android-jacoco.gradle'
-apply from: '../android-test-dependencies.gradle'
+apply from: "$rootDir/android-configure.gradle"
+apply from: "$rootDir/android-jacoco.gradle"
+apply from: "$rootDir/android-test-dependencies.gradle"
 
 android {
-    namespace "io.viewpoint.moviedatabase.feature.setting"
+    namespace "io.viewpoint.moviedatabase.feature.search"
     buildFeatures {
         compose true
     }
 }
 
 dependencies {
-    implementation project(':resources')
+    implementation project(':core:resources')
 
-    implementation project(':model')
-    implementation project(':api')
-    implementation project(':domain')
+    implementation project(':core:common')
+    implementation project(':core:model')
+    implementation project(':core:api')
+    implementation project(':core:domain')
+    implementation project(':core:designsystem')
+    implementation project(':core:widget')
 
-    implementation project(':designsystem')
+    implementation project(':feature:common-ui')
 
     // androidx
     implementation libs.androidx.core
     implementation libs.androidx.activity
+    implementation libs.androidx.activity.compose
     implementation libs.androidx.fragment
     implementation libs.androidx.appcompat
     implementation libs.androidx.lifecycle.viewmodel
     implementation libs.androidx.lifecycle.livedata
     implementation libs.androidx.lifecycle.runtime
-    implementation libs.androidx.lifecycle.compose
     implementation libs.androidx.paging
+    implementation libs.androidx.paging.compose
 
     // compose
     implementation platform(libs.compose.bom)
@@ -45,6 +49,12 @@ dependencies {
     implementation libs.androidx.material3.compose
     implementation libs.compose.tooling.preview
     debugImplementation libs.compose.tooling
+
+    // glide
+    implementation libs.glide.compose
+
+    // accompanist
+    implementation libs.accompanist.drawablepainter
 
     // dagger/hilt
     implementation libs.hilt

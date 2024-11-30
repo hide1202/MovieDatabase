@@ -1,4 +1,4 @@
-apply from: '../dependencies.gradle'
+apply from: "$rootDir/dependencies.gradle"
 
 android {
     compileSdkVersion versions.android.compileSdk

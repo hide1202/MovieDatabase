@@ -4,16 +4,16 @@ plugins {
     id 'kotlin-kapt'
 }
 
-apply from: '../android-configure.gradle'
-apply from: '../android-jacoco.gradle'
-apply from: '../android-test-dependencies.gradle'
+apply from: "$rootDir/android-configure.gradle"
+apply from: "$rootDir/android-jacoco.gradle"
+apply from: "$rootDir/android-test-dependencies.gradle"
 
 android {
     namespace "io.viewpoint.moviedatabase.common"
 }
 
 dependencies {
-    implementation project(':resources')
+    implementation project(':core:resources')
 
     implementation libs.androidx.core
 

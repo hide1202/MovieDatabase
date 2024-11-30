@@ -3,7 +3,7 @@ plugins {
     id 'kotlin'
 }
 
-apply from: '../java-jacoco.gradle'
+apply from: "$rootDir/java-jacoco.gradle"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
