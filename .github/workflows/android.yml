@@ -23,5 +23,7 @@ jobs:
       uses: codecov/codecov-action@v5
       with:
         flags: unittests
+        disable_search: true
+        files: ./build/reports/kover/reportMerged.xml
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
