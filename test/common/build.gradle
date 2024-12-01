@@ -1,26 +1,8 @@
 plugins {
-    id 'java-library'
-    id 'kotlin'
+    alias(libs.plugins.moviedatabase.jvm.library)
 }
 
 apply from: "$rootDir/java-jacoco.gradle"
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-}
-
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-}
 
 dependencies {
     implementation libs.kotlinx.coroutines.core

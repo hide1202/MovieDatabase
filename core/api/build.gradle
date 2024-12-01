@@ -1,6 +1,5 @@
 plugins {
-    id "java"
-    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.moviedatabase.jvm.library)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.kover)
 }
@@ -24,21 +23,6 @@ dependencies {
 
     testImplementation libs.test.mockwebserver
 }
-
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-}
-
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-}
-
-sourceCompatibility = "17"
-targetCompatibility = "17"
 
 kover {
     currentProject {

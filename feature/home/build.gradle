@@ -1,14 +1,11 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    alias(libs.plugins.moviedatabase.android.library)
+    alias(libs.plugins.moviedatabase.android.library.compose)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.kover)
-
-    alias(libs.plugins.compose.compiler)
 }
 
-apply from: "$rootDir/android-configure.gradle"
 apply from: "$rootDir/android-jacoco.gradle"
 apply from: "$rootDir/android-test-dependencies.gradle"
 
@@ -16,10 +13,6 @@ android {
     namespace "io.viewpoint.moviedatabase.feature.home"
     defaultConfig {
         consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildFeatures {
-        compose true
     }
 }
 

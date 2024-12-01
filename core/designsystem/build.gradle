@@ -1,22 +1,11 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.moviedatabase.android.library)
+    alias(libs.plugins.moviedatabase.android.library.compose)
     alias(libs.plugins.kotlin.kover)
 }
 
-apply from: "$rootDir/android-configure.gradle"
-
 android {
     namespace 'io.viewpoint.moviedatabase.designsystem'
-
-    buildFeatures {
-        compose true
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-    }
 }
 
 dependencies {

@@ -1,5 +1,11 @@
 [versions]
+minSdkVersion = "24"
+compileSdkVersion = "34"
+targetSdkVersion = "34"
+
+androidDesugarJdkLibs = "2.0.4"
 androidGradlePlugin = "8.4.1"
+androidTools = "31.7.2"
 gradleVersionsPlugin = "0.36.0"
 kotlin = "2.0.0"
 kover = "0.8.3"
@@ -46,6 +52,8 @@ glide = "4.16.0"
 glideCompose = "1.0.0-beta01"
 
 [libraries]
+android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
+
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
 androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "androidxActivity" }
@@ -116,6 +124,13 @@ glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideCompose" }
 glide-kapt = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 
+# Dependencies of the included build-logic
+android-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
+compose-gradle = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+kotlin-gradle = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+room-gradle = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "androidxRoom" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
@@ -124,6 +139,13 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
-kotlin-kover = {id = "org.jetbrains.kotlinx.kover", version.ref = "kover"}
+kotlin-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }
+
+# Plugins defined by this project
+moviedatabase-android-application = { id = "moviedatabase.android.application", version = "unspecified" }
+moviedatabase-android-application-compose = { id = "moviedatabase.android.application.compose", version = "unspecified" }
+moviedatabase-android-library = { id = "moviedatabase.android.library", version = "unspecified" }
+moviedatabase-android-library-compose = { id = "moviedatabase.android.library.compose", version = "unspecified" }
+moviedatabase-jvm-library = { id = "moviedatabase.jvm.library", version = "unspecified" }

@@ -1,11 +1,9 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+    alias(libs.plugins.moviedatabase.android.library)
+    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.kover)
 }
 
-apply from: "$rootDir/android-configure.gradle"
 apply from: "$rootDir/android-jacoco.gradle"
 apply from: "$rootDir/android-test-dependencies.gradle"
 

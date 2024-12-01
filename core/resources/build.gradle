@@ -1,10 +1,7 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
+    alias(libs.plugins.moviedatabase.android.library)
     alias(libs.plugins.kotlin.kover)
 }
-
-apply from: "$rootDir/android-configure.gradle"
 
 android {
     namespace "io.viewpoint.moviedatabase.resources"

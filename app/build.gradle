@@ -1,16 +1,14 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.moviedatabase.android.application)
+    alias(libs.plugins.moviedatabase.android.application.compose)
     alias(libs.plugins.hilt.android)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.kover)
-    alias(libs.plugins.compose.compiler)
 }
 
 apply from: '../external.gradle'
 apply from: '../app.gradle'
-apply from: '../android-configure.gradle'
 apply from: '../android-test-dependencies.gradle'
 apply from: '../android-jacoco.gradle'
 
@@ -34,7 +32,6 @@ android {
 
     buildTypes {
         debug {
-//            testCoverageEnabled((findProperty("enableJacoco") ?: "false").toBoolean())
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
             buildConfigField("int", "DATABASE_VERSION", "${app.database_version}")
         }
@@ -48,10 +45,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
             proguardFiles fileTree(dir: 'proguard', include: ['*.pro']).asList().toArray()
         }
-    }
-
-    buildFeatures {
-        compose true
     }
 }
 
