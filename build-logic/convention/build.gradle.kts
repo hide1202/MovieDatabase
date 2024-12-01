@@ -23,6 +23,7 @@ dependencies {
     compileOnly(libs.compose.gradle)
     compileOnly(libs.kotlin.gradle)
     compileOnly(libs.room.gradle)
+    compileOnly(libs.kotlin.kover)
 }
 
 tasks {

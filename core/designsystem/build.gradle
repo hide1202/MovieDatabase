@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.moviedatabase.android.library)
     alias(libs.plugins.moviedatabase.android.library.compose)
-    alias(libs.plugins.kotlin.kover)
 }
 
 android {
@@ -16,12 +15,4 @@ dependencies {
     debugImplementation libs.compose.tooling
 
     implementation libs.androidx.material3.compose
-}
-
-kover {
-    currentProject {
-        createVariant("merged") {
-            add(["debug"], false)
-        }
-    }
 }

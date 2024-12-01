@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.moviedatabase.android.library)
-    alias(libs.plugins.kotlin.kover)
 }
 
 android {
@@ -9,12 +8,4 @@ android {
 
 dependencies {
     implementation libs.androidx.material
-}
-
-kover {
-    currentProject {
-        createVariant("merged") {
-            add(["debug"], false)
-        }
-    }
 }

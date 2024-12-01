@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.moviedatabase.jvm.library)
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.kover)
 }
 
 apply from: "$rootDir/java-jacoco.gradle"
@@ -25,12 +24,4 @@ dependencies {
     kapt libs.dagger.kapt
 
     testImplementation project(':test:mock')
-}
-
-kover {
-    currentProject {
-        createVariant("merged") {
-            add(["jvm"], false)
-        }
-    }
 }

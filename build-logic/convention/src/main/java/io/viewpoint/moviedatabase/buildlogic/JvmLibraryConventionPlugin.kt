@@ -11,6 +11,7 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.jvm")
+                apply("org.jetbrains.kotlinx.kover")
             }
             configureKotlinJvm()
             dependencies {

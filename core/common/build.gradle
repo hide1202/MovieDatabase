@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.moviedatabase.android.library)
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.kover)
 }
 
 apply from: "$rootDir/android-jacoco.gradle"
@@ -22,12 +21,4 @@ dependencies {
     // glide
     implementation libs.glide
     kapt libs.glide.kapt
-}
-
-kover {
-    currentProject {
-        createVariant("merged") {
-            add(["debug"], false)
-        }
-    }
 }

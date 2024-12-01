@@ -1,6 +1,7 @@
 package io.viewpoint.moviedatabase.buildlogic.extensions
 
 import com.android.build.api.dsl.CommonExtension
+import kotlinx.kover.gradle.plugin.dsl.KoverProjectExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
@@ -40,6 +41,14 @@ internal fun Project.configureKotlinAndroid(
     dependencies {
         add("coreLibraryDesugaring", libs.findLibrary("android-desugarJdkLibs").get())
     }
+
+    extensions.configure<KoverProjectExtension> {
+        currentProject {
+            createVariant("merged") {
+                add("debug", optional = false)
+            }
+        }
+    }
 }
 
 /**
@@ -54,6 +63,14 @@ internal fun Project.configureKotlinJvm() {
     }
 
     configureKotlin<KotlinJvmProjectExtension>()
+
+    extensions.configure<KoverProjectExtension> {
+        currentProject {
+            createVariant("merged") {
+                add("jvm", optional = false)
+            }
+        }
+    }
 }
 
 /**

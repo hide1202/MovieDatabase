@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.moviedatabase.android.library)
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.kover)
 }
 
 android {
@@ -20,12 +19,4 @@ dependencies {
 
     // timber
     implementation libs.timber
-}
-
-kover {
-    currentProject {
-        createVariant("merged") {
-            add(["debug"], false)
-        }
-    }
 }

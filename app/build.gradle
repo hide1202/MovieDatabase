@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.kover)
 }
 
 apply from: '../external.gradle'
@@ -121,12 +120,4 @@ dependencies {
     debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.98.0'
 
     releaseImplementation 'com.facebook.flipper:flipper-noop:0.98.0'
-}
-
-kover {
-    currentProject {
-        createVariant("merged") {
-            add(["debug"], false)
-        }
-    }
 }
