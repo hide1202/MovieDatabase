@@ -39,3 +39,11 @@ compileTestKotlin {
 
 sourceCompatibility = "17"
 targetCompatibility = "17"
+
+kover {
+    currentProject {
+        createVariant("merged") {
+            add(["jvm"], false)
+        }
+    }
+}

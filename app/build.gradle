@@ -129,3 +129,11 @@ dependencies {
 
     releaseImplementation 'com.facebook.flipper:flipper-noop:0.98.0'
 }
+
+kover {
+    currentProject {
+        createVariant("merged") {
+            add(["debug"], false)
+        }
+    }
+}

@@ -56,3 +56,11 @@ dependencies {
     // timber
     implementation libs.timber
 }
+
+kover {
+    currentProject {
+        createVariant("merged") {
+            add(["debug"], false)
+        }
+    }
+}

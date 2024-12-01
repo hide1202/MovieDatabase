@@ -13,3 +13,11 @@ android {
 dependencies {
     implementation libs.androidx.material
 }
+
+kover {
+    currentProject {
+        createVariant("merged") {
+            add(["debug"], false)
+        }
+    }
+}

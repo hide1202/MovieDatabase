@@ -44,3 +44,11 @@ dependencies {
 
     testImplementation project(':test:mock')
 }
+
+kover {
+    currentProject {
+        createVariant("merged") {
+            add(["jvm"], false)
+        }
+    }
+}

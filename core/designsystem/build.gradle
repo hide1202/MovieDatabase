@@ -28,3 +28,11 @@ dependencies {
 
     implementation libs.androidx.material3.compose
 }
+
+kover {
+    currentProject {
+        createVariant("merged") {
+            add(["debug"], false)
+        }
+    }
+}

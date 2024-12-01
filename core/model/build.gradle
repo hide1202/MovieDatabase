@@ -26,3 +26,11 @@ targetCompatibility = "17"
 
 dependencies {
 }
+
+kover {
+    currentProject {
+        createVariant("merged") {
+            add(["jvm"], false)
+        }
+    }
+}

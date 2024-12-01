@@ -13,7 +13,7 @@ plugins {
 
     alias(libs.plugins.hilt.android) apply false
 
-    alias(libs.plugins.kotlin.kover) apply false
+    alias(libs.plugins.kotlin.kover)
 }
 
 allprojects {
@@ -35,4 +35,35 @@ tasks.named("dependencyUpdates").configure {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+kover {
+    currentProject {
+        createVariant("merged") {
+        }
+    }
+    reports {
+        filters {
+            excludes {
+                androidGeneratedClasses()
+            }
+        }
+    }
+}
+
+dependencies {
+    kover(project(':core:model'))
+    kover(project(':core:common'))
+    kover(project(':core:api'))
+    kover(project(':core:resources'))
+    kover(project(':core:domain'))
+    kover(project(':core:designsystem'))
+    kover(project(':core:widget'))
+
+    kover(project(':feature:home'))
+    kover(project(':feature:search'))
+    kover(project(':feature:setting'))
+    kover(project(':feature:common-ui'))
+
+    kover(project(':app'))
 }

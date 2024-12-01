@@ -25,3 +25,11 @@ dependencies {
     implementation libs.glide
     kapt libs.glide.kapt
 }
+
+kover {
+    currentProject {
+        createVariant("merged") {
+            add(["debug"], false)
+        }
+    }
+}

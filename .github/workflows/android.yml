@@ -18,7 +18,7 @@ jobs:
       with:
         java-version: 17
     - name: Build with Gradle and Jacoco
-      run: ./gradlew --stacktrace clean koverXmlReport
+      run: ./gradlew --stacktrace clean koverXmlReportMerged
     - name: Codecov
       uses: codecov/codecov-action@v5
       with:
