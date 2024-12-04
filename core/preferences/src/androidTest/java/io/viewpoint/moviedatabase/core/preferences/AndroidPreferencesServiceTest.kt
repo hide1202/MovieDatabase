@@ -1,4 +1,5 @@
-package io.viewpoint.moviedatabase.platform.common
+package io.viewpoint.moviedatabase.core.preferences
+
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -15,7 +16,9 @@ import strikt.assertions.isEmpty
 @RunWith(AndroidJUnit4::class)
 class AndroidPreferencesServiceTest : TestBase() {
     private val preferencesService =
-        AndroidPreferencesService(InstrumentationRegistry.getInstrumentation().context)
+        AndroidPreferencesService(
+            InstrumentationRegistry.getInstrumentation().context
+        )
 
     @Test
     fun preferencesCanGetAndSetStringSet() = runBlocking {

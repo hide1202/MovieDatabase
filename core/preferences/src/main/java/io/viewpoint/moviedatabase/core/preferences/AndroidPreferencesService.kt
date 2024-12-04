@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.platform.common
+package io.viewpoint.moviedatabase.core.preferences
 
 import android.content.Context
 import androidx.datastore.preferences.SharedPreferencesMigration
@@ -8,16 +8,13 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import dagger.hilt.android.qualifiers.ApplicationContext
 import io.viewpoint.moviedatabase.domain.preferences.PreferenceKey
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
 
-class AndroidPreferencesService @Inject constructor(
-    @ApplicationContext private val context: Context
+class AndroidPreferencesService(
+    private val context: Context
 ) : PreferencesService {
     private val dataStore = context.dataStore
 
