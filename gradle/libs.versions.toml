@@ -39,7 +39,7 @@ testJunit = "4.13.2"
 testStrikt = "0.34.1"
 testAndroidTestCore = "2.2.0"
 testAndroidCore = "1.5.0"
-testMockk = "1.13.8"
+testMockk = "1.13.13"
 testRobolectric = "4.11.1"
 
 accompanist = "0.32.0"

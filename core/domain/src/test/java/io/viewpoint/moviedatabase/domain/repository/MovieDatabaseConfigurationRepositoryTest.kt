@@ -1,11 +1,12 @@
 package io.viewpoint.moviedatabase.domain.repository
 
+import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.spyk
-import io.mockk.verify
+import io.mockk.mockk
+import io.viewpoint.moviedatabase.api.ConfigurationApi
 import io.viewpoint.moviedatabase.domain.Languages.SUPPORTED_LANGUAGE_CODES
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import strikt.api.expectThat
 import strikt.assertions.isEqualTo
@@ -15,8 +16,10 @@ import strikt.assertions.isTrue
 class MovieDatabaseConfigurationRepositoryTest {
     @Test
     fun `repository can cache configuration`() =
-        runBlocking {
-            val api = spyk<TestConfigurationApi>()
+        runTest {
+            val api = mockk<ConfigurationApi>()
+            coEvery { api.getConfiguration() } coAnswers { TestConfigurationApi().getConfiguration() }
+
             val repository =
                 MovieDatabaseConfigurationRepository(
                     api
@@ -33,8 +36,9 @@ class MovieDatabaseConfigurationRepositoryTest {
 
     @Test
     fun `repository can cache languages`() =
-        runBlocking {
-            val api = spyk<TestConfigurationApi>()
+        runTest {
+            val api = mockk<ConfigurationApi>()
+            coEvery { api.getSupportedLanguages() } coAnswers { TestConfigurationApi().getSupportedLanguages() }
             val repository =
                 MovieDatabaseConfigurationRepository(
                     api
@@ -50,7 +54,7 @@ class MovieDatabaseConfigurationRepositoryTest {
         }
 
     @Test
-    fun `get supported languages`(): Unit = runBlocking {
+    fun `get supported languages`(): Unit = runTest {
         val repository = MovieDatabaseConfigurationRepository(TestConfigurationApi())
         val supportedLanguages = repository.getSupportedLanguages()
 

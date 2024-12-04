@@ -1,7 +1,9 @@
 package io.viewpoint.moviedatabase.domain.repository
 
+import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.spyk
+import io.viewpoint.moviedatabase.api.SearchApi
 import io.viewpoint.moviedatabase.model.api.Movie
 import io.viewpoint.moviedatabase.model.common.PagingResult
 import io.viewpoint.moviedatabase.test.mock.TestSearchApi
@@ -16,7 +18,16 @@ class MovieDatabaseSearchRepositoryTest {
     @Test
     fun `repository can search a keyword`() =
         runBlocking {
-            val api = spyk<TestSearchApi>()
+            val api = spyk<SearchApi>()
+            coEvery {
+                api.searchMovie(any(), any())
+            } coAnswers {
+                TestSearchApi().searchMovie(
+                    "",
+                    1
+                )
+            }
+
             val repository =
                 MovieDatabaseSearchRepository(
                     api
