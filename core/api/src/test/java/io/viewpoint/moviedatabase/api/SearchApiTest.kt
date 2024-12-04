@@ -1,6 +1,5 @@
 package io.viewpoint.moviedatabase.api
 
-import arrow.core.Either
 import io.viewpoint.moviedatabase.api.util.MockResponseReader
 import junit.framework.Assert.fail
 import okhttp3.mockwebserver.MockResponse
@@ -28,7 +27,6 @@ class SearchApiTest : ApiTest() {
             val api = api.get<SearchApi>()
 
             val response = api.searchMovie("")
-                .suspended()
             expectThat(response) {
                 get { page }.isEqualTo(1)
                 get { total_results }.isEqualTo(56)
@@ -43,21 +41,21 @@ class SearchApiTest : ApiTest() {
                 .setBody(MockResponseReader.fromFile("responses/search/spider-man.json"))
         ) {
             val api = api.get<SearchApi>()
-            val either = api.searchMovie("")
-                .attempt()
-                .suspended()
+            val result = runCatching {
+                api.searchMovie("")
+            }
 
-            expectThat(either.isLeft()).isTrue()
-            when (either) {
-                is Either.Left -> {
-                    val exception = either.a
+            expectThat(result.isFailure).isTrue()
+            result
+                .onSuccess {
+                    fail("response must have a error")
+                }
+                .onFailure { exception ->
                     if (exception is HttpException) {
                         expectThat(exception.code()).isEqualTo(401)
                     } else {
                         fail("error must be HttpException")
                     }
                 }
-                is Either.Right -> fail("response must have a error")
-            }
         }
 }

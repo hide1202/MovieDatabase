@@ -1,6 +1,5 @@
 package io.viewpoint.moviedatabase.api
 
-import arrow.core.Either
 import io.viewpoint.moviedatabase.api.util.MockResponseReader
 import junit.framework.Assert.fail
 import okhttp3.mockwebserver.MockResponse
@@ -26,20 +25,21 @@ class MovieDetailApiTest : ApiTest() {
             .setBody(MockResponseReader.fromFile("responses/movie-details/watch-providers.json"))
     ) {
         val api = api.get<MovieDetailApi>()
-        val either = api.getWatchProviders(557)
-            .attempt()
-            .suspended()
+        val result = runCatching {
+            api.getWatchProviders(557)
+        }
 
-        expectThat(either.isRight()).isTrue()
-        when (either) {
-            is Either.Left -> fail("response must have a successful response")
-            is Either.Right -> {
-                expectThat(either.b.results) {
+        expectThat(result.isSuccess).isTrue()
+        result
+            .onSuccess {
+                expectThat(it.results) {
                     get { get("US")?.link }
                         .isNotNull()
                         .isEqualTo("https://www.themoviedb.org/movie/557-spider-man/watch?locale=US")
                 }
             }
-        }
+            .onFailure {
+                fail("response must have a successful response")
+            }
     }
 }

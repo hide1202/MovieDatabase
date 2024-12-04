@@ -9,16 +9,12 @@ apply from: "$rootDir/java-test-dependencies.gradle"
 dependencies {
     implementation libs.kotlinx.coroutines.core
 
+    implementation project(':core:common-coroutines')
     implementation project(':core:model')
     implementation project(':core:api')
 
     implementation libs.androidx.room.common
     implementation libs.androidx.paging.common
-
-    api libs.arrow.core
-    api libs.arrow.syntax
-    api libs.arrow.fx
-    kapt libs.arrow.meta.kapt
 
     implementation libs.dagger
     kapt libs.dagger.kapt

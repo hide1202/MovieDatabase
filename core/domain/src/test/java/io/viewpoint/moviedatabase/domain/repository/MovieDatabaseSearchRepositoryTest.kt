@@ -1,7 +1,7 @@
 package io.viewpoint.moviedatabase.domain.repository
 
+import io.mockk.coVerify
 import io.mockk.spyk
-import io.mockk.verify
 import io.viewpoint.moviedatabase.model.api.Movie
 import io.viewpoint.moviedatabase.model.common.PagingResult
 import io.viewpoint.moviedatabase.test.mock.TestSearchApi
@@ -34,6 +34,6 @@ class MovieDatabaseSearchRepositoryTest {
                 .get { this.nextKey }
                 .isEqualTo(2)
 
-            verify(exactly = 1) { api.searchMovie(any(), any()) }
+            coVerify(exactly = 1) { api.searchMovie(any(), any()) }
         }
 }

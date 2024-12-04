@@ -1,14 +1,13 @@
 package io.viewpoint.moviedatabase.domain.repository
 
-import arrow.fx.IO
 import io.viewpoint.moviedatabase.model.api.MovieDetail
 
 interface WantToSeeRepository {
-    fun hasWantToSeeMovie(id: Int): IO<Boolean>
+    suspend fun hasWantToSeeMovie(id: Int): Boolean
 
-    fun getWantToSeeMovies(): IO<List<MovieDetail>>
+    suspend fun getWantToSeeMovies(): List<MovieDetail>
 
-    fun addWantToSeeMovie(id: Int): IO<Unit>
+    suspend fun addWantToSeeMovie(id: Int)
 
-    fun removeWantToSeeMovie(id: Int): IO<Unit>
+    suspend fun removeWantToSeeMovie(id: Int)
 }

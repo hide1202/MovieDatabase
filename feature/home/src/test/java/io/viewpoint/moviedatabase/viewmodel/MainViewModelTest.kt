@@ -78,7 +78,6 @@ class MainViewModelTest : TestBase() {
 
             val expectedLanguage = TestConfigurationApi()
                 .getSupportedLanguages()
-                .suspended()
                 .map { it.iso_639_1 }
                 .first { it == Languages.SUPPORTED_LANGUAGE_CODES[1].language }
             preferencesService.putValue(

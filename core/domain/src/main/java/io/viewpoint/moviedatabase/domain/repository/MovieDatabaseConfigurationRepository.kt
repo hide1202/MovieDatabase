@@ -1,73 +1,60 @@
 package io.viewpoint.moviedatabase.domain.repository
 
-import arrow.core.*
-import arrow.fx.IO
-import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.api.ConfigurationApi
+import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
 import io.viewpoint.moviedatabase.domain.Languages
 import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
 import io.viewpoint.moviedatabase.model.api.ConfigurationResponse
+import java.util.Optional
 import javax.inject.Inject
+import kotlin.jvm.optionals.getOrElse
+import kotlin.jvm.optionals.getOrNull
 
 class MovieDatabaseConfigurationRepository @Inject constructor(
     private val configurationApi: ConfigurationApi
 ) : ConfigurationRepository {
-    private var configuration: Option<ConfigurationResponse> = Option.empty()
+    private var configuration: Optional<ConfigurationResponse> = Optional.empty()
 
-    private var languages: Option<List<ConfigurationLanguage>> = Option.empty()
+    private var languages: Optional<List<ConfigurationLanguage>> = Optional.empty()
 
     private fun cache(configuration: ConfigurationResponse?) {
-        if (configuration != null) this.configuration = configuration.some()
+        if (configuration != null) this.configuration = Optional.of(configuration)
     }
 
     private fun cache(languages: List<ConfigurationLanguage>?) {
-        if (languages != null) this.languages = languages.some()
+        if (languages != null) this.languages = Optional.of(languages)
     }
 
-    override suspend fun getImageBaseUrl(): Option<String> =
+    override suspend fun getImageBaseUrl(): Optional<String> =
         this.configuration
-            .mapNotNull { response ->
+            .map<String> { response ->
                 response.baseUrlWithSize
             }
-            .let {
-                IO.fx {
-                    if (it.isDefined()) {
-                        it
-                    } else {
-                        !effect {
-                            getConfigurationAndCache()
-                                .map { response ->
-                                    response.baseUrlWithSize
-                                }
-                                .orNull()
-                                .toOption()
+            .let { optional ->
+                val url = optional?.getOrNull()
+                Optional.ofNullable(if (url != null) {
+                    url
+                } else {
+                    getConfigurationAndCache()
+                        .map { response ->
+                            response.baseUrlWithSize
                         }
-                    }
-                }
+                        .getOrNull()
+                })
             }
-            .suspended()
 
     override suspend fun getSupportedLanguages(): List<ConfigurationLanguage> =
         languages
             .let {
-                IO.fx {
-                    if (it.isDefined()) {
-                        it.getOrElse { emptyList() }
-                    } else {
-                        !effect {
-                            getSupportedLanguagesAndCache()
-                                .getOrElse { emptyList() }
-                        }
-                    }
+                val languages = it.getOrElse {
+                    getSupportedLanguagesAndCache()
+                        .getOrElse { emptyList() }
                 }
-            }
-            .map { languages ->
                 Languages.SUPPORTED_LANGUAGE_CODES
                     .mapNotNull { locale ->
                         languages.firstOrNull { it.iso_639_1 == locale.language }
                     }
             }
-            .suspended()
 
     private val ConfigurationResponse.baseUrlWithSize: String?
         get() {
@@ -81,19 +68,17 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
             } else null
         }
 
-    private suspend fun getConfigurationAndCache(): Either<Throwable, ConfigurationResponse> =
-        configurationApi.getConfiguration()
-            .attempt()
-            .suspended()
-            .apply {
-                cache(this.orNull())
-            }
+    private suspend fun getConfigurationAndCache(): Result<ConfigurationResponse> =
+        suspendRunCatching {
+            configurationApi.getConfiguration()
+        }.apply {
+            cache(getOrNull())
+        }
 
-    private suspend fun getSupportedLanguagesAndCache(): Either<Throwable, List<ConfigurationLanguage>> =
-        configurationApi.getSupportedLanguages()
-            .attempt()
-            .suspended()
-            .apply {
-                cache(this.orNull())
-            }
+    private suspend fun getSupportedLanguagesAndCache(): Result<List<ConfigurationLanguage>> =
+        suspendRunCatching {
+            configurationApi.getSupportedLanguages()
+        }.apply {
+            cache(this.getOrNull())
+        }
 }

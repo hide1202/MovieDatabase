@@ -63,7 +63,7 @@ class MovieSearchResultDetailViewModelTest : TestBase() {
 
     @Test
     fun invertCommendTest(): Unit = runBlocking {
-        val popular = movieApi.getPopular(1).suspended()
+        val popular = movieApi.getPopular(1)
         val result = popular.results[0]
 
         vm.loadWithResult(mapperProvider.mapperFromMovie.map(result))

@@ -1,10 +1,11 @@
 package io.viewpoint.moviedatabase.domain.repository
 
-import arrow.core.Option
 import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
+import java.util.Optional
+import kotlin.jvm.optionals.getOrNull
 
 interface ConfigurationRepository {
-    suspend fun getImageBaseUrl(): Option<String>
+    suspend fun getImageBaseUrl(): Optional<String>
 
     suspend fun getImageUrl(pathSupplier: () -> String?): String? = getImageBaseUrl()
         .filter {
@@ -13,7 +14,7 @@ interface ConfigurationRepository {
         .map { baseUrl ->
             "${baseUrl.trimEnd('/')}/${pathSupplier()?.trimStart('/')}"
         }
-        .orNull()
+        .getOrNull()
 
     suspend fun getSupportedLanguages(): List<ConfigurationLanguage>
 }

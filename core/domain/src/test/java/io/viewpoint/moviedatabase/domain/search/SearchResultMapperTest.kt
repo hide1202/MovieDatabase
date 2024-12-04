@@ -1,7 +1,5 @@
 package io.viewpoint.moviedatabase.domain.search
 
-import arrow.core.Option
-import arrow.core.some
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
@@ -12,6 +10,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import strikt.api.expectThat
 import strikt.assertions.isEqualTo
+import java.util.Optional
 
 class SearchResultMapperTest {
     private val moshi = Moshi.Builder()
@@ -32,8 +31,8 @@ class SearchResultMapperTest {
 
         val expectedImageBaseUrl = "http://image.tmdb.org/t/p/"
         val mapper = SearchResultMapperProvider(object : ConfigurationRepository {
-            override suspend fun getImageBaseUrl(): Option<String> =
-                expectedImageBaseUrl.some()
+            override suspend fun getImageBaseUrl(): Optional<String> =
+                Optional.of(expectedImageBaseUrl)
 
             override suspend fun getSupportedLanguages(): List<ConfigurationLanguage> =
                 emptyList()

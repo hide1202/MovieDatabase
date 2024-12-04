@@ -3,9 +3,8 @@ package io.viewpoint.moviedatabase.viewmodel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import arrow.core.Either
-import arrow.core.getOrElse
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.KeywordModelMapper
 import io.viewpoint.moviedatabase.domain.WatchProviderModelMapper
@@ -59,14 +58,13 @@ class MovieSearchResultDetailViewModel @Inject constructor(
         val wantToSee = uiState.value.wantToSee
 
         viewModelScope.launch {
-            val either = if (wantToSee) {
-                wantToSeeRepository.removeWantToSeeMovie(result.id)
-            } else {
-                wantToSeeRepository.addWantToSeeMovie(result.id)
-            }.attempt()
-                .suspended()
-
-            if (either is Either.Right) {
+            suspendRunCatching {
+                if (wantToSee) {
+                    wantToSeeRepository.removeWantToSeeMovie(result.id)
+                } else {
+                    wantToSeeRepository.addWantToSeeMovie(result.id)
+                }
+            }.onSuccess {
                 _uiState.update { prev ->
                     prev.copy(wantToSee = !wantToSee)
                 }
@@ -89,10 +87,9 @@ class MovieSearchResultDetailViewModel @Inject constructor(
     suspend fun loadWithResult(result: SearchResultModel) {
         _result.value = result
 
-        val wantToSee = wantToSeeRepository.hasWantToSeeMovie(result.id)
-            .attempt()
-            .suspended()
-            .getOrElse { false }
+        val wantToSee = suspendRunCatching {
+            wantToSeeRepository.hasWantToSeeMovie(result.id)
+        }.getOrElse { false }
 
         _uiState.update { prev ->
             prev.copy(wantToSee = wantToSee)

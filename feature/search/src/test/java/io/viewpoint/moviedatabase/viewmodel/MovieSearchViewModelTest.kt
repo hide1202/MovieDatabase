@@ -1,9 +1,7 @@
 package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.paging.AsyncPagingDataDiffer
-import arrow.fx.IO
-import arrow.fx.extensions.fx
-import io.mockk.every
+import io.mockk.coEvery
 import io.mockk.spyk
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.getValues
@@ -125,10 +123,8 @@ class MovieSearchViewModelTest : TestBase() {
     @Test
     fun searchErrorTest() {
         testScope.launch {
-            every { searchApi.searchMovie(any(), any()) }
-                .returns(IO.fx {
-                    throw IllegalStateException()
-                })
+            coEvery { searchApi.searchMovie(any(), any()) }
+                .throws(IllegalStateException())
 
             vm.onKeywordChanged("test")
             vm.searchCommand.action()

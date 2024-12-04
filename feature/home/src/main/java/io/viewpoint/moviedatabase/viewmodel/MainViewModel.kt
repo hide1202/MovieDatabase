@@ -2,10 +2,9 @@ package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import arrow.core.getOrElse
-import arrow.fx.extensions.io.async.effectMap
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.viewpoint.moviedatabase.api.MovieDatabaseApi
+import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
@@ -59,15 +58,13 @@ class MainViewModel @Inject constructor(
         _uiState.update { prev -> prev.copy(isLoading = true) }
 
         val wantToSeeDeferred = async {
-            wantToSeeRepository.getWantToSeeMovies()
-                .effectMap { list ->
-                    list.map {
-                        mapper.mapperFromMovieDetail.map(it)
-                    }
+            suspendRunCatching {
+                wantToSeeRepository.getWantToSeeMovies()
+            }.map { list ->
+                list.map {
+                    mapper.mapperFromMovieDetail.map(it)
                 }
-                .attempt()
-                .suspended()
-                .getOrElse { emptyList() }
+            }.getOrElse { emptyList() }
         }
 
         val popularDeferred = async {

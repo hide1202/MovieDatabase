@@ -1,45 +1,38 @@
 package io.viewpoint.moviedatabase.domain.repository
 
-import arrow.fx.IO
-import arrow.fx.extensions.fx
 import io.viewpoint.moviedatabase.api.MovieDetailApi
 import io.viewpoint.moviedatabase.domain.repository.dao.WantToSeeDao
 import io.viewpoint.moviedatabase.domain.repository.entity.WantToSeeMovieEntity
 import io.viewpoint.moviedatabase.model.api.MovieDetail
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 
 class MovieDatabaseWantToSeeRepository @Inject constructor(
     private val movieDetailApi: MovieDetailApi,
     private val dao: WantToSeeDao
 ) : WantToSeeRepository {
-    override fun hasWantToSeeMovie(id: Int): IO<Boolean> = IO.fx {
-        !effect {
-            dao.getOne(id) != null
-        }
+    override suspend fun hasWantToSeeMovie(id: Int): Boolean {
+        return dao.getOne(id) != null
     }
 
-    override fun getWantToSeeMovies(): IO<List<MovieDetail>> = IO.fx {
-        val ids: List<Int> = !effect {
-            dao.getAll()
-                .map {
-                    it.id
-                }
-        }
+    override suspend fun getWantToSeeMovies(): List<MovieDetail> = coroutineScope {
+        val ids: List<Int> = dao.getAll()
+            .map {
+                it.id
+            }
 
-        !ids.map { id ->
-            movieDetailApi.getMovieDetail(id)
-        }.parSequence()
+        ids.map { id ->
+            async { movieDetailApi.getMovieDetail(id) }
+        }.awaitAll()
     }
 
-    override fun addWantToSeeMovie(id: Int): IO<Unit> = IO.fx {
-        !effect {
-            dao.insert(WantToSeeMovieEntity(id))
-        }
+    override suspend fun addWantToSeeMovie(id: Int) {
+        dao.insert(WantToSeeMovieEntity(id))
     }
 
-    override fun removeWantToSeeMovie(id: Int): IO<Unit> = IO.fx {
-        !effect {
-            dao.delete(WantToSeeMovieEntity(id))
-        }
+    override suspend fun removeWantToSeeMovie(id: Int) {
+        dao.delete(WantToSeeMovieEntity(id))
     }
 }

@@ -20,8 +20,6 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-        jcenter()
-        maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }
     }
 }
 

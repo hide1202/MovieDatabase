@@ -20,6 +20,7 @@ dependencies {
     implementation project(':core:resources')
 
     implementation project(':core:common')
+    implementation project(':core:common-coroutines')
     implementation project(':core:widget')
     implementation project(':core:model')
     implementation project(':core:api')

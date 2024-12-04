@@ -1,5 +1,6 @@
 package io.viewpoint.moviedatabase.domain.repository
 
+import io.mockk.coVerify
 import io.mockk.spyk
 import io.mockk.verify
 import io.viewpoint.moviedatabase.domain.Languages.SUPPORTED_LANGUAGE_CODES
@@ -22,12 +23,12 @@ class MovieDatabaseConfigurationRepositoryTest {
                 )
 
             val imageUrl = repository.getImageBaseUrl()
-            expectThat(imageUrl).get { isDefined() }.isTrue()
+            expectThat(imageUrl).get { isPresent }.isTrue()
 
             val secondImageUrl = repository.getImageBaseUrl()
-            expectThat(secondImageUrl).get { isDefined() }.isTrue()
+            expectThat(secondImageUrl).get { isPresent }.isTrue()
 
-            verify(exactly = 1) { api.getConfiguration() }
+            coVerify(exactly = 1) { api.getConfiguration() }
         }
 
     @Test
@@ -45,7 +46,7 @@ class MovieDatabaseConfigurationRepositoryTest {
             val secondLanguages = repository.getSupportedLanguages()
             expectThat(secondLanguages).isNotEmpty()
 
-            verify(exactly = 1) { api.getSupportedLanguages() }
+            coVerify(exactly = 1) { api.getSupportedLanguages() }
         }
 
     @Test

@@ -1,62 +1,55 @@
 package io.viewpoint.moviedatabase.domain.repository
 
-import arrow.core.Either
-import arrow.core.flatMap
-import arrow.core.getOrElse
 import io.viewpoint.moviedatabase.api.MovieDetailApi
-import io.viewpoint.moviedatabase.model.api.*
+import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
+import io.viewpoint.moviedatabase.model.api.Credit
+import io.viewpoint.moviedatabase.model.api.Keyword
+import io.viewpoint.moviedatabase.model.api.Movie
+import io.viewpoint.moviedatabase.model.api.MovieDetail
+import io.viewpoint.moviedatabase.model.api.WatchProvider
 import javax.inject.Inject
 
 class MovieDatabaseMovieDetailRepository @Inject constructor(
     private val movieDetailApi: MovieDetailApi
 ) : MovieDetailRepository {
     override suspend fun getMovieDetail(movieId: Int): MovieDetail? =
-        movieDetailApi.getMovieDetail(movieId)
-            .attempt()
-            .suspended()
-            .getOrElse { null }
+        suspendRunCatching {
+            movieDetailApi.getMovieDetail(movieId)
+        }.getOrNull()
 
     override suspend fun getCredits(movieId: Int): List<Credit> =
-        movieDetailApi.getMovieCredits(movieId)
-            .attempt()
-            .suspended()
-            .map {
-                it.cast + it.crew
-            }
-            .getOrElse { emptyList() }
+        suspendRunCatching {
+            movieDetailApi.getMovieCredits(movieId)
+        }.map {
+            it.cast + it.crew
+        }.getOrElse { emptyList() }
 
     override suspend fun getKeywords(movieId: Int): List<Keyword> =
-        movieDetailApi.getKeywords(movieId)
-            .attempt()
-            .suspended()
-            .map {
-                it.keywords
-            }
-            .getOrElse { emptyList() }
+        suspendRunCatching {
+            movieDetailApi.getKeywords(movieId)
+        }.map {
+            it.keywords
+        }.getOrElse { emptyList() }
 
     override suspend fun getRecommendations(movieId: Int): List<Movie> =
-        movieDetailApi.getRecommendations(movieId)
-            .attempt()
-            .suspended()
-            .map {
-                it.results
-            }
-            .getOrElse { emptyList() }
+        suspendRunCatching {
+            movieDetailApi.getRecommendations(movieId)
+        }.map {
+            it.results
+        }.getOrElse { emptyList() }
 
     override suspend fun getWatchProviders(
         movieId: Int,
         countryCode: String
     ): WatchProvider? =
-        movieDetailApi.getWatchProviders(movieId)
-            .attempt()
-            .suspended()
-            .flatMap {
-                val watchProvider = it.results[countryCode]
-                if (watchProvider != null) {
-                    Either.Right(watchProvider)
-                } else {
-                    Either.Left(Unit)
-                }
+        suspendRunCatching {
+            movieDetailApi.getWatchProviders(movieId)
+        }.mapCatching {
+            val watchProvider = it.results[countryCode]
+            if (watchProvider != null) {
+                watchProvider
+            } else {
+                null
             }
-            .getOrElse { null }
+        }.getOrNull()
 }

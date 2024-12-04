@@ -15,10 +15,5 @@ dependencies {
     implementation libs.retrofit.moshi
     implementation libs.kotlinx.coroutines.core
 
-    api libs.arrow.core
-    api libs.arrow.syntax
-    api libs.arrow.fx
-    kapt libs.arrow.meta.kapt
-
     testImplementation libs.test.mockwebserver
 }
