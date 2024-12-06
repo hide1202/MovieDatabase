@@ -3,7 +3,7 @@ minSdkVersion = "24"
 compileSdkVersion = "34"
 targetSdkVersion = "34"
 
-androidDesugarJdkLibs = "2.0.4"
+androidDesugarJdkLibs = "2.1.3"
 androidGradlePlugin = "8.4.1"
 androidTools = "31.7.2"
 gradleVersionsPlugin = "0.36.0"
