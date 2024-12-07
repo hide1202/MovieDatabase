@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
 }
 
-apply from: "$rootDir/android-jacoco.gradle"
 apply from: "$rootDir/android-test-dependencies.gradle"
 
 android {

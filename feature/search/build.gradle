@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.kotlin.kover)
 }
 
-apply from: "$rootDir/android-jacoco.gradle"
 apply from: "$rootDir/android-test-dependencies.gradle"
 
 android {

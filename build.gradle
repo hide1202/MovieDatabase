@@ -44,6 +44,7 @@ kover {
         filters {
             excludes {
                 androidGeneratedClasses()
+                packages("io.viewpoint.moviedatabase.platform.*")
             }
         }
     }
