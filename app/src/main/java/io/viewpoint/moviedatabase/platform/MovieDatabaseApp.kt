@@ -16,11 +16,11 @@ open class MovieDatabaseApp : Application(), Configuration.Provider {
     @Inject
     internal lateinit var workerFactory: HiltWorkerFactory
 
-    override fun getWorkManagerConfiguration(): Configuration {
-        return Configuration.Builder()
+    override val workManagerConfiguration: Configuration
+        get() = Configuration.Builder()
             .setWorkerFactory(workerFactory)
             .build()
-    }
+
     // endregion
 
     override fun onCreate() {
