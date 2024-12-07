@@ -60,4 +60,6 @@ dependencies {
 
     // timber
     implementation libs.timber
+
+    testImplementation libs.test.paging
 }
