@@ -23,11 +23,11 @@
 - Architecture
   - MVVM Architecture (Model - View - ViewModel)
   - UDF (Unidirectional Data Flow)
-- Retrofit (w/OkHttp): for fetching network data
-- Moshi: for serialization/deserialization JSON request, or response
-- Glide: for loading imges of remote resources
-- Hilt: for depedency injection
-- Timber: for logging
+- [Retrofit (w/OkHttp)](https://github.com/square/retrofit): for fetching network data
+- [Moshi](https://github.com/square/moshi): for serialization/deserialization JSON request, or response
+- [Glide](https://bumptech.github.io/glide/): for loading imges of remote resources
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android): for depedency injection
+- [Timber](https://github.com/JakeWharton/timber): for logging
 
 ## How to run
 
