@@ -1,23 +1,23 @@
 ![logo](arts/logo.png)
 
-# Movie Database
+# 🎥 Movie Database
 
 ![Android CI](https://github.com/hide1202/MovieDatabase/workflows/Android%20CI/badge.svg?branch=develop)
 [![codecov](https://codecov.io/gh/hide1202/MovieDatabase/branch/develop/graph/badge.svg)](https://codecov.io/gh/hide1202/MovieDatabase)
 
 - Application for the practice of android development using Movie Database API
 
-## Prerequisites
+## 📋 Prerequisites
 
 - Android Studio Koala | 2024.1.1 (stable)
 
-## Screenshots
+## 📸 Screenshots
 | splash | home | detail | search |
 |---|---|---|---|
 | ![splash](arts/splash.jpg) | ![home](arts/home.jpg) | ![detail](arts/detail.jpg) | ![search](arts/search.jpg) |
 
 
-## Tech stack
+## 🛠️ Tech Stack
 - Kotlin, and Coroutines, Flow
 - [Compose](https://developer.android.com/compose): a modern toolkit for building native UI using Kotlin
 - Jetpack
@@ -35,7 +35,7 @@
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android): for depedency injection
 - [Timber](https://github.com/JakeWharton/timber): for logging
 
-## How to run
+## ▶️ How to Run
 
 - Create a file in the root of project with `external.properties` name.
 - And write following property with your api key.
@@ -43,6 +43,18 @@
 ```
 movie.database.api.key=YOUR_API_KEY
 ```
+
+## 🚀 Future Plans
+
+We are planning to extend this project to support **Compose Multiplatform**, 
+enabling it to run seamlessly across multiple platforms like Android, iOS, and desktop. 
+
+Stay tuned for updates!
+
+## ⭐ Support
+
+If you find this project helpful or interesting, please give it a **Star**! 🌟  
+Your support motivates us to improve and add new features.
 
 ## References
 
