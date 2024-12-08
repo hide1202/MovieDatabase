@@ -11,6 +11,12 @@
 
 - Android Studio Koala | 2024.1.1 (stable)
 
+## Screenshots
+| splash | home | detail | search |
+|---|---|---|---|
+| ![splash](arts/splash.jpg) | ![home](arts/home.jpg) | ![detail](arts/detail.jpg) | ![search](arts/search.jpg) |
+
+
 ## Tech stack
 - Kotlin, and Coroutines, Flow
 - [Compose](https://developer.android.com/compose): a modern toolkit for building native UI using Kotlin
