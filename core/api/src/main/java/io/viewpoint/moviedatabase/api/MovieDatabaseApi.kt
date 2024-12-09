@@ -105,7 +105,7 @@ class MovieDatabaseApi private constructor(
     }
 
     companion object {
-        const val BASE_URL = "https://api.themoviedb.org/3/"
+        private const val BASE_URL = "https://api.themoviedb.org/3/"
 
         var language: String? = null
     }
