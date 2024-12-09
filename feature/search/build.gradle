@@ -45,8 +45,9 @@ dependencies {
     implementation libs.compose.tooling.preview
     debugImplementation libs.compose.tooling
 
-    // glide
-    implementation libs.glide.compose
+    // coil
+    implementation libs.coil
+    implementation libs.coil.okhttp
 
     // accompanist
     implementation libs.accompanist.drawablepainter

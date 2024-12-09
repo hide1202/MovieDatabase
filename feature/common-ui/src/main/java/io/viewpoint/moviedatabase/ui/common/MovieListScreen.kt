@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalGlideComposeApi::class)
-
 package io.viewpoint.moviedatabase.ui.common
 
 import androidx.compose.foundation.Image
@@ -30,8 +28,7 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
+import coil3.compose.AsyncImage
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 import io.viewpoint.moviedatabase.designsystem.Palette
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
@@ -89,7 +86,7 @@ private fun Movie(
             .padding(16.dp)
             .fillMaxWidth(),
     ) {
-        GlideImage(
+        AsyncImage(
             modifier = Modifier.size(100.dp),
             model = posterUrl,
             contentDescription = null,

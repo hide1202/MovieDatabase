@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.moviedatabase.android.library)
-    alias(libs.plugins.kotlin.kapt)
 }
 
 apply from: "$rootDir/android-test-dependencies.gradle"
@@ -17,7 +16,7 @@ dependencies {
     // timber
     implementation libs.timber
 
-    // glide
-    implementation libs.glide
-    kapt libs.glide.kapt
+    // coil
+    implementation libs.coil
+    implementation libs.coil.okhttp
 }

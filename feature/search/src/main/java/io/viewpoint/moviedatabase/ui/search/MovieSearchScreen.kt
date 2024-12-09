@@ -53,8 +53,7 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
+import coil3.compose.AsyncImage
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 import io.viewpoint.moviedatabase.feature.search.R
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
@@ -231,7 +230,6 @@ private fun SearchResultList(
     }
 }
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 private fun SearchResult(
     item: SearchResultModel,
@@ -244,7 +242,7 @@ private fun SearchResult(
             }
             .padding(16.dp),
     ) {
-        GlideImage(
+        AsyncImage(
             modifier = Modifier.size(100.dp),
             model = item.posterUrl,
             alignment = Alignment.Center,

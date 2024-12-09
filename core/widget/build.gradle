@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.moviedatabase.android.library)
-    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -14,8 +13,9 @@ dependencies {
     implementation libs.androidx.core
     implementation libs.androidx.appcompat
 
-    // glide
-    implementation libs.glide
+    // coil
+    implementation libs.coil
+    implementation libs.coil.okhttp
 
     // timber
     implementation libs.timber

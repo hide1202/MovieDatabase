@@ -106,9 +106,9 @@ dependencies {
     // timber
     implementation libs.timber
 
-    // glide
-    implementation libs.glide
-    kapt libs.glide.kapt
+    // coil
+    implementation libs.coil
+    implementation libs.coil.okhttp
 
     // okhttp
     implementation libs.okhttp

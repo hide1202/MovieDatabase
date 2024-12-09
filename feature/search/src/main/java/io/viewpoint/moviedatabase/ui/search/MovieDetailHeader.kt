@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalGlideComposeApi::class)
-
 package io.viewpoint.moviedatabase.ui.search
 
 import androidx.compose.foundation.Image
@@ -32,8 +30,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
+import coil3.compose.AsyncImage
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 import io.viewpoint.moviedatabase.designsystem.Palette
@@ -54,7 +51,7 @@ internal fun MovieDetailHeader(
             .height(250.dp)
             .background(Palette.dark_gray),
     ) {
-        GlideImage(
+        AsyncImage(
             modifier = Modifier.fillMaxSize(),
             model = result?.backdropUrl,
             alignment = Alignment.Center,
@@ -69,7 +66,7 @@ internal fun MovieDetailHeader(
                 .align(Alignment.BottomStart),
             verticalAlignment = Alignment.Bottom,
         ) {
-            GlideImage(
+            AsyncImage(
                 modifier = Modifier
                     .width(100.dp)
                     .height(150.dp)
@@ -117,7 +114,7 @@ private fun WatchProviders(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(items = watchProviders) {
-            GlideImage(
+            AsyncImage(
                 modifier = Modifier
                     .size(18.dp)
                     .clip(CircleShape),

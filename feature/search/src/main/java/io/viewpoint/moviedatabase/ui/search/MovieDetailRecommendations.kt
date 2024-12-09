@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalGlideComposeApi::class)
-
 package io.viewpoint.moviedatabase.ui.search
 
 import androidx.compose.foundation.layout.Arrangement
@@ -22,8 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
+import coil3.compose.AsyncImage
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 import io.viewpoint.moviedatabase.feature.search.R
 import io.viewpoint.moviedatabase.model.ui.DefaultSearchResultModel
@@ -51,7 +48,7 @@ fun MovieDetailRecommendations(
 @Composable
 private fun Recommendation(recommendation: SearchResultModel) {
     Column(modifier = Modifier.width(150.dp)) {
-        GlideImage(
+        AsyncImage(
             modifier = Modifier
                 .size(150.dp)
                 .clip(shape = CircleShape),
