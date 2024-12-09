@@ -27,13 +27,13 @@ enum class MainTab(
 
     companion object {
         fun findTag(tag: String): MainTab? {
-            return values().firstOrNull { it.tag == tag }
+            return entries.firstOrNull { it.tag == tag }
         }
     }
 }
 
 fun MainTab.Companion.otherTab(exceptTag: String): Sequence<MainTab> =
-    MainTab.values()
+    MainTab.entries
         .asSequence()
         .filter {
             it.tag != exceptTag

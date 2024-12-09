@@ -18,7 +18,7 @@ fun MovieDatabaseNavigation(
 ) {
     Column {
         NavigationBar {
-            MainTab.values().forEach {
+            MainTab.entries.forEach {
                 NavigationBarItem(
                     icon = {
                         Image(
