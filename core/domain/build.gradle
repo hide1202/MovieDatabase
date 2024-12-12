@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
 }
 
-apply from: "$rootDir/java-jacoco.gradle"
 apply from: "$rootDir/java-test-dependencies.gradle"
 
 dependencies {
