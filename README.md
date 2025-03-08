@@ -6,6 +6,7 @@
 [![codecov](https://codecov.io/gh/hide1202/MovieDatabase/branch/develop/graph/badge.svg)](https://codecov.io/gh/hide1202/MovieDatabase)
 
 - Application for the practice of android development using Movie Database API
+- This repository is my Android lab. I'm experimenting with a lot of new libraries and trying out different things.
 
 ## 📋 Prerequisites
 
