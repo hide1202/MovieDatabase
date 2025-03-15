@@ -2,18 +2,18 @@ package io.viewpoint.moviedatabase.test.mock
 
 import io.viewpoint.moviedatabase.domain.repository.dao.WantToSeeDao
 import io.viewpoint.moviedatabase.domain.repository.entity.WantToSeeMovieEntity
-import io.viewpoint.moviedatabase.model.api.MovieDetail
+import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
 import io.viewpoint.moviedatabase.test.common.MoshiReader
 import io.viewpoint.moviedatabase.test.common.ResponseReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class TestWantToSeeDao : WantToSeeDao {
-    private suspend fun mockResponse(): MovieDetail {
+    private suspend fun mockResponse(): MovieDetailDto {
         return withContext(Dispatchers.IO) {
             ResponseReader.jsonFromFileAsync(
                 "responses/movie-detail.json",
-                MoshiReader.moshi.adapter(MovieDetail::class.java)
+                MoshiReader.moshi.adapter(MovieDetailDto::class.java)
             )
         }
     }

@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.model.api
+package io.viewpoint.moviedatabase.api.dto
 
 data class ConfigurationResponse(
     val images: Image?,

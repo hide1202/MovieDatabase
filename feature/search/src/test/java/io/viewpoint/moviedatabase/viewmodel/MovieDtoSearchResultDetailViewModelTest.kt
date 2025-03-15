@@ -24,7 +24,7 @@ import strikt.assertions.isNotEmpty
 import strikt.assertions.isNotEqualTo
 import strikt.assertions.isNotNull
 
-class MovieSearchResultDetailViewModelTest : TestBase() {
+class MovieDtoSearchResultDetailViewModelTest : TestBase() {
     private val configurationRepository =
         MovieDatabaseConfigurationRepository(TestConfigurationApi())
     private val mapperProvider =

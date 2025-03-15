@@ -13,12 +13,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 import io.viewpoint.moviedatabase.feature.search.R
-import io.viewpoint.moviedatabase.model.api.MovieDetail
+import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
 
 @Composable
 internal fun MovieDetailGenres(
     modifier: Modifier = Modifier,
-    genres: List<MovieDetail.Genre>,
+    genres: List<MovieDetailDto.GenreDto>,
 ) {
     MovieDetailElement(modifier = modifier.fillMaxWidth()) {
         Column {
@@ -29,7 +29,7 @@ internal fun MovieDetailGenres(
 }
 
 @Composable
-private fun Genres(genres: List<MovieDetail.Genre>) {
+private fun Genres(genres: List<MovieDetailDto.GenreDto>) {
     LazyRow(
         modifier = Modifier.padding(top = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(4.dp),
@@ -46,7 +46,7 @@ private fun Genres(genres: List<MovieDetail.Genre>) {
 internal fun MovieDetailGenresPreview() {
     MovieDatabaseTheme {
         MovieDetailGenres(genres = List(10) { id ->
-            MovieDetail.Genre(id = id, "Action")
+            MovieDetailDto.GenreDto(id = id, "Action")
         })
     }
 }

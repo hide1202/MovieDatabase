@@ -9,7 +9,7 @@ import strikt.assertions.isEqualTo
 import strikt.assertions.isNotNull
 import strikt.assertions.isTrue
 
-class MovieDetailApiTest : ApiTest() {
+class MovieDtoDetailApiTest : ApiTest() {
     private val api by lazy {
         MovieDatabaseApi.Builder()
             .apply {

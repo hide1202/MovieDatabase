@@ -5,20 +5,20 @@ import androidx.paging.PagingState
 import io.viewpoint.moviedatabase.domain.LoadResultMapper
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
-import io.viewpoint.moviedatabase.model.api.Movie
+import io.viewpoint.moviedatabase.api.dto.MovieDto
 import io.viewpoint.moviedatabase.model.common.PagingResult
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 
 class MovieListPagingSource(
     configurationRepository: ConfigurationRepository,
-    private val loader: suspend (Int) -> List<Movie>
+    private val loader: suspend (Int) -> List<MovieDto>
 ) : PagingSource<Int, SearchResultModel>() {
     private val mapperProvider: SearchResultMapperProvider =
         SearchResultMapperProvider(configurationRepository)
     private val resultMapper: LoadResultMapper<Int, SearchResultModel> = LoadResultMapper()
     private val loadedMovieId = mutableSetOf<Int>()
 
-    protected fun List<Movie>.distinctByLoadedItems(): List<Movie> {
+    protected fun List<MovieDto>.distinctByLoadedItems(): List<MovieDto> {
         return this.filter { item ->
             loadedMovieId.none { id -> item.id == id }
         }.also {

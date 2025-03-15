@@ -9,7 +9,7 @@ import strikt.assertions.isNotEmpty
 import strikt.assertions.isNotNull
 import strikt.assertions.isNull
 
-class MovieDatabaseMovieDetailRepositoryTest {
+class MovieDatabaseMovieDtoDetailRepositoryTest {
     private val repository = MovieDatabaseMovieDetailRepository(TestMovieDetailApi())
 
     @Test

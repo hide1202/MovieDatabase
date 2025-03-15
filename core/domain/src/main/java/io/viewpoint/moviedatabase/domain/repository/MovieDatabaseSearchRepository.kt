@@ -2,14 +2,14 @@ package io.viewpoint.moviedatabase.domain.repository
 
 import io.viewpoint.moviedatabase.api.SearchApi
 import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
-import io.viewpoint.moviedatabase.model.api.Movie
+import io.viewpoint.moviedatabase.api.dto.MovieDto
 import io.viewpoint.moviedatabase.model.common.PagingResult
 import javax.inject.Inject
 
 class MovieDatabaseSearchRepository @Inject constructor(
     private val searchApi: SearchApi
 ) : SearchRepository {
-    override suspend fun searchKeyword(keyword: String, page: Int?): PagingResult<Int, Movie> {
+    override suspend fun searchKeyword(keyword: String, page: Int?): PagingResult<Int, MovieDto> {
         val page = page ?: INITIAL_PAGE
         return suspendRunCatching {
             searchApi.searchMovie(keyword, page)

@@ -2,26 +2,26 @@ package io.viewpoint.moviedatabase.domain.search
 
 import io.viewpoint.moviedatabase.domain.Mapper
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
-import io.viewpoint.moviedatabase.model.api.Movie
-import io.viewpoint.moviedatabase.model.api.MovieDetail
+import io.viewpoint.moviedatabase.api.dto.MovieDto
+import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import javax.inject.Inject
 
 class SearchResultMapperProvider @Inject constructor(
     configurationRepository: ConfigurationRepository
 ) {
-    val mapperFromMovie: Mapper<Movie, SearchResultModel> by lazy {
+    val mapperFromMovie: Mapper<MovieDto, SearchResultModel> by lazy {
         FromMovie(configurationRepository)
     }
 
-    val mapperFromMovieDetail: Mapper<MovieDetail, SearchResultModel> by lazy {
+    val mapperFromMovieDetail: Mapper<MovieDetailDto, SearchResultModel> by lazy {
         FromMovieDetail(configurationRepository)
     }
 
     private class FromMovie(
         private val configurationRepository: ConfigurationRepository
-    ) : Mapper<Movie, SearchResultModel> {
-        override suspend fun map(input: Movie): SearchResultModel =
+    ) : Mapper<MovieDto, SearchResultModel> {
+        override suspend fun map(input: MovieDto): SearchResultModel =
             SearchResultModel(
                 id = input.id,
                 title = input.title,
@@ -41,8 +41,8 @@ class SearchResultMapperProvider @Inject constructor(
 
     private class FromMovieDetail(
         private val configurationRepository: ConfigurationRepository
-    ) : Mapper<MovieDetail, SearchResultModel> {
-        override suspend fun map(input: MovieDetail): SearchResultModel =
+    ) : Mapper<MovieDetailDto, SearchResultModel> {
+        override suspend fun map(input: MovieDetailDto): SearchResultModel =
             SearchResultModel(
                 id = input.id,
                 title = input.title,

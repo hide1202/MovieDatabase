@@ -13,7 +13,7 @@ import strikt.assertions.isEqualTo
 import strikt.assertions.isNotEmpty
 import strikt.assertions.isTrue
 
-class MovieDatabaseConfigurationRepositoryTest {
+class MovieDtoDatabaseConfigurationRepositoryTest {
     @Test
     fun `repository can cache configuration`() =
         runTest {

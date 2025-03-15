@@ -1,6 +1,6 @@
 package io.viewpoint.moviedatabase.api
 
-import io.viewpoint.moviedatabase.model.api.MovieListResponse
+import io.viewpoint.moviedatabase.api.dto.MovieListResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

@@ -1,16 +1,16 @@
 package io.viewpoint.moviedatabase.api
 
-import io.viewpoint.moviedatabase.model.api.CreditsResponse
-import io.viewpoint.moviedatabase.model.api.KeywordResponse
-import io.viewpoint.moviedatabase.model.api.MovieDetail
-import io.viewpoint.moviedatabase.model.api.MovieListResponse
-import io.viewpoint.moviedatabase.model.api.WatchProviderResponse
+import io.viewpoint.moviedatabase.api.dto.CreditsResponse
+import io.viewpoint.moviedatabase.api.dto.KeywordResponse
+import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
+import io.viewpoint.moviedatabase.api.dto.MovieListResponse
+import io.viewpoint.moviedatabase.api.dto.WatchProviderResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface MovieDetailApi {
     @GET("movie/{id}")
-    suspend fun getMovieDetail(@Path("id") id: Int): MovieDetail
+    suspend fun getMovieDetail(@Path("id") id: Int): MovieDetailDto
 
     @GET("movie/{id}/credits")
     suspend fun getMovieCredits(@Path("id") id: Int): CreditsResponse

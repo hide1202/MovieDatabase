@@ -1,7 +1,7 @@
 package io.viewpoint.moviedatabase.domain
 
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
-import io.viewpoint.moviedatabase.model.api.WatchProvider
+import io.viewpoint.moviedatabase.api.dto.WatchProviderDto
 import io.viewpoint.moviedatabase.model.ui.WatchProviderModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -10,13 +10,13 @@ import javax.inject.Inject
 
 class WatchProviderModelMapper @Inject constructor(
     private val configurationRepository: ConfigurationRepository
-) : Mapper<WatchProvider, WatchProviderModel> {
-    override suspend fun map(input: WatchProvider): WatchProviderModel = WatchProviderModel(
+) : Mapper<WatchProviderDto, WatchProviderModel> {
+    override suspend fun map(input: WatchProviderDto): WatchProviderModel = WatchProviderModel(
         providers = createWatchProviderMap(input)
     )
 
     private suspend fun createWatchProviderMap(
-        input: WatchProvider
+        input: WatchProviderDto
     ): Map<WatchProviderModel.Type, List<WatchProviderModel.Info>> {
         val buy = input.buy
         val streaming = input.flatrate

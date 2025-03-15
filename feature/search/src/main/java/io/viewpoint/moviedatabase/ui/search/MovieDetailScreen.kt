@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
 import io.viewpoint.moviedatabase.designsystem.Palette
-import io.viewpoint.moviedatabase.model.api.MovieDetail
+import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
 import io.viewpoint.moviedatabase.model.ui.DefaultSearchResultModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.viewmodel.Command
@@ -112,8 +112,8 @@ fun MovieDetailScreenPreview() {
             ),
             uiState = MovieDetailUiState(
                 genres = listOf(
-                    MovieDetail.Genre(id = 0, name = "Fantasy"),
-                    MovieDetail.Genre(id = 1, name = "Action"),
+                    MovieDetailDto.GenreDto(id = 0, name = "Fantasy"),
+                    MovieDetailDto.GenreDto(id = 1, name = "Action"),
                 )
             ),
             onInvertWantToSeeCommand = Command { },

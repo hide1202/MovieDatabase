@@ -1,26 +1,26 @@
-package io.viewpoint.moviedatabase.model.api
+package io.viewpoint.moviedatabase.api.dto
 
-data class WatchProvider(
+data class WatchProviderDto(
     val link: String,
-    val buy: List<Buy> = emptyList(),
-    val flatrate: List<Flatrate> = emptyList(),
-    val rent: List<Rent> = emptyList()
+    val buy: List<BuyDto> = emptyList(),
+    val flatrate: List<FlatrateDto> = emptyList(),
+    val rent: List<RentDto> = emptyList()
 ) {
-    data class Buy(
+    data class BuyDto(
         val display_priority: Int?,
         val logo_path: String?,
         val provider_id: Int?,
         val provider_name: String?
     )
 
-    data class Flatrate(
+    data class FlatrateDto(
         val display_priority: Int?,
         val logo_path: String?,
         val provider_id: Int?,
         val provider_name: String?
     )
 
-    data class Rent(
+    data class RentDto(
         val display_priority: Int?,
         val logo_path: String?,
         val provider_id: Int?,

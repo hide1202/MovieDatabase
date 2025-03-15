@@ -2,8 +2,8 @@ package io.viewpoint.moviedatabase.test.mock
 
 import com.squareup.moshi.Types
 import io.viewpoint.moviedatabase.api.ConfigurationApi
-import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
-import io.viewpoint.moviedatabase.model.api.ConfigurationResponse
+import io.viewpoint.moviedatabase.api.dto.ConfigurationLanguageDto
+import io.viewpoint.moviedatabase.api.dto.ConfigurationResponse
 import io.viewpoint.moviedatabase.test.common.MoshiReader
 import io.viewpoint.moviedatabase.test.common.ResponseReader
 import kotlinx.coroutines.Dispatchers
@@ -19,13 +19,13 @@ class TestConfigurationApi : ConfigurationApi {
         }
     }
 
-    override suspend fun getSupportedLanguages(): List<ConfigurationLanguage> {
+    override suspend fun getSupportedLanguages(): List<ConfigurationLanguageDto> {
         return withContext(Dispatchers.IO) {
             val type =
-                Types.newParameterizedType(List::class.java, ConfigurationLanguage::class.java)
+                Types.newParameterizedType(List::class.java, ConfigurationLanguageDto::class.java)
             ResponseReader.jsonFromFileAsync(
                 "responses/languages-results.json",
-                MoshiReader.moshi.adapter<List<ConfigurationLanguage>>(type)
+                MoshiReader.moshi.adapter<List<ConfigurationLanguageDto>>(type)
             )
         }
     }

@@ -1,6 +1,6 @@
-package io.viewpoint.moviedatabase.model.api
+package io.viewpoint.moviedatabase.api.dto
 
-sealed class Credit(
+sealed class CreditDto(
     open val id: Int,
     open val name: String,
     open val original_name: String?,
@@ -8,7 +8,7 @@ sealed class Credit(
     open val profile_path: String?,
 )
 
-data class Cast(
+data class CastDto(
     override val id: Int,
     override val name: String,
     override val original_name: String?,
@@ -21,9 +21,9 @@ data class Cast(
     val known_for_department: String?,
     val order: Int,
     val popularity: Double
-) : Credit(id, name, original_name, gender, profile_path)
+) : CreditDto(id, name, original_name, gender, profile_path)
 
-data class Crew(
+data class CrewDto(
     override val id: Int,
     override val name: String,
     override val gender: Int,
@@ -35,4 +35,4 @@ data class Crew(
     val job: String?,
     val known_for_department: String?,
     val popularity: Double
-) : Credit(id, name, original_name, gender, profile_path)
+) : CreditDto(id, name, original_name, gender, profile_path)

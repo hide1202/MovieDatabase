@@ -3,8 +3,8 @@ package io.viewpoint.moviedatabase.domain.search
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
-import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
-import io.viewpoint.moviedatabase.model.api.Movie
+import io.viewpoint.moviedatabase.api.dto.ConfigurationLanguageDto
+import io.viewpoint.moviedatabase.api.dto.MovieDto
 import junit.framework.Assert.fail
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
@@ -21,7 +21,7 @@ class SearchResultMapperTest {
     fun mapTest() = runBlocking {
         // Arrange
         val response =
-            moshi.adapter(Movie::class.java)
+            moshi.adapter(MovieDto::class.java)
                 .fromJson(RESULT_JSON)
 
         if (response == null) {
@@ -34,7 +34,7 @@ class SearchResultMapperTest {
             override suspend fun getImageBaseUrl(): Optional<String> =
                 Optional.of(expectedImageBaseUrl)
 
-            override suspend fun getSupportedLanguages(): List<ConfigurationLanguage> =
+            override suspend fun getSupportedLanguages(): List<ConfigurationLanguageDto> =
                 emptyList()
         })
 

@@ -3,8 +3,8 @@ package io.viewpoint.moviedatabase.domain.repository
 import io.viewpoint.moviedatabase.api.ConfigurationApi
 import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
 import io.viewpoint.moviedatabase.domain.Languages
-import io.viewpoint.moviedatabase.model.api.ConfigurationLanguage
-import io.viewpoint.moviedatabase.model.api.ConfigurationResponse
+import io.viewpoint.moviedatabase.api.dto.ConfigurationLanguageDto
+import io.viewpoint.moviedatabase.api.dto.ConfigurationResponse
 import java.util.Optional
 import javax.inject.Inject
 import kotlin.jvm.optionals.getOrElse
@@ -15,13 +15,13 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
 ) : ConfigurationRepository {
     private var configuration: Optional<ConfigurationResponse> = Optional.empty()
 
-    private var languages: Optional<List<ConfigurationLanguage>> = Optional.empty()
+    private var languages: Optional<List<ConfigurationLanguageDto>> = Optional.empty()
 
     private fun cache(configuration: ConfigurationResponse?) {
         if (configuration != null) this.configuration = Optional.of(configuration)
     }
 
-    private fun cache(languages: List<ConfigurationLanguage>?) {
+    private fun cache(languages: List<ConfigurationLanguageDto>?) {
         if (languages != null) this.languages = Optional.of(languages)
     }
 
@@ -43,7 +43,7 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
                 })
             }
 
-    override suspend fun getSupportedLanguages(): List<ConfigurationLanguage> =
+    override suspend fun getSupportedLanguages(): List<ConfigurationLanguageDto> =
         languages
             .let {
                 val languages = it.getOrElse {
@@ -75,7 +75,7 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
             cache(getOrNull())
         }
 
-    private suspend fun getSupportedLanguagesAndCache(): Result<List<ConfigurationLanguage>> =
+    private suspend fun getSupportedLanguagesAndCache(): Result<List<ConfigurationLanguageDto>> =
         suspendRunCatching {
             configurationApi.getSupportedLanguages()
         }.apply {

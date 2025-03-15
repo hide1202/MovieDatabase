@@ -1,7 +1,7 @@
 package io.viewpoint.moviedatabase.test.mock
 
 import io.viewpoint.moviedatabase.api.SearchApi
-import io.viewpoint.moviedatabase.model.api.MovieListResponse
+import io.viewpoint.moviedatabase.api.dto.MovieListResponse
 import io.viewpoint.moviedatabase.test.common.MoshiReader
 import io.viewpoint.moviedatabase.test.common.ResponseReader
 import kotlinx.coroutines.Dispatchers

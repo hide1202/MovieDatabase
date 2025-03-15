@@ -1,21 +1,21 @@
 package io.viewpoint.moviedatabase.test.mock
 
 import io.viewpoint.moviedatabase.api.MovieDetailApi
-import io.viewpoint.moviedatabase.model.api.CreditsResponse
-import io.viewpoint.moviedatabase.model.api.KeywordResponse
-import io.viewpoint.moviedatabase.model.api.MovieDetail
-import io.viewpoint.moviedatabase.model.api.MovieListResponse
-import io.viewpoint.moviedatabase.model.api.WatchProviderResponse
+import io.viewpoint.moviedatabase.api.dto.CreditsResponse
+import io.viewpoint.moviedatabase.api.dto.KeywordResponse
+import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
+import io.viewpoint.moviedatabase.api.dto.MovieListResponse
+import io.viewpoint.moviedatabase.api.dto.WatchProviderResponse
 import io.viewpoint.moviedatabase.test.common.MoshiReader
 import io.viewpoint.moviedatabase.test.common.ResponseReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class TestMovieDetailApi : MovieDetailApi {
-    override suspend fun getMovieDetail(id: Int): MovieDetail = withContext(Dispatchers.IO) {
+    override suspend fun getMovieDetail(id: Int): MovieDetailDto = withContext(Dispatchers.IO) {
         ResponseReader.jsonFromFileAsync(
             "responses/movie-detail.json",
-            MoshiReader.moshi.adapter(MovieDetail::class.java)
+            MoshiReader.moshi.adapter(MovieDetailDto::class.java)
         ).takeIf {
             it.id == id
         } ?: throw NoSuchElementException()

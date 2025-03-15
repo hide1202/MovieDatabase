@@ -1,8 +1,8 @@
-package io.viewpoint.moviedatabase.model.api
+package io.viewpoint.moviedatabase.api.dto
 
 import java.io.Serializable
 
-data class Movie(
+data class MovieDto(
     val adult: Boolean,
     val backdrop_path: String?,
     val genre_ids: List<Int>,

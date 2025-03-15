@@ -26,7 +26,7 @@ import strikt.assertions.isTrue
 
 //@RunWith(RobolectricTestRunner::class)
 //@Config(application = TestApplication::class)
-class MovieSearchViewModelTest : TestBase() {
+class MovieDtoSearchViewModelTest : TestBase() {
     private val preferences = TestPreferencesService()
     private val searchApi = spyk(TestSearchApi())
     private val pager =
