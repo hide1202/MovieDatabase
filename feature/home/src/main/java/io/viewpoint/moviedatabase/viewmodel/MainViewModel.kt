@@ -3,8 +3,8 @@ package io.viewpoint.moviedatabase.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseApiConfiguration
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
@@ -47,8 +47,9 @@ class MainViewModel @Inject constructor(
 
     init {
         initJob = viewModelScope.launch {
-            MovieDatabaseApi.language =
+            MovieDatabaseApiConfiguration.changeLanguage(
                 preferences.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+            )
 
             loadData()
         }

@@ -1,10 +1,11 @@
 package io.viewpoint.moviedatabase.core.data.repository
 
 import io.viewpoint.moviedatabase.api.ConfigurationApi
-import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
-import io.viewpoint.moviedatabase.domain.Languages
 import io.viewpoint.moviedatabase.api.dto.ConfigurationLanguageDto
 import io.viewpoint.moviedatabase.api.dto.ConfigurationResponse
+import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
+import io.viewpoint.moviedatabase.domain.Languages
+import io.viewpoint.moviedatabase.domain.model.ConfigurationLanguage
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import java.util.Optional
 import javax.inject.Inject
@@ -33,7 +34,8 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
             }
             .let { optional ->
                 val url = optional?.getOrNull()
-                Optional.ofNullable(if (url != null) {
+                Optional.ofNullable(
+                    if (url != null) {
                     url
                 } else {
                     getConfigurationAndCache()
@@ -44,7 +46,7 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
                 })
             }
 
-    override suspend fun getSupportedLanguages(): List<ConfigurationLanguageDto> =
+    override suspend fun getSupportedLanguages(): List<ConfigurationLanguage> =
         languages
             .let {
                 val languages = it.getOrElse {
@@ -55,6 +57,13 @@ class MovieDatabaseConfigurationRepository @Inject constructor(
                     .mapNotNull { locale ->
                         languages.firstOrNull { it.iso_639_1 == locale.language }
                     }
+            }
+            .map {
+                ConfigurationLanguage(
+                    name = it.name,
+                    englishName = it.english_name,
+                    languageCode = it.iso_639_1,
+                )
             }
 
     private val ConfigurationResponse.baseUrlWithSize: String?

@@ -18,7 +18,6 @@ dependencies {
     implementation project(':core:common')
     implementation project(':core:widget')
     implementation project(':core:model')
-    implementation project(':core:api')
     implementation project(':core:domain')
 
     implementation project(':core:designsystem')

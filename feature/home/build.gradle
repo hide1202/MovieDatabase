@@ -22,7 +22,7 @@ dependencies {
     implementation project(':core:common-coroutines')
     implementation project(':core:widget')
     implementation project(':core:model')
-    implementation project(':core:api')
+    implementation project(':core:data')
     implementation project(':core:designsystem')
     implementation project(':core:domain')
 
@@ -60,5 +60,6 @@ dependencies {
     // timber
     implementation libs.timber
 
+    testImplementation project(':core:api')
     testImplementation project(':core:data')
 }

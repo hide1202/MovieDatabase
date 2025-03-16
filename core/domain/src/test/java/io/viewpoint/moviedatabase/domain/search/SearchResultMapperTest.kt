@@ -2,9 +2,9 @@ package io.viewpoint.moviedatabase.domain.search
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
-import io.viewpoint.moviedatabase.api.dto.ConfigurationLanguageDto
 import io.viewpoint.moviedatabase.api.dto.MovieDto
+import io.viewpoint.moviedatabase.domain.model.ConfigurationLanguage
+import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import junit.framework.Assert.fail
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
@@ -34,11 +34,11 @@ class SearchResultMapperTest {
             override suspend fun getImageBaseUrl(): Optional<String> =
                 Optional.of(expectedImageBaseUrl)
 
-            override suspend fun getSupportedLanguages(): List<ConfigurationLanguageDto> =
+            override suspend fun getSupportedLanguages(): List<ConfigurationLanguage> =
                 emptyList()
         })
 
-        expectThat(mapper.mapperFromMovie.map(response).posterUrl)
+        expectThat(mapper.mapperFromMovie.map(response.asDomain()).posterUrl)
             .isEqualTo("${expectedImageBaseUrl}eXbCqcUsUDUq2qqGmU5i20S0tjo.jpg")
     }
 

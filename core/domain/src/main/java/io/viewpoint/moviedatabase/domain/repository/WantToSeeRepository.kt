@@ -1,11 +1,11 @@
 package io.viewpoint.moviedatabase.domain.repository
 
-import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
+import io.viewpoint.moviedatabase.domain.model.MovieDetail
 
 interface WantToSeeRepository {
     suspend fun hasWantToSeeMovie(id: Int): Boolean
 
-    suspend fun getWantToSeeMovies(): List<MovieDetailDto>
+    suspend fun getWantToSeeMovies(): List<MovieDetail>
 
     suspend fun addWantToSeeMovie(id: Int)
 

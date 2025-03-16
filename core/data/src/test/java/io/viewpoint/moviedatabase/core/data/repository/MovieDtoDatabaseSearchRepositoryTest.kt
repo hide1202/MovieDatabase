@@ -5,6 +5,7 @@ import io.mockk.coVerify
 import io.mockk.spyk
 import io.viewpoint.moviedatabase.api.SearchApi
 import io.viewpoint.moviedatabase.api.dto.MovieDto
+import io.viewpoint.moviedatabase.domain.model.Movie
 import io.viewpoint.moviedatabase.model.common.PagingResult
 import io.viewpoint.moviedatabase.test.mock.TestSearchApi
 import kotlinx.coroutines.runBlocking
@@ -33,7 +34,7 @@ class MovieDtoDatabaseSearchRepositoryTest {
                     api
                 )
 
-            val result: PagingResult<Int, MovieDto> = repository.searchKeyword(keyword = "", page = 1)
+            val result: PagingResult<Int, Movie> = repository.searchKeyword(keyword = "", page = 1)
 
             expectThat(result)
                 .isA<PagingResult.Success<Int, MovieDto>>()

@@ -10,7 +10,6 @@ dependencies {
 
     implementation project(':core:common-coroutines')
     implementation project(':core:model')
-    implementation project(':core:api')
 
     implementation libs.androidx.room.common
     implementation libs.androidx.paging.common
@@ -18,5 +17,6 @@ dependencies {
     implementation libs.dagger
     kapt libs.dagger.kapt
 
+    testImplementation project(':core:api')
     testImplementation project(':test:mock')
 }

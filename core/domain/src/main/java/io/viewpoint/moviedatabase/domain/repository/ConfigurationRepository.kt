@@ -1,6 +1,6 @@
 package io.viewpoint.moviedatabase.domain.repository
 
-import io.viewpoint.moviedatabase.api.dto.ConfigurationLanguageDto
+import io.viewpoint.moviedatabase.domain.model.ConfigurationLanguage
 import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
 
@@ -16,5 +16,5 @@ interface ConfigurationRepository {
         }
         .getOrNull()
 
-    suspend fun getSupportedLanguages(): List<ConfigurationLanguageDto>
+    suspend fun getSupportedLanguages(): List<ConfigurationLanguage>
 }

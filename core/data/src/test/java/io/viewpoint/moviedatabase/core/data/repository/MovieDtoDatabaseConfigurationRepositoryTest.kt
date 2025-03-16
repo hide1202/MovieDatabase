@@ -59,6 +59,6 @@ class MovieDtoDatabaseConfigurationRepositoryTest {
         val supportedLanguages = repository.getSupportedLanguages()
 
         expectThat(supportedLanguages.size).isEqualTo(SUPPORTED_LANGUAGE_CODES.size)
-        expectThat(supportedLanguages.map { it.iso_639_1 }).isEqualTo(SUPPORTED_LANGUAGE_CODES.map { it.language })
+        expectThat(supportedLanguages.map { it.languageCode }).isEqualTo(SUPPORTED_LANGUAGE_CODES.map { it.language })
     }
 }

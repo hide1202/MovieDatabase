@@ -1,6 +1,6 @@
 package io.viewpoint.moviedatabase.viewmodel
 
-import io.viewpoint.moviedatabase.api.MovieDatabaseApi
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseApiConfiguration
 import io.viewpoint.moviedatabase.domain.Languages
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
@@ -64,15 +64,15 @@ class MainViewModelTest : TestBase() {
     @Test
     fun `load saved language when initialize view`(): Unit = runBlocking {
         val originalLocale = Locale.getDefault()
-        val originalApiLanguage = MovieDatabaseApi.language
+        val originalApiLanguage = MovieDatabaseApiConfiguration.currentLanguage
 
         try {
             Locale.setDefault(Languages.SUPPORTED_LANGUAGE_CODES[0])
-            MovieDatabaseApi.language = null
+            MovieDatabaseApiConfiguration.changeLanguage(null)
 
             val preferencesService = TestPreferencesService()
 
-            val firstPreLanguage = MovieDatabaseApi.language
+            val firstPreLanguage = MovieDatabaseApiConfiguration.currentLanguage
             createVmWith(preferencesService).awaitInit()
             expectThat(firstPreLanguage).isNotEqualTo(Languages.SUPPORTED_LANGUAGE_CODES[0].language)
 
@@ -85,13 +85,13 @@ class MainViewModelTest : TestBase() {
                 expectedLanguage
             )
 
-            val secondPreLanguage = MovieDatabaseApi.language
+            val secondPreLanguage = MovieDatabaseApiConfiguration.currentLanguage
             createVmWith(preferencesService).awaitInit()
-            expectThat(secondPreLanguage).isNotEqualTo(MovieDatabaseApi.language)
-            expectThat(MovieDatabaseApi.language).isEqualTo(expectedLanguage)
+            expectThat(secondPreLanguage).isNotEqualTo(MovieDatabaseApiConfiguration.currentLanguage)
+            expectThat(MovieDatabaseApiConfiguration.currentLanguage).isEqualTo(expectedLanguage)
         } finally {
             Locale.setDefault(originalLocale)
-            MovieDatabaseApi.language = originalApiLanguage
+            MovieDatabaseApiConfiguration.changeLanguage(originalApiLanguage)
         }
     }
 }

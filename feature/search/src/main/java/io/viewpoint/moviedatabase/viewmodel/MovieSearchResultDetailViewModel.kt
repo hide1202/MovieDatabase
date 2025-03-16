@@ -8,10 +8,10 @@ import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
 import io.viewpoint.moviedatabase.domain.CreditModelMapper
 import io.viewpoint.moviedatabase.domain.KeywordModelMapper
 import io.viewpoint.moviedatabase.domain.WatchProviderModelMapper
+import io.viewpoint.moviedatabase.domain.model.MovieDetail
 import io.viewpoint.moviedatabase.domain.repository.MovieDetailRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
-import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
 import io.viewpoint.moviedatabase.model.ui.CreditModel
 import io.viewpoint.moviedatabase.model.ui.KeywordModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
@@ -27,7 +27,7 @@ import javax.inject.Inject
 
 data class MovieDetailUiState(
     val wantToSee: Boolean = false,
-    val genres: List<MovieDetailDto.GenreDto> = emptyList(),
+    val genres: List<MovieDetail.Genre> = emptyList(),
     val countries: List<String> = emptyList(),
     val credits: List<CreditModel> = emptyList(),
     val productionCompanies: List<SearchResultModel.ProductionCompany> = emptyList(),
@@ -103,9 +103,9 @@ class MovieSearchResultDetailViewModel @Inject constructor(
         }
     }
 
-    private suspend fun fillDetailData(movieDetail: MovieDetailDto): SearchResultModel {
+    private suspend fun fillDetailData(movieDetail: MovieDetail): SearchResultModel {
         val genres = movieDetail.genres
-        val countries = movieDetail.production_countries.map { it.iso_3166_1 }
+        val countries = movieDetail.productionCountries.map { it.countryCode }
 
         // TODO call parallel with a move detail
         val credits = movieDetailRepository.getCredits(movieDetail.id)

@@ -18,7 +18,6 @@ dependencies {
     implementation project(':core:common')
     implementation project(':core:common-coroutines')
     implementation project(':core:model')
-    implementation project(':core:api')
     implementation project(':core:domain')
     implementation project(':core:designsystem')
     implementation project(':core:widget')
@@ -62,5 +61,6 @@ dependencies {
     implementation libs.timber
 
     testImplementation libs.test.paging
+    testImplementation project(":core:api")
     testImplementation project(":core:data")
 }

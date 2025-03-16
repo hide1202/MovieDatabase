@@ -3,7 +3,7 @@ package io.viewpoint.moviedatabase.ui.setting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.viewpoint.moviedatabase.api.MovieDatabaseApi
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseApiConfiguration
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
@@ -50,11 +50,11 @@ class SettingViewModel @Inject constructor(
 
     fun onLanguageSelected(language: Language) {
         viewModelScope.launch {
-            MovieDatabaseApi.language = language.languageCode
+            MovieDatabaseApiConfiguration.changeLanguage(language.languageCode)
 
             preferences.putValue(
                 PreferencesKeys.SELECTED_LANGUAGE_ISO,
-                MovieDatabaseApi.language
+                MovieDatabaseApiConfiguration.currentLanguage,
             )
 
             _uiState.update { prev ->
@@ -66,8 +66,9 @@ class SettingViewModel @Inject constructor(
     fun clearLanguage() {
         viewModelScope.launch {
             preferences.putValue(PreferencesKeys.SELECTED_LANGUAGE_ISO, null)
-            MovieDatabaseApi.language =
+            MovieDatabaseApiConfiguration.changeLanguage(
                 preferences.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+            )
             loadSavedLanguage()
         }
     }

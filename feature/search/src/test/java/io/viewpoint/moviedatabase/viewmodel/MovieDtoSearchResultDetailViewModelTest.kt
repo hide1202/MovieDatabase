@@ -66,7 +66,7 @@ class MovieDtoSearchResultDetailViewModelTest : TestBase() {
         val popular = movieApi.getPopular(1)
         val result = popular.results[0]
 
-        vm.loadWithResult(mapperProvider.mapperFromMovie.map(result))
+        vm.loadWithResult(mapperProvider.mapperFromMovie.map(result.asDomain()))
 
         val previous = vm.uiState.value.wantToSee
         vm.invertWantToSeeCommand()

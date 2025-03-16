@@ -16,7 +16,7 @@ dependencies {
     implementation project(':core:resources')
 
     implementation project(':core:model')
-    implementation project(':core:api')
+    implementation project(':core:data')
     implementation project(':core:domain')
 
     implementation project(':core:designsystem')

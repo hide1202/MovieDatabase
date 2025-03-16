@@ -1,10 +1,10 @@
 package io.viewpoint.moviedatabase.core.data.repository
 
 import io.viewpoint.moviedatabase.api.MovieDetailApi
+import io.viewpoint.moviedatabase.domain.model.MovieDetail
+import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import io.viewpoint.moviedatabase.domain.repository.dao.WantToSeeDao
 import io.viewpoint.moviedatabase.domain.repository.entity.WantToSeeMovieEntity
-import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
-import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -18,15 +18,20 @@ class MovieDatabaseWantToSeeRepository @Inject constructor(
         return dao.getOne(id) != null
     }
 
-    override suspend fun getWantToSeeMovies(): List<MovieDetailDto> = coroutineScope {
+    override suspend fun getWantToSeeMovies(): List<MovieDetail> = coroutineScope {
         val ids: List<Int> = dao.getAll()
             .map {
                 it.id
             }
 
-        ids.map { id ->
-            async { movieDetailApi.getMovieDetail(id) }
-        }.awaitAll()
+        ids
+            .map { id ->
+                async { movieDetailApi.getMovieDetail(id) }
+            }
+            .awaitAll()
+            .map {
+                it.asDomain()
+            }
     }
 
     override suspend fun addWantToSeeMovie(id: Int) {
