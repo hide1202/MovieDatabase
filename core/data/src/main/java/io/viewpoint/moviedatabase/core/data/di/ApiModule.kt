@@ -1,12 +1,12 @@
-package io.viewpoint.moviedatabase.di
+package io.viewpoint.moviedatabase.core.data.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import io.viewpoint.moviedatabase.BuildConfig
 import io.viewpoint.moviedatabase.api.*
-import io.viewpoint.moviedatabase.platform.util.Flippers
+import io.viewpoint.moviedatabase.core.data.BuildConfig
+import io.viewpoint.moviedatabase.core.data.util.Flippers
 import timber.log.Timber
 import javax.inject.Singleton
 
@@ -18,7 +18,7 @@ class ApiModule {
     fun movieDatabaseApi(): MovieDatabaseApi = MovieDatabaseApi
         .Builder()
         .apply {
-            apiKey = BuildConfig.API_KEY
+//            apiKey = BuildConfig.API_KEY
             if (BuildConfig.DEBUG) {
                 debugLog = {
                     Timber.d(it)

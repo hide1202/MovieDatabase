@@ -10,7 +10,7 @@ import coil3.PlatformContext
 import coil3.SingletonImageLoader
 import dagger.Lazy
 import dagger.hilt.android.HiltAndroidApp
-import io.viewpoint.moviedatabase.platform.util.Flippers
+import io.viewpoint.moviedatabase.core.data.util.Flippers
 import javax.inject.Inject
 
 

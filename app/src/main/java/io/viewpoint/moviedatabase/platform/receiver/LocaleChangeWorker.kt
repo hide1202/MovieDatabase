@@ -6,7 +6,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import io.viewpoint.moviedatabase.api.MovieDatabaseApi
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseApiConfiguration
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 
@@ -18,8 +18,9 @@ class LocaleChangeWorker @AssistedInject constructor(
 ) : CoroutineWorker(appContext, workerParams) {
 
     override suspend fun doWork(): Result {
-        MovieDatabaseApi.language =
-            preferencesService.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+        MovieDatabaseApiConfiguration.changeLanguage(
+            language = preferencesService.getValueWithDefault(PreferencesKeys.SELECTED_LANGUAGE_ISO)
+        )
         return Result.success()
     }
 }

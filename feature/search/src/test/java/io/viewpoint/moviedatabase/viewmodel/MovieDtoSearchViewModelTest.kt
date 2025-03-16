@@ -6,8 +6,8 @@ import io.mockk.coEvery
 import io.mockk.spyk
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.getValues
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseSearchRepository
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseConfigurationRepository
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseSearchRepository
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.test.TestBase
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi

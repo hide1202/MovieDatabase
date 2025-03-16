@@ -145,3 +145,4 @@ moviedatabase-android-application-compose = { id = "moviedatabase.android.applic
 moviedatabase-android-library = { id = "moviedatabase.android.library", version = "unspecified" }
 moviedatabase-android-library-compose = { id = "moviedatabase.android.library.compose", version = "unspecified" }
 moviedatabase-jvm-library = { id = "moviedatabase.jvm.library", version = "unspecified" }
+moviedatabase-jvm-external = { id = "moviedatabase.jvm.external", version = "unspecified" }

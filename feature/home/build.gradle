@@ -59,4 +59,6 @@ dependencies {
 
     // timber
     implementation libs.timber
+
+    testImplementation project(':core:data')
 }

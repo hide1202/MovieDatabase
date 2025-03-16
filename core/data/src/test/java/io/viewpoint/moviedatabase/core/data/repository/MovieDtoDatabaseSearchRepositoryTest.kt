@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.domain.repository
+package io.viewpoint.moviedatabase.core.data.repository
 
 import io.mockk.coEvery
 import io.mockk.coVerify

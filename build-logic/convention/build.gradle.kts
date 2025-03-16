@@ -59,5 +59,9 @@ gradlePlugin {
             id = "moviedatabase.jvm.library"
             implementationClass = "io.viewpoint.moviedatabase.buildlogic.JvmLibraryConventionPlugin"
         }
+        register("external") {
+            id = "moviedatabase.jvm.external"
+            implementationClass = "io.viewpoint.moviedatabase.buildlogic.ExternalConventionPlugin"
+        }
     }
 }

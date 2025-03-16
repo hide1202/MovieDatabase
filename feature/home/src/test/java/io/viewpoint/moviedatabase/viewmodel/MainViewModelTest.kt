@@ -4,9 +4,9 @@ import io.viewpoint.moviedatabase.api.MovieDatabaseApi
 import io.viewpoint.moviedatabase.domain.Languages
 import io.viewpoint.moviedatabase.domain.PreferencesKeys
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseConfigurationRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseMovieRepository
-import io.viewpoint.moviedatabase.domain.repository.MovieDatabaseWantToSeeRepository
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseConfigurationRepository
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseMovieRepository
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseWantToSeeRepository
 import io.viewpoint.moviedatabase.test.TestBase
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieApi

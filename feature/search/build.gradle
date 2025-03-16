@@ -62,4 +62,5 @@ dependencies {
     implementation libs.timber
 
     testImplementation libs.test.paging
+    testImplementation project(":core:data")
 }

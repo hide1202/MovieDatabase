@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.domain.repository
+package io.viewpoint.moviedatabase.core.data.repository
 
 import io.viewpoint.moviedatabase.test.mock.TestMovieDetailApi
 import kotlinx.coroutines.runBlocking

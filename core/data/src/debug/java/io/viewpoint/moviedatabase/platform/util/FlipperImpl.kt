@@ -9,7 +9,8 @@ import com.facebook.flipper.plugins.navigation.NavigationFlipperPlugin
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.soloader.SoLoader
-import io.viewpoint.moviedatabase.BuildConfig
+import io.viewpoint.moviedatabase.core.data.BuildConfig
+import io.viewpoint.moviedatabase.core.data.util.Flippers
 import okhttp3.Interceptor
 
 class FlipperImpl : Flippers {

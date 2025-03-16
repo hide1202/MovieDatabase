@@ -1,6 +1,7 @@
-package io.viewpoint.moviedatabase.platform.util
+package io.viewpoint.moviedatabase.core.data.util
 
 import android.content.Context
+import io.viewpoint.moviedatabase.platform.util.FlipperImpl
 import okhttp3.Interceptor
 
 interface Flippers {
