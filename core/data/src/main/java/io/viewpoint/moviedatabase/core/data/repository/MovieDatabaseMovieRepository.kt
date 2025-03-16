@@ -1,8 +1,9 @@
-package io.viewpoint.moviedatabase.domain.repository
+package io.viewpoint.moviedatabase.core.data.repository
 
 import io.viewpoint.moviedatabase.api.MovieApi
 import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
 import io.viewpoint.moviedatabase.api.dto.MovieDto
+import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import javax.inject.Inject
 
 class MovieDatabaseMovieRepository @Inject constructor(

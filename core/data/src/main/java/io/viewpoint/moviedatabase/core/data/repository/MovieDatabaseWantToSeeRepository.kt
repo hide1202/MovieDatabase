@@ -1,9 +1,10 @@
-package io.viewpoint.moviedatabase.domain.repository
+package io.viewpoint.moviedatabase.core.data.repository
 
 import io.viewpoint.moviedatabase.api.MovieDetailApi
 import io.viewpoint.moviedatabase.domain.repository.dao.WantToSeeDao
 import io.viewpoint.moviedatabase.domain.repository.entity.WantToSeeMovieEntity
 import io.viewpoint.moviedatabase.api.dto.MovieDetailDto
+import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope

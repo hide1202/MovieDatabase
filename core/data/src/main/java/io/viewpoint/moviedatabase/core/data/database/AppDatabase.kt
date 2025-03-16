@@ -1,8 +1,8 @@
-package io.viewpoint.moviedatabase.platform.external
+package io.viewpoint.moviedatabase.core.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import io.viewpoint.moviedatabase.BuildConfig
+import io.viewpoint.moviedatabase.core.data.BuildConfig
 import io.viewpoint.moviedatabase.domain.repository.dao.WantToSeeDao
 import io.viewpoint.moviedatabase.domain.repository.entity.WantToSeeMovieEntity
 

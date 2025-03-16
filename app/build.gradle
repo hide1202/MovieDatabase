@@ -7,7 +7,6 @@ plugins {
 }
 
 apply from: '../external.gradle'
-apply from: '../app.gradle'
 apply from: '../android-test-dependencies.gradle'
 
 android {
@@ -31,11 +30,9 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
-            buildConfigField("int", "DATABASE_VERSION", "${app.database_version}")
         }
         release {
             buildConfigField("String", "API_KEY", "\"${external.apiKey}\"")
-            buildConfigField("int", "DATABASE_VERSION", "${app.database_version}")
 
             signingConfig signingConfigs.releaseKeystore
 
@@ -56,6 +53,7 @@ dependencies {
     implementation project(':core:common')
     implementation project(':core:model')
     implementation project(':core:api')
+    implementation project(':core:data')
     implementation project(':core:domain')
     implementation project(':core:designsystem')
     implementation project(':core:preferences')

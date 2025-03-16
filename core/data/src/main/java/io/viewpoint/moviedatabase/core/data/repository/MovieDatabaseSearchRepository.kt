@@ -1,8 +1,9 @@
-package io.viewpoint.moviedatabase.domain.repository
+package io.viewpoint.moviedatabase.core.data.repository
 
 import io.viewpoint.moviedatabase.api.SearchApi
 import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
 import io.viewpoint.moviedatabase.api.dto.MovieDto
+import io.viewpoint.moviedatabase.domain.repository.SearchRepository
 import io.viewpoint.moviedatabase.model.common.PagingResult
 import javax.inject.Inject
 

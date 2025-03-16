@@ -9,7 +9,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.viewpoint.moviedatabase.core.preferences.AndroidPreferencesService
 import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
-import io.viewpoint.moviedatabase.platform.external.AppDatabase
+import io.viewpoint.moviedatabase.core.data.database.AppDatabase
 import javax.inject.Singleton
 
 @Module

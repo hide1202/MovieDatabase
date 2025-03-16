@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.di
+package io.viewpoint.moviedatabase.core.data.di
 
 import dagger.Binds
 import dagger.Module
@@ -6,8 +6,17 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.viewpoint.moviedatabase.api.MovieDetailApi
-import io.viewpoint.moviedatabase.domain.repository.*
-import io.viewpoint.moviedatabase.platform.external.AppDatabase
+import io.viewpoint.moviedatabase.core.data.database.AppDatabase
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseConfigurationRepository
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseMovieDetailRepository
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseMovieRepository
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseSearchRepository
+import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseWantToSeeRepository
+import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieDetailRepository
+import io.viewpoint.moviedatabase.domain.repository.MovieRepository
+import io.viewpoint.moviedatabase.domain.repository.SearchRepository
+import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
 import javax.inject.Singleton
 
 @Module(includes = [RepositoryModule.ProvideRepositoryModule::class])

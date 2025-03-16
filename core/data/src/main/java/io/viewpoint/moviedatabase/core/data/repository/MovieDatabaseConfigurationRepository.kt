@@ -1,10 +1,11 @@
-package io.viewpoint.moviedatabase.domain.repository
+package io.viewpoint.moviedatabase.core.data.repository
 
 import io.viewpoint.moviedatabase.api.ConfigurationApi
 import io.viewpoint.moviedatabase.core.common.coroutines.suspendRunCatching
 import io.viewpoint.moviedatabase.domain.Languages
 import io.viewpoint.moviedatabase.api.dto.ConfigurationLanguageDto
 import io.viewpoint.moviedatabase.api.dto.ConfigurationResponse
+import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import java.util.Optional
 import javax.inject.Inject
 import kotlin.jvm.optionals.getOrElse
