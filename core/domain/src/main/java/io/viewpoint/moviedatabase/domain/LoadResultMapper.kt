@@ -1,7 +1,7 @@
 package io.viewpoint.moviedatabase.domain
 
 import androidx.paging.PagingSource
-import io.viewpoint.moviedatabase.model.common.PagingResult
+import io.viewpoint.moviedatabase.domain.model.PagingResult
 
 class LoadResultMapper<TKey : Any, TValue : Any> :
     Mapper<PagingResult<TKey, TValue>, PagingSource.LoadResult<TKey, TValue>> {

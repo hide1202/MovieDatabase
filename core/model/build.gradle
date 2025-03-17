@@ -2,5 +2,15 @@ plugins {
     alias(libs.plugins.moviedatabase.jvm.library)
 }
 
+apply from: "$rootDir/java-test-dependencies.gradle"
+
 dependencies {
+    implementation(project(":core:domain"))
+
+    implementation(libs.dagger)
+
+    implementation(libs.kotlinx.coroutines.core)
+
+    testImplementation project(':core:api')
+    testImplementation project(':test:mock')
 }

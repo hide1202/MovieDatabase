@@ -1,5 +1,6 @@
-package io.viewpoint.moviedatabase.domain
+package io.viewpoint.moviedatabase.model.ui.mapper
 
+import io.viewpoint.moviedatabase.domain.Mapper
 import io.viewpoint.moviedatabase.domain.model.WatchProvider
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.model.ui.WatchProviderModel

@@ -10,8 +10,8 @@ import io.viewpoint.moviedatabase.domain.preferences.PreferencesService
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.domain.repository.WantToSeeRepository
-import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
+import io.viewpoint.moviedatabase.model.ui.mapper.SearchResultMapperProvider
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope

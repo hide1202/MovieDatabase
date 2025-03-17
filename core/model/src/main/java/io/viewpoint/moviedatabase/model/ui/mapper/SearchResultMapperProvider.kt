@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.domain.search
+package io.viewpoint.moviedatabase.model.ui.mapper
 
 import io.viewpoint.moviedatabase.domain.Mapper
 import io.viewpoint.moviedatabase.domain.model.Movie

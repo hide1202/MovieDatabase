@@ -1,7 +1,6 @@
 package io.viewpoint.moviedatabase.ui.home
 
 import androidx.paging.PagingSource
-import io.viewpoint.moviedatabase.domain.paging.MovieListPagingSource
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.MovieRepository
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel

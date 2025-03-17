@@ -1,13 +1,13 @@
 package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
-import io.viewpoint.moviedatabase.domain.CreditModelMapper
-import io.viewpoint.moviedatabase.domain.KeywordModelMapper
-import io.viewpoint.moviedatabase.domain.WatchProviderModelMapper
 import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseConfigurationRepository
 import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseMovieDetailRepository
 import io.viewpoint.moviedatabase.core.data.repository.MovieDatabaseWantToSeeRepository
-import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
+import io.viewpoint.moviedatabase.model.ui.mapper.CreditModelMapper
+import io.viewpoint.moviedatabase.model.ui.mapper.KeywordModelMapper
+import io.viewpoint.moviedatabase.model.ui.mapper.SearchResultMapperProvider
+import io.viewpoint.moviedatabase.model.ui.mapper.WatchProviderModelMapper
 import io.viewpoint.moviedatabase.test.TestBase
 import io.viewpoint.moviedatabase.test.mock.TestConfigurationApi
 import io.viewpoint.moviedatabase.test.mock.TestMovieApi

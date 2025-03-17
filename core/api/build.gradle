@@ -6,8 +6,6 @@ plugins {
 apply from: "$rootDir/java-test-dependencies.gradle"
 
 dependencies {
-    implementation project(':core:model')
-
     implementation libs.moshi
     implementation libs.okhttp.logging
     implementation libs.retrofit

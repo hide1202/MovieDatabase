@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.model.common
+package io.viewpoint.moviedatabase.domain.model
 
 sealed class PagingResult<TKey, TValue> {
     data class Success<TKey, TValue>(

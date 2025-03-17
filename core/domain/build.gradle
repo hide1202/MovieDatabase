@@ -9,7 +9,6 @@ dependencies {
     implementation libs.kotlinx.coroutines.core
 
     implementation project(':core:common-coroutines')
-    implementation project(':core:model')
 
     implementation libs.androidx.room.common
     implementation libs.androidx.paging.common

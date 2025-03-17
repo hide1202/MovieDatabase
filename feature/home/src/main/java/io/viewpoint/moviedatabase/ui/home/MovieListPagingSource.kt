@@ -1,13 +1,13 @@
-package io.viewpoint.moviedatabase.domain.paging
+package io.viewpoint.moviedatabase.ui.home
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import io.viewpoint.moviedatabase.domain.LoadResultMapper
 import io.viewpoint.moviedatabase.domain.model.Movie
+import io.viewpoint.moviedatabase.domain.model.PagingResult
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
-import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
-import io.viewpoint.moviedatabase.model.common.PagingResult
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
+import io.viewpoint.moviedatabase.model.ui.mapper.SearchResultMapperProvider
 
 class MovieListPagingSource(
     configurationRepository: ConfigurationRepository,

@@ -1,4 +1,4 @@
-package io.viewpoint.moviedatabase.domain.search
+package io.viewpoint.moviedatabase.model.ui.mapper
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

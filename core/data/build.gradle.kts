@@ -23,7 +23,6 @@ android {
 
 dependencies {
     implementation(project(":core:common-coroutines"))
-    implementation(project(":core:model"))
     implementation(project(":core:domain"))
     implementation(project(":core:api"))
 

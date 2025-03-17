@@ -6,7 +6,7 @@ import io.mockk.spyk
 import io.viewpoint.moviedatabase.api.SearchApi
 import io.viewpoint.moviedatabase.api.dto.MovieDto
 import io.viewpoint.moviedatabase.domain.model.Movie
-import io.viewpoint.moviedatabase.model.common.PagingResult
+import io.viewpoint.moviedatabase.domain.model.PagingResult
 import io.viewpoint.moviedatabase.test.mock.TestSearchApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Test

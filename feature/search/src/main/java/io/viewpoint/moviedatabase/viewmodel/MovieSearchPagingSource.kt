@@ -2,11 +2,11 @@ package io.viewpoint.moviedatabase.viewmodel
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import io.viewpoint.moviedatabase.domain.LoadResultMapper
 import io.viewpoint.moviedatabase.domain.repository.ConfigurationRepository
 import io.viewpoint.moviedatabase.domain.repository.SearchRepository
-import io.viewpoint.moviedatabase.domain.search.SearchResultMapperProvider
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
-import io.viewpoint.moviedatabase.domain.LoadResultMapper
+import io.viewpoint.moviedatabase.model.ui.mapper.SearchResultMapperProvider
 
 class MovieSearchPagingSource(
     private val keyword: String,
