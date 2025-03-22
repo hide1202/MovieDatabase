@@ -45,6 +45,9 @@
 movie.database.api.key=YOUR_API_KEY
 ```
 
+## Modules
+- You can see the structure of the module in [MODULES.md](./MODULES.md).
+
 ## 🚀 Future Plans
 
 We are planning to extend this project to support **Compose Multiplatform**, 

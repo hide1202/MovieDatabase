@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.hilt.android) apply false
 
     alias(libs.plugins.kotlin.kover)
+    alias(libs.plugins.module.graph)
 }
 
 allprojects {
@@ -48,6 +49,12 @@ kover {
             }
         }
     }
+}
+
+moduleGraphConfig {
+    readmePath.set("./MODULES.md")
+    excludedModulesRegex.set(":test:.*")
+    excludedConfigurationsRegex.set(":test:.*")
 }
 
 dependencies {
