@@ -30,7 +30,6 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import coil3.compose.AsyncImage
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
-import io.viewpoint.moviedatabase.designsystem.Palette
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -103,7 +102,7 @@ private fun Movie(
             Text(
                 text = overview,
                 style = LocalTextStyle.current.merge(MaterialTheme.typography.bodyMedium),
-                color = Palette.searchDescriptionText,
+                color = MaterialTheme.colorScheme.secondary,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
             )

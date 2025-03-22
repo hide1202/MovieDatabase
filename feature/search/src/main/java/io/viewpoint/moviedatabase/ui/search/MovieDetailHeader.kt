@@ -1,5 +1,6 @@
 package io.viewpoint.moviedatabase.ui.search
 
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,16 +28,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
-import io.viewpoint.moviedatabase.designsystem.Palette
 import io.viewpoint.moviedatabase.model.ui.DefaultSearchResultModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
 import io.viewpoint.moviedatabase.model.ui.WatchProviderModel
+import io.viewpoint.moviedatabase.resources.R
 import io.viewpoint.moviedatabase.util.Flags
 
 @Composable
@@ -49,7 +51,7 @@ internal fun MovieDetailHeader(
         modifier = Modifier
             .fillMaxWidth()
             .height(250.dp)
-            .background(Palette.dark_gray),
+            .background(MaterialTheme.colorScheme.background),
     ) {
         AsyncImage(
             modifier = Modifier.fillMaxSize(),
@@ -70,7 +72,7 @@ internal fun MovieDetailHeader(
                 modifier = Modifier
                     .width(100.dp)
                     .height(150.dp)
-                    .background(Palette.gray),
+                    .background(MaterialTheme.colorScheme.primary),
                 model = result?.posterUrl,
                 contentDescription = null,
             )
@@ -133,11 +135,16 @@ private fun Flags(countries: List<String>) {
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(items = countries) {
+            val drawable = if (LocalInspectionMode.current) {
+                AppCompatResources.getDrawable(LocalContext.current, R.drawable.flag_us)
+            } else {
+                Flags.getDrawable(context, it)
+            }
             Image(
                 modifier = Modifier
                     .size(18.dp)
                     .clip(CircleShape),
-                painter = rememberDrawablePainter(Flags.getDrawable(context, it)),
+                painter = rememberDrawablePainter(drawable),
                 contentDescription = null,
             )
         }
@@ -162,7 +169,7 @@ private fun MovieOriginalTitle(originalTitle: String) {
         text = originalTitle,
         maxLines = 1,
         style = LocalTextStyle.current.merge(MaterialTheme.typography.titleSmall),
-        color = Palette.searchDescriptionText,
+        color = MaterialTheme.colorScheme.secondary,
         overflow = TextOverflow.Ellipsis,
     )
 }

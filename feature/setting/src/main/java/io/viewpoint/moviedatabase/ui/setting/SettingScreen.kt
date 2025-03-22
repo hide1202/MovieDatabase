@@ -31,9 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
-import io.viewpoint.moviedatabase.designsystem.Colors
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
-import io.viewpoint.moviedatabase.designsystem.Palette
 import io.viewpoint.moviedatabase.feature.setting.R
 import io.viewpoint.moviedatabase.ui.setting.model.Language
 
@@ -90,7 +88,7 @@ fun SettingRoute(
                 Column {
                     Text(
                         text = stringResource(id = R.string.setting_language),
-                        color = Colors.colorPrimary,
+                        color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.bodySmall,
                     )
                     Text(
@@ -136,7 +134,6 @@ fun SettingRoute(
         ) {
             Text(
                 text = stringResource(id = R.string.setting_language_clear),
-                color = Palette.white,
             )
         }
     }

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -16,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.viewpoint.moviedatabase.designsystem.MovieDatabaseTheme
-import io.viewpoint.moviedatabase.designsystem.Palette
 import io.viewpoint.moviedatabase.domain.model.MovieDetail
 import io.viewpoint.moviedatabase.model.ui.DefaultSearchResultModel
 import io.viewpoint.moviedatabase.model.ui.SearchResultModel
@@ -53,7 +53,7 @@ fun MovieDetailScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(Palette.light_gray),
+            .background(MaterialTheme.colorScheme.background),
     ) {
         item {
             MovieDetailHeader(

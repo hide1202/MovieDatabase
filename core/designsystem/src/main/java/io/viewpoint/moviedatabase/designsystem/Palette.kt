@@ -2,7 +2,7 @@ package io.viewpoint.moviedatabase.designsystem
 
 import androidx.compose.ui.graphics.Color
 
-object Palette {
+internal object Palette {
     val transparent = Color(0x00000000)
     val white = Color(0xFFFFFFFF)
     val ivory = Color(0xFFFFFFF0)
