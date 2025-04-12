@@ -50,6 +50,8 @@ retrofit = "2.11.0"
 timber = "5.0.1"
 coil = "3.0.4"
 
+konsist = "0.17.3"
+
 [libraries]
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 
@@ -102,6 +104,7 @@ test-mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.re
 test-coroutine_test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 test-robolectric = { module = "org.robolectric:robolectric", version.ref = "testRobolectric" }
 test-paging = { module = "androidx.paging:paging-testing", version.ref = "androidxPaging" }
+test-konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 
 androidTestJunit = { module = "androidx.test.ext:junit", version.ref = "androidxExtJunit" }
 androidTestEspressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "androidxEspressoCore" }
